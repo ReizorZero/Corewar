@@ -4,5 +4,6 @@
 
 int main(void)
 {
-	return(1);
+	(void)1;
+	return (1);
 }
