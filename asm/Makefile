@@ -1,0 +1,28 @@
+NAME = asm
+
+SRCF = main.c check_input.c
+
+LIB = libft/libft.a
+
+CC = gcc
+
+CFLAG = -Wall -Wextra -Werror
+
+all: $(NAME)
+
+$(NAME): $(SRCF)
+	#make -C libft/ fclean && make -C libft/
+	#make -C ft_printf/ fclean && make -C ft_printf/
+	$(CC) $(CFLAG) -o $(NAME) $(SRCF) $(LIB)
+
+clean:
+	#make -C libft/ clean
+	#make -C ft_printf/ clean
+	/bin/rm -f *.o
+
+fclean: clean
+	#make -C libft/ fclean
+	#make -C ft_printf/ fclean
+	/bin/rm -f $(NAME)
+
+re: fclean all
