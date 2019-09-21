@@ -4,6 +4,6 @@
 
 int main(void)
 {
-	int	s = 0;
-	return(5646);
+	(void)1;
+	return (1);
 }
