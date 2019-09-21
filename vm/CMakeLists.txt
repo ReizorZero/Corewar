@@ -10,6 +10,7 @@ add_executable(
         ${LIBA}
         src/main.c
         inc/corewar_vm.h
-        src/carriage.c)
+        src/carriage.c src/player.c
+        src/mem_clean.c)
 
 link_libraries(../libft/libft.a)
