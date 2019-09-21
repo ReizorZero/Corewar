@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/libft.h"
 
 static int		ft_print_c_or_nthng(t_name spc, va_list ap, char *str, int *i)
 {
