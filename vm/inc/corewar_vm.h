@@ -24,7 +24,7 @@ typedef struct			s_carriage
 	uint8_t				player;
 	unsigned int		reg[REG_NUMBER];
 	uint8_t				live;
-	uint8_t				command;
+	uint8_t				operation_id;
 	int					cycles;
 	struct s_carriage	*next;
 }						t_carriage;
@@ -33,13 +33,21 @@ typedef struct			s_player
 {
 	uint8_t				id;
 	header_t			inf;
-//				or
-//	char				*name;
-//	char 				*comment;
-//	int 				size;
 	char 				*code;
 	struct s_player		*next;
 }						t_player;
+
+typedef struct			s_operation
+{
+	char 				name[6];
+	uint8_t				n_arg;
+	uint8_t				arg[3];
+	uint8_t				id;
+	int 				cycles;
+	char 				description[50];
+	uint8_t				octal;
+	uint8_t				label;
+}						t_operation;
 
 typedef struct 			s_general
 {
@@ -47,6 +55,7 @@ typedef struct 			s_general
 //					or
 //	t_player			head_p[MAX_PLAYERS];
 	t_carriage			*head_c;
+	t_operation			op_tab[17];
 	char 				mem[MEM_SIZE + 1];
 }						t_general;
 

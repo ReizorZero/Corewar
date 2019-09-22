@@ -11,6 +11,6 @@ add_executable(
         src/main.c
         inc/corewar_vm.h
         src/carriage.c src/player.c
-        src/mem_clean.c)
+        src/mem_clean.c inc/operation.h)
 
 link_libraries(../libft/libft.a)
