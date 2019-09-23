@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op.h"
+#include "../../op.h"
+#include "../inc/corewar_vm.h"
 
-t_op    op_tab[17] =
+t_operation op_tab[17] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
@@ -36,5 +37,25 @@ t_op    op_tab[17] =
 		"long load index", 1, 1},
 	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
-	{0, 0, {0}, 0, 0, 0, 0, 0}
+	{0, 0, {0, 0, 0}, 0, 0, 0, 0, 0}
 };
+
+void	(*op_func [16])(t_carriage*, t_mem*, t_mem*, t_mem*) =
+		{
+	op_live,
+	op_ld,
+	op_st,
+	op_add,
+	op_sub,
+	op_and,
+	op_or,
+	op_xor,
+	op_zjmp,
+	op_ldi,
+	op_sti,
+	op_fork,
+	op_lld,
+	op_lldi,
+	op_lfork,
+	op_aff
+		};

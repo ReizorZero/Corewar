@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshvets <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/21 14:11:46 by mshvets           #+#    #+#             */
-/*   Updated: 2019/09/21 14:11:48 by mshvets          ###   ########.fr       */
+/*   Created: 2019/09/22 18:44:44 by mshvets           #+#    #+#             */
+/*   Updated: 2019/09/22 18:44:47 by mshvets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/corewar_vm.h"
-//#include "../inc/operation.h"
 
-
-int main(void)
+void op_live(t_general *data)
 {
-	t_general	data;
-	unsigned int i;
-	uint32_t 	l;
-	int32_t 	k;
+//	live %1 - 0101 0000 0001 0100 0000
+	char mem[] = "0100000001";
+	unsigned int	dir;
+	t_carriage		crwl;
 
-	i = -1;
-	l = -2;
-	k = -1;
-	k = l;
+	ft_memset(&crwl, 0, sizeof(crwl));
+	crwl.player = 1;
+	crwl.cycles = 0;
+	crwl.live = 1;
+	crwl.position = 1;
+//	dir = ft_atoi(mem[crwl.position]);
 
-
-	ft_memset(&data, 0, sizeof(data));
-	if (op_tab[0].id == 1)
-		ft_printf("Norm - %s;\n", op_tab[5].descr);
-//	ft_op_live(&data);
-	ft_mem_clean(&data);
-	return(0);
 }

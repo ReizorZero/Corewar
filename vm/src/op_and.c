@@ -1,36 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   op_and.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshvets <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/21 14:11:46 by mshvets           #+#    #+#             */
-/*   Updated: 2019/09/21 14:11:48 by mshvets          ###   ########.fr       */
+/*   Created: 2019/09/23 21:45:21 by mshvets           #+#    #+#             */
+/*   Updated: 2019/09/23 21:45:22 by mshvets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/corewar_vm.h"
-//#include "../inc/operation.h"
 
-
-int main(void)
-{
-	t_general	data;
-	unsigned int i;
-	uint32_t 	l;
-	int32_t 	k;
-
-	i = -1;
-	l = -2;
-	k = -1;
-	k = l;
-
-
-	ft_memset(&data, 0, sizeof(data));
-	if (op_tab[0].id == 1)
-		ft_printf("Norm - %s;\n", op_tab[5].descr);
-//	ft_op_live(&data);
-	ft_mem_clean(&data);
-	return(0);
-}
+void op_live(t_general *data)
