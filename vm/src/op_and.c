@@ -12,4 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-void op_live(t_general *data)
+void op_and(t_carriage *data, t_mem *arg)
+{
+	;
+}

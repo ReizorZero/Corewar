@@ -19,7 +19,8 @@ t_carriage *ft_new_carriage(int player)
 	if(!(new = (t_carriage *)ft_memalloc(sizeof(*new))))
 		return (NULL);
 	new->player = player;
-	new->cycles = -1;
+	new->reg[0] = -player;
+	new->op_cycles = -1;
 	return (new);
 }
 

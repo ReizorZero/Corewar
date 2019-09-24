@@ -18,15 +18,24 @@
 # include "../../op.h"
 # include <stdbool.h>
 
+typedef struct 			s_mem
+{
+	void				*mem;
+	size_t 				total_s;
+	size_t 				current;
+}						t_mem;
+
 typedef struct			s_carriage
 {
 	size_t				position;
 	bool				carry;
 	uint8_t				player;
 	uint32_t			reg[REG_NUMBER];
+	t_mem				arg[3];
 	bool				live;
-	uint8_t				operation_id;
-	int					cycles;
+	uint8_t				op_id;
+	size_t				op_cycles;
+	size_t				lst_live_cycle;
 	struct s_carriage	*next;
 }						t_carriage;
 
@@ -56,20 +65,17 @@ typedef struct 			s_general
 //					or
 //	t_player			head_p[MAX_PLAYERS];
 	t_carriage			*head_c;
-	t_operation			op_tab[17];
-	char 				mem[MEM_SIZE + 1];
 	size_t				cycles;
+	uint8_t 			mem_f[MEM_SIZE + 1];
+//	t_operation			op_tab[17];
+	uint8_t				lst_live_plr;
+	size_t 				cnt_live;
+	size_t 				cycles_to_die;
 }						t_general;
 
-typedef struct 			s_mem
-{
-	void				*mem;
-	size_t 				total_s;
-	size_t 				current;
-}						t_mem;
 
 t_operation				op_tab[17];
-void					(*op_func[16])(t_carriage*, t_mem*, t_mem*, t_mem*);
+void					(*op_func[16])(t_general*, t_carriage*);
 int						ft_add_end_carriage(t_carriage **lst_carriage, int player);
 int						ft_add_carriage(t_carriage **lst_carriage, int player);
 void					ft_add_player(t_player **lst_player, t_player *new);
@@ -77,5 +83,7 @@ void					ft_add_end_player(t_player **lst_player, t_player *new);
 void					ft_del_player(t_player **lst_player);
 void					ft_del_carriage(t_carriage **lst_carriage);
 void					ft_mem_clean(t_general *data);
-void					op_live(t_general *data);
+void					arg_read(t_general *data, t_carriage *carriage);
+void					ft_fight(t_general *data);
+void					op_live(t_carriage*, t_mem *arg);
 #endif
