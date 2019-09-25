@@ -71,6 +71,7 @@ typedef struct 			s_general
 	uint8_t				lst_live_plr;
 	size_t 				cnt_live;
 	size_t 				cycles_to_die;
+	size_t				num_checks;
 }						t_general;
 
 
@@ -81,7 +82,7 @@ int						ft_add_carriage(t_carriage **lst_carriage, int player);
 void					ft_add_player(t_player **lst_player, t_player *new);
 void					ft_add_end_player(t_player **lst_player, t_player *new);
 void					ft_del_player(t_player **lst_player);
-void					ft_del_carriage(t_carriage **lst_carriage);
+void					ft_del_lst_carriage(t_carriage **lst_carriage);
 void					ft_mem_clean(t_general *data);
 void					arg_read(t_general *data, t_carriage *carriage);
 void					ft_fight(t_general *data);

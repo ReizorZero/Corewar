@@ -26,6 +26,11 @@ t_carriage *ft_new_carriage(int player)
 
 void	ft_del_carriage(t_carriage **lst_carriage)
 {
+
+}
+
+void	ft_del_lst_carriage(t_carriage **lst_carriage)
+{
 	t_carriage	*crawler;
 
 	while (*lst_carriage)

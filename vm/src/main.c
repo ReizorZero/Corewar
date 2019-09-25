@@ -14,7 +14,6 @@
 #include "../inc/corewar_vm.h"
 //#include "../inc/operation.h"
 
-
 int main(void)
 {
 	t_general	data;
@@ -29,11 +28,6 @@ int main(void)
 
 
 	ft_memset(&data, 0, sizeof(data));
-//	if (op_tab[0].id == 1)
-//		ft_printf("Norm - %s;\n", op_tab[5].descr);
-//	op_live(&data);
-//	int8_t	map_my[4096];
-//	bzero(map_my, 4096);
 
 	{
 		int fd = open("/Users/mshvets/Desktop/Corewar/maptest", O_RDONLY);
@@ -45,10 +39,18 @@ int main(void)
 		}
 	}
 
-	ft_add_carriage(&data.head_c, 0);
-	data.head_c->op_id = data.mem_f[0];
-	ft_fight(&data);
-	arg_read(&data, data.head_c);
+//	ft_add_carriage(&data.head_c, 5);
+//	data.head_c->live = 1;
+//	ft_add_carriage(&data.head_c, 1);
+//	ft_add_carriage(&data.head_c, 2);
+//	data.head_c->live = 1;
+//	ft_add_carriage(&data.head_c, 3);
+//	ft_add_carriage(&data.head_c, 4);
+//	data.head_c->live = 1;
+//	ft_check_live_carriage(&data);
+//	data.head_c->op_id = data.mem_f[0];
+//	ft_fight(&data);
+//	arg_read(&data, data.head_c);
 	ft_mem_clean(&data);
 	return(0);
 }

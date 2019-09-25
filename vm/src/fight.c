@@ -14,7 +14,31 @@
 
 void	ft_check_live_carriage(t_general *data)
 {
+	t_carriage	*crwl;
+	t_carriage	*prv_crwl;
 
+	crwl = data->head_c;
+	if (!crwl->live)
+	{
+		data->head_c = crwl->next;
+		free(crwl);
+		crwl = data->head_c->next;
+	}
+	prv_crwl = data->head_c;
+	while (crwl)
+	{
+		if (!crwl->live)
+		{
+			prv_crwl->next = crwl->next;
+			free(crwl);
+			crwl = prv_crwl->next;
+		}
+		else
+		{
+			prv_crwl = crwl;
+			crwl = crwl->next;
+		}
+	}
 }
 
 void	start_new_op(t_general *data, t_carriage *crg)
@@ -25,7 +49,14 @@ void	start_new_op(t_general *data, t_carriage *crg)
 		crg->op_cycles = op_tab[crg->op_id - 1].cycles;
 	}
 	else
+	{
+		/*
+		 * В этом случае необходимо запомнить считанный код, а значение
+		 * переменной, хранящей количество циклов до выполнения, оставить
+		 * равным нулю.
+		 */
 		crg->position += 1;
+	}
 }
 
 void	ft_fight(t_general *data)
@@ -40,13 +71,13 @@ void	ft_fight(t_general *data)
 		{
 			if (crwl->op_cycles < 0)
 				start_new_op(data, crwl);
-			else if (!crwl->op_cycles)
-				op_func[crwl->op_id](data, crwl);
-			else if (crwl->op_cycles > 0)
+			if (crwl->op_cycles > 0)
 				--crwl->op_cycles;
+			if (!crwl->op_cycles)
+				op_func[crwl->op_id](data, crwl);
 			crwl = crwl->next;
 		}
-		if (!(--data->cycles_to_die))
+		if ((--data->cycles_to_die) <= 0)
 			ft_check_live_carriage(data);
 		else
 	}
