@@ -35,6 +35,7 @@ void	ft_check_live_carriage(t_general *data)
 		}
 		else
 		{
+			crwl->live = 0;
 			prv_crwl = crwl;
 			crwl = crwl->next;
 		}
@@ -59,13 +60,25 @@ void	start_new_op(t_general *data, t_carriage *crg)
 	}
 }
 
+void	set_new_cycle(t_general *data)
+{
+	if (data->cnt_live >= NBR_LIVE || ++data->num_checks >= MAX_CHECKS)
+	{
+		data->cycles_to_die -= CYCLE_DELTA;
+		data->num_checks = 0;
+	}
+	data->cnt_live = 0;
+	data->cycles = 1;
+}
+
 void	ft_fight(t_general *data)
 {
 	t_carriage	*crwl;
 
+	data->cycles_to_die = CYCLE_TO_DIE;
+	data->cycles = 1;
 	while (data->head_c)
 	{
-		data->cycles_to_die = CYCLE_TO_DIE;
 		crwl = data->head_c;
 		while (crwl && data->cnt_live < NBR_LIVE)
 		{
@@ -77,8 +90,10 @@ void	ft_fight(t_general *data)
 				op_func[crwl->op_id](data, crwl);
 			crwl = crwl->next;
 		}
-		if ((--data->cycles_to_die) <= 0)
+		if (data->cycles++ >= data->cycles_to_die)
+		{
 			ft_check_live_carriage(data);
-		else
+			set_new_cycle(data);
+		}
 	}
 }
