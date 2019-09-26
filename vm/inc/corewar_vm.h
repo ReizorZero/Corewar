@@ -34,7 +34,7 @@ typedef struct			s_carriage
 	t_mem				arg[3];
 	bool				live;
 	uint8_t				op_id;
-	size_t				op_cycles;
+	int				op_cycles;
 	size_t				lst_live_cycle;
 	struct s_carriage	*next;
 }						t_carriage;
@@ -76,6 +76,7 @@ typedef struct 			s_general
 
 
 t_operation				op_tab[17];
+void					ft_fight(t_general *data);
 void					(*op_func[16])(t_general*, t_carriage*);
 int						ft_add_end_carriage(t_carriage **lst_carriage, int player);
 int						ft_add_carriage(t_carriage **lst_carriage, int player);
@@ -84,7 +85,6 @@ void					ft_add_end_player(t_player **lst_player, t_player *new);
 void					ft_del_player(t_player **lst_player);
 void					ft_del_lst_carriage(t_carriage **lst_carriage);
 void					ft_mem_clean(t_general *data);
-void					arg_read(t_general *data, t_carriage *carriage);
-void					ft_fight(t_general *data);
-void					op_live(t_carriage*, t_mem *arg);
+bool					arg_read(t_general *data, t_carriage *carriage);
+void					op_live(t_general *data, t_carriage *carriage);
 #endif

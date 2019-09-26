@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(VM C)
 
 set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_FLAGS -v)
 
 AUX_SOURCE_DIRECTORY(../libft/src LIBA)
 

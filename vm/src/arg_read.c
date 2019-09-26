@@ -42,7 +42,25 @@ void	read_ind(t_general *data, t_mem *arg, size_t position)
 	arg->current = 0;
 }
 
-void arg_read(t_general *data, t_carriage *carriage)
+bool	valid_arg(uint8_t arg_byte, uint8_t op_id)
+{
+	int i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if ((arg_byte >> (2 * i) & DIR_CODE) && !(op_tab[op_id - 1].arg[3 - i] & T_DIR))
+			return (false);
+		else if (arg_byte >> (2 * i) & REG_CODE && !(op_tab[op_id - 1].arg[3 - i] & T_REG))
+			return (false);
+		else if (arg_byte >> (2 * i) & IND_CODE && !(op_tab[op_id - 1].arg[3 - i] & T_IND))
+			return (false);
+		++i;
+	}
+	return (true);
+}
+
+bool	arg_read(t_general *data, t_carriage *carriage)
 {
 	int i;
 	size_t tmp_position;
@@ -74,5 +92,5 @@ void arg_read(t_general *data, t_carriage *carriage)
 		}
 		carriage->position = tmp_position;
 	}
-
+	return (valid_arg(data->mem_f[carriage->position], carriage->op_id));
 }

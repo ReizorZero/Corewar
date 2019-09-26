@@ -87,7 +87,10 @@ void	ft_fight(t_general *data)
 			if (crwl->op_cycles > 0)
 				--crwl->op_cycles;
 			if (!crwl->op_cycles)
+			{
+				arg_read(data, crwl);
 				op_func[crwl->op_id](data, crwl);
+			}
 			crwl = crwl->next;
 		}
 		if (data->cycles++ >= data->cycles_to_die)
