@@ -30,7 +30,10 @@ int		read_from_dot_s(t_asm *the_asm)
 	s = NULL;
 	fd = get_file_fd(the_asm);//RANDOM ERROR OCUURES FROM TIME TO TIME: UNABLE TO OPEN FILE 0
 	while (get_next_line(fd, &s) > 0)
+	{
 		parse_line(the_asm, s);
+		free(s);
+	}
 	close_file(the_asm, fd);
 	return (1);
 }
