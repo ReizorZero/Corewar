@@ -2,10 +2,15 @@
 
 void	check_arguments_n(int argc)
 {
-	if (argc != 2)
+	if (argc < 2)
 	{
 		printf("Usage: ./asm <sourcefile.s>\n");
 		printf("\t(Note that only one file should be passed to input).\n");
+		exit(0);
+	}
+	else if (argc > 2)
+	{
+		printf("Too many files. You should enter only one file at a time.\n");
 		exit(0);
 	}
 }
@@ -19,7 +24,7 @@ void	check_file_name(char *filename)
 	}
 }
 
-void	check_file_extension(char *filename)
+void	check_file_extension(char *filename, t_asm *the_asm)
 {
 	char **arr;
 
@@ -36,14 +41,16 @@ void	check_file_extension(char *filename)
 		printf("File extension is wrong.\n");
 		exit (0);
 	}
-	free(arr[0]);
+	the_asm->dot_s_name = ft_strdup(arr[0]);//MAKE SURE IT DOESN'T GIVE US LEAKS
+	free(arr[0]);//REWRITE THIS STUFF AND MAKE SURE IT NEVER GIVES SEGV
 	free(arr[1]);
 	free(arr);
 }
 
-void	check_input(int argc, char **argv)
+void	check_input(int argc, char **argv, t_asm *the_asm)
 {
 	check_arguments_n(argc);
 	check_file_name(argv[1]);
-	check_file_extension(argv[1]);
+	check_file_extension(argv[1], the_asm);
+	the_asm->dot_s_file_name = ft_strdup(argv[1]);
 }

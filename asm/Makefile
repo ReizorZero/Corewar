@@ -1,8 +1,8 @@
 NAME = asm
 
-SRCF = main.c check_input.c
+SRCF = main.c check_input.c new_elements.c read_from_dot_s.c write_to_dot_cor.c parse_line.c
 
-LIB = libft/libft.a
+LIB = ../libft/libft.a
 
 CC = gcc
 
