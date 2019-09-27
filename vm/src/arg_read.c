@@ -46,15 +46,28 @@ bool	valid_arg(uint8_t arg_byte, uint8_t op_id)
 {
 	int i;
 
-	i = 0;
-	while (i < 3)
+	i = 1;
+	while (i <= 3)
 	{
-		if ((arg_byte >> (2 * i) & DIR_CODE) && !(op_tab[op_id - 1].arg[3 - i] & T_DIR))
+		if ((arg_byte >> (2 * i) & DIR_CODE) == DIR_CODE &&
+			!(op_tab[op_id - 1].arg[3 - i] & T_DIR))
+		{
 			return (false);
-		else if (arg_byte >> (2 * i) & REG_CODE && !(op_tab[op_id - 1].arg[3 - i] & T_REG))
+		}
+		else if ((arg_byte >> (2 * i) & REG_CODE) == REG_CODE &&
+			!(op_tab[op_id - 1].arg[3 - i] & T_REG))
+		{
 			return (false);
-		else if (arg_byte >> (2 * i) & IND_CODE && !(op_tab[op_id - 1].arg[3 - i] & T_IND))
+		}
+		else if ((arg_byte >> (2 * i) & IND_CODE) == IND_CODE &&
+			!(op_tab[op_id - 1].arg[3 - i] & T_IND))
+		{
 			return (false);
+		}
+		else if (!(arg_byte >> (2 * i) & 3) && (op_tab[op_id - 1].arg[3 - i]))
+		{
+			return (false);
+		}
 		++i;
 	}
 	return (true);
@@ -92,5 +105,5 @@ bool	arg_read(t_general *data, t_carriage *carriage)
 		}
 		carriage->position = tmp_position;
 	}
-	return (valid_arg(data->mem_f[carriage->position], carriage->op_id));
+	return (valid_arg(data->mem_f[carriage->position - tmp_position + 1], carriage->op_id));
 }

@@ -27,16 +27,16 @@ typedef struct 			s_mem
 
 typedef struct			s_carriage
 {
-	size_t				position;
 	bool				carry;
-	uint8_t				player;
-	uint32_t			reg[REG_NUMBER];
-	t_mem				arg[3];
 	bool				live;
 	uint8_t				op_id;
-	int				op_cycles;
-	size_t				lst_live_cycle;
+	uint8_t				player;
+	int					op_cycles;
 	struct s_carriage	*next;
+	size_t				position;
+	size_t				lst_live_cycle;
+	uint32_t			reg[REG_NUMBER];
+	t_mem				arg[3];
 }						t_carriage;
 
 typedef struct			s_player
