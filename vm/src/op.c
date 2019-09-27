@@ -42,8 +42,9 @@ t_operation op_tab[17] =
 
 void	(*op_func [16])(t_general*, t_carriage*) =
 		{
-	op_live
-//	op_ld,
+	op_live,
+	op_ld,
+	0
 //	op_st,
 //	op_add,
 //	op_sub,

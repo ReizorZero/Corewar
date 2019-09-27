@@ -18,6 +18,6 @@ add_executable(
         src/op_live.c
         src/op.c src/op_and.c
         src/arg_read.c
-        src/fight.c)
+        src/fight.c src/op_ld.c)
 
 link_libraries(../libft/libft.a)

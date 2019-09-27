@@ -20,9 +20,10 @@
 
 typedef struct 			s_mem
 {
+	uint8_t				type;
 	void				*mem;
+	void 				*current;
 	size_t 				total_s;
-	size_t 				current;
 }						t_mem;
 
 typedef struct			s_carriage
@@ -30,7 +31,7 @@ typedef struct			s_carriage
 	bool				carry;
 	bool				live;
 	uint8_t				op_id;
-	uint8_t				player;
+//	uint8_t				player;
 	int					op_cycles;
 	struct s_carriage	*next;
 	size_t				position;
@@ -87,4 +88,5 @@ void					ft_del_lst_carriage(t_carriage **lst_carriage);
 void					ft_mem_clean(t_general *data);
 bool					arg_read(t_general *data, t_carriage *carriage);
 void					op_live(t_general *data, t_carriage *carriage);
+void 					op_ld(t_general *data, t_carriage *carriage);
 #endif

@@ -89,7 +89,7 @@ void	ft_fight(t_general *data)
 			if (!crwl->op_cycles)
 			{
 				if (arg_read(data, crwl))
-					op_func[crwl->op_id](data, crwl);
+					op_func[crwl->op_id - 1](data, crwl);
 			}
 			crwl = crwl->next;
 		}
