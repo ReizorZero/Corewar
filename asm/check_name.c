@@ -31,28 +31,18 @@ int		anything_after_dot_name(char *s)
 	return (0);
 }
 
-void	check_text_comment(char **s)
+void	check_text_comment(char **s)//ABSOLUTELY FUCKING SURE IT LEAKS SOMEWHERE HERE
 {
-	char **arr;
+	int i;
 
-	//NOTE THAT YOU HAVE A LEAK HERE, BECAUSE YOU CHANGE A POINTER TO NEW WITHOUT 
-	//DELETING THE PREVIOUS ONE
-	if (ft_strchr(*s, COMMENT_CHAR))
+	i = 0;
+	if (s[0][0] == COMMENT_CHAR || s[0][0] == ALT_COMMENT_CHAR)
+		*s = ft_strdup("");
+	else if (ft_strchr(*s, COMMENT_CHAR) || (ft_strchr(*s, ALT_COMMENT_CHAR)))
 	{
-		arr = ft_strsplit(*s, COMMENT_CHAR);
-		*s = arr[0];
-		free(arr[1]);
-		free(arr[2]);
-		free(arr);
-	}
-	//PROBABLY, YOU ALSO FORGOT TO FREE SOMEWHERE A POINTER FROM GET_NEXT_LINE
-	else if (ft_strchr(*s, ALT_COMMENT_CHAR))
-	{
-		arr = ft_strsplit(*s, ALT_COMMENT_CHAR);
-		*s = arr[0];
-		free(arr[1]);
-		free(arr[2]);
-		free(arr);
+		while (s[0][i] != '\0' && s[0][i] != COMMENT_CHAR && s[0][i] != ALT_COMMENT_CHAR)
+			i++;
+		*s = ft_strsub(*s, 0, (size_t)i);
 	}
 }
 
@@ -74,7 +64,6 @@ void	check_name(t_asm *the_asm, char *s)
 	int		kavichki;
 	char	**arr;
 
-	check_text_comment(&s);
 	kavichki = count_kavicki(s);
 	if (kavichki != 2 && kavichki != 0)
 		ERROR(KAVICHKI_NUMBER);
@@ -86,7 +75,7 @@ void	check_name(t_asm *the_asm, char *s)
 	if (anything_after_dot_name(arr[0]))
 		ERROR(SYMBOLS_CMND_NAME);
 	the_asm->champion_name = ft_strdup(arr[1]);
-	free(arr[0]);//NORMALNO SDELAY TO AVOID SEGV
-	free(arr[1]);
-	free(arr);
+	//free(arr[0]);//NORMALNO SDELAY TO AVOID SEGV
+	//free(arr[1]);
+	//free(arr);
 }

@@ -68,7 +68,6 @@ void	check_comment(t_asm *the_asm, char *s)
 	int		kavichki;
 	char	**arr;
 
-	check_text_comment(&s);
     kavichki = count_kavicki(s);
 	if (kavichki != 2 && kavichki != 0)
 		ERROR(KAVICHKI_NUMBER);
@@ -80,7 +79,7 @@ void	check_comment(t_asm *the_asm, char *s)
 	if (anything_after_dot_comment(arr[0]))
 		ERROR(SYMBOLS_CMND_COMMENT);
 	the_asm->champion_comment = ft_strdup(arr[1]);
-	free(arr[0]);//NORMALNO SDELAY TO AVOID SEGV
-	free(arr[1]);
-	free(arr);
+	//free(arr[0]);//NORMALNO SDELAY TO AVOID SEGV
+	//free(arr[1]);
+	//free(arr);
 }

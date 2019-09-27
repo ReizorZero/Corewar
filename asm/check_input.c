@@ -42,9 +42,9 @@ void	check_file_extension(char *filename, t_asm *the_asm)
 		exit (0);
 	}
 	the_asm->dot_s_name = ft_strdup(arr[0]);//MAKE SURE IT DOESN'T GIVE US LEAKS
-	free(arr[0]);//REWRITE THIS STUFF AND MAKE SURE IT NEVER GIVES SEGV
-	free(arr[1]);
-	free(arr);
+	//free(arr[0]);//REWRITE THIS STUFF AND MAKE SURE IT NEVER GIVES SEGV
+	//free(arr[1]);
+	//free(arr);
 }
 
 void	check_input(int argc, char **argv, t_asm *the_asm)

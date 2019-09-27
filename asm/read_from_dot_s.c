@@ -32,7 +32,7 @@ int		read_from_dot_s(t_asm *the_asm)
 	while (get_next_line(fd, &s) > 0)
 	{
 		parse_line(the_asm, s);
-		free(s);
+		//free(s);
 	}
 	close_file(the_asm, fd);
 	return (1);
