@@ -25,13 +25,13 @@ char			*check_comment(int fd, int len)
 	return (ft_strdup(buff));
 }
 
-unsigned char	*check_players_code(int fd, int len)
+uint8_t	*check_players_code(int fd, int len)
 {
 	int				ret;
-	unsigned char	*buff;
-	unsigned char	check[1];
+	uint8_t			*buff;
+	uint8_t			check[1];
 
-	if (!(buff = (unsigned char *)malloc((sizeof(unsigned char) * len))))
+	if (!(buff = malloc(len)))
 		error_msg("malloc error!");
 	ret = read(fd, buff, len);
 	if (ret == -1)
@@ -55,7 +55,7 @@ void			before_start(t_general *data)
 	while (i <= data->pl_nbr)
 	{
 		tmp = get_by_id(data, i);
-		ft_memcpy(&data->mem[count], tmp->code, tmp->size);
+		ft_memcpy(&data->mem_f[count], tmp->code, tmp->size);
 		count += MEM_SIZE / data->pl_nbr;
 		i++;
 	}
@@ -66,6 +66,6 @@ void			before_start(t_general *data)
 		ft_add_carriage(&data->head_c, i);
 		i++;
 	}
-	data->lst_live_plr = data->nbr;
+	data->lst_live_plr = data->pl_nbr;
 	data->cycles_to_die = CYCLE_TO_DIE;
 }

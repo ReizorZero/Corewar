@@ -45,7 +45,7 @@ typedef struct			s_player
 	char				*name;
 	unsigned int		size;
 	char				*comment;
-	unsigned char 		*code;
+	uint8_t				*code;
 	struct s_player		*next;
 }						t_player;
 
