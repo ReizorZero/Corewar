@@ -6,7 +6,7 @@
 /*   By: mshvets <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 12:23:56 by mshvets           #+#    #+#             */
-/*   Updated: 2019/09/21 12:23:59 by mshvets          ###   ########.fr       */
+/*   Updated: 2019/09/29 14:25:07 by vkuhuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ typedef struct			s_carriage
 typedef struct			s_player
 {
 	uint8_t				id;
-	t_header			inf;
-	char 				*code;
+	char				*name;
+	unsigned int		size;
+	char				*comment;
+	unsigned char 		*code;
 	struct s_player		*next;
 }						t_player;
 
@@ -72,6 +74,9 @@ typedef struct 			s_general
 	size_t 				cnt_live;
 	size_t 				cycles_to_die;
 	size_t				num_checks;
+	int					dump_cycle; //-dump option
+    int					pl_nbr; //number of player's
+    int					verb_nbr; //verbosity option
 }						t_general;
 
 
