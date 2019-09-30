@@ -20,23 +20,24 @@
 
 typedef struct 			s_mem
 {
+	uint8_t				type;
 	void				*mem;
+	void 				*current;
 	size_t 				total_s;
-	size_t 				current;
 }						t_mem;
 
 typedef struct			s_carriage
 {
-	size_t				position;
 	bool				carry;
-	uint8_t				player;
-	uint32_t			reg[REG_NUMBER];
-	t_mem				arg[3];
 	bool				live;
 	uint8_t				op_id;
-	size_t				op_cycles;
-	size_t				lst_live_cycle;
+//	uint8_t				player;
+	int					op_cycles;
 	struct s_carriage	*next;
+	size_t				position;
+	size_t				lst_live_cycle;
+	uint32_t			reg[REG_NUMBER];
+	t_mem				arg[3];
 }						t_carriage;
 
 typedef struct			s_player
@@ -81,6 +82,7 @@ typedef struct 			s_general
 
 
 t_operation				op_tab[17];
+void					ft_fight(t_general *data);
 void					(*op_func[16])(t_general*, t_carriage*);
 int						ft_add_end_carriage(t_carriage **lst_carriage, int player);
 int						ft_add_carriage(t_carriage **lst_carriage, int player);
@@ -89,7 +91,7 @@ void					ft_add_end_player(t_player **lst_player, t_player *new);
 void					ft_del_player(t_player **lst_player);
 void					ft_del_lst_carriage(t_carriage **lst_carriage);
 void					ft_mem_clean(t_general *data);
-void					arg_read(t_general *data, t_carriage *carriage);
-void					ft_fight(t_general *data);
-void					op_live(t_carriage*, t_mem *arg);
+bool					arg_read(t_general *data, t_carriage *carriage);
+void					op_live(t_general *data, t_carriage *carriage);
+void 					op_ld(t_general *data, t_carriage *carriage);
 #endif
