@@ -69,7 +69,6 @@ typedef struct	s_line
 
 typedef struct	s_asm
 {
-	char				*header;
 	char				*champion_name;
 	int					exec_code_size;
 	char				*champion_comment;
@@ -86,16 +85,18 @@ typedef struct	s_asm
 void			check_input(int argc, char **argv, t_asm *the_asm);
 
 int				read_from_dot_s(t_asm *the_asm);
-void			parse_line(t_asm *the_asm, char *s);
-void			check_name(t_asm *the_asm, char *s);
+void			parse_lines(t_asm *the_asm);
+void			check_name(t_asm *the_asm, t_line **line);
 int				count_kavicki(char *s);
-void			check_comment(t_asm *the_asm, char *s);
+void			check_comment(t_asm *the_asm, t_line **line);
 void			check_text_comment(char **s);
-void			check_command(t_asm *the_asm, char *s);
+void			check_command(t_asm *the_asm, t_line **line);
 
 void			write_to_dot_cor(t_asm *the_asm);
 
 t_asm			*new_asm(void);
 t_line			*new_line(char *str);
+
+char			**tabs_split(char const *s);
 
 #endif

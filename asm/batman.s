@@ -1,4 +1,5 @@
-.name     "Batman" #kamment
+.name   "Ba#    " some"stuff
+tman" #kamment
 .comment   "This city needs me" #kamment
 loop: 
     sti r1,%:live,%1

@@ -1,6 +1,6 @@
 NAME = asm
 
-SRCF = main.c check_input.c new_elements.c read_from_dot_s.c write_to_dot_cor.c parse_line.c check_name.c check_comment.c check_command.c
+SRCF = main.c check_input.c new_elements.c read_from_dot_s.c write_to_dot_cor.c parse_lines.c check_name.c check_comment.c check_command.c
 
 LIB = ../libft/libft.a
 

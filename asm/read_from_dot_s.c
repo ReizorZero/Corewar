@@ -42,16 +42,13 @@ int		read_from_dot_s(t_asm *the_asm)
 
 	s = NULL;
 	fd = get_file_fd(the_asm);//RANDOM ERROR OCUURES FROM TIME TO TIME: UNABLE TO OPEN FILE 0
+	//RANDOM SEGV FROM TIME TO TIME -- WHYYYYYYYY THE FUUUUUCK?
 	while (get_next_line(fd, &s) > 0)
 	{
 		write_line_to_list(the_asm, s);
 		//free(s);
 	}
-	// while (get_next_line(fd, &s) > 0)
-	// {
-	// 	parse_line(the_asm, s);
-	// 	//free(s);
-	// }
 	close_file(the_asm, fd);
+	parse_lines(the_asm);
 	return (1);
 }

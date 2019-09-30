@@ -68,70 +68,13 @@ struct s_commands_info	commands[16] =
 		{0, 0, 0} }
 };
 
-void			check_command(t_asm *the_asm, char *s)
+void			check_command(t_asm *the_asm, t_line **line)
 {
-	int i;
-	int start;
-	int len;
-	
+	//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
+
+	printf("[%s]\n", (*line)->str);
+	//*line = (*line)->next;
+	//printf("\t{%s}\n", (*line)->str);
+	//del this line later
 	the_asm->exec_code_size = 0;
-	printf("[%s]\n", s);
-
-	i = 0;
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-		i++;
-	start = i;
-	len = 0;
-	while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t')
-	{
-		i++;
-		len++;
-	}
-	char *command;
-	command = ft_strsub(s, start, len);
-	printf("\tFIRST WORD: [%s]\n", command);
-	int t;
-	t = 0;
-	while (t < 16)
-	{
-		if (!ft_strcmp(commands[i].name, command))
-			printf("\tFOUND COMMAND: %s\n", commands[i].name);
-		t++;
-	}
-
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-		i++;
-	start = i;
-	len = 0;
-	while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR)
-	{
-		i++;
-		len++;
-	}
-	command = ft_strsub(s, start, len);
-	printf("\tSECOND WORD: [%s]\n", command);
-
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t' || s[i] == SEPARATOR_CHAR))
-		i++;
-	start = i;
-	len = 0;
-	while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR)
-	{
-		i++;
-		len++;
-	}
-	command = ft_strsub(s, start, len);
-	printf("\tTHIRD WORD: [%s]\n", command);
-
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'|| s[i] == SEPARATOR_CHAR))
-		i++;
-	start = i;
-	len = 0;
-	while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t')
-	{
-		i++;
-		len++;
-	}
-	command = ft_strsub(s, start, len);
-	printf("\tFOURTH WORD: [%s]\n", command);
 }

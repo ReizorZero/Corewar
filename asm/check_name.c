@@ -1,35 +1,35 @@
 #include "asm.h"
 
-int		check_name_cmnd_tag(char *s, int i)
-{
-	int cmnd_len;
+// int		check_name_cmnd_tag(char *s, int i)
+// {
+// 	int cmnd_len;
 	
-	cmnd_len = 5;
-	if (s[i] != '.' ||
-	s[i + 1] != 'n' ||
-	s[i + 2] != 'a' ||
-	s[i + 3] != 'm' ||
-	s[i + 4] != 'e')
-		ERROR(SYMBOLS_CMND_NAME);
-	return (i + cmnd_len);
-}
+// 	cmnd_len = 5;
+// 	if (s[i] != '.' ||
+// 	s[i + 1] != 'n' ||
+// 	s[i + 2] != 'a' ||
+// 	s[i + 3] != 'm' ||
+// 	s[i + 4] != 'e')
+// 		ERROR(SYMBOLS_CMND_NAME);
+// 	return (i + cmnd_len);
+// }
 
-int		anything_after_dot_name(char *s)
-{
-	int i;
+// int		anything_after_dot_name(char *s)
+// {
+// 	int i;
 
-	i = 0;
-	while (s[i] != '\0' && (s[i] == '\t' || s[i] == ' '))
-			i++;
-	i = check_name_cmnd_tag(s, i);
-	while (s[i] != '\0')
-	{
-		if (s[i] != '\t' && s[i] != ' ')
-			return (1);
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (s[i] != '\0' && (s[i] == '\t' || s[i] == ' '))
+// 			i++;
+// 	i = check_name_cmnd_tag(s, i);
+// 	while (s[i] != '\0')
+// 	{
+// 		if (s[i] != '\t' && s[i] != ' ')
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 void	check_text_comment(char **s)//ABSOLUTELY FUCKING SURE IT LEAKS SOMEWHERE HERE
 {
@@ -46,36 +46,29 @@ void	check_text_comment(char **s)//ABSOLUTELY FUCKING SURE IT LEAKS SOMEWHERE HE
 	}
 }
 
-void	check_symbols_at_end_name(char *s)
-{
-	int i;
+// void	check_symbols_at_end_name(char *s)
+// {
+// 	int i;
 	
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] != '\t' && s[i] != ' ')
-			ERROR(SYMBOLS_CHAMP_NAME);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (s[i] != '\0')
+// 	{
+// 		if (s[i] != '\t' && s[i] != ' ')
+// 			ERROR(SYMBOLS_CHAMP_NAME);
+// 		i++;
+// 	}
+// }
 
-void	check_name(t_asm *the_asm, char *s)
-{
-	int		kavichki;
-	char	**arr;
+void	check_name(t_asm *the_asm, t_line **line)
+{//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
+	int kavichki;
 
-	kavichki = count_kavicki(s);
-	if (kavichki != 2 && kavichki != 0)
+	printf("[%s]\n", (*line)->str);
+	kavichki = count_kavicki((*line)->str);
+	if (kavichki > 2)
 		ERROR(KAVICHKI_NUMBER);
-	arr = ft_strsplit(s, '\"');
-	if (!arr[1])
-		ERROR(NO_CHAMP_NAME);
-	if (arr[2])
-		check_symbols_at_end_name(arr[2]);
-	if (anything_after_dot_name(arr[0]))
-		ERROR(SYMBOLS_CMND_NAME);
-	the_asm->champion_name = ft_strdup(arr[1]);
-	//free(arr[0]);//NORMALNO SDELAY TO AVOID SEGV
-	//free(arr[1]);
-	//free(arr);
+	//*line = (*line)->next;
+	//printf("\t{%s}\n", (*line)->str);
+	//del this line later
+	the_asm->exec_code_size = 0;
 }
