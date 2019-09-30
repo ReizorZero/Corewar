@@ -68,12 +68,13 @@ typedef struct 			s_general
 //					or
 //	t_player			head_p[MAX_PLAYERS];
 	t_carriage			*head_c;
-	size_t				cycles;
 	uint8_t 			mem_f[MEM_SIZE + 1];
 //	t_operation			op_tab[17];
 	uint8_t				lst_live_plr;
-	size_t 				cnt_live;
+	size_t				cycles_total;
+	size_t				cycles_tmp;
 	size_t 				cycles_to_die;
+	size_t 				cnt_live;
 	size_t				num_checks;
 	size_t				dump_cycle; //-dump option
     size_t				pl_nbr; //number of player's
@@ -92,6 +93,9 @@ void					ft_del_player(t_player **lst_player);
 void					ft_del_lst_carriage(t_carriage **lst_carriage);
 void					ft_mem_clean(t_general *data);
 bool					arg_read(t_general *data, t_carriage *carriage);
+t_mem					*memory_cpy(t_mem *dest, t_mem *src);
 void					op_live(t_general *data, t_carriage *carriage);
 void 					op_ld(t_general *data, t_carriage *carriage);
+t_player				*get_by_id(t_general *data, uint8_t id);
+void					print_mem(t_general *data);
 #endif
