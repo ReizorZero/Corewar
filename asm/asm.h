@@ -61,6 +61,12 @@ typedef struct	s_exec_code_line
 	struct s_exec_code_line		*next;
 }				t_exec_code_line;
 
+typedef struct	s_line
+{
+	struct s_line	*next;
+	char			*str;
+}				t_line;
+
 typedef struct	s_asm
 {
 	char				*header;
@@ -71,6 +77,10 @@ typedef struct	s_asm
 	char				*dot_s_name;
 	char				*dot_s_file_name;
 	t_exec_code_line	*e_c_l;
+	t_exec_code_line	*e_c_l_top;
+	t_line				*lines;
+	t_line				*lines_top;
+
 }				t_asm;
 
 void			check_input(int argc, char **argv, t_asm *the_asm);
@@ -86,5 +96,6 @@ void			check_command(t_asm *the_asm, char *s);
 void			write_to_dot_cor(t_asm *the_asm);
 
 t_asm			*new_asm(void);
+t_line			*new_line(char *str);
 
 #endif
