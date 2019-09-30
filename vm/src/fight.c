@@ -59,32 +59,6 @@ void	ft_check_live_carriage(t_general *data)
 			crwl = prv_crwl->next;
 		}
 	}
-//	t_carriage	*crwl;
-//	t_carriage	*prv_crwl;
-//
-//	crwl = data->head_c;
-//	if (crwl && !crwl->live)
-//	{
-//		data->head_c = crwl->next;
-//		free(crwl);
-//		crwl = data->head_c;
-//	}
-//	prv_crwl = data->head_c;
-//	while (crwl)
-//	{
-//		if (!crwl->live)
-//		{
-//			prv_crwl->next = crwl->next;
-//			free(crwl);
-//			crwl = prv_crwl->next;
-//		}
-//		else
-//		{
-//			crwl->live = 0;
-//			prv_crwl = crwl;
-//			crwl = crwl->next;
-//		}
-//	}
 }
 
 void start_new_op(t_general *data, t_carriage *crg)
@@ -139,12 +113,7 @@ void	ft_fight(t_general *data)
 				--(crwl->op_cycles);
 			if (!crwl->op_cycles)
 			{
-				if (op_tab[crwl->op_id - 1].label)
-				{
-					if (arg_read(data, crwl))
-						op_func[crwl->op_id - 1](data, crwl);
-				}
-				else
+//				if (op_tab[carriage->op_id - 1].octal)
 					op_func[crwl->op_id - 1](data, crwl);
 			}
 			crwl = crwl->next;

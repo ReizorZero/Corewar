@@ -15,9 +15,11 @@
 void op_live(t_general *data, t_carriage *carriage)
 {
 	carriage->live = true;
-	carriage->position += 1;
-	read_dir(data, &carriage->arg[0], carriage->position, DIR_SIZE);
-	carriage->position = (carriage->position + DIR_SIZE) % MEM_SIZE;
+//	carriage->position += 1;
+	/*
+	 * 0b10000000 - DIR in arg[0];
+	 */
+	arg_read(data, carriage, 0b10000000);
 	if (!(carriage->reg[0] + (int32_t)carriage->arg[0].mem))
 		data->lst_live_plr = (int8_t)carriage->arg[0].mem;
 	carriage->lst_live_cycle = data->cycles_tmp + data->cycles_total;

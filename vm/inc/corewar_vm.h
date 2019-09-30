@@ -92,7 +92,7 @@ void					ft_add_end_player(t_player **lst_player, t_player *new);
 void					ft_del_player(t_player **lst_player);
 void					ft_del_lst_carriage(t_carriage **lst_carriage);
 void					ft_mem_clean(t_general *data);
-bool					arg_read(t_general *data, t_carriage *carriage);
+bool					arg_read(t_general *data, t_carriage *carriage, size_t arg_cod);
 void					read_dir(t_general *data, t_mem *arg, size_t position, size_t size);
 t_mem					*memory_cpy(t_mem *dest, t_mem *src);
 void					op_live(t_general *data, t_carriage *carriage);
