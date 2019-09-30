@@ -33,14 +33,20 @@ t_mem	*memory_cpy(t_mem *dest, t_mem *src)
 
 void op_ld(t_general *data, t_carriage *carriage)
 {
+	carriage->position = +1;
+	if (arg_read(data, carriage, data->mem_f[carriage->position]))
+	{
+		memory_cpy(&carriage->arg[1], &carriage->arg[0]);
+		carriage->carry = !(*(uint32_t*)carriage->arg[0].mem);
+	}
 //	if (carriage->arg[0].type == T_DIR)
 //	{
-		memory_cpy(&carriage->arg[1], &carriage->arg[0]);
+//		memory_cpy(&carriage->arg[1], &carriage->arg[0]);
 //	}
 //	else if (carriage->arg[0].type == T_IND)
 //	{
 //		;
 //	}
 //	if (*(int*)carriage->arg[0].mem == 0)
-	carriage->carry = !(*(uint32_t*)carriage->arg[0].mem);
+//	carriage->carry = !(*(uint32_t*)carriage->arg[0].mem);
 }
