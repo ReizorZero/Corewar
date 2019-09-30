@@ -111,7 +111,7 @@ bool	arg_read(t_general *data, t_carriage *carriage)
 			}
 			else if ((data->mem_f[carriage->position] >> (2 * i) & IND_CODE) == IND_CODE)
 			{
-				read_ind(data, &carriage->arg[3 - i], tmp_position);
+				read_ind(data, carriage->position, &carriage->arg[3 - i], tmp_position);
 				tmp_position = (tmp_position + IND_SIZE) % MEM_SIZE;
 			}
 			--i;

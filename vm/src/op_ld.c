@@ -12,25 +12,6 @@
 
 #include "../inc/corewar_vm.h"
 
-t_mem	*memory_cpy(t_mem *dest, t_mem *src)
-{
-	size_t i;
-
-	i = 0;
-	while (i < src->total_s)
-	{
-		if (dest->current == (dest->mem + dest->total_s))
-			dest->current = dest->mem;
-		if (src->current == (src->mem + src->total_s))
-			src->current = src->mem;
-		ft_memmove(dest->current, src->current, 1);
-		++i;
-		++(dest->current);
-		++(src->current);
-	}
-	return (dest);
-}
-
 void op_ld(t_general *data, t_carriage *carriage)
 {
 //	if (carriage->arg[0].type == T_DIR)
