@@ -6,13 +6,33 @@
 /*   By: mshvets <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 14:11:46 by mshvets           #+#    #+#             */
-/*   Updated: 2019/09/21 14:11:48 by mshvets          ###   ########.fr       */
+/*   Updated: 2019/09/30 15:13:13 by vkuhuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "../inc/corewar_vm.h"
 //#include "../inc/operation.h"
+
+static void print_mem(t_general *data)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i < MEM_SIZE)
+    {
+        ft_printf("%.4p : ", i);
+        j = 0;
+        while (j < 32)
+        {
+            ft_printf("%.2x ", data->mem_f[i + j]);
+            j++;
+        }
+        ft_printf("\n");
+        i += 32;
+    }
+}
 
 int main(void)
 {
