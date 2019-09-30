@@ -99,4 +99,5 @@ void					op_live(t_general *data, t_carriage *carriage);
 void 					op_ld(t_general *data, t_carriage *carriage);
 t_player				*get_by_id(t_general *data, uint8_t id);
 void					print_mem(t_general *data);
+uint32_t				reverse_bits(uint32_t pInt);
 #endif

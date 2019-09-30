@@ -12,6 +12,18 @@
 
 #include "../inc/corewar_vm.h"
 
+uint32_t get_val(uint32_t pInt)
+{
+	t_mem val;
+
+
+}
+
+uint32_t reverse_bits(uint32_t pInt)
+{
+	return (pInt >> 24 | pInt << 24 | ((pInt >> 8) & 0xff00) | ((pInt << 8) & 0xff0000));
+}
+
 t_mem	*memory_cpy(t_mem *dest, t_mem *src)
 {
 	size_t i;
@@ -30,6 +42,16 @@ t_mem	*memory_cpy(t_mem *dest, t_mem *src)
 	}
 	return (dest);
 }
+
+//uint32_t get_value(t_mem *ptr)
+//{
+//	uint32_t val;
+//	uint32_t *val_ptr;
+//
+//	val_ptr = (uint32_t *)ft_memalloc(sizeof(val_ptr));
+//	ft_memmove()
+//
+//}
 
 void	ft_check_live_carriage(t_general *data)
 {
