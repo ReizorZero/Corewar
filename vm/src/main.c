@@ -54,22 +54,23 @@ int main(void)
 		int j = 0, ret = read(fd, &data.mem_f, 4096);
 		while ( j !=  ret)
 		{
-			ft_printf("%02.2X", data.mem_f[j++]);
+			ft_printf("%02.2x", data.mem_f[j++]);
 			j % 2 ? 0 : ft_printf(" ");
 		}
 	}
 
 //	ft_add_carriage(&data.head_c, 5);
 //	data.head_c->live = 1;
-//	ft_add_carriage(&data.head_c, 1);
+	ft_printf("\n%d << size \n", sizeof(struct s_carriage));
+	ft_add_carriage(&data.head_c, 1);
 //	ft_add_carriage(&data.head_c, 2);
-//	data.head_c->live = 1;
+	data.head_c->live = 1;
 //	ft_add_carriage(&data.head_c, 3);
-//	ft_add_carriage(&data.head_c, 4);
-//	data.head_c->live = 1;
+	ft_add_carriage(&data.head_c, 4);
+	data.head_c->live = 1;
 //	ft_check_live_carriage(&data);
 //	data.head_c->op_id = data.mem_f[0];
-//	ft_fight(&data);
+	ft_fight(&data);
 //	arg_read(&data, data.head_c);
 	ft_mem_clean(&data);
 	return(0);

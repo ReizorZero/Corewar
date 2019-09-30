@@ -22,19 +22,6 @@ void	close_file(t_asm *the_asm, int fd)
 	}
 }
 
-void	write_line_to_list(t_asm *the_asm, char *s)
-{
-	if (!the_asm->lines)
-		the_asm->lines = new_line(s);
-	else
-	{
-		the_asm->lines->next = new_line(s);
-		the_asm->lines = the_asm->lines->next;
-	}
-	if (!the_asm->lines_top)
-		the_asm->lines_top = the_asm->lines;
-}
-
 int		read_from_dot_s(t_asm *the_asm)
 {
 	char	*s;
@@ -44,14 +31,9 @@ int		read_from_dot_s(t_asm *the_asm)
 	fd = get_file_fd(the_asm);//RANDOM ERROR OCUURES FROM TIME TO TIME: UNABLE TO OPEN FILE 0
 	while (get_next_line(fd, &s) > 0)
 	{
-		write_line_to_list(the_asm, s);
+		parse_line(the_asm, s);
 		//free(s);
 	}
-	// while (get_next_line(fd, &s) > 0)
-	// {
-	// 	parse_line(the_asm, s);
-	// 	//free(s);
-	// }
 	close_file(the_asm, fd);
 	return (1);
 }

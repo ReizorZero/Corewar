@@ -42,12 +42,12 @@ void	ft_check_live_carriage(t_general *data)
 	}
 }
 
-void	start_new_op(t_general *data, t_carriage *crg)
+void start_new_op(t_general *data, t_carriage *crg)
 {
 	if (data->mem_f[crg->position] > 0 && data->mem_f[crg->position] <= 16)
 	{
-		crg->op_id = data->mem_f[crg->position];
-		crg->op_cycles = op_tab[crg->op_id - 1].cycles;
+		crg->op_id = (uint8_t)data->mem_f[crg->position];
+		crg->op_cycles = (int)op_tab[crg->op_id - 1].cycles;
 	}
 	else
 	{
@@ -73,7 +73,7 @@ void	set_new_cycle(t_general *data)
 
 void	ft_fight(t_general *data)
 {
-	t_carriage	*crwl;
+	t_carriage	*crwl = NULL;
 
 	data->cycles_to_die = CYCLE_TO_DIE;
 	data->cycles = 1;
@@ -85,9 +85,12 @@ void	ft_fight(t_general *data)
 			if (crwl->op_cycles < 0)
 				start_new_op(data, crwl);
 			if (crwl->op_cycles > 0)
-				--crwl->op_cycles;
+				--(crwl->op_cycles);
 			if (!crwl->op_cycles)
-				op_func[crwl->op_id](data, crwl);
+			{
+				if (arg_read(data, crwl))
+					op_func[crwl->op_id - 1](data, crwl);
+			}
 			crwl = crwl->next;
 		}
 		if (data->cycles++ >= data->cycles_to_die)
