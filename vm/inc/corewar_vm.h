@@ -23,7 +23,8 @@ typedef struct 			s_mem
 	uint8_t				type;
 	void				*mem;
 	void 				*current;
-	size_t 				total_s;
+	size_t 				size;
+	void				*mem_end;
 }						t_mem;
 
 typedef struct			s_carriage

@@ -17,9 +17,10 @@ void	read_dir(t_general *data, t_mem *arg, size_t position, size_t size)
 	/*
 	 * pointer to cell in field
 	 */
-	arg->mem = &data->mem_f[position];
-	arg->total_s = size + 1;
-	arg->current = arg->mem;
+	arg->mem = data->mem_f;
+	arg->size = size;
+	arg->current = &data->mem_f[position];
+	arg->mem_end = &data->mem_f[MEM_SIZE];
 	arg->type = T_DIR;
 }
 
@@ -30,8 +31,9 @@ void	read_reg(t_general *data, t_carriage *carriage, t_mem *arg, size_t position
 	 */
 	arg->mem = &carriage->reg[(unsigned char)data->mem_f[position] - 1];
 //	arg->mem = &carriage->reg[(unsigned char)data->mem_f[position] + 1];
-	arg->total_s = REG_SIZE + 1;
+	arg->size = REG_SIZE;
 	arg->current = arg->mem;
+	arg->mem_end = arg->mem + REG_SIZE;
 	if (data->mem_f[position] > 0 && (unsigned char)data->mem_f[position] <= REG_NUMBER)
 		arg->type = T_REG;
 	else
@@ -49,9 +51,10 @@ void	read_ind(t_general *data, size_t crg_position, t_mem *arg, size_t position)
 	size_t adds;
 
 	adds = (crg_position + ((short)data->mem_f[position] % IDX_MOD)) % MEM_SIZE;
-	arg->mem = &data->mem_f[adds];
-	arg->total_s = REG_SIZE + 1;
-	arg->current = arg->mem;
+	arg->mem = data->mem_f;
+	arg->size = REG_SIZE;
+	arg->current = &data->mem_f[adds];
+	arg->mem_end = &data->mem_f[MEM_SIZE];
 	arg->type = T_IND;
 }
 

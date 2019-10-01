@@ -12,30 +12,35 @@
 
 #include "../inc/corewar_vm.h"
 
-uint32_t get_val(uint32_t pInt)
+uint32_t get_val(t_mem *src)
 {
 	t_mem val;
 
-
+	ft_memset(&val, 0, sizeof(t_mem));
+	val.mem = &val;
+	val.size = sizeof(uint32_t);
+	val.mem_end = &val.mem[val.size];
+	val.current = val.mem;
+	memory_cpy(&val, src);
+	return (reverse_bits(*(uint32_t*)val.mem));
 }
 
 uint32_t reverse_bits(uint32_t pInt)
 {
-	return (pInt >> 24 | pInt << 24 | ((pInt >> 8) & 0xff00) | ((pInt << 8) & 0xff0000));
+	return (pInt >> 24 | pInt << 24 | ((pInt >> 8) & 0xff00)
+		| ((pInt << 8) & 0xff0000));
 }
 
-t_mem	*memory_cpy(t_mem *dest, t_mem *src, t_general data)
+t_mem	*memory_cpy(t_mem *dest, t_mem *src)
 {
 	size_t i;
 
 	i = 0;
-	while (i < src->total_s)
+	while (i <= src->size)
 	{
-		if (dest->current >= &(data.mem_f[MEM_SIZE]))
-			dest->current = data.mem_f;
-		if (dest->current == (dest->mem + dest->total_s))
+		if (dest->current == dest->mem_end)
 			dest->current = dest->mem;
-		if (src->current == (src->mem + src->total_s))
+		if (src->current == src->mem_end)
 			src->current = src->mem;
 		ft_memmove(dest->current, src->current, 1);
 		++i;
@@ -44,16 +49,6 @@ t_mem	*memory_cpy(t_mem *dest, t_mem *src, t_general data)
 	}
 	return (dest);
 }
-
-//uint32_t get_value(t_mem *ptr)
-//{
-//	uint32_t val;
-//	uint32_t *val_ptr;
-//
-//	val_ptr = (uint32_t *)ft_memalloc(sizeof(val_ptr));
-//	ft_memmove()
-//
-//}
 
 void	ft_check_live_carriage(t_general *data)
 {
