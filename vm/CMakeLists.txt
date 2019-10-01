@@ -9,18 +9,27 @@ AUX_SOURCE_DIRECTORY(../libft/src LIBA)
 add_executable(
         VM
         ${LIBA}
-        src/main.c
-        inc/corewar_vm.h
-        src/carriage.c
-        src/player.c
-        src/mem_clean.c
-        src/op_live.c
-        src/op.c
         src/arg_read.c
+        src/carriage.c
+        src/check_args.c
+        src/check_players.c
         src/fight.c
+        src/main.c
+        src/mem_clean.c
+        src/op.c
+        inc/corewar_vm.h
+        src/player.c
+        src/player_id.c
+        src/players.c
+        src/printer.c
+        src/op_live.c
         src/op_ld.c
         src/op_and.c
         src/op_xor.c
-        src/op_or.c)
+        src/op_or.c
+        src/op_st.c
+        src/op_add.c
+        src/op_sub.c
+        src/op_zjmp.c)
 
 link_libraries(../libft/libft.a)

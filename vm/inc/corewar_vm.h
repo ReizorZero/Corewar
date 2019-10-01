@@ -17,6 +17,8 @@
 # include "../../libft/inc/libft.h"
 # include "../../op.h"
 # include <stdbool.h>
+# include <fcntl.h>
+
 
 typedef struct 			s_mem
 {
@@ -77,7 +79,7 @@ typedef struct 			s_general
 	size_t 				cycles_to_die;
 	size_t 				cnt_live;
 	size_t				num_checks;
-	size_t				dump_cycle; //-dump option
+	int					dump_cycle; //-dump option
     size_t				pl_nbr; //number of player's
     uint8_t				verb_nbr; //verbosity option
 }						t_general;
@@ -114,18 +116,20 @@ void 					op_lfork(t_general *data, t_carriage *carriage);
 void 					op_aff(t_general *data, t_carriage *carriage);
 t_player				*get_by_id(t_general *data, uint8_t id);
 void					print_mem(t_general *data);
-uint32_t				reverse_bits(uint32_t pInt);
-uint32_t				get_val(t_mem *src);
-void		args_checking(t_general *data, int argc, char **argv);
-char			*check_comment(int fd, int len);
-uint8_t	*check_players_code(int fd, int len);
-void			before_start(t_general *data);
-t_player		*player(t_general *data, char **argv, int *i, int id);
-int			is_free_id(t_general *data, uint8_t id);
-void		check_n_id(t_general *data);
-void		check_id(t_general *data);
-void	usage_msg(void);
-void	error_msg(char *msg);
-void	introducing(t_general *data);
+uint32_t				reverse_32bits(uint32_t pInt);
+short					reverse_16bits(short pInt);
+uint32_t				get_val32bit(t_mem *src);
+short					get_val16bit(t_mem *src);
+void					args_checking(t_general *data, int argc, char **argv);
+char					*check_comment(int fd, int len);
+uint8_t					*check_players_code(int fd, int len);
+void					before_start(t_general *data);
+t_player				*player(t_general *data, char **argv, int *i, int id);
+int						is_free_id(t_general *data, uint8_t id);
+void					check_n_id(t_general *data);
+void					check_id(t_general *data);
+void					usage_msg(void);
+void					error_msg(char *msg);
+void					introducing(t_general *data);
 
 #endif

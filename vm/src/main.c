@@ -34,7 +34,7 @@ void print_mem(t_general *data)
     }
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	t_general	data;
 

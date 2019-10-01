@@ -12,7 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-uint32_t get_val(t_mem *src)
+uint32_t get_val32bit(t_mem *src)
 {
 	t_mem val;
 
@@ -22,13 +22,31 @@ uint32_t get_val(t_mem *src)
 	val.mem_end = &val.mem[val.size];
 	val.current = val.mem;
 	memory_cpy(&val, src);
-	return (reverse_bits(*(uint32_t*)val.mem));
+	return (reverse_32bits(*(uint32_t *)val.mem));
 }
 
-uint32_t reverse_bits(uint32_t pInt)
+uint32_t reverse_32bits(uint32_t pInt)
 {
 	return (pInt >> 24 | pInt << 24 | ((pInt >> 8) & 0xff00)
 		| ((pInt << 8) & 0xff0000));
+}
+
+short get_val16bit(t_mem *src)
+{
+	t_mem val;
+
+	ft_memset(&val, 0, sizeof(t_mem));
+	val.mem = &val;
+	val.size = sizeof(short);
+	val.mem_end = &val.mem[val.size];
+	val.current = val.mem;
+	memory_cpy(&val, src);
+	return (reverse_16bits(*(short *)val.mem));
+}
+
+short reverse_16bits(short pInt)
+{
+	return ((pInt >> 8) | (pInt << 8));
 }
 
 t_mem	*memory_cpy(t_mem *dest, t_mem *src)
@@ -114,7 +132,7 @@ void	ft_fight(t_general *data)
 {
 	t_carriage	*crwl = NULL;
 
-	data->cycles_to_die = CYCLE_TO_DIE;// in prepeare func the same
+//	data->cycles_to_die = CYCLE_TO_DIE;// in prepeare func the same
 	data->cycles_tmp = 1;
 	while (data->head_c)
 	{

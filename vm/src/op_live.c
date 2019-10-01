@@ -22,9 +22,10 @@ void op_live(t_general *data, t_carriage *carriage)
 	 * 0b10000000 - DIR in arg[0];
 	 */
 	arg_read(data, carriage, 0b10000000);
-	player = reverse_bits(*(uint32_t*)carriage->arg[0].mem);
+	player = reverse_32bits(*(uint32_t *) carriage->arg[0].mem);
 	if (!(carriage->reg[0] + player))
 		data->lst_live_plr = player;
 	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;
+	carriage->carry = 0;
 	++(data->cnt_live);
 }
