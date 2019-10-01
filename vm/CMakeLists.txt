@@ -30,6 +30,6 @@ add_executable(
         src/op_st.c
         src/op_add.c
         src/op_sub.c
-        src/op_zjmp.c)
+        src/op_zjmp.c src/op_ldi.c src/op_sti.c src/op_fork.c)
 
 link_libraries(../libft/libft.a)
