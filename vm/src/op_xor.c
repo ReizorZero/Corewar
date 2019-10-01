@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_and.c                                           :+:      :+:    :+:   */
+/*   op_xor.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshvets <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 21:45:21 by mshvets           #+#    #+#             */
-/*   Updated: 2019/09/23 21:45:22 by mshvets          ###   ########.fr       */
+/*   Created: 2019/10/01 13:47:58 by mshvets           #+#    #+#             */
+/*   Updated: 2019/10/01 13:48:05 by mshvets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/corewar_vm.h"
 
-void op_and(t_general *data, t_carriage *carriage)
+void op_xor(t_general *data, t_carriage *carriage)
 {
 	uint32_t val1;
 	uint32_t val2;
@@ -22,7 +22,7 @@ void op_and(t_general *data, t_carriage *carriage)
 	{
 		val1 = get_val(&carriage->arg[0]);
 		val2 = get_val(&carriage->arg[1]);
-		*(uint32_t*)carriage->arg[2].mem = val1 & val2;
+		*(uint32_t*)carriage->arg[2].mem = val1 ^ val2;
 		carriage->carry = !(*(uint32_t*)carriage->arg[2].mem);
 	}
 }
