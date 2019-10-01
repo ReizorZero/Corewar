@@ -14,16 +14,18 @@
 
 void op_live(t_general *data, t_carriage *carriage)
 {
-//	live %1 - 0101 0000 0001 0100 0000
-//	char mem[] = "0100000001";
-//	unsigned int	dir;
-//	t_carriage		crwl;
+	uint32_t player;
 
-//	ft_memset(&crwl, 0, sizeof(crwl));
-//	crwl.player = 1;
-//	crwl.op_cycles = 0;
-//	crwl.live = 1;
-//	crwl.position = 1;
-//	dir = ft_atoi(mem_f[crwl.position]);
-	arg_read(data, carriage);
+//	player = ft_memmove()
+	carriage->live = true;
+//	carriage->position += 1;
+	/*
+	 * 0b10000000 - DIR in arg[0];
+	 */
+	arg_read(data, carriage, 0b10000000);
+	player = reverse_bits(*(uint32_t*)carriage->arg[0].mem);
+	if (!(carriage->reg[0] + player))
+		data->lst_live_plr = player;
+	carriage->lst_live_cycle = data->cycles_tmp + data->cycles_total;
+	++(data->cnt_live);
 }

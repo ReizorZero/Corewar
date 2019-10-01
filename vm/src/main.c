@@ -14,7 +14,7 @@
 #include "../inc/corewar_vm.h"
 //#include "../inc/operation.h"
 
-static void print_mem(t_general *data)
+void print_mem(t_general *data)
 {
     int i;
     int j;
@@ -61,13 +61,13 @@ int main(void)
 
 //	ft_add_carriage(&data.head_c, 5);
 //	data.head_c->live = 1;
-	ft_printf("\n%d << size \n", sizeof(struct s_carriage));
+	data.dump_cycle = -1;
 	ft_add_carriage(&data.head_c, 1);
 //	ft_add_carriage(&data.head_c, 2);
-	data.head_c->live = 1;
+//	data.head_c->live = 1;
 //	ft_add_carriage(&data.head_c, 3);
 	ft_add_carriage(&data.head_c, 4);
-	data.head_c->live = 1;
+//	data.head_c->live = 1;
 //	ft_check_live_carriage(&data);
 //	data.head_c->op_id = data.mem_f[0];
 	ft_fight(&data);

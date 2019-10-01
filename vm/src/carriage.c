@@ -24,10 +24,10 @@ t_carriage *ft_new_carriage(int player)
 	return (new);
 }
 
-void	ft_del_carriage(t_carriage **lst_carriage)
-{
-
-}
+//void	ft_del_carriage(t_carriage **lst_carriage)
+//{
+//	;
+//}
 
 void	ft_del_lst_carriage(t_carriage **lst_carriage)
 {
