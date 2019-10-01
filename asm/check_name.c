@@ -1,35 +1,37 @@
 #include "asm.h"
 
-// int		check_name_cmnd_tag(char *s, int i)
-// {
-// 	int cmnd_len;
+int		check_name_cmnd_tag(char *s, int i)
+{
+	int cmnd_len;
 	
-// 	cmnd_len = 5;
-// 	if (s[i] != '.' ||
-// 	s[i + 1] != 'n' ||
-// 	s[i + 2] != 'a' ||
-// 	s[i + 3] != 'm' ||
-// 	s[i + 4] != 'e')
-// 		ERROR(SYMBOLS_CMND_NAME);
-// 	return (i + cmnd_len);
-// }
+	cmnd_len = 5;
+	if (s[i] != '.' ||
+	s[i + 1] != 'n' ||
+	s[i + 2] != 'a' ||
+	s[i + 3] != 'm' ||
+	s[i + 4] != 'e')
+		ERROR(SYMBOLS_CMND_NAME);
+	return (i + cmnd_len);
+}
 
-// int		anything_after_dot_name(char *s)
-// {
-// 	int i;
+int		anything_after_dot_name(char *s)
+{
+	int i;
 
-// 	i = 0;
-// 	while (s[i] != '\0' && (s[i] == '\t' || s[i] == ' '))
-// 			i++;
-// 	i = check_name_cmnd_tag(s, i);
-// 	while (s[i] != '\0')
-// 	{
-// 		if (s[i] != '\t' && s[i] != ' ')
-// 			return (1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	i = 0;
+	while (s[i] != '\0' && (s[i] == '\t' || s[i] == ' '))
+			i++;
+	i = check_name_cmnd_tag(s, i);
+	while (s[i] != '\0' && s[i] != '\"' &&
+	s[i] != ALT_COMMENT_CHAR &&
+	s[i] != COMMENT_CHAR)
+	{
+		if (s[i] != '\t' && s[i] != ' ')
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 void	check_text_comment(char **s)//ABSOLUTELY FUCKING SURE IT LEAKS SOMEWHERE HERE
 {
@@ -46,29 +48,111 @@ void	check_text_comment(char **s)//ABSOLUTELY FUCKING SURE IT LEAKS SOMEWHERE HE
 	}
 }
 
-// void	check_symbols_at_end_name(char *s)
-// {
-// 	int i;
+void	check_symbols_at_end_name(t_asm *the_asm, char *s)
+{
+	int i;
+	int start;
+	int len;
 	
-// 	i = 0;
-// 	while (s[i] != '\0')
-// 	{
-// 		if (s[i] != '\t' && s[i] != ' ')
-// 			ERROR(SYMBOLS_CHAMP_NAME);
-// 		i++;
-// 	}
-// }
+	i = 0;
+	len = 0;
+	while (s[i] != '\0' && s[i] != '\"')
+		i++;
+	i++;
+	start = i;
+	while (s[i] != '\0' && s[i] != '\"')
+	{
+		i++;
+		len++;
+	}
+	i++;
+	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
+	{
+		if (s[i] != '\t' && s[i] != ' ')
+			ERROR(SYMBOLS_CHAMP_NAME);
+		i++;
+	}
+	the_asm->champion_name = ft_strsub(s, start, len);
+}
+
+int		closing_quote_name_is_valid(char *s)
+{
+	int kavichki;
+	int met_hash;
+	int i;
+
+	i = 0;
+	kavichki = 0;
+	met_hash = 0;
+	if (ft_strstr(s, COMMENT_CMD_STRING))
+		ERROR(NO_CLSNG_QT_CHAMP_NAME);
+	while (s[i] != '\0')
+	{
+		if ((s[i] == COMMENT_CHAR || s[i] == ALT_COMMENT_CHAR) && kavichki == 1)
+			met_hash = 1;
+		if (s[i] == '\"' && met_hash == 0)
+			kavichki++;
+		i++;
+	}
+	if (kavichki > 1)
+		ERROR(KAVICHKI_NUMBER);
+	i = 0;
+	while (s[i] != '\0' && s[i] != '\"')
+		i++;
+	i++;
+	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
+	{
+		if (s[i] != '\t' && s[i] != ' ')
+			ERROR(SYMBOLS_CHAMP_NAME);
+		i++;
+	}
+	return (1);
+}
+
+int		search_closing_quote_name(t_asm *the_asm, t_line **line)
+{
+	int i;
+
+	i = 0;
+	while ((*line)->str[i] != '\0' && (*line)->str[i] != '\"')
+		i++;
+	i++;
+	the_asm->champion_name = ft_strjoin(&(*line)->str[i], "\n");
+	*line = (*line)->next;
+	while (*line)
+	{
+		the_asm->champion_name = ft_strjoin(the_asm->champion_name, (*line)->str);
+		the_asm->champion_name = ft_strjoin(the_asm->champion_name, "\n");
+		if (ft_strchr((*line)->str, '\"') &&
+		closing_quote_name_is_valid((*line)->str))
+		{
+			i = 0;
+			while (the_asm->champion_name[i] != '\0' && the_asm->champion_name[i] != '\"')
+				i++;
+			the_asm->champion_name = ft_strsub(the_asm->champion_name, 0, i);
+			return (1);
+		}
+		*line = (*line)->next;
+	}
+	ERROR(NO_CLSNG_QT_CHAMP_NAME);
+	return (0);
+}
 
 void	check_name(t_asm *the_asm, t_line **line)
 {//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
 	int kavichki;
 
-	printf("[%s]\n", (*line)->str);
-	kavichki = count_kavicki((*line)->str);
+	//printf("[%s]\n", (*line)->str);
+	if (anything_after_dot_name((*line)->str))
+		ERROR(SYMBOLS_CMND_NAME);
+	kavichki = count_kavichki((*line)->str);
+	if (kavichki == 2)
+		check_symbols_at_end_name(the_asm, (*line)->str);
 	if (kavichki > 2)
 		ERROR(KAVICHKI_NUMBER);
-	//*line = (*line)->next;
-	//printf("\t{%s}\n", (*line)->str);
-	//del this line later
-	the_asm->exec_code_size = 0;
+	if (kavichki == 0)
+		ERROR(NO_CHAMP_NAME);
+	if (kavichki == 1)
+		search_closing_quote_name(the_asm, line);//RIGHT HERE I MEAN
+	//printf("@@@ [%s]\n", the_asm->champion_name);
 }

@@ -1,4 +1,8 @@
-#include "asm.h"
+#ifndef COMMANDS_H
+
+# define COMMANDS_H
+
+# include "asm.h"
 
 struct s_commands_info	commands[16] =
 {
@@ -68,13 +72,4 @@ struct s_commands_info	commands[16] =
 		{0, 0, 0} }
 };
 
-void			check_command(t_asm *the_asm, t_line **line)
-{
-	//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
-
-	printf("[%s]\n", (*line)->str);
-	//*line = (*line)->next;
-	//printf("\t{%s}\n", (*line)->str);
-	//del this line later
-	the_asm->exec_code_size = 0;
-}
+#endif

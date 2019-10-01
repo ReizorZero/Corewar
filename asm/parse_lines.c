@@ -12,7 +12,7 @@ void	parse_lines(t_asm *the_asm)
 		else if (ft_strstr(lines->str, COMMENT_CMD_STRING))
 			check_comment(the_asm, &lines);
 		else
-			check_command(the_asm, &lines);
+			check_command_line(the_asm, &lines);
 		lines = lines->next;
 	}
 }
