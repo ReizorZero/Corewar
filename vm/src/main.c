@@ -37,15 +37,6 @@ void print_mem(t_general *data)
 int main(void)
 {
 	t_general	data;
-//	unsigned int i;
-//	uint32_t 	l;
-//	int32_t 	k;
-//
-//	i = -1;
-//	l = -2;
-//	k = -1;
-//	k = l;
-
 
 	ft_memset(&data, 0, sizeof(data));
 

@@ -24,13 +24,15 @@ uint32_t reverse_bits(uint32_t pInt)
 	return (pInt >> 24 | pInt << 24 | ((pInt >> 8) & 0xff00) | ((pInt << 8) & 0xff0000));
 }
 
-t_mem	*memory_cpy(t_mem *dest, t_mem *src)
+t_mem	*memory_cpy(t_mem *dest, t_mem *src, t_general data)
 {
 	size_t i;
 
 	i = 0;
 	while (i < src->total_s)
 	{
+		if (dest->current >= &(data.mem_f[MEM_SIZE]))
+			dest->current = data.mem_f;
 		if (dest->current == (dest->mem + dest->total_s))
 			dest->current = dest->mem;
 		if (src->current == (src->mem + src->total_s))
