@@ -14,10 +14,13 @@ add_executable(
         src/carriage.c
         src/player.c
         src/mem_clean.c
-        inc/operation.h
         src/op_live.c
-        src/op.c src/op_and.c
+        src/op.c
         src/arg_read.c
-        src/fight.c src/op_ld.c)
+        src/fight.c
+        src/op_ld.c
+        src/op_and.c
+        src/op_xor.c
+        src/op_or.c)
 
 link_libraries(../libft/libft.a)

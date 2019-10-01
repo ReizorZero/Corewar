@@ -44,13 +44,15 @@ void	(*op_func [16])(t_general*, t_carriage*) =
 		{
 	op_live,
 	op_ld,
-	0
 //	op_st,
 //	op_add,
 //	op_sub,
-//	op_and,
-//	op_or,
-//	op_xor,
+0,
+0,
+0,
+	op_and,
+	op_or,
+	op_xor,
 //	op_zjmp,
 //	op_ldi,
 //	op_sti,
@@ -59,4 +61,5 @@ void	(*op_func [16])(t_general*, t_carriage*) =
 //	op_lldi,
 //	op_lfork,
 //	op_aff
+	0
 		};

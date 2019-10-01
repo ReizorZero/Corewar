@@ -36,7 +36,7 @@ t_mem	*memory_cpy(t_mem *dest, t_mem *src)
 	size_t i;
 
 	i = 0;
-	while (i <= src->size)
+	while (i < src->size)
 	{
 		if (dest->current == dest->mem_end)
 			dest->current = dest->mem;

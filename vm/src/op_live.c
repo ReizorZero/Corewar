@@ -16,7 +16,6 @@ void op_live(t_general *data, t_carriage *carriage)
 {
 	uint32_t player;
 
-//	player = ft_memmove()
 	carriage->live = true;
 //	carriage->position += 1;
 	/*
@@ -26,6 +25,6 @@ void op_live(t_general *data, t_carriage *carriage)
 	player = reverse_bits(*(uint32_t*)carriage->arg[0].mem);
 	if (!(carriage->reg[0] + player))
 		data->lst_live_plr = player;
-	carriage->lst_live_cycle = data->cycles_tmp + data->cycles_total;
+	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;
 	++(data->cnt_live);
 }

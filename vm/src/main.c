@@ -41,7 +41,7 @@ int main(void)
 	ft_memset(&data, 0, sizeof(data));
 
 	{
-		int fd = open("/Users/mshvets/Desktop/Corewar/maptest", O_RDONLY);
+		int fd = open("/Users/mshvets/Desktop/Corewar/maptest.cor", O_RDONLY);
 		int j = 0, ret = read(fd, &data.mem_f, 4096);
 		while ( j !=  ret)
 		{
