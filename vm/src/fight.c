@@ -49,27 +49,26 @@ short reverse_16bits(short pInt)
 	return ((pInt >> 8) | (pInt << 8));
 }
 
-t_mem	*memory_cpy(t_mem *dest, t_mem src)
+void memory_cpy(t_mem *dest, t_mem src)
 {
 	size_t i;
-//	void	*current;
 	t_mem dest_cpy;
+//	void	*current;
 
+//	current = dest->current;
 	i = 0;
 	dest_cpy = *dest;
-//	current = dest->current;
 	while (i < src.size)
 	{
 		if (dest_cpy.current == dest->mem_end)
 			dest_cpy.current = dest->mem;
 		if (src.current == src.mem_end)
 			src.current = src.mem;
-		ft_memcpy(dest_cpy.current, src.current, 1);
+		ft_memmove(dest_cpy.current, src.current, 1);
 		++i;
-		++(dest_cpy.current);
-		++(src.current);
+		dest_cpy.current += 1;
+		src.current += 1;
 	}
-	return (dest);
 }
 
 void	ft_check_live_carriage(t_general *data)
