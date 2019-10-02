@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_fork.c                                          :+:      :+:    :+:   */
+/*   op_aff.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshvets <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/01 16:50:39 by mshvets           #+#    #+#             */
-/*   Updated: 2019/10/01 16:50:40 by mshvets          ###   ########.fr       */
+/*   Created: 2019/10/02 12:45:54 by mshvets           #+#    #+#             */
+/*   Updated: 2019/10/02 12:45:55 by mshvets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/corewar_vm.h"
 
-void op_fork(t_general *data, t_carriage *carriage)
+void op_live(t_general *data, t_carriage *carriage)
 {
-	short	adds;
+	uint32_t player;
 
-	carriage->carry = 0;
+	carriage->live = true;
 	/*
 	 * 0b10000000 - DIR in arg[0];
 	 */
 	arg_read(data, carriage, 0b10000000);
-	adds = get_val32bit(&carriage->arg[0]);
-	ft_add_carriage(&data->head_c, 0);
-	ft_memmove(data->head_c, carriage, sizeof(t_carriage));
-	data->head_c->position = (carriage->position + adds % IDX_MOD) % MEM_SIZE;
+	player = reverse_16bits(*(uint32_t *) carriage->arg[0].mem);
+	if (!(carriage->reg[0] + player))
+		data->lst_live_plr = player;
+	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;
+	carriage->carry = 0;
+	++(data->cnt_live);
 }
