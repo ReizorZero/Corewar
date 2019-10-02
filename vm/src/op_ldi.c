@@ -17,6 +17,7 @@ void op_ldi(t_general *data, t_carriage *carriage)
 	size_t	adds;
 	int32_t val1;
 	int32_t val2;
+	t_mem	res;
 
 	carriage->position = +1;
 	if (arg_read(data, carriage, data->mem_f[carriage->position]))
@@ -30,8 +31,12 @@ void op_ldi(t_general *data, t_carriage *carriage)
 		else
 			val2 = get_val32bit(&carriage->arg[1]);
 		adds = (carriage->position + (val1 + val2) % IDX_MOD) % MEM_SIZE;
-//		memory_cpy(&carriage->arg[1], &carriage->arg[0]);
-//		carriage->carry = !(*(uint32_t*)carriage->arg[0].mem);
+		res.type = 0;
+		res.mem = data->mem_f;
+		res.current = &data->mem_f[adds];
+		res.size = T_REG;
+		res.mem_end = &data->mem_f[MEM_SIZE];
+		memory_cpy(&carriage->arg[2], &res);
+		carriage->carry = 0;
 	}
 }
-
