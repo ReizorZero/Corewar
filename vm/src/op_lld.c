@@ -10,7 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Mykhailo SHVETS on 2019-10-02.
-//
+#include "../inc/corewar_vm.h"
 
+void op_lld(t_general *data, t_carriage *carriage)
+{
+	carriage->position += 1;
+	if (arg_read(data, carriage, data->mem_f[carriage->position]))
+	{
+		memory_cpy(&carriage->arg[1], &carriage->arg[0]);
+		carriage->carry = !(*(uint32_t*)carriage->arg[0].mem);
+	}
+}

@@ -29,12 +29,12 @@ void	read_reg(t_general *data, t_carriage *carriage, t_mem *arg, size_t position
 	/*
 	 * register pointer
 	 */
-	arg->mem = &carriage->reg[(unsigned char)data->mem_f[position] - 1];
+	arg->mem = &carriage->reg[(uint8_t)data->mem_f[position] - 1];
 //	arg->mem = &carriage->reg[(unsigned char)data->mem_f[position] + 1];
 	arg->size = REG_SIZE;
 	arg->current = arg->mem;
 	arg->mem_end = arg->mem + REG_SIZE;
-	if (data->mem_f[position] > 0 && (unsigned char)data->mem_f[position] <= REG_NUMBER)
+	if (data->mem_f[position] > 0 && (uint8_t)data->mem_f[position] <= REG_NUMBER)
 		arg->type = T_REG;
 	else
 		arg->type = 16;
@@ -43,14 +43,20 @@ void	read_reg(t_general *data, t_carriage *carriage, t_mem *arg, size_t position
 		 */
 }
 
-void	read_ind(t_general *data, size_t crg_position, t_mem *arg, size_t position)
+void	read_ind(t_general *data, t_carriage *carriage, t_mem *arg, size_t position)
 {
 	/*
 	 * pointer to the cell to which the address points
 	 */
 	size_t adds;
 
-	adds = (crg_position + ((short)data->mem_f[position] % IDX_MOD)) % MEM_SIZE;
+	if (carriage->op_id == 13)
+		adds = (carriage->position + (short)data->mem_f[position]) % MEM_SIZE;
+	else
+	{
+		adds = (carriage->position + ((short)data->mem_f[position] % IDX_MOD))
+			   % MEM_SIZE;
+	}
 	arg->mem = data->mem_f;
 	arg->size = REG_SIZE;
 	arg->current = &data->mem_f[adds];
@@ -111,7 +117,7 @@ bool	arg_read(t_general *data, t_carriage *carriage, size_t arg_cod)
 		}
 		else if ((arg_cod >> (2 * i) & IND_CODE) == IND_CODE)
 		{
-			read_ind(data, carriage->position, &carriage->arg[3 - i], tmp_position);
+			read_ind(data, carriage, &carriage->arg[3 - i], tmp_position);
 			tmp_position = (tmp_position + IND_SIZE) % MEM_SIZE;
 		}
 		--i;

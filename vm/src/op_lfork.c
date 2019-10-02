@@ -10,7 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Mykhailo SHVETS on 2019-10-02.
-//
+#include "../inc/corewar_vm.h"
 
+void op_lfork(t_general *data, t_carriage *carriage)
+{
+	short	adds;
+
+	carriage->carry = 0;
+	/*
+	 * 0b10000000 - DIR in arg[0];
+	 */
+	arg_read(data, carriage, 0b10000000);
+	adds = get_val32bit(&carriage->arg[0]);
+	if (!ft_add_carriage(&data->head_c, 0))
+	{
+		ft_printf("Error: can't create new carriage! PC = %i\n",
+				  data->cycles_total + data->cycles_tmp);
+	}
+	ft_memmove(data->head_c, carriage, sizeof(t_carriage));
+	data->head_c->position = (carriage->position + adds) % MEM_SIZE;
+}
