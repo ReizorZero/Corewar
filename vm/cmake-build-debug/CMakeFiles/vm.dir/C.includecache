@@ -16,27 +16,19 @@ string.h
 stdarg.h
 -
 
-/Users/mshvets/Desktop/Corewar/op.h
-
 /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
 ../../libft/inc/libft.h
 /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
-../../op.h
-/Users/mshvets/Desktop/Corewar/op.h
+op.h
+/Users/mshvets/Desktop/Corewar/vm/inc/op.h
+stdbool.h
+-
+fcntl.h
+-
 
-/Users/mshvets/Desktop/Corewar/vm/src/carriage.c
-../inc/corewar_vm.h
-/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
+/Users/mshvets/Desktop/Corewar/vm/inc/op.h
 
-/Users/mshvets/Desktop/Corewar/vm/src/main.c
-../inc/corewar_vm.h
-/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
-
-/Users/mshvets/Desktop/Corewar/vm/src/mem_clean.c
-../inc/corewar_vm.h
-/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
-
-/Users/mshvets/Desktop/Corewar/vm/src/player.c
+/Users/mshvets/Desktop/Corewar/vm/src/fight.c
 ../inc/corewar_vm.h
 /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
 

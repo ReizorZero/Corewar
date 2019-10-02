@@ -338,7 +338,19 @@
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h">
 			<Option target="VM"/>
 		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/arg_read.c">
+			<Option target="VM"/>
+		</Unit>
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/carriage.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/check_args.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/check_players.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/fight.c">
 			<Option target="VM"/>
 		</Unit>
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/main.c">
@@ -347,7 +359,67 @@
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/mem_clean.c">
 			<Option target="VM"/>
 		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_add.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_aff.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_and.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_fork.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_ld.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_ldi.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_lfork.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_live.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_lld.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_lldi.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_or.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_st.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_sti.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_sub.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_xor.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/op_zjmp.c">
+			<Option target="VM"/>
+		</Unit>
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/player.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/player_id.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/players.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/printer.c">
 			<Option target="VM"/>
 		</Unit>
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/CMakeLists.txt">

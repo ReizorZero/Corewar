@@ -1162,18 +1162,18 @@ CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_str.c.s: cmake_
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_str.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/libft/src/printf_str.c -o CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_str.c.s
 
-CMakeFiles/VM.dir/src/main.c.o: CMakeFiles/VM.dir/flags.make
-CMakeFiles/VM.dir/src/main.c.o: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/VM.dir/src/main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/main.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/main.c
+CMakeFiles/VM.dir/src/arg_read.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/arg_read.c.o: ../src/arg_read.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/VM.dir/src/arg_read.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/arg_read.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/arg_read.c
 
-CMakeFiles/VM.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/main.c > CMakeFiles/VM.dir/src/main.c.i
+CMakeFiles/VM.dir/src/arg_read.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/arg_read.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/arg_read.c > CMakeFiles/VM.dir/src/arg_read.c.i
 
-CMakeFiles/VM.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/main.c -o CMakeFiles/VM.dir/src/main.c.s
+CMakeFiles/VM.dir/src/arg_read.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/arg_read.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/arg_read.c -o CMakeFiles/VM.dir/src/arg_read.c.s
 
 CMakeFiles/VM.dir/src/carriage.c.o: CMakeFiles/VM.dir/flags.make
 CMakeFiles/VM.dir/src/carriage.c.o: ../src/carriage.c
@@ -1188,9 +1188,87 @@ CMakeFiles/VM.dir/src/carriage.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/carriage.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/carriage.c -o CMakeFiles/VM.dir/src/carriage.c.s
 
+CMakeFiles/VM.dir/src/check_args.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/check_args.c.o: ../src/check_args.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/VM.dir/src/check_args.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/check_args.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/check_args.c
+
+CMakeFiles/VM.dir/src/check_args.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/check_args.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/check_args.c > CMakeFiles/VM.dir/src/check_args.c.i
+
+CMakeFiles/VM.dir/src/check_args.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/check_args.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/check_args.c -o CMakeFiles/VM.dir/src/check_args.c.s
+
+CMakeFiles/VM.dir/src/check_players.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/check_players.c.o: ../src/check_players.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/VM.dir/src/check_players.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/check_players.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/check_players.c
+
+CMakeFiles/VM.dir/src/check_players.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/check_players.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/check_players.c > CMakeFiles/VM.dir/src/check_players.c.i
+
+CMakeFiles/VM.dir/src/check_players.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/check_players.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/check_players.c -o CMakeFiles/VM.dir/src/check_players.c.s
+
+CMakeFiles/VM.dir/src/fight.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/fight.c.o: ../src/fight.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/VM.dir/src/fight.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/fight.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/fight.c
+
+CMakeFiles/VM.dir/src/fight.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/fight.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/fight.c > CMakeFiles/VM.dir/src/fight.c.i
+
+CMakeFiles/VM.dir/src/fight.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/fight.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/fight.c -o CMakeFiles/VM.dir/src/fight.c.s
+
+CMakeFiles/VM.dir/src/main.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/main.c.o: ../src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/VM.dir/src/main.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/main.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/main.c
+
+CMakeFiles/VM.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/main.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/main.c > CMakeFiles/VM.dir/src/main.c.i
+
+CMakeFiles/VM.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/main.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/main.c -o CMakeFiles/VM.dir/src/main.c.s
+
+CMakeFiles/VM.dir/src/mem_clean.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/mem_clean.c.o: ../src/mem_clean.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/VM.dir/src/mem_clean.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/mem_clean.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/mem_clean.c
+
+CMakeFiles/VM.dir/src/mem_clean.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/mem_clean.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/mem_clean.c > CMakeFiles/VM.dir/src/mem_clean.c.i
+
+CMakeFiles/VM.dir/src/mem_clean.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/mem_clean.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/mem_clean.c -o CMakeFiles/VM.dir/src/mem_clean.c.s
+
+CMakeFiles/VM.dir/src/op.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op.c.o: ../src/op.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/VM.dir/src/op.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op.c
+
+CMakeFiles/VM.dir/src/op.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op.c > CMakeFiles/VM.dir/src/op.c.i
+
+CMakeFiles/VM.dir/src/op.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op.c -o CMakeFiles/VM.dir/src/op.c.s
+
 CMakeFiles/VM.dir/src/player.c.o: CMakeFiles/VM.dir/flags.make
 CMakeFiles/VM.dir/src/player.c.o: ../src/player.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/VM.dir/src/player.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/VM.dir/src/player.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/player.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/player.c
 
 CMakeFiles/VM.dir/src/player.c.i: cmake_force
@@ -1201,18 +1279,252 @@ CMakeFiles/VM.dir/src/player.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/player.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/player.c -o CMakeFiles/VM.dir/src/player.c.s
 
-CMakeFiles/VM.dir/src/mem_clean.c.o: CMakeFiles/VM.dir/flags.make
-CMakeFiles/VM.dir/src/mem_clean.c.o: ../src/mem_clean.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/VM.dir/src/mem_clean.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/mem_clean.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/mem_clean.c
+CMakeFiles/VM.dir/src/player_id.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/player_id.c.o: ../src/player_id.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/VM.dir/src/player_id.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/player_id.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/player_id.c
 
-CMakeFiles/VM.dir/src/mem_clean.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/mem_clean.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/mem_clean.c > CMakeFiles/VM.dir/src/mem_clean.c.i
+CMakeFiles/VM.dir/src/player_id.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/player_id.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/player_id.c > CMakeFiles/VM.dir/src/player_id.c.i
 
-CMakeFiles/VM.dir/src/mem_clean.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/mem_clean.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/mem_clean.c -o CMakeFiles/VM.dir/src/mem_clean.c.s
+CMakeFiles/VM.dir/src/player_id.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/player_id.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/player_id.c -o CMakeFiles/VM.dir/src/player_id.c.s
+
+CMakeFiles/VM.dir/src/players.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/players.c.o: ../src/players.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/VM.dir/src/players.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/players.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/players.c
+
+CMakeFiles/VM.dir/src/players.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/players.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/players.c > CMakeFiles/VM.dir/src/players.c.i
+
+CMakeFiles/VM.dir/src/players.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/players.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/players.c -o CMakeFiles/VM.dir/src/players.c.s
+
+CMakeFiles/VM.dir/src/printer.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/printer.c.o: ../src/printer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/VM.dir/src/printer.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/printer.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/printer.c
+
+CMakeFiles/VM.dir/src/printer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/printer.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/printer.c > CMakeFiles/VM.dir/src/printer.c.i
+
+CMakeFiles/VM.dir/src/printer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/printer.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/printer.c -o CMakeFiles/VM.dir/src/printer.c.s
+
+CMakeFiles/VM.dir/src/op_live.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_live.c.o: ../src/op_live.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/VM.dir/src/op_live.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_live.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_live.c
+
+CMakeFiles/VM.dir/src/op_live.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_live.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_live.c > CMakeFiles/VM.dir/src/op_live.c.i
+
+CMakeFiles/VM.dir/src/op_live.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_live.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_live.c -o CMakeFiles/VM.dir/src/op_live.c.s
+
+CMakeFiles/VM.dir/src/op_ld.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_ld.c.o: ../src/op_ld.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/VM.dir/src/op_ld.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_ld.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_ld.c
+
+CMakeFiles/VM.dir/src/op_ld.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_ld.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_ld.c > CMakeFiles/VM.dir/src/op_ld.c.i
+
+CMakeFiles/VM.dir/src/op_ld.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_ld.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_ld.c -o CMakeFiles/VM.dir/src/op_ld.c.s
+
+CMakeFiles/VM.dir/src/op_and.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_and.c.o: ../src/op_and.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/VM.dir/src/op_and.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_and.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_and.c
+
+CMakeFiles/VM.dir/src/op_and.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_and.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_and.c > CMakeFiles/VM.dir/src/op_and.c.i
+
+CMakeFiles/VM.dir/src/op_and.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_and.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_and.c -o CMakeFiles/VM.dir/src/op_and.c.s
+
+CMakeFiles/VM.dir/src/op_xor.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_xor.c.o: ../src/op_xor.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/VM.dir/src/op_xor.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_xor.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_xor.c
+
+CMakeFiles/VM.dir/src/op_xor.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_xor.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_xor.c > CMakeFiles/VM.dir/src/op_xor.c.i
+
+CMakeFiles/VM.dir/src/op_xor.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_xor.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_xor.c -o CMakeFiles/VM.dir/src/op_xor.c.s
+
+CMakeFiles/VM.dir/src/op_or.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_or.c.o: ../src/op_or.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/VM.dir/src/op_or.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_or.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_or.c
+
+CMakeFiles/VM.dir/src/op_or.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_or.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_or.c > CMakeFiles/VM.dir/src/op_or.c.i
+
+CMakeFiles/VM.dir/src/op_or.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_or.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_or.c -o CMakeFiles/VM.dir/src/op_or.c.s
+
+CMakeFiles/VM.dir/src/op_st.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_st.c.o: ../src/op_st.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/VM.dir/src/op_st.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_st.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_st.c
+
+CMakeFiles/VM.dir/src/op_st.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_st.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_st.c > CMakeFiles/VM.dir/src/op_st.c.i
+
+CMakeFiles/VM.dir/src/op_st.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_st.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_st.c -o CMakeFiles/VM.dir/src/op_st.c.s
+
+CMakeFiles/VM.dir/src/op_add.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_add.c.o: ../src/op_add.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/VM.dir/src/op_add.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_add.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_add.c
+
+CMakeFiles/VM.dir/src/op_add.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_add.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_add.c > CMakeFiles/VM.dir/src/op_add.c.i
+
+CMakeFiles/VM.dir/src/op_add.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_add.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_add.c -o CMakeFiles/VM.dir/src/op_add.c.s
+
+CMakeFiles/VM.dir/src/op_sub.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_sub.c.o: ../src/op_sub.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/VM.dir/src/op_sub.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_sub.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_sub.c
+
+CMakeFiles/VM.dir/src/op_sub.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_sub.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_sub.c > CMakeFiles/VM.dir/src/op_sub.c.i
+
+CMakeFiles/VM.dir/src/op_sub.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_sub.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_sub.c -o CMakeFiles/VM.dir/src/op_sub.c.s
+
+CMakeFiles/VM.dir/src/op_zjmp.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_zjmp.c.o: ../src/op_zjmp.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/VM.dir/src/op_zjmp.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_zjmp.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_zjmp.c
+
+CMakeFiles/VM.dir/src/op_zjmp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_zjmp.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_zjmp.c > CMakeFiles/VM.dir/src/op_zjmp.c.i
+
+CMakeFiles/VM.dir/src/op_zjmp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_zjmp.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_zjmp.c -o CMakeFiles/VM.dir/src/op_zjmp.c.s
+
+CMakeFiles/VM.dir/src/op_ldi.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_ldi.c.o: ../src/op_ldi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/VM.dir/src/op_ldi.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_ldi.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_ldi.c
+
+CMakeFiles/VM.dir/src/op_ldi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_ldi.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_ldi.c > CMakeFiles/VM.dir/src/op_ldi.c.i
+
+CMakeFiles/VM.dir/src/op_ldi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_ldi.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_ldi.c -o CMakeFiles/VM.dir/src/op_ldi.c.s
+
+CMakeFiles/VM.dir/src/op_sti.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_sti.c.o: ../src/op_sti.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/VM.dir/src/op_sti.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_sti.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_sti.c
+
+CMakeFiles/VM.dir/src/op_sti.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_sti.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_sti.c > CMakeFiles/VM.dir/src/op_sti.c.i
+
+CMakeFiles/VM.dir/src/op_sti.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_sti.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_sti.c -o CMakeFiles/VM.dir/src/op_sti.c.s
+
+CMakeFiles/VM.dir/src/op_fork.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_fork.c.o: ../src/op_fork.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/VM.dir/src/op_fork.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_fork.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_fork.c
+
+CMakeFiles/VM.dir/src/op_fork.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_fork.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_fork.c > CMakeFiles/VM.dir/src/op_fork.c.i
+
+CMakeFiles/VM.dir/src/op_fork.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_fork.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_fork.c -o CMakeFiles/VM.dir/src/op_fork.c.s
+
+CMakeFiles/VM.dir/src/op_lld.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_lld.c.o: ../src/op_lld.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/VM.dir/src/op_lld.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_lld.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_lld.c
+
+CMakeFiles/VM.dir/src/op_lld.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_lld.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_lld.c > CMakeFiles/VM.dir/src/op_lld.c.i
+
+CMakeFiles/VM.dir/src/op_lld.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_lld.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_lld.c -o CMakeFiles/VM.dir/src/op_lld.c.s
+
+CMakeFiles/VM.dir/src/op_lldi.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_lldi.c.o: ../src/op_lldi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/VM.dir/src/op_lldi.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_lldi.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_lldi.c
+
+CMakeFiles/VM.dir/src/op_lldi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_lldi.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_lldi.c > CMakeFiles/VM.dir/src/op_lldi.c.i
+
+CMakeFiles/VM.dir/src/op_lldi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_lldi.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_lldi.c -o CMakeFiles/VM.dir/src/op_lldi.c.s
+
+CMakeFiles/VM.dir/src/op_lfork.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_lfork.c.o: ../src/op_lfork.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/VM.dir/src/op_lfork.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_lfork.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_lfork.c
+
+CMakeFiles/VM.dir/src/op_lfork.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_lfork.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_lfork.c > CMakeFiles/VM.dir/src/op_lfork.c.i
+
+CMakeFiles/VM.dir/src/op_lfork.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_lfork.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_lfork.c -o CMakeFiles/VM.dir/src/op_lfork.c.s
+
+CMakeFiles/VM.dir/src/op_aff.c.o: CMakeFiles/VM.dir/flags.make
+CMakeFiles/VM.dir/src/op_aff.c.o: ../src/op_aff.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/VM.dir/src/op_aff.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/VM.dir/src/op_aff.c.o   -c /Users/mshvets/Desktop/Corewar/vm/src/op_aff.c
+
+CMakeFiles/VM.dir/src/op_aff.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/VM.dir/src/op_aff.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshvets/Desktop/Corewar/vm/src/op_aff.c > CMakeFiles/VM.dir/src/op_aff.c.i
+
+CMakeFiles/VM.dir/src/op_aff.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/VM.dir/src/op_aff.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshvets/Desktop/Corewar/vm/src/op_aff.c -o CMakeFiles/VM.dir/src/op_aff.c.s
 
 # Object files for target VM
 VM_OBJECTS = \
@@ -1301,10 +1613,34 @@ VM_OBJECTS = \
 "CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_specificator.c.o" \
 "CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_specificator2.c.o" \
 "CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_str.c.o" \
-"CMakeFiles/VM.dir/src/main.c.o" \
+"CMakeFiles/VM.dir/src/arg_read.c.o" \
 "CMakeFiles/VM.dir/src/carriage.c.o" \
+"CMakeFiles/VM.dir/src/check_args.c.o" \
+"CMakeFiles/VM.dir/src/check_players.c.o" \
+"CMakeFiles/VM.dir/src/fight.c.o" \
+"CMakeFiles/VM.dir/src/main.c.o" \
+"CMakeFiles/VM.dir/src/mem_clean.c.o" \
+"CMakeFiles/VM.dir/src/op.c.o" \
 "CMakeFiles/VM.dir/src/player.c.o" \
-"CMakeFiles/VM.dir/src/mem_clean.c.o"
+"CMakeFiles/VM.dir/src/player_id.c.o" \
+"CMakeFiles/VM.dir/src/players.c.o" \
+"CMakeFiles/VM.dir/src/printer.c.o" \
+"CMakeFiles/VM.dir/src/op_live.c.o" \
+"CMakeFiles/VM.dir/src/op_ld.c.o" \
+"CMakeFiles/VM.dir/src/op_and.c.o" \
+"CMakeFiles/VM.dir/src/op_xor.c.o" \
+"CMakeFiles/VM.dir/src/op_or.c.o" \
+"CMakeFiles/VM.dir/src/op_st.c.o" \
+"CMakeFiles/VM.dir/src/op_add.c.o" \
+"CMakeFiles/VM.dir/src/op_sub.c.o" \
+"CMakeFiles/VM.dir/src/op_zjmp.c.o" \
+"CMakeFiles/VM.dir/src/op_ldi.c.o" \
+"CMakeFiles/VM.dir/src/op_sti.c.o" \
+"CMakeFiles/VM.dir/src/op_fork.c.o" \
+"CMakeFiles/VM.dir/src/op_lld.c.o" \
+"CMakeFiles/VM.dir/src/op_lldi.c.o" \
+"CMakeFiles/VM.dir/src/op_lfork.c.o" \
+"CMakeFiles/VM.dir/src/op_aff.c.o"
 
 # External object files for target VM
 VM_EXTERNAL_OBJECTS =
@@ -1394,13 +1730,37 @@ VM: CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_pointer.c.o
 VM: CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_specificator.c.o
 VM: CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_specificator2.c.o
 VM: CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_str.c.o
-VM: CMakeFiles/VM.dir/src/main.c.o
+VM: CMakeFiles/VM.dir/src/arg_read.c.o
 VM: CMakeFiles/VM.dir/src/carriage.c.o
-VM: CMakeFiles/VM.dir/src/player.c.o
+VM: CMakeFiles/VM.dir/src/check_args.c.o
+VM: CMakeFiles/VM.dir/src/check_players.c.o
+VM: CMakeFiles/VM.dir/src/fight.c.o
+VM: CMakeFiles/VM.dir/src/main.c.o
 VM: CMakeFiles/VM.dir/src/mem_clean.c.o
+VM: CMakeFiles/VM.dir/src/op.c.o
+VM: CMakeFiles/VM.dir/src/player.c.o
+VM: CMakeFiles/VM.dir/src/player_id.c.o
+VM: CMakeFiles/VM.dir/src/players.c.o
+VM: CMakeFiles/VM.dir/src/printer.c.o
+VM: CMakeFiles/VM.dir/src/op_live.c.o
+VM: CMakeFiles/VM.dir/src/op_ld.c.o
+VM: CMakeFiles/VM.dir/src/op_and.c.o
+VM: CMakeFiles/VM.dir/src/op_xor.c.o
+VM: CMakeFiles/VM.dir/src/op_or.c.o
+VM: CMakeFiles/VM.dir/src/op_st.c.o
+VM: CMakeFiles/VM.dir/src/op_add.c.o
+VM: CMakeFiles/VM.dir/src/op_sub.c.o
+VM: CMakeFiles/VM.dir/src/op_zjmp.c.o
+VM: CMakeFiles/VM.dir/src/op_ldi.c.o
+VM: CMakeFiles/VM.dir/src/op_sti.c.o
+VM: CMakeFiles/VM.dir/src/op_fork.c.o
+VM: CMakeFiles/VM.dir/src/op_lld.c.o
+VM: CMakeFiles/VM.dir/src/op_lldi.c.o
+VM: CMakeFiles/VM.dir/src/op_lfork.c.o
+VM: CMakeFiles/VM.dir/src/op_aff.c.o
 VM: CMakeFiles/VM.dir/build.make
 VM: CMakeFiles/VM.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Linking C executable VM"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Linking C executable VM"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/VM.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

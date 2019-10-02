@@ -2418,6 +2418,33 @@ Users/mshvets/Desktop/Corewar/libft/src/printf_str.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_str.c.s
 .PHONY : Users/mshvets/Desktop/Corewar/libft/src/printf_str.c.s
 
+src/arg_read.o: src/arg_read.c.o
+
+.PHONY : src/arg_read.o
+
+# target to build an object file
+src/arg_read.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/arg_read.c.o
+.PHONY : src/arg_read.c.o
+
+src/arg_read.i: src/arg_read.c.i
+
+.PHONY : src/arg_read.i
+
+# target to preprocess a source file
+src/arg_read.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/arg_read.c.i
+.PHONY : src/arg_read.c.i
+
+src/arg_read.s: src/arg_read.c.s
+
+.PHONY : src/arg_read.s
+
+# target to generate assembly for a file
+src/arg_read.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/arg_read.c.s
+.PHONY : src/arg_read.c.s
+
 src/carriage.o: src/carriage.c.o
 
 .PHONY : src/carriage.o
@@ -2444,6 +2471,87 @@ src/carriage.s: src/carriage.c.s
 src/carriage.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/carriage.c.s
 .PHONY : src/carriage.c.s
+
+src/check_args.o: src/check_args.c.o
+
+.PHONY : src/check_args.o
+
+# target to build an object file
+src/check_args.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_args.c.o
+.PHONY : src/check_args.c.o
+
+src/check_args.i: src/check_args.c.i
+
+.PHONY : src/check_args.i
+
+# target to preprocess a source file
+src/check_args.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_args.c.i
+.PHONY : src/check_args.c.i
+
+src/check_args.s: src/check_args.c.s
+
+.PHONY : src/check_args.s
+
+# target to generate assembly for a file
+src/check_args.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_args.c.s
+.PHONY : src/check_args.c.s
+
+src/check_players.o: src/check_players.c.o
+
+.PHONY : src/check_players.o
+
+# target to build an object file
+src/check_players.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_players.c.o
+.PHONY : src/check_players.c.o
+
+src/check_players.i: src/check_players.c.i
+
+.PHONY : src/check_players.i
+
+# target to preprocess a source file
+src/check_players.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_players.c.i
+.PHONY : src/check_players.c.i
+
+src/check_players.s: src/check_players.c.s
+
+.PHONY : src/check_players.s
+
+# target to generate assembly for a file
+src/check_players.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_players.c.s
+.PHONY : src/check_players.c.s
+
+src/fight.o: src/fight.c.o
+
+.PHONY : src/fight.o
+
+# target to build an object file
+src/fight.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/fight.c.o
+.PHONY : src/fight.c.o
+
+src/fight.i: src/fight.c.i
+
+.PHONY : src/fight.i
+
+# target to preprocess a source file
+src/fight.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/fight.c.i
+.PHONY : src/fight.c.i
+
+src/fight.s: src/fight.c.s
+
+.PHONY : src/fight.s
+
+# target to generate assembly for a file
+src/fight.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/fight.c.s
+.PHONY : src/fight.c.s
 
 src/main.o: src/main.c.o
 
@@ -2499,6 +2607,465 @@ src/mem_clean.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/mem_clean.c.s
 .PHONY : src/mem_clean.c.s
 
+src/op.o: src/op.c.o
+
+.PHONY : src/op.o
+
+# target to build an object file
+src/op.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op.c.o
+.PHONY : src/op.c.o
+
+src/op.i: src/op.c.i
+
+.PHONY : src/op.i
+
+# target to preprocess a source file
+src/op.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op.c.i
+.PHONY : src/op.c.i
+
+src/op.s: src/op.c.s
+
+.PHONY : src/op.s
+
+# target to generate assembly for a file
+src/op.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op.c.s
+.PHONY : src/op.c.s
+
+src/op_add.o: src/op_add.c.o
+
+.PHONY : src/op_add.o
+
+# target to build an object file
+src/op_add.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_add.c.o
+.PHONY : src/op_add.c.o
+
+src/op_add.i: src/op_add.c.i
+
+.PHONY : src/op_add.i
+
+# target to preprocess a source file
+src/op_add.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_add.c.i
+.PHONY : src/op_add.c.i
+
+src/op_add.s: src/op_add.c.s
+
+.PHONY : src/op_add.s
+
+# target to generate assembly for a file
+src/op_add.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_add.c.s
+.PHONY : src/op_add.c.s
+
+src/op_aff.o: src/op_aff.c.o
+
+.PHONY : src/op_aff.o
+
+# target to build an object file
+src/op_aff.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_aff.c.o
+.PHONY : src/op_aff.c.o
+
+src/op_aff.i: src/op_aff.c.i
+
+.PHONY : src/op_aff.i
+
+# target to preprocess a source file
+src/op_aff.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_aff.c.i
+.PHONY : src/op_aff.c.i
+
+src/op_aff.s: src/op_aff.c.s
+
+.PHONY : src/op_aff.s
+
+# target to generate assembly for a file
+src/op_aff.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_aff.c.s
+.PHONY : src/op_aff.c.s
+
+src/op_and.o: src/op_and.c.o
+
+.PHONY : src/op_and.o
+
+# target to build an object file
+src/op_and.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_and.c.o
+.PHONY : src/op_and.c.o
+
+src/op_and.i: src/op_and.c.i
+
+.PHONY : src/op_and.i
+
+# target to preprocess a source file
+src/op_and.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_and.c.i
+.PHONY : src/op_and.c.i
+
+src/op_and.s: src/op_and.c.s
+
+.PHONY : src/op_and.s
+
+# target to generate assembly for a file
+src/op_and.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_and.c.s
+.PHONY : src/op_and.c.s
+
+src/op_fork.o: src/op_fork.c.o
+
+.PHONY : src/op_fork.o
+
+# target to build an object file
+src/op_fork.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_fork.c.o
+.PHONY : src/op_fork.c.o
+
+src/op_fork.i: src/op_fork.c.i
+
+.PHONY : src/op_fork.i
+
+# target to preprocess a source file
+src/op_fork.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_fork.c.i
+.PHONY : src/op_fork.c.i
+
+src/op_fork.s: src/op_fork.c.s
+
+.PHONY : src/op_fork.s
+
+# target to generate assembly for a file
+src/op_fork.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_fork.c.s
+.PHONY : src/op_fork.c.s
+
+src/op_ld.o: src/op_ld.c.o
+
+.PHONY : src/op_ld.o
+
+# target to build an object file
+src/op_ld.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_ld.c.o
+.PHONY : src/op_ld.c.o
+
+src/op_ld.i: src/op_ld.c.i
+
+.PHONY : src/op_ld.i
+
+# target to preprocess a source file
+src/op_ld.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_ld.c.i
+.PHONY : src/op_ld.c.i
+
+src/op_ld.s: src/op_ld.c.s
+
+.PHONY : src/op_ld.s
+
+# target to generate assembly for a file
+src/op_ld.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_ld.c.s
+.PHONY : src/op_ld.c.s
+
+src/op_ldi.o: src/op_ldi.c.o
+
+.PHONY : src/op_ldi.o
+
+# target to build an object file
+src/op_ldi.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_ldi.c.o
+.PHONY : src/op_ldi.c.o
+
+src/op_ldi.i: src/op_ldi.c.i
+
+.PHONY : src/op_ldi.i
+
+# target to preprocess a source file
+src/op_ldi.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_ldi.c.i
+.PHONY : src/op_ldi.c.i
+
+src/op_ldi.s: src/op_ldi.c.s
+
+.PHONY : src/op_ldi.s
+
+# target to generate assembly for a file
+src/op_ldi.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_ldi.c.s
+.PHONY : src/op_ldi.c.s
+
+src/op_lfork.o: src/op_lfork.c.o
+
+.PHONY : src/op_lfork.o
+
+# target to build an object file
+src/op_lfork.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_lfork.c.o
+.PHONY : src/op_lfork.c.o
+
+src/op_lfork.i: src/op_lfork.c.i
+
+.PHONY : src/op_lfork.i
+
+# target to preprocess a source file
+src/op_lfork.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_lfork.c.i
+.PHONY : src/op_lfork.c.i
+
+src/op_lfork.s: src/op_lfork.c.s
+
+.PHONY : src/op_lfork.s
+
+# target to generate assembly for a file
+src/op_lfork.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_lfork.c.s
+.PHONY : src/op_lfork.c.s
+
+src/op_live.o: src/op_live.c.o
+
+.PHONY : src/op_live.o
+
+# target to build an object file
+src/op_live.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_live.c.o
+.PHONY : src/op_live.c.o
+
+src/op_live.i: src/op_live.c.i
+
+.PHONY : src/op_live.i
+
+# target to preprocess a source file
+src/op_live.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_live.c.i
+.PHONY : src/op_live.c.i
+
+src/op_live.s: src/op_live.c.s
+
+.PHONY : src/op_live.s
+
+# target to generate assembly for a file
+src/op_live.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_live.c.s
+.PHONY : src/op_live.c.s
+
+src/op_lld.o: src/op_lld.c.o
+
+.PHONY : src/op_lld.o
+
+# target to build an object file
+src/op_lld.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_lld.c.o
+.PHONY : src/op_lld.c.o
+
+src/op_lld.i: src/op_lld.c.i
+
+.PHONY : src/op_lld.i
+
+# target to preprocess a source file
+src/op_lld.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_lld.c.i
+.PHONY : src/op_lld.c.i
+
+src/op_lld.s: src/op_lld.c.s
+
+.PHONY : src/op_lld.s
+
+# target to generate assembly for a file
+src/op_lld.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_lld.c.s
+.PHONY : src/op_lld.c.s
+
+src/op_lldi.o: src/op_lldi.c.o
+
+.PHONY : src/op_lldi.o
+
+# target to build an object file
+src/op_lldi.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_lldi.c.o
+.PHONY : src/op_lldi.c.o
+
+src/op_lldi.i: src/op_lldi.c.i
+
+.PHONY : src/op_lldi.i
+
+# target to preprocess a source file
+src/op_lldi.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_lldi.c.i
+.PHONY : src/op_lldi.c.i
+
+src/op_lldi.s: src/op_lldi.c.s
+
+.PHONY : src/op_lldi.s
+
+# target to generate assembly for a file
+src/op_lldi.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_lldi.c.s
+.PHONY : src/op_lldi.c.s
+
+src/op_or.o: src/op_or.c.o
+
+.PHONY : src/op_or.o
+
+# target to build an object file
+src/op_or.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_or.c.o
+.PHONY : src/op_or.c.o
+
+src/op_or.i: src/op_or.c.i
+
+.PHONY : src/op_or.i
+
+# target to preprocess a source file
+src/op_or.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_or.c.i
+.PHONY : src/op_or.c.i
+
+src/op_or.s: src/op_or.c.s
+
+.PHONY : src/op_or.s
+
+# target to generate assembly for a file
+src/op_or.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_or.c.s
+.PHONY : src/op_or.c.s
+
+src/op_st.o: src/op_st.c.o
+
+.PHONY : src/op_st.o
+
+# target to build an object file
+src/op_st.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_st.c.o
+.PHONY : src/op_st.c.o
+
+src/op_st.i: src/op_st.c.i
+
+.PHONY : src/op_st.i
+
+# target to preprocess a source file
+src/op_st.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_st.c.i
+.PHONY : src/op_st.c.i
+
+src/op_st.s: src/op_st.c.s
+
+.PHONY : src/op_st.s
+
+# target to generate assembly for a file
+src/op_st.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_st.c.s
+.PHONY : src/op_st.c.s
+
+src/op_sti.o: src/op_sti.c.o
+
+.PHONY : src/op_sti.o
+
+# target to build an object file
+src/op_sti.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_sti.c.o
+.PHONY : src/op_sti.c.o
+
+src/op_sti.i: src/op_sti.c.i
+
+.PHONY : src/op_sti.i
+
+# target to preprocess a source file
+src/op_sti.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_sti.c.i
+.PHONY : src/op_sti.c.i
+
+src/op_sti.s: src/op_sti.c.s
+
+.PHONY : src/op_sti.s
+
+# target to generate assembly for a file
+src/op_sti.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_sti.c.s
+.PHONY : src/op_sti.c.s
+
+src/op_sub.o: src/op_sub.c.o
+
+.PHONY : src/op_sub.o
+
+# target to build an object file
+src/op_sub.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_sub.c.o
+.PHONY : src/op_sub.c.o
+
+src/op_sub.i: src/op_sub.c.i
+
+.PHONY : src/op_sub.i
+
+# target to preprocess a source file
+src/op_sub.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_sub.c.i
+.PHONY : src/op_sub.c.i
+
+src/op_sub.s: src/op_sub.c.s
+
+.PHONY : src/op_sub.s
+
+# target to generate assembly for a file
+src/op_sub.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_sub.c.s
+.PHONY : src/op_sub.c.s
+
+src/op_xor.o: src/op_xor.c.o
+
+.PHONY : src/op_xor.o
+
+# target to build an object file
+src/op_xor.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_xor.c.o
+.PHONY : src/op_xor.c.o
+
+src/op_xor.i: src/op_xor.c.i
+
+.PHONY : src/op_xor.i
+
+# target to preprocess a source file
+src/op_xor.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_xor.c.i
+.PHONY : src/op_xor.c.i
+
+src/op_xor.s: src/op_xor.c.s
+
+.PHONY : src/op_xor.s
+
+# target to generate assembly for a file
+src/op_xor.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_xor.c.s
+.PHONY : src/op_xor.c.s
+
+src/op_zjmp.o: src/op_zjmp.c.o
+
+.PHONY : src/op_zjmp.o
+
+# target to build an object file
+src/op_zjmp.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_zjmp.c.o
+.PHONY : src/op_zjmp.c.o
+
+src/op_zjmp.i: src/op_zjmp.c.i
+
+.PHONY : src/op_zjmp.i
+
+# target to preprocess a source file
+src/op_zjmp.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_zjmp.c.i
+.PHONY : src/op_zjmp.c.i
+
+src/op_zjmp.s: src/op_zjmp.c.s
+
+.PHONY : src/op_zjmp.s
+
+# target to generate assembly for a file
+src/op_zjmp.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/op_zjmp.c.s
+.PHONY : src/op_zjmp.c.s
+
 src/player.o: src/player.c.o
 
 .PHONY : src/player.o
@@ -2525,6 +3092,87 @@ src/player.s: src/player.c.s
 src/player.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/player.c.s
 .PHONY : src/player.c.s
+
+src/player_id.o: src/player_id.c.o
+
+.PHONY : src/player_id.o
+
+# target to build an object file
+src/player_id.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/player_id.c.o
+.PHONY : src/player_id.c.o
+
+src/player_id.i: src/player_id.c.i
+
+.PHONY : src/player_id.i
+
+# target to preprocess a source file
+src/player_id.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/player_id.c.i
+.PHONY : src/player_id.c.i
+
+src/player_id.s: src/player_id.c.s
+
+.PHONY : src/player_id.s
+
+# target to generate assembly for a file
+src/player_id.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/player_id.c.s
+.PHONY : src/player_id.c.s
+
+src/players.o: src/players.c.o
+
+.PHONY : src/players.o
+
+# target to build an object file
+src/players.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/players.c.o
+.PHONY : src/players.c.o
+
+src/players.i: src/players.c.i
+
+.PHONY : src/players.i
+
+# target to preprocess a source file
+src/players.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/players.c.i
+.PHONY : src/players.c.i
+
+src/players.s: src/players.c.s
+
+.PHONY : src/players.s
+
+# target to generate assembly for a file
+src/players.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/players.c.s
+.PHONY : src/players.c.s
+
+src/printer.o: src/printer.c.o
+
+.PHONY : src/printer.o
+
+# target to build an object file
+src/printer.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/printer.c.o
+.PHONY : src/printer.c.o
+
+src/printer.i: src/printer.c.i
+
+.PHONY : src/printer.i
+
+# target to preprocess a source file
+src/printer.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/printer.c.i
+.PHONY : src/printer.c.i
+
+src/printer.s: src/printer.c.s
+
+.PHONY : src/printer.s
+
+# target to generate assembly for a file
+src/printer.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/printer.c.s
+.PHONY : src/printer.c.s
 
 # Help Target
 help:
@@ -2790,18 +3438,90 @@ help:
 	@echo "... Users/mshvets/Desktop/Corewar/libft/src/printf_str.o"
 	@echo "... Users/mshvets/Desktop/Corewar/libft/src/printf_str.i"
 	@echo "... Users/mshvets/Desktop/Corewar/libft/src/printf_str.s"
+	@echo "... src/arg_read.o"
+	@echo "... src/arg_read.i"
+	@echo "... src/arg_read.s"
 	@echo "... src/carriage.o"
 	@echo "... src/carriage.i"
 	@echo "... src/carriage.s"
+	@echo "... src/check_args.o"
+	@echo "... src/check_args.i"
+	@echo "... src/check_args.s"
+	@echo "... src/check_players.o"
+	@echo "... src/check_players.i"
+	@echo "... src/check_players.s"
+	@echo "... src/fight.o"
+	@echo "... src/fight.i"
+	@echo "... src/fight.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/mem_clean.o"
 	@echo "... src/mem_clean.i"
 	@echo "... src/mem_clean.s"
+	@echo "... src/op.o"
+	@echo "... src/op.i"
+	@echo "... src/op.s"
+	@echo "... src/op_add.o"
+	@echo "... src/op_add.i"
+	@echo "... src/op_add.s"
+	@echo "... src/op_aff.o"
+	@echo "... src/op_aff.i"
+	@echo "... src/op_aff.s"
+	@echo "... src/op_and.o"
+	@echo "... src/op_and.i"
+	@echo "... src/op_and.s"
+	@echo "... src/op_fork.o"
+	@echo "... src/op_fork.i"
+	@echo "... src/op_fork.s"
+	@echo "... src/op_ld.o"
+	@echo "... src/op_ld.i"
+	@echo "... src/op_ld.s"
+	@echo "... src/op_ldi.o"
+	@echo "... src/op_ldi.i"
+	@echo "... src/op_ldi.s"
+	@echo "... src/op_lfork.o"
+	@echo "... src/op_lfork.i"
+	@echo "... src/op_lfork.s"
+	@echo "... src/op_live.o"
+	@echo "... src/op_live.i"
+	@echo "... src/op_live.s"
+	@echo "... src/op_lld.o"
+	@echo "... src/op_lld.i"
+	@echo "... src/op_lld.s"
+	@echo "... src/op_lldi.o"
+	@echo "... src/op_lldi.i"
+	@echo "... src/op_lldi.s"
+	@echo "... src/op_or.o"
+	@echo "... src/op_or.i"
+	@echo "... src/op_or.s"
+	@echo "... src/op_st.o"
+	@echo "... src/op_st.i"
+	@echo "... src/op_st.s"
+	@echo "... src/op_sti.o"
+	@echo "... src/op_sti.i"
+	@echo "... src/op_sti.s"
+	@echo "... src/op_sub.o"
+	@echo "... src/op_sub.i"
+	@echo "... src/op_sub.s"
+	@echo "... src/op_xor.o"
+	@echo "... src/op_xor.i"
+	@echo "... src/op_xor.s"
+	@echo "... src/op_zjmp.o"
+	@echo "... src/op_zjmp.i"
+	@echo "... src/op_zjmp.s"
 	@echo "... src/player.o"
 	@echo "... src/player.i"
 	@echo "... src/player.s"
+	@echo "... src/player_id.o"
+	@echo "... src/player_id.i"
+	@echo "... src/player_id.s"
+	@echo "... src/players.o"
+	@echo "... src/players.i"
+	@echo "... src/players.s"
+	@echo "... src/printer.o"
+	@echo "... src/printer.i"
+	@echo "... src/printer.s"
 .PHONY : help
 
 

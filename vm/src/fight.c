@@ -127,6 +127,16 @@ void	set_new_cycle(t_general *data)
 	data->cnt_live = 0;
 	data->cycles_tmp = 1;
 }
+void	print_winner(t_general *data)
+{
+	t_player *crwl;
+
+	crwl = data->head_p;
+	while (crwl && crwl->id != data->lst_live_plr)
+		crwl = crwl->next;
+	if (crwl->id == data->lst_live_plr)
+		ft_printf("Contestant %i, \"%s\", has won !\n", crwl->id, crwl->name);
+}
 
 void	ft_fight(t_general *data)
 {
@@ -136,7 +146,7 @@ void	ft_fight(t_general *data)
 	data->cycles_tmp = 1;
 	while (data->head_c)
 	{
-		if (data->cycles_tmp + data->cycles_total >= data->dump_cycle)
+		if (data->cycles_tmp + data->cycles_total >= data->dump_cycle && data->dump_cycle > 0)
 		{
 			print_mem(data);
 			return ;
@@ -152,6 +162,7 @@ void	ft_fight(t_general *data)
 			{
 //				if (op_tab[carriage->op_id - 1].octal)
 					op_func[crwl->op_id - 1](data, crwl);
+				--(crwl->op_cycles);
 			}
 			crwl = crwl->next;
 		}
@@ -162,4 +173,5 @@ void	ft_fight(t_general *data)
 			set_new_cycle(data);
 		}
 	}
+	print_winner(data);
 }

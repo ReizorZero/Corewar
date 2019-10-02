@@ -24,13 +24,13 @@ void print_mem(t_general *data)
     {
         ft_printf("%.4p : ", i);
         j = 0;
-        while (j < 32)
+        while (j < 64)//32!
         {
             ft_printf("%.2x ", data->mem_f[i + j]);
             j++;
         }
         ft_printf("\n");
-        i += 32;
+        i += 64;//32!
     }
 }
 

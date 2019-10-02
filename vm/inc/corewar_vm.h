@@ -15,7 +15,7 @@
 # define COREWAR_VM_H
 
 # include "../../libft/inc/libft.h"
-# include "../../op.h"
+# include "op.h"
 # include <stdbool.h>
 # include <fcntl.h>
 
@@ -55,12 +55,14 @@ typedef struct			s_player
 
 typedef struct			s_operation
 {
-	char 				name[6];
+//	char 				name[6];
+	char 				*name;
 	uint8_t				n_arg;
 	uint8_t				arg[3];
 	uint8_t				id;
 	int 				cycles;
-	char 				descr[50];
+//	char 				descr[50];
+	char 				*descr;
 	bool				octal;
 	bool				label;
 }						t_operation;
@@ -74,13 +76,13 @@ typedef struct 			s_general
 	uint8_t 			mem_f[MEM_SIZE + 1];
 //	t_operation			op_tab[17];
 	uint8_t				lst_live_plr;
-	size_t				cycles_total;
-	size_t				cycles_tmp;
-	size_t 				cycles_to_die;
+	int					cycles_total;
+	int					cycles_tmp;
+	int 				cycles_to_die;
 	size_t 				cnt_live;
 	size_t				num_checks;
 	int					dump_cycle; //-dump option
-    size_t				pl_nbr; //number of player's
+    int				pl_nbr; //number of player's
     uint8_t				verb_nbr; //verbosity option
 }						t_general;
 

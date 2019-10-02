@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../op.h"
+#include "../inc/op.h"
 #include "../inc/corewar_vm.h"
 
 t_operation op_tab[17] =
@@ -37,7 +37,7 @@ t_operation op_tab[17] =
 		"long load index", 1, 1},
 	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0}
+	{0, 0, {0}, 0, 0, 0, 0, 0}
 };
 
 void	(*op_func [16])(t_general*, t_carriage*) =
@@ -54,9 +54,8 @@ void	(*op_func [16])(t_general*, t_carriage*) =
 	op_ldi,
 	op_sti,
 	op_fork,
-//	op_lld,
-//	op_lldi,
-//	op_lfork,
-//	op_aff
-	0
+	op_lld,
+	op_lldi,
+	op_lfork,
+	op_aff
 		};
