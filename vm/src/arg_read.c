@@ -98,30 +98,31 @@ bool	valid_arg(t_mem *arg, uint8_t op_id)
 bool	arg_read(t_general *data, t_carriage *carriage, size_t arg_cod)
 {
 	int i;
-	size_t tmp_position;
+//	size_t carriage->position_tmp;
 
 	i = 3;
 	ft_memset(carriage->arg, 0, sizeof(carriage->arg));
-	tmp_position = carriage->position + 1;
+//	carriage->position_tmp = carriage->position + 1;
 	while (i > 0)
 	{
 		if ((arg_cod >> (2 * i) & DIR_CODE) == DIR_CODE)
 		{
-			read_dir(data, &carriage->arg[3 - i], tmp_position, DIR_SIZE - 2 * op_tab[carriage->op_id - 1].label);
-			tmp_position = (tmp_position + DIR_SIZE - 2 * op_tab[carriage->op_id - 1].label) % MEM_SIZE;
+			read_dir(data, &carriage->arg[3 - i], carriage->position_tmp, DIR_SIZE - 2 * op_tab[carriage->op_id - 1].label);
+			carriage->position_tmp = (carriage->position_tmp + DIR_SIZE - 2 * op_tab[carriage->op_id - 1].label) % MEM_SIZE;
 		}
 		else if ((arg_cod >> (2 * i) & REG_CODE) == REG_CODE)
 		{
-			read_reg(data, carriage, &carriage->arg[3 - i], tmp_position);
-			tmp_position = (tmp_position + 1) % MEM_SIZE;
+			read_reg(data, carriage, &carriage->arg[3 - i], carriage->position_tmp);
+			carriage->position_tmp = (carriage->position_tmp + 1) % MEM_SIZE;
 		}
 		else if ((arg_cod >> (2 * i) & IND_CODE) == IND_CODE)
 		{
-			read_ind(data, carriage, &carriage->arg[3 - i], tmp_position);
-			tmp_position = (tmp_position + IND_SIZE) % MEM_SIZE;
+			read_ind(data, carriage, &carriage->arg[3 - i], carriage->position_tmp);
+			carriage->position_tmp = (carriage->position_tmp + IND_SIZE) % MEM_SIZE;
 		}
 		--i;
 	}
-	carriage->position = tmp_position;
+//	carriage->position = carriage->position_tmp;
+	carriage->position_tmp = carriage->position_tmp;
 	return (valid_arg(carriage->arg, carriage->op_id));
 }

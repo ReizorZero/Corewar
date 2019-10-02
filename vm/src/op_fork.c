@@ -20,6 +20,7 @@ void op_fork(t_general *data, t_carriage *carriage)
 	/*
 	 * 0b10000000 - DIR in arg[0];
 	 */
+	carriage->position_tmp = carriage->position + 1;
 	arg_read(data, carriage, 0b10000000);
 	adds = get_val32bit(&carriage->arg[0]);
 	if (!ft_add_carriage(&data->head_c, 0))
@@ -29,4 +30,5 @@ void op_fork(t_general *data, t_carriage *carriage)
 	}
 	ft_memmove(data->head_c, carriage, sizeof(t_carriage));
 	data->head_c->position = (carriage->position + adds % IDX_MOD) % MEM_SIZE;
+	carriage->position = carriage->position_tmp;
 }

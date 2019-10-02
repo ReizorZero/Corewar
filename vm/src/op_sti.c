@@ -19,8 +19,8 @@ void op_sti(t_general *data, t_carriage *carriage)
 	int32_t val3;
 	t_mem	res;
 
-	carriage->position += 1;
-	if (arg_read(data, carriage, data->mem_f[carriage->position]))
+	carriage->position_tmp = carriage->position + 2;
+	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
 	{
 		if (carriage->arg[1].type == T_DIR)
 			val2 = get_val16bit(&carriage->arg[1]);
@@ -39,4 +39,5 @@ void op_sti(t_general *data, t_carriage *carriage)
 		memory_cpy(&res, &carriage->arg[0]);
 		carriage->carry = 0;
 	}
+	carriage->position = carriage->position_tmp;
 }

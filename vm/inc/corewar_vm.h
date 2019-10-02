@@ -38,6 +38,7 @@ typedef struct			s_carriage
 	int					op_cycles;
 	struct s_carriage	*next;
 	size_t				position;
+	size_t				position_tmp;
 	size_t				lst_live_cycle;
 	uint32_t			reg[REG_NUMBER];
 	t_mem				arg[3];

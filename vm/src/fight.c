@@ -143,10 +143,10 @@ void	ft_fight(t_general *data)
 	t_carriage	*crwl = NULL;
 
 //	data->cycles_to_die = CYCLE_TO_DIE;// in prepeare func the same
-	data->cycles_tmp = 1;
+	data->cycles_tmp = 0;
 	while (data->head_c)
 	{
-		if (data->cycles_tmp + data->cycles_total >= data->dump_cycle && data->dump_cycle > 0)
+		if (data->cycles_tmp + data->cycles_total >= data->dump_cycle && data->dump_cycle >= 0)
 		{
 			print_mem(data);
 			return ;

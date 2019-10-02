@@ -14,10 +14,11 @@
 
 void op_st(t_general *data, t_carriage *carriage)
 {
-	carriage->position += 1;
-	if (arg_read(data, carriage, data->mem_f[carriage->position]))
+	carriage->position_tmp = carriage->position + 2;
+	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
 	{
 		memory_cpy(&carriage->arg[1], &carriage->arg[0]);
 		carriage->carry = 0;
 	}
+	carriage->position = carriage->position_tmp;
 }

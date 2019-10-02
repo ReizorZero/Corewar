@@ -16,11 +16,14 @@ void op_zjmp(t_general *data, t_carriage *carriage)
 {
 	short	dist;
 
+	carriage->position_tmp = carriage->position + 1;
 	arg_read(data, carriage, 0b10000000);
 	if (carriage->carry)
 	{
 		dist = get_val16bit(&carriage->arg[0]) % IDX_MOD;
 		carriage->position = (carriage->position + dist) % MEM_SIZE;
 	}
+	else
+		carriage->position = carriage->position_tmp;
 	carriage->carry = 0;
 }
