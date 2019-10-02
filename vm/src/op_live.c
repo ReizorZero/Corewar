@@ -22,7 +22,7 @@ void op_live(t_general *data, t_carriage *carriage)
 	 */
 	carriage->position_tmp = carriage->position + 1;
 	arg_read(data, carriage, 0b10000000);
-	player = get_val32bit(&carriage->arg[0]);
+	player = get_val32bit(carriage->arg[0]);
 	if (!(carriage->reg[0] + player))
 		data->lst_live_plr = player;
 	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;

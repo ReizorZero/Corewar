@@ -19,7 +19,7 @@ void op_aff(t_general *data, t_carriage *carriage)
 	carriage->position_tmp = carriage->position + 2;
 	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
 	{
-		val = (char)get_val32bit(&carriage->arg[0]);
+		val = (char)get_val32bit(carriage->arg[0]);
 		ft_printf("%c", val);
 		carriage->carry = 0;
 	}

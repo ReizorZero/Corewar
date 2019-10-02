@@ -23,20 +23,20 @@ void op_sti(t_general *data, t_carriage *carriage)
 	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
 	{
 		if (carriage->arg[1].type == T_DIR)
-			val2 = get_val16bit(&carriage->arg[1]);
+			val2 = get_val16bit(carriage->arg[1]);
 		else
-			val2 = get_val32bit(&carriage->arg[1]);
+			val2 = get_val32bit(carriage->arg[1]);
 		if (carriage->arg[2].type == T_DIR)
-			val3 = get_val16bit(&carriage->arg[2]);
+			val3 = get_val16bit(carriage->arg[2]);
 		else
-			val3 = get_val32bit(&carriage->arg[2]);
+			val3 = get_val32bit(carriage->arg[2]);
 		adds = (carriage->position + (val2 + val3) % IDX_MOD) % MEM_SIZE;
 		res.type = 0;
 		res.mem = data->mem_f;
 		res.current = &data->mem_f[adds];
 		res.size = T_REG;
 		res.mem_end = &data->mem_f[MEM_SIZE];
-		memory_cpy(&res, &carriage->arg[0]);
+		memory_cpy(&res, carriage->arg[0]);
 		carriage->carry = 0;
 	}
 	carriage->position = carriage->position_tmp;

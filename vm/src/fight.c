@@ -12,7 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-uint32_t get_val32bit(t_mem *src)
+uint32_t get_val32bit(t_mem src)
 {
 	t_mem val;
 
@@ -31,7 +31,7 @@ uint32_t reverse_32bits(uint32_t pInt)
 		| ((pInt << 8) & 0xff0000));
 }
 
-short get_val16bit(t_mem *src)
+short get_val16bit(t_mem src)
 {
 	t_mem val;
 
@@ -49,21 +49,25 @@ short reverse_16bits(short pInt)
 	return ((pInt >> 8) | (pInt << 8));
 }
 
-t_mem	*memory_cpy(t_mem *dest, t_mem *src)
+t_mem	*memory_cpy(t_mem *dest, t_mem src)
 {
 	size_t i;
+//	void	*current;
+	t_mem dest_cpy;
 
 	i = 0;
-	while (i < src->size)
+	dest_cpy = *dest;
+//	current = dest->current;
+	while (i < src.size)
 	{
-		if (dest->current == dest->mem_end)
-			dest->current = dest->mem;
-		if (src->current == src->mem_end)
-			src->current = src->mem;
-		ft_memmove(dest->current, src->current, 1);
+		if (dest_cpy.current == dest->mem_end)
+			dest_cpy.current = dest->mem;
+		if (src.current == src.mem_end)
+			src.current = src.mem;
+		ft_memcpy(dest_cpy.current, src.current, 1);
 		++i;
-		++(dest->current);
-		++(src->current);
+		++(dest_cpy.current);
+		++(src.current);
 	}
 	return (dest);
 }
