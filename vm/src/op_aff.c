@@ -12,19 +12,15 @@
 
 #include "../inc/corewar_vm.h"
 
-void op_live(t_general *data, t_carriage *carriage)
+void op_aff(t_general *data, t_carriage *carriage)
 {
-	uint32_t player;
+	char val;
 
-	carriage->live = true;
-	/*
-	 * 0b10000000 - DIR in arg[0];
-	 */
-	arg_read(data, carriage, 0b10000000);
-	player = reverse_16bits(*(uint32_t *) carriage->arg[0].mem);
-	if (!(carriage->reg[0] + player))
-		data->lst_live_plr = player;
-	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;
-	carriage->carry = 0;
-	++(data->cnt_live);
+	carriage->position += 1;
+	if (arg_read(data, carriage, data->mem_f[carriage->position]))
+	{
+		val = (char)get_val32bit(get_val32bit(&carriage->arg[0]));
+		ft_printf("%c", val);
+		carriage->carry = 0;
+	}
 }
