@@ -52,7 +52,7 @@ void	(*op_func [16])(t_general*, t_carriage*) =
 	op_xor,
 	op_zjmp,
 	op_ldi,
-//	op_sti,
+	op_sti,
 //	op_fork,
 //	op_lld,
 //	op_lldi,
