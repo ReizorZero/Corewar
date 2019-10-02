@@ -17,7 +17,7 @@ void op_or(t_general *data, t_carriage *carriage)
 	uint32_t val1;
 	uint32_t val2;
 
-	carriage->position = +1;
+	carriage->position += 1;
 	if (arg_read(data, carriage, data->mem_f[carriage->position]))
 	{
 		val1 = get_val32bit(&carriage->arg[0]);

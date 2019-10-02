@@ -19,7 +19,7 @@ void op_ldi(t_general *data, t_carriage *carriage)
 	int32_t val2;
 	t_mem	res;
 
-	carriage->position = +1;
+	carriage->position += 1;
 	if (arg_read(data, carriage, data->mem_f[carriage->position]))
 	{
 		if (carriage->arg[0].type == T_DIR)
