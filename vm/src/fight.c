@@ -18,7 +18,7 @@ uint32_t get_val32bit(t_mem src)
 
 	ft_memset(&val, 0, sizeof(t_mem));
 	val.mem = &val;
-	val.size = sizeof(uint32_t);
+	val.size = src.size;
 	val.mem_end = &val.mem[val.size];
 	val.current = val.mem;
 	memory_cpy(&val, src);
@@ -37,7 +37,7 @@ short get_val16bit(t_mem src)
 
 	ft_memset(&val, 0, sizeof(t_mem));
 	val.mem = &val;
-	val.size = sizeof(short);
+	val.size = src.size;
 	val.mem_end = &val.mem[val.size];
 	val.current = val.mem;
 	memory_cpy(&val, src);
@@ -52,21 +52,21 @@ short reverse_16bits(short pInt)
 void memory_cpy(t_mem *dest, t_mem src)
 {
 	size_t i;
-	t_mem dest_cpy;
-//	void	*current;
+//	t_mem dest_cpy;
+	void	*current;
 
-//	current = dest->current;
+	current = dest->current;
 	i = 0;
-	dest_cpy = *dest;
+//	dest_cpy = *dest;
 	while (i < src.size)
 	{
-		if (dest_cpy.current == dest->mem_end)
-			dest_cpy.current = dest->mem;
+		if (current == dest->mem_end)
+			current = dest->mem;
 		if (src.current == src.mem_end)
 			src.current = src.mem;
-		ft_memmove(dest_cpy.current, src.current, 1);
+		ft_memmove(current, src.current, 1);
 		++i;
-		dest_cpy.current += 1;
+		current += 1;
 		src.current += 1;
 	}
 }

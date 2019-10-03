@@ -65,9 +65,13 @@ void			before_start(t_general *data)
 	pos = 0;
 	while (i <= data->pl_nbr)
 	{
+<<<<<<< HEAD
 		ft_add_carriage(&data->head_c, i);
 		data->head_c->position = pos;
 	 	pos += MEM_SIZE / data->pl_nbr;
+=======
+		ft_add_carriage(&data->head_c, i, ++data->num_carriage);
+>>>>>>> c3647e8ffa515735bf68c7e6761041297e9af906
 		i++;
 	}
 	data->lst_live_plr = data->pl_nbr;
