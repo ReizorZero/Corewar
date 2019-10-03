@@ -40,4 +40,10 @@ void op_sti(t_general *data, t_carriage *carriage)
 		carriage->carry = 0;
 	}
 	carriage->position = carriage->position_tmp;
+	if () //verb_nbr 4
+	{
+		//ft_printf("P %4d | sti r%d %d %d %d\n", carriage_nbr, reg_number, val2, val3);
+		ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)", val2, val3,
+			val2 + val3, (carriage->position + ((val2 + val3) % IDX_MOD)));
+	}
 }

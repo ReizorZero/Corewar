@@ -26,4 +26,9 @@ void op_sub(t_general *data, t_carriage *carriage)
 		carriage->carry = !(*(uint32_t*)carriage->arg[2].mem);
 	}
 	carriage->position = carriage->position_tmp;
+	if () //verb_nbr 4
+	{
+		//ft_printf("P %4d | sub r%d r%d r%d\n", carriage_nbr, reg_nbr1, reg_nbr2,
+		//	reg_nbr3);
+	}
 }

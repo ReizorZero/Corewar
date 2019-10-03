@@ -31,4 +31,9 @@ void op_lfork(t_general *data, t_carriage *carriage)
 	ft_memmove(data->head_c, carriage, sizeof(t_carriage));
 	data->head_c->position = (carriage->position + adds) % MEM_SIZE;
 	carriage->position = carriage->position_tmp;
+	if () //verb_nbr 4
+	{
+		ft_printf("P %4d | lfork %d (%d)\n", carriage_nbr, adds,
+			(carriage->position + adds));
+	}
 }

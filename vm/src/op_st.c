@@ -21,4 +21,8 @@ void op_st(t_general *data, t_carriage *carriage)
 		carriage->carry = 0;
 	}
 	carriage->position = carriage->position_tmp;
+	if () //verb_nbr 4
+	{
+		//ft_printf("P %4d | st r%d %d\n", carriage_nbr, register_nbr, value);
+	}
 }
