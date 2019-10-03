@@ -38,12 +38,13 @@ void op_lldi(t_general *data, t_carriage *carriage)
 		res.mem_end = &data->mem_f[MEM_SIZE];
 		memory_cpy(&carriage->arg[2], res);
 		carriage->carry = 0;
+		if (data->verb_nbr & 4) //verb_nbr 4
+		{
+			ft_printf("P %4d | lldi %d %d r%d\n", carriage->nbr, val1, val2, get_num_reg(*carriage, 2));
+			ft_printf("       | -> load from %d + %d = %d (with pc %d)", val1, val2,
+					  val1 + val2, carriage->position + (val1 + val2));
+		}
 	}
 	carriage->position = carriage->position_tmp;
-	if () //verb_nbr 4
-	{
-		//ft_printf("P %4d | lldi %d %d r%d\n", carriage_nbr, val1, val2, reg_number);
-		ft_printf("       | -> load from %d + %d = %d (with pc %d)", val1, val2,
-			val1 + val2, carriage->position + (val1 + val2));
-	}
+
 }

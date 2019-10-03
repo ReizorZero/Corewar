@@ -12,6 +12,11 @@
 
 #include "../inc/corewar_vm.h"
 
+int get_num_reg(t_carriage carriage, int n)
+{
+	return ((carriage.reg - (uint32_t *)carriage.arg[n].current) / 4 + 1);
+}
+
 uint32_t get_val32bit(t_mem src)
 {
 	t_mem val;

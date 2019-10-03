@@ -135,5 +135,6 @@ void					check_id(t_general *data);
 void					usage_msg(void);
 void					error_msg(char *msg);
 void					introducing(t_general *data);
+int						get_num_reg(t_carriage carriage, int n);
 
 #endif

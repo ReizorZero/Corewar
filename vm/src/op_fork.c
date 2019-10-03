@@ -23,7 +23,7 @@ void op_fork(t_general *data, t_carriage *carriage)
 	carriage->position_tmp = carriage->position + 1;
 	arg_read(data, carriage, 0b10000000);
 	adds = get_val32bit(carriage->arg[0]);
-	if (!ft_add_carriage(&data->head_c, 0, ++data->num_carriage))
+	if (ft_add_carriage(&data->head_c, 0, ++data->num_carriage))
 	{
 		ft_printf("Error: can't create new carriage! PC = %i\n",
 				data->cycles_total + data->cycles_tmp);
@@ -31,9 +31,9 @@ void op_fork(t_general *data, t_carriage *carriage)
 	ft_memmove(data->head_c, carriage, sizeof(t_carriage));
 	data->head_c->position = (carriage->position + adds % IDX_MOD) % MEM_SIZE;
 	carriage->position = carriage->position_tmp;
-	if () //verb_nbr 4
+	if (data->verb_nbr & 4) //verb_nbr 4
 	{
-		ft_printf("P %4d | fork %d (%d)\n", carriage_nbr, adds,
+		ft_printf("P %4d | fork %d (%d)\n", carriage->nbr, adds,
 			(carriage->position + adds % IDX_MOD));
 	}
 }

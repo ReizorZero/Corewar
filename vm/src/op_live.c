@@ -24,19 +24,23 @@ void op_live(t_general *data, t_carriage *carriage)
 	carriage->position_tmp = carriage->position + 1;
 	arg_read(data, carriage, 0b10000000);
 	player = get_val32bit(carriage->arg[0]);
-	if (!(carriage->reg[0] + player))
+//	if (!(carriage->reg[0] + player))
+	if ((pl = get_by_id(data, -player)))
+	{
 		data->lst_live_plr = player;
+	}
 	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;
 	carriage->carry = 0;
 	++(data->cnt_live);
 	carriage->position = carriage->position_tmp;
-	if () //verb_nbr 1
+
+	if (data->verb_nbr & 4) //verb_nbr 4
 	{
-		pl = get_by_id(data, (-carriage->reg[0]));
-	    ft_printf("Player %d (%s) is said to be alive", pl->id, pl->name);
+		ft_printf("P %4d | live %d\n", carriage->nbr, player);
 	}
-	if () //verb_nbr 4
+	if (data->verb_nbr & 1) //verb_nbr 1
 	{
-		ft_printf("P %4d | live %d %d\n", carriage_nbr, carriage->reg[0]);
+		if (pl)
+			ft_printf("Player %d (%s) is said to be alive\n", pl->id, pl->name);
 	}
 }

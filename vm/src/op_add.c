@@ -24,11 +24,12 @@ void op_add(t_general *data, t_carriage *carriage)
 		val2 = get_val32bit(carriage->arg[1]);
 		*(uint32_t*)carriage->arg[2].mem = val1 + val2;
 		carriage->carry = !(*(uint32_t*)carriage->arg[2].mem);
+		if (data->verb_nbr & 4) //verb_nbr 4
+		{
+			ft_printf("P %4d | add r%d r%d r%d\n", carriage->nbr, get_num_reg(*carriage, 0),
+					  get_num_reg(*carriage, 1), get_num_reg(*carriage, 2));
+		}
 	}
 	carriage->position = carriage->position_tmp;
-	if () //verb_nbr 4
-	{
-		//ft_printf("P %4d | add r%d r%d r%d\n", carriage_nbr, reg_nbr1, reg_nbr2,
-		//	reg_nbr3);
-	}
 }
+

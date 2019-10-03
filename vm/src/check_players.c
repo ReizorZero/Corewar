@@ -65,7 +65,8 @@ void			before_start(t_general *data)
 	pos = 0;
 	while (i <= data->pl_nbr)
 	{
-		ft_add_carriage(&data->head_c, i, ++data->num_carriage);
+		if (ft_add_carriage(&data->head_c, i, ++data->num_carriage))
+			ft_printf("Error: can't create new carriage!\n");
 		data->head_c->position = pos;
 	 	pos += MEM_SIZE / data->pl_nbr;
 		i++;
