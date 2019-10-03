@@ -135,13 +135,16 @@ void	set_new_cycle(t_general *data)
 }
 void	print_winner(t_general *data)
 {
-	t_player *crwl;
+//	t_player *crwl;
+//
+//	crwl = data->head_p;
+//	while (crwl && crwl->id != data->lst_live_plr)
+//		crwl = crwl->next;
+//	if (crwl->id == data->lst_live_plr)
+	t_player *pl;
 
-	crwl = data->head_p;
-	while (crwl && crwl->id != data->lst_live_plr)
-		crwl = crwl->next;
-	if (crwl->id == data->lst_live_plr)
-		ft_printf("Contestant %i, \"%s\", has won !\n", crwl->id, crwl->name);
+	if ((pl = get_by_id(data, data->lst_live_plr)))
+		ft_printf("Contestant %i, \"%s\", has won !\n", pl->id, pl->name);
 }
 
 void	ft_fight(t_general *data)
