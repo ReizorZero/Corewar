@@ -23,7 +23,7 @@ void op_fork(t_general *data, t_carriage *carriage)
 	carriage->position_tmp = carriage->position + 1;
 	arg_read(data, carriage, 0b10000000);
 	adds = get_val32bit(carriage->arg[0]);
-	if (!ft_add_carriage(&data->head_c, 0))
+	if (!ft_add_carriage(&data->head_c, 0, ++data->num_carriage))
 	{
 		ft_printf("Error: can't create new carriage! PC = %i\n",
 				data->cycles_total + data->cycles_tmp);

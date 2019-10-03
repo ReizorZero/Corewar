@@ -63,7 +63,7 @@ void			before_start(t_general *data)
 	i = 1;
 	while (i <= data->pl_nbr)
 	{
-		ft_add_carriage(&data->head_c, i);
+		ft_add_carriage(&data->head_c, i, ++data->num_carriage);
 		i++;
 	}
 	data->lst_live_plr = data->pl_nbr;

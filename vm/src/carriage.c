@@ -12,7 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-t_carriage *ft_new_carriage(int player)
+t_carriage *ft_new_carriage(int player, size_t nbr)
 {
 	t_carriage	*new;
 
@@ -21,6 +21,7 @@ t_carriage *ft_new_carriage(int player)
 //	new->player = player;
 	new->reg[0] = -player;
 	new->op_cycles = -1;
+	new->nbr = nbr;
 	return (new);
 }
 
@@ -42,7 +43,7 @@ void	ft_del_lst_carriage(t_carriage **lst_carriage)
 	}
 }
 
-int	ft_add_end_carriage(t_carriage **lst_carriage, int player)
+int ft_add_end_carriage(t_carriage **lst_carriage, int player, size_t nbr)
 {
 	t_carriage *crawler;
 
@@ -51,24 +52,24 @@ int	ft_add_end_carriage(t_carriage **lst_carriage, int player)
 	{
 		while (crawler->next)
 			crawler = crawler->next;
-		if (!(crawler->next = ft_new_carriage(player)))
+		if (!(crawler->next = ft_new_carriage(player, nbr)))
 			return (1);
 	}
 	else
 	{
-		if (!(*lst_carriage = ft_new_carriage(player)))
+		if (!(*lst_carriage = ft_new_carriage(player, nbr)))
 			return (1);
 	}
 	return (0);
 }
 
-int	ft_add_carriage(t_carriage **lst_carriage, int player)
+int ft_add_carriage(t_carriage **lst_carriage, int player, size_t nbr)
 {
 	t_carriage	*new;
 
 	if (lst_carriage)
 	{
-		if (!(new = ft_new_carriage(player)))
+		if (!(new = ft_new_carriage(player, nbr)))
 			return (1);
 		if (*lst_carriage)
 		{

@@ -36,12 +36,13 @@ typedef struct			s_carriage
 	uint8_t				op_id;
 //	uint8_t				player;
 	int					op_cycles;
-	struct s_carriage	*next;
+	size_t				nbr;
 	size_t				position;
 	size_t				position_tmp;
 	size_t				lst_live_cycle;
 	uint32_t			reg[REG_NUMBER];
 	t_mem				arg[3];
+	struct s_carriage	*next;
 }						t_carriage;
 
 typedef struct			s_player
@@ -75,15 +76,15 @@ typedef struct 			s_general
 //	t_player			head_p[MAX_PLAYERS];
 	t_carriage			*head_c;
 	uint8_t 			mem_f[MEM_SIZE + 1];
-//	t_operation			op_tab[17];
 	uint8_t				lst_live_plr;
 	int					cycles_total;
 	int					cycles_tmp;
 	int 				cycles_to_die;
 	size_t 				cnt_live;
 	size_t				num_checks;
+	size_t				num_carriage;
 	int					dump_cycle; //-dump option
-    int				pl_nbr; //number of player's
+    int					pl_nbr; //number of player's
     uint8_t				verb_nbr; //verbosity option
 }						t_general;
 
@@ -91,8 +92,8 @@ typedef struct 			s_general
 t_operation				op_tab[17];
 void					ft_fight(t_general *data);
 void					(*op_func[16])(t_general*, t_carriage*);
-int						ft_add_end_carriage(t_carriage **lst_carriage, int player);
-int						ft_add_carriage(t_carriage **lst_carriage, int player);
+int ft_add_end_carriage(t_carriage **lst_carriage, int player, size_t nbr);
+int ft_add_carriage(t_carriage **lst_carriage, int player, size_t nbr);
 void					ft_add_player(t_player **lst_player, t_player *new);
 void					ft_add_end_player(t_player **lst_player, t_player *new);
 void					ft_del_player(t_player **lst_player);
