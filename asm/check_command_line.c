@@ -44,41 +44,121 @@ int		check_command(t_asm *the_asm, char *s)
 	the_asm->exec_code_size = 0;//del this line later
 }
 
+void	write_all_tokens(t_asm *the_asm, t_line **line)
+{
+	char	*s;
+	int		i;
+	int		len;
+	int		start;
+	int		t_i;
+	
+	s = (*line)->str;
+	i = 0;
+	printf("[%s]\n", s);
+	t_i = 0;
+
+	while (t_i < MAX_TOKENS_N)
+	{
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		start = i;
+		len = 0;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t')
+		{
+			i++;
+			len++;
+		}
+		the_asm->line_tokens[t_i] = ft_strsub(s, start, len);
+		//printf("\tWORD %i: [%s]\n", t_i + 1, the_asm->line_tokens[t_i]);
+		t_i++;
+	}
+}
+
+int		separate_2_0(t_asm *the_asm, int t_i)
+{
+	the_asm->exec_code_size = 0;
+	printf("case [r1,r2,r3]\n");
+	return (t_i + 1);
+}
+
+int		separate_2_1(t_asm *the_asm, int t_i)
+{
+	the_asm->exec_code_size = 0;
+	printf("case [r1,r2,]\n");
+	return (t_i + 1);
+}
+
+int		separate_1_0(t_asm *the_asm, int t_i)
+{
+	the_asm->exec_code_size = 0;
+	printf("case [r1,r2]\n");
+	return (t_i + 1);
+}
+
+int		separate_1_1(t_asm *the_asm, int t_i)
+{
+	the_asm->line_tokens[t_i] = ft_strsub(the_asm->line_tokens[t_i], 0,
+	ft_strlen(the_asm->line_tokens[t_i]) - 1);
+	the_asm->line_tokens[t_i + 2] = ft_strdup(the_asm->line_tokens[t_i + 1]);
+	the_asm->line_tokens[t_i + 1] = ft_strdup(",");
+	//printf("case [r1,]\n");
+	return (t_i + 1);
+}
+
+int		separate_tokens(t_asm *the_asm, int t_i)//, t_line **line)
+{
+	int i;
+	int seps;
+	int seps_at_end;
+
+	i = 0;
+	seps = 0;
+	seps_at_end = 0;
+	while (the_asm->line_tokens[t_i][i] != '\0')
+	{
+		if (the_asm->line_tokens[t_i][i] == SEPARATOR_CHAR)
+			seps++;
+		i++;
+	}
+	//CHECK FUCKED UP CASES LIKE r1,, AND SO ONE
+	if (the_asm->line_tokens[t_i][i - 1] == SEPARATOR_CHAR)
+		seps_at_end = 1;
+	if (seps == 2 && !seps_at_end)
+		return (separate_2_0(the_asm, t_i));
+	else if (seps == 2 && seps_at_end)
+		return (separate_2_1(the_asm, t_i));
+	else if (seps == 1 && !seps_at_end)
+		return (separate_1_0(the_asm, t_i));
+	else if (seps == 1 && seps_at_end)
+		return (separate_1_1(the_asm, t_i));
+	return(t_i);
+}
+
 void	check_command_line(t_asm *the_asm, t_line **line)
 {
-	char	**words;
-	int		words_n;
-	int 	i;
-	//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
+	int t_i;
 
-	printf("[%s]\n", (*line)->str);
-	words = tabs_split((*line)->str);
-	words_n = 0;
-	i = 0;
-	while (words[words_n])
+	write_all_tokens(the_asm, line);
+	//separate_tokens(the_asm);//, line);
+	t_i = 0;
+	while (t_i < MAX_TOKENS_N)
 	{
-		printf("\t{%s}\n", words[words_n]);
-		words_n++;
-	}
-	printf("\tn = %i\n", words_n);
-	if (words_n > 0)//HANDLE THIS IN A BETTER WAY
-	{
-		if (ft_strchr(words[i], LABEL_CHAR) && words_n == 1)
-			check_label(the_asm, words[i]);
-		else
+		printf("\tWORD %i: [%s]\n", t_i + 1, the_asm->line_tokens[t_i]);
+		if (ft_strchr(the_asm->line_tokens[t_i], SEPARATOR_CHAR) &&
+		ft_strlen(the_asm->line_tokens[t_i]) > 1)
 		{
-			while (i < words_n)
-			{
-				if (ft_strchr(words[i], LABEL_CHAR) && check_label(the_asm, words[i]))
-				{
-					i++;
-					check_command(the_asm, words[i]);
-				}
-				else
-					check_command(the_asm, words[i]);
-				i++;
-			}
+			printf("\tgot separator here, must be fixed\n");
+			t_i = separate_tokens(the_asm, t_i);
 		}
+		else
+			t_i++;
 	}
-	the_asm->exec_code_size = 0;//del this line later
+	printf("AFTER WE FIXED:\n");
+	t_i = 0;
+	while (t_i < MAX_TOKENS_N)
+	{
+		printf("\tWORD %i: [%s]\n", t_i + 1, the_asm->line_tokens[t_i]);
+		t_i++;
+	}
+	//printf("AND NEXT STR\n");
 }
