@@ -23,5 +23,6 @@ void op_aff(t_general *data, t_carriage *carriage)
 		ft_printf("%c\n", val);
 		carriage->carry = 0;
 	}
+	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
 }

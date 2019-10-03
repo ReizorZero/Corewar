@@ -45,5 +45,6 @@ void op_sti(t_general *data, t_carriage *carriage)
 					  val2 + val3, adds);
 		}
 	}
+	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
 }

@@ -30,6 +30,7 @@ void op_lfork(t_general *data, t_carriage *carriage)
 	}
 	ft_memmove(data->head_c, carriage, sizeof(t_carriage));
 	data->head_c->position = (carriage->position + adds) % MEM_SIZE;
+	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
 	if (data->verb_nbr & 4) //verb_nbr 4
 	{

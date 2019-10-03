@@ -12,6 +12,8 @@
 
 #include "../inc/corewar_vm.h"
 
+
+
 void op_and(t_general *data, t_carriage *carriage)
 {
 	uint32_t val1;

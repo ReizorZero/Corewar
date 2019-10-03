@@ -45,6 +45,7 @@ void op_lldi(t_general *data, t_carriage *carriage)
 					  val1 + val2, carriage->position + (val1 + val2));
 		}
 	}
+	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
 
 }

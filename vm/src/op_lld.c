@@ -20,6 +20,7 @@ void op_lld(t_general *data, t_carriage *carriage)
 		memory_cpy(&carriage->arg[1], carriage->arg[0]);
 		carriage->carry = !(*(uint32_t*)carriage->arg[0].mem);
 	}
+	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
 	if (data->verb_nbr & 4) //verb_nbr 4
 	{

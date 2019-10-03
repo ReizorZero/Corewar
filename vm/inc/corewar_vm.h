@@ -136,5 +136,6 @@ void					usage_msg(void);
 void					error_msg(char *msg);
 void					introducing(t_general *data);
 int						get_num_reg(t_carriage carriage, int n);
+void					show_pc_movement(t_general data, t_carriage carriage);
 
 #endif

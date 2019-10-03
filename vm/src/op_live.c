@@ -32,8 +32,8 @@ void op_live(t_general *data, t_carriage *carriage)
 	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;
 	carriage->carry = 0;
 	++(data->cnt_live);
+	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
-
 	if (data->verb_nbr & 4) //verb_nbr 4
 	{
 		ft_printf("P %4d | live %d\n", carriage->nbr, player);

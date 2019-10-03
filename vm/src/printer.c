@@ -48,19 +48,36 @@ void	introducing(t_general *data)
 	}
 }
 
-//void show_pc_movement()
-//{
-//	//if verb_nbr 16
-//	//step = carriage-tmp_position - carriage->position;
-//	int i;
-//
-//	i = 0;
-//	ft_printf("ADV %d (%.4p -> %.4p) ",
-//		step, carriage->position, carriage->position + step);
-//	while(i < step)
-//	{
-//		ft_printf("%.2x ", data->mem_f[(carriage->position + i)
-//			% MEM_SIZE]);
-//		i++;
-//	}
-//}
+void show_pc_movement(t_general data, t_carriage carriage)
+{
+	size_t 	i;
+	size_t	step;
+
+	if(data.verb_nbr & 16)
+	{
+		i = 0;
+		step = 0;
+//		if (op_tab[carriage.op_id - 1].octal)
+//		{
+			while (i < op_tab[carriage.op_id - 1].n_arg)
+			{
+				if (carriage.arg[i].type == T_DIR)
+					step += DIR_SIZE - 2 * op_tab[carriage.op_id - 1].label;
+				else if (carriage.arg[i].type == T_REG)
+					step += 1;
+				else if (carriage.arg[i].type == T_IND)
+					step += IND_SIZE;
+				i++;
+			}
+//		}
+		i = 0;
+		ft_printf("ADV %d (%.4p -> %.4p) ",
+				  step, carriage.position, (carriage.position + step) % MEM_SIZE);
+		while(i <= step + 1)
+		{
+			ft_printf("%.2x ", data.mem_f[(carriage.position + i) % MEM_SIZE]);
+			i++;
+		}
+		ft_printf("\n");
+	}
+}
