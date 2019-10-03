@@ -6,7 +6,7 @@
 /*   By: mshvets <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 20:38:13 by mshvets           #+#    #+#             */
-/*   Updated: 2019/09/24 20:38:14 by mshvets          ###   ########.fr       */
+/*   Updated: 2019/10/03 12:38:06 by vkuhuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ void	ft_check_live_carriage(t_general *data)
 			free(crwl);
 			crwl = prv_crwl->next;
 		}
-		if () //verb_nbr 8
+		//if () //verb_nbr 8
 	 //ft_printf("Process %d hasn't lived for %d cycles (CTD %d)", carriage_nbr,
-	//	data->cycles_total - data->lst_live_cycles, data->cycles_to_die?);
+	//	((data->cycles_total + data->cycles_tmp) - data->lst_live_cycles), data->cycles_to_die);
 	}
 }
 
@@ -148,8 +148,8 @@ void	ft_fight(t_general *data)
 {
 	t_carriage	*crwl = NULL;
 
-	if () //verb_nbr 2
-	//ft_printf("It is now cycle %d\n", data->cycles_total or cycles_tmp);
+	//if () //verb_nbr 2
+	//ft_printf("It is now cycle %d\n", data->cycles_total + cycles_tmp);
 //	data->cycles_to_die = CYCLE_TO_DIE;// in prepeare func the same
 	data->cycles_tmp = 0;
 	while (data->head_c)

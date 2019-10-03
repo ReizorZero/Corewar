@@ -51,10 +51,11 @@ void	introducing(t_general *data)
 void show_pc_movement()
 {
 	//if verb_nbr 16
+	//step = carriage-tmp_position - carriage->position;
 	int i;
 
 	i = 0;
-	ft_printf("ADV %d (%.4p -> %.4p) ",
+	ft_printf("ADV %d (%.4p -> %.4p) ", 
 		step, carriage->position, carriage->position + step);
 	while(i < step)
 	{
