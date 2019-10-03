@@ -4,7 +4,7 @@ t_asm	*new_asm(void)
 {
 	t_asm *the_asm;
 
-	the_asm = (t_asm*)malloc(sizeof(the_asm));
+	the_asm = (t_asm*)malloc(sizeof(t_asm));
 	if (!the_asm)
 	{
 		printf("Error. Failed to allocate memory: struct t_asm.\n");
@@ -18,6 +18,7 @@ t_asm	*new_asm(void)
 	// the_asm->exec_code = NULL;
 	// the_asm->dot_s_name = NULL;
 	// the_asm->dot_s_file_name = NULL;
+	the_asm->line_tokens = (char**)malloc(sizeof(char*) * MAX_TOKENS_N);
 	return (the_asm);
 }
 

@@ -42,6 +42,8 @@
 # define LFORK_ID	15
 # define AFF_ID		16
 
+# define MAX_TOKENS_N 7
+
 typedef struct	s_commands_info
 {
 	int		id;
@@ -63,8 +65,9 @@ typedef struct	s_exec_code_line
 	int							arg_3_code;
 	int							arg_3_value;
 	int							has_label;
-	char						*label_name;
-	int							label_size;
+	char						**label_name;
+	int							label_n;
+	int							*label_size;
 	struct s_exec_code_line		*next;
 }				t_exec_code_line;
 
@@ -86,7 +89,7 @@ typedef struct	s_asm
 	t_exec_code_line	*e_c_l_top;
 	t_line				*lines;
 	t_line				*lines_top;
-
+	char				**line_tokens;
 }				t_asm;
 
 void			check_input(int argc, char **argv, t_asm *the_asm);
