@@ -48,6 +48,7 @@ void			before_start(t_general *data)
 {
 	t_player	*tmp;
 	uint8_t		i;
+	int pos;
 	int			count;
 
 	i = 1;
@@ -61,9 +62,12 @@ void			before_start(t_general *data)
 	}
     //print_arena(data);
 	i = 1;
+	pos = 0;
 	while (i <= data->pl_nbr)
 	{
 		ft_add_carriage(&data->head_c, i, ++data->num_carriage);
+		data->head_c->position = pos;
+	 	pos += MEM_SIZE / data->pl_nbr;
 		i++;
 	}
 	data->lst_live_plr = data->pl_nbr;
