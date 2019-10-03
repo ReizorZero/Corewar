@@ -40,4 +40,10 @@ void op_ldi(t_general *data, t_carriage *carriage)
 		carriage->carry = 0;
 	}
 	carriage->position = carriage->position_tmp;
+	if () //verb_nbr 4
+	{
+		//ft_printf("P %4d | ldi %d %d r%d\n", carriage_nbr, val1, val2, reg_number);
+		ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)", val1, val2,
+			val1 + val2, (carriage->position + ((val1 + val2) % IDX_MOD)));
+	}
 }

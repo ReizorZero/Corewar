@@ -21,4 +21,8 @@ void op_ld(t_general *data, t_carriage *carriage)
 		carriage->carry = !(*(uint32_t*)carriage->arg[0].mem);
 	}
 	carriage->position = carriage->position_tmp;
+	if () //verb_nbr 4
+	{
+		//ft_printf("P %4d | ld %d r%d\n", carriage_nbr, value, reg_number);
+	}
 }

@@ -98,6 +98,9 @@ void	ft_check_live_carriage(t_general *data)
 			free(crwl);
 			crwl = prv_crwl->next;
 		}
+		if () //verb_nbr 8
+	 //ft_printf("Process %d hasn't lived for %d cycles (CTD %d)", carriage_nbr,
+	//	data->cycles_total - data->lst_live_cycles, data->cycles_to_die?);
 	}
 }
 
@@ -145,6 +148,8 @@ void	ft_fight(t_general *data)
 {
 	t_carriage	*crwl = NULL;
 
+	if () //verb_nbr 2
+	//ft_printf("It is now cycle %d\n", data->cycles_total or cycles_tmp);
 //	data->cycles_to_die = CYCLE_TO_DIE;// in prepeare func the same
 	data->cycles_tmp = 0;
 	while (data->head_c)

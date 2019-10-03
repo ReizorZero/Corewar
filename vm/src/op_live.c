@@ -14,6 +14,7 @@
 
 void op_live(t_general *data, t_carriage *carriage)
 {
+	t_player *pl = NULL;
 	uint32_t player;
 
 	carriage->live = true;
@@ -29,4 +30,13 @@ void op_live(t_general *data, t_carriage *carriage)
 	carriage->carry = 0;
 	++(data->cnt_live);
 	carriage->position = carriage->position_tmp;
+	if () //verb_nbr 1
+	{
+		pl = get_by_id(data, (-carriage->reg[0]));
+	    ft_printf("Player %d (%s) is said to be alive", pl->id, pl->name);
+	}
+	if () //verb_nbr 4
+	{
+		ft_printf("P %4d | live %d %d\n", carriage_nbr, carriage->reg[0]);
+	}
 }

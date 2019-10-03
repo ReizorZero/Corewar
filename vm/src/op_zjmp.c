@@ -25,5 +25,10 @@ void op_zjmp(t_general *data, t_carriage *carriage)
 	}
 	else
 		carriage->position = carriage->position_tmp;
+	if () //verb_nbr 4
+	{
+			//ft_printf("P %4d | zjmp %d %d %s\n", carriage_nbr, dist,
+			//	(carriage->carry ? "OK" : "FAILED"));
+	}
 	carriage->carry = 0;
 }
