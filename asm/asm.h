@@ -21,7 +21,11 @@
 # define NO_CLSNG_QT_COMMENT "No closing quote for comment.\n"
 
 # define LABEL_WRONG_CHAR "Label contains wrong char.\n"
-# define LABEL_CHAR_POSITON "Label char should be after label name.\n"
+//# define LABEL_CHAR_POSITON "Label char should be after label name.\n"
+
+# define TOO_MANY_SEPARATORS "Found 2 or more separators char in a row.\n"
+
+# define WRONG_SMBLS_AT_END "Wrong symbols at the end of the line.\n"
 
 # define WRONG_COMMAND "Wrong command.\n"
 
@@ -42,7 +46,7 @@
 # define LFORK_ID	15
 # define AFF_ID		16
 
-# define MAX_TOKENS_N 7
+# define MAX_WORDS_N 5
 
 typedef struct	s_commands_info
 {
@@ -71,6 +75,14 @@ typedef struct	s_exec_code_line
 	struct s_exec_code_line		*next;
 }				t_exec_code_line;
 
+typedef struct	s_labels
+{
+	char			*name;
+	int				byte_at;
+	struct s_labels	*next;
+}				t_labels;
+
+
 typedef struct	s_line
 {
 	struct s_line	*next;
@@ -79,6 +91,7 @@ typedef struct	s_line
 
 typedef struct	s_asm
 {
+	int					fd;
 	char				*champion_name;
 	int					exec_code_size;
 	char				*champion_comment;
@@ -89,7 +102,7 @@ typedef struct	s_asm
 	t_exec_code_line	*e_c_l_top;
 	t_line				*lines;
 	t_line				*lines_top;
-	char				**line_tokens;
+	char				**line_words;
 }				t_asm;
 
 void			check_input(int argc, char **argv, t_asm *the_asm);

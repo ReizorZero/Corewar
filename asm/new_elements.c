@@ -18,7 +18,7 @@ t_asm	*new_asm(void)
 	// the_asm->exec_code = NULL;
 	// the_asm->dot_s_name = NULL;
 	// the_asm->dot_s_file_name = NULL;
-	the_asm->line_tokens = (char**)malloc(sizeof(char*) * MAX_TOKENS_N);
+	the_asm->line_words = (char**)malloc(sizeof(char*) * MAX_WORDS_N);
 	return (the_asm);
 }
 
