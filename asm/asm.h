@@ -79,6 +79,7 @@ typedef struct	s_line
 
 typedef struct	s_asm
 {
+	int					fd;
 	char				*champion_name;
 	int					exec_code_size;
 	char				*champion_comment;
