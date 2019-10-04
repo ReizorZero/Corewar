@@ -21,7 +21,7 @@ void op_aff(t_general *data, t_carriage *carriage)
 	{
 		val = (char)get_val32bit(carriage->arg[0]);
 		ft_printf("%c\n", val);
-		carriage->carry = 0;
+//		carriage->carry = 0;
 	}
 	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;

@@ -12,9 +12,9 @@
 
 #include "../inc/corewar_vm.h"
 
-int get_num_reg(t_carriage carriage, int n)
+int get_num_reg(t_carriage *carriage, int n)
 {
-	return ((carriage.reg - (uint32_t *)carriage.arg[n].current) / 4 + 1);
+	return ((carriage->reg - (uint32_t *)carriage->arg[n].current) / 4 + 1);
 }
 
 uint32_t get_val32bit(t_mem src)
@@ -95,17 +95,25 @@ void	ft_check_live_carriage(t_general *data)
 		{
 			data->head_c = crwl->next;
 			free(crwl);
+			if (data->verb_nbr & 8) //verb_nbr 8
+			{
+				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", crwl->nbr,
+						  ((data->cycles_total + data->cycles_tmp) - crwl->lst_live_cycle), data->cycles_to_die);
+			}
+
 			crwl = data->head_c;
 		}
 		else if (!crwl->live && prv_crwl)
 		{
 			prv_crwl->next = crwl->next;
 			free(crwl);
+			if (data->verb_nbr & 8) //verb_nbr 8
+			{
+				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", crwl->nbr,
+						  ((data->cycles_total + data->cycles_tmp) - crwl->lst_live_cycle), data->cycles_to_die);
+			}
 			crwl = prv_crwl->next;
 		}
-		//if () //verb_nbr 8
-	 //ft_printf("Process %d hasn't lived for %d cycles (CTD %d)", carriage_nbr,
-	//	((data->cycles_total + data->cycles_tmp) - data->lst_live_cycles), data->cycles_to_die);
 	}
 }
 
@@ -123,7 +131,7 @@ void start_new_op(t_general *data, t_carriage *crg)
 		 * переменной, хранящей количество циклов до выполнения, оставить
 		 * равным нулю.
 		 */
-		crg->position += 1;
+		crg->position = (crg->position + 1) % MEM_SIZE;
 	}
 }
 
@@ -132,11 +140,13 @@ void	set_new_cycle(t_general *data)
 	if (data->cnt_live >= NBR_LIVE || ++data->num_checks >= MAX_CHECKS)
 	{
 		data->cycles_to_die -= CYCLE_DELTA;
+		if (data->verb_nbr & 2)
+			ft_printf("Cycle to die is now %d\n", data->cycles_to_die);
 		data->num_checks = 0;
 	}
 	data->cycles_total += data->cycles_tmp;
 	data->cnt_live = 0;
-	data->cycles_tmp = 1;
+	data->cycles_tmp = 0;
 }
 void	print_winner(t_general *data)
 {
@@ -156,19 +166,25 @@ void	ft_fight(t_general *data)
 {
 	t_carriage	*crwl = NULL;
 
-	//if () //verb_nbr 2
-	//ft_printf("It is now cycle %d\n", data->cycles_total + cycles_tmp);
-//	data->cycles_to_die = CYCLE_TO_DIE;// in prepeare func the same
-	data->cycles_tmp = 0;
+	data->cycles_tmp = 1;
+
 	while (data->head_c)
 	{
+//		if ((data->cycles_total + data->cycles_tmp) > 2710)
+//		{
+//
+//			ft_printf("\n");
+//		}
+		if (data->verb_nbr & 2) //verb_nbr 2
+			ft_printf("It is now cycle %d\n", data->cycles_total + data->cycles_tmp);
 		if (data->cycles_tmp + data->cycles_total >= data->dump_cycle && data->dump_cycle >= 0)
 		{
 			print_mem(data);
 			return ;
 		}
 		crwl = data->head_c;
-		while (crwl && data->cnt_live < NBR_LIVE)
+//		while (crwl && data->cnt_live < NBR_LIVE)
+		while (crwl)
 		{
 			if (crwl->op_cycles < 0)
 				start_new_op(data, crwl);
@@ -182,12 +198,13 @@ void	ft_fight(t_general *data)
 			}
 			crwl = crwl->next;
 		}
-		if (data->cycles_tmp++ >= data->cycles_to_die)
+		if (data->cycles_tmp >= data->cycles_to_die)
 		{
 			ft_check_live_carriage(data);
 //			system("leaks VM");
 			set_new_cycle(data);
 		}
+		++data->cycles_tmp;
 	}
 	print_winner(data);
 }

@@ -16,7 +16,7 @@ void op_fork(t_general *data, t_carriage *carriage)
 {
 	short	adds;
 
-	carriage->carry = 0;
+//	carriage->carry = 0;
 	/*
 	 * 0b10000000 - DIR in arg[0];
 	 */
@@ -30,11 +30,11 @@ void op_fork(t_general *data, t_carriage *carriage)
 	}
 	ft_memmove(data->head_c, carriage, sizeof(t_carriage));
 	data->head_c->position = (carriage->position + adds % IDX_MOD) % MEM_SIZE;
-	show_pc_movement(*data, *carriage);
-	carriage->position = carriage->position_tmp;
 	if (data->verb_nbr & 4) //verb_nbr 4
 	{
 		ft_printf("P %4d | fork %d (%d)\n", carriage->nbr, adds,
 			(carriage->position + adds % IDX_MOD));
 	}
+	show_pc_movement(*data, *carriage);
+	carriage->position = carriage->position_tmp;
 }
