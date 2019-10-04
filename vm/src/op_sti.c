@@ -37,10 +37,10 @@ void op_sti(t_general *data, t_carriage *carriage)
 		res.size = T_REG;
 		res.mem_end = &data->mem_f[MEM_SIZE];
 		memory_cpy(&res, carriage->arg[0]);
-		carriage->carry = 0;
+//		carriage->carry = 0;
 		if (data->verb_nbr & 4) //verb_nbr 4
 		{
-			ft_printf("P %4d | sti r%d %d %d %d\n", carriage->nbr, get_num_reg(*carriage, 0), val2, val3);
+			ft_printf("P %4d | sti r%d %d %d\n", carriage->nbr, get_num_reg(carriage, 0), val2, val3);
 			ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", val2, val3,
 					  val2 + val3, adds);
 		}

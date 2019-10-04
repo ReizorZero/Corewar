@@ -26,8 +26,8 @@ void op_sub(t_general *data, t_carriage *carriage)
 		carriage->carry = !(*(uint32_t*)carriage->arg[2].mem);
 		if (data->verb_nbr & 4) //verb_nbr 4
 		{
-			ft_printf("P %4d | sub r%d r%d r%d\n", carriage->nbr, get_num_reg(*carriage, 0),
-					  get_num_reg(*carriage, 1), get_num_reg(*carriage, 2));
+			ft_printf("P %4d | sub r%d r%d r%d\n", carriage->nbr, get_num_reg(carriage, 0),
+					  get_num_reg(carriage, 1), get_num_reg(carriage, 2));
 		}
 	}
 	show_pc_movement(*data, *carriage);

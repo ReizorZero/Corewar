@@ -56,24 +56,23 @@ void show_pc_movement(t_general data, t_carriage carriage)
 	if(data.verb_nbr & 16)
 	{
 		i = 0;
-		step = 0;
-//		if (op_tab[carriage.op_id - 1].octal)
-//		{
-			while (i < op_tab[carriage.op_id - 1].n_arg)
-			{
-				if (carriage.arg[i].type == T_DIR)
-					step += DIR_SIZE - 2 * op_tab[carriage.op_id - 1].label;
-				else if (carriage.arg[i].type == T_REG)
-					step += 1;
-				else if (carriage.arg[i].type == T_IND)
-					step += IND_SIZE;
-				i++;
-			}
-//		}
+		step = 1;
+		if (op_tab[carriage.op_id - 1].octal)
+			step += 1;
+		while (i < op_tab[carriage.op_id - 1].n_arg)
+		{
+			if (carriage.arg[i].type == T_DIR)
+				step += DIR_SIZE - 2 * op_tab[carriage.op_id - 1].label;
+			else if (carriage.arg[i].type == T_REG)
+				step += 1;
+			else if (carriage.arg[i].type == T_IND)
+				step += IND_SIZE;
+			i++;
+		}
 		i = 0;
 		ft_printf("ADV %d (%.4p -> %.4p) ",
 				  step, carriage.position, (carriage.position + step) % MEM_SIZE);
-		while(i <= step + 1)
+		while(i < step)
 		{
 			ft_printf("%.2x ", data.mem_f[(carriage.position + i) % MEM_SIZE]);
 			i++;

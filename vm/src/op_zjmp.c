@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/corewar_vm.h"
+//#include <stdio.h>
 
 void op_zjmp(t_general *data, t_carriage *carriage)
 {
@@ -18,17 +19,20 @@ void op_zjmp(t_general *data, t_carriage *carriage)
 
 	carriage->position_tmp = carriage->position + 1;
 	arg_read(data, carriage, 0b10000000);
+	dist = get_val16bit(carriage->arg[0]) % IDX_MOD;
+	if (data->verb_nbr & 4) //verb_nbr 4
+	{
+			ft_printf("P %4d | zjmp %d %s\n", carriage->nbr, dist,
+				(carriage->carry ? "OK" : "FAILED"));
+	}
 	if (carriage->carry)
 	{
-		dist = get_val16bit(carriage->arg[0]) % IDX_MOD;
 		carriage->position = (carriage->position + dist) % MEM_SIZE;
 	}
 	else
-		carriage->position = carriage->position_tmp;
-	if (data->verb_nbr & 4) //verb_nbr 4
 	{
-			ft_printf("P %4d | zjmp %d %d %s\n", carriage->nbr, dist,
-				(carriage->carry ? "OK" : "FAILED"));
+		show_pc_movement(*data, *carriage);
+		carriage->position = carriage->position_tmp;
 	}
-	carriage->carry = 0;
+//	carriage->carry = 0;
 }

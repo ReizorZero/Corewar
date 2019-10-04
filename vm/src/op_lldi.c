@@ -40,12 +40,11 @@ void op_lldi(t_general *data, t_carriage *carriage)
 		carriage->carry = 0;
 		if (data->verb_nbr & 4) //verb_nbr 4
 		{
-			ft_printf("P %4d | lldi %d %d r%d\n", carriage->nbr, val1, val2, get_num_reg(*carriage, 2));
+			ft_printf("P %4d | lldi %d %d r%d\n", carriage->nbr, val1, val2, get_num_reg(carriage, 2));
 			ft_printf("       | -> load from %d + %d = %d (with pc %d)", val1, val2,
 					  val1 + val2, carriage->position + (val1 + val2));
 		}
 	}
 	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
-
 }

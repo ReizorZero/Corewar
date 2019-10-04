@@ -12,8 +12,6 @@
 
 #include "../inc/corewar_vm.h"
 
-
-
 void op_and(t_general *data, t_carriage *carriage)
 {
 	uint32_t val1;
@@ -29,8 +27,9 @@ void op_and(t_general *data, t_carriage *carriage)
 		if (data->verb_nbr & 4) //verb_nbr 4
 		{
 			ft_printf("P %4d | and %d %d r%d\n", carriage->nbr, val1, val2,
-					  get_num_reg(*carriage, 2));
+					  get_num_reg(carriage, 2));
 		}
 	}
+	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
 }
