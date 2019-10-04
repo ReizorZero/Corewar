@@ -36,7 +36,7 @@ uint32_t reverse_32bits(uint32_t pInt)
 		| ((pInt << 8) & 0xff0000));
 }
 
-short get_val16bit(t_mem src)
+uint16_t get_val16bit(t_mem src)
 {
 	t_mem val;
 
@@ -49,9 +49,9 @@ short get_val16bit(t_mem src)
 	return (reverse_16bits(*(short *)val.mem));
 }
 
-short reverse_16bits(short pInt)
+uint16_t reverse_16bits(uint16_t pInt)
 {
-	return ((pInt >> 8) | (pInt << 8));
+	return (pInt >> 8 | pInt << 8);
 }
 
 void memory_cpy(t_mem *dest, t_mem src)
@@ -85,13 +85,15 @@ void	ft_check_live_carriage(t_general *data)
 	prv_crwl = NULL;
 	while (crwl)
 	{
-		if (crwl->live)
+//		if (crwl->live)
+		if (crwl->live && (long int)crwl->lst_live_cycle <= data->cycles_to_die + data->cycles_total)
 		{
 			crwl->live = 0;
 			prv_crwl = crwl;
 			crwl = crwl->next;
 		}
-		else if (!crwl->live && !prv_crwl)
+//		else if (!crwl->live && !prv_crwl)
+		else if ((long int)crwl->lst_live_cycle > data->cycles_to_die + data->cycles_total)
 		{
 			data->head_c = crwl->next;
 			free(crwl);
@@ -100,10 +102,10 @@ void	ft_check_live_carriage(t_general *data)
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", crwl->nbr,
 						  ((data->cycles_total + data->cycles_tmp) - crwl->lst_live_cycle), data->cycles_to_die);
 			}
-
 			crwl = data->head_c;
 		}
-		else if (!crwl->live && prv_crwl)
+//		else if (!crwl->live && prv_crwl)
+		else if ((long int)crwl->lst_live_cycle > data->cycles_to_die + data->cycles_total)
 		{
 			prv_crwl->next = crwl->next;
 			free(crwl);
@@ -170,7 +172,7 @@ void	ft_fight(t_general *data)
 
 	while (data->head_c)
 	{
-//		if ((data->cycles_total + data->cycles_tmp) > 2710)
+//		if ((data->cycles_total + data->cycles_tmp) > 18489)
 //		{
 //
 //			ft_printf("\n");
