@@ -75,6 +75,14 @@ typedef struct	s_exec_code_line
 	struct s_exec_code_line		*next;
 }				t_exec_code_line;
 
+typedef struct	s_labels
+{
+	char			*name;
+	int				byte_at;
+	struct s_labels	*next;
+}				t_labels;
+
+
 typedef struct	s_line
 {
 	struct s_line	*next;
