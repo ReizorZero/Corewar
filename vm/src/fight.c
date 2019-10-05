@@ -46,7 +46,7 @@ uint16_t get_val16bit(t_mem src)
 	val.mem_end = &val.mem[val.size];
 	val.current = val.mem;
 	memory_cpy(&val, src);
-	return (reverse_16bits(*(short *)val.mem));
+	return (reverse_16bits(*(uint16_t *)val.mem));
 }
 
 uint16_t reverse_16bits(uint16_t pInt)

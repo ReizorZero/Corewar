@@ -48,15 +48,15 @@ void	read_ind(t_general *data, t_carriage *carriage, t_mem *arg, size_t position
 	/*
 	 * pointer to the cell to which the address points
 	 */
+	t_mem	pointer;
 	size_t adds;
 
+	read_dir(data, &pointer, position, sizeof(int16_t));
+	arg->IND_pntr = get_val16bit(pointer);
 	if (carriage->op_id == 13)
-		adds = (carriage->position + (short)data->mem_f[position]) % MEM_SIZE;
+		adds = (carriage->position + arg->IND_pntr) % MEM_SIZE;
 	else
-	{
-		adds = (carriage->position + ((short)data->mem_f[position] % IDX_MOD))
-			   % MEM_SIZE;
-	}
+		adds = (carriage->position + (arg->IND_pntr % IDX_MOD)) % MEM_SIZE;
 	arg->mem = data->mem_f;
 	arg->size = REG_SIZE;
 	arg->current = &data->mem_f[adds];

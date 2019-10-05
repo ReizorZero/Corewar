@@ -26,6 +26,7 @@ typedef struct 			s_mem
 	void				*mem;
 	void 				*current;
 	size_t 				size;
+	int16_t				IND_pntr;
 	void				*mem_end;
 }						t_mem;
 
