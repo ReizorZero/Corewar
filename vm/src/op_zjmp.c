@@ -15,11 +15,11 @@
 
 void op_zjmp(t_general *data, t_carriage *carriage)
 {
-	short	dist;
+	int16_t	dist;
 
 	carriage->position_tmp = carriage->position + 1;
 	arg_read(data, carriage, 0b10000000);
-	dist = get_val16bit(carriage->arg[0]) % IDX_MOD;
+	dist = (int16_t)get_val16bit(carriage->arg[0]) % IDX_MOD;
 	if (data->verb_nbr & 4) //verb_nbr 4
 	{
 			ft_printf("P %4d | zjmp %d %s\n", carriage->nbr, dist,

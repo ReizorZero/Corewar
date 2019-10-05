@@ -14,7 +14,7 @@
 
 void op_fork(t_general *data, t_carriage *carriage)
 {
-	uint16_t	adds;
+	int16_t	adds;
 	t_carriage	*new;
 
 //	carriage->carry = 0;
@@ -23,7 +23,7 @@ void op_fork(t_general *data, t_carriage *carriage)
 	 */
 	carriage->position_tmp = carriage->position + 1;
 	arg_read(data, carriage, 0b10000000);
-	adds = get_val16bit(carriage->arg[0]);
+	adds = (int16_t)get_val16bit(carriage->arg[0]);
 //	if (ft_add_carriage(&data->head_c, 0, 0))
 //	{
 //		ft_printf("Error: can't create new carriage! PC = %i\n",
@@ -40,14 +40,14 @@ void op_fork(t_general *data, t_carriage *carriage)
 	}
 	ft_memmove(new, carriage, sizeof(t_carriage));
 	new->position = (carriage->position + adds % IDX_MOD) % MEM_SIZE;
-	data->head_c->nbr = ++data->num_carriage;
+	new->nbr = ++data->num_carriage;
 	new->op_cycles = -1;
 	new->next = data->head_c;
 	data->head_c = new;
 	if (data->verb_nbr & 4) //verb_nbr 4
 	{
 		ft_printf("P %4d | fork %d (%d)\n", carriage->nbr, adds,
-			(carriage->position + adds % IDX_MOD) % MEM_SIZE);
+				  new->position);
 	}
 	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
