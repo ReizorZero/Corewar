@@ -6,28 +6,33 @@
 # include <stdio.h> //DELETE THEN
 # include <fcntl.h>
 
-# define ERROR(X) {printf(X);exit(0);}
+# define ERROR(X, Y) {printf(X, Y);exit(0);}
+# define ERROR_(X) {printf(X);exit(0);}
 
-# define KAVICHKI_NUMBER "Wrong number of \" symbols.\n"
+# define KAVICHKI_NUMBER "Wrong number of \" symbols. (Line %i)\n"
 
-# define NO_CHAMP_NAME "No champion name after .name\n"
-# define SYMBOLS_CHAMP_NAME "Should't be any symbols after champion name.\n"
-# define SYMBOLS_CMND_NAME "Wrong symbols before/after .name\n"
-# define NO_CLSNG_QT_CHAMP_NAME "No closing quote for champion name.\n"
+# define NO_CHAMP_NAME "No champion name after .name (Line %i)\n"
+# define SMBLS_CHAMP_NAME "Wrong symbols after champion name. (Line %i)\n"
+# define SYMBOLS_CMND_NAME "Wrong symbols before/after .name (Line %i)\n"
+# define CLSNG_QT_CHAMP_NAME "No closing quote for champion name. (Line %i)\n"
 
-# define NO_COMMENT "No comment after .comment\n"
-# define SYMBOLS_COMMENT "Should't be any symbols after comment.\n"
-# define SYMBOLS_CMND_COMMENT "Wrong symbols before/after .comment\n"
-# define NO_CLSNG_QT_COMMENT "No closing quote for comment.\n"
+# define NO_COMMENT "No comment after .comment (Line %i)\n"
+# define SYMBOLS_COMMENT "Should't be any symbols after comment. (Line %i)\n"
+# define SYMBOLS_CMND_COMMENT "Wrong symbols before/after .comment (Line %i)\n"
+# define NO_CLSNG_QT_COMMENT "No closing quote for comment. (Line %i)\n"
 
-# define LABEL_WRONG_CHAR "Label contains wrong char.\n"
+# define LABEL_WRONG_CHAR "Label contains wrong char. (Line %i)\n"
 //# define LABEL_CHAR_POSITON "Label char should be after label name.\n"
 
-# define TOO_MANY_SEPARATORS "Found 2 or more separators char in a row.\n"
+# define MANY_SEPARATORS "Found 2 or more separator char in a row. (Line %i)\n"
 
-# define WRONG_SMBLS_AT_END "Wrong symbols at the end of the line.\n"
+# define WRONG_SMBLS_AT_END "Wrong symbols at the end of the line. (Line %i)\n"
 
-# define WRONG_COMMAND "Wrong command.\n"
+# define WRONG_COMMAND "Wrong command. (Line %i)\n"
+# define NO_ARGS "No arguments after command. (Line %i)\n"
+# define TOO_MANY_ARGS "Too many arguments after command. (Line %i)\n"
+# define WRONG_ARG_SNTX "Wrong argument syntax. (Line %i)\n"
+# define WRONG_ARG_TYPE "Wrong argument type. (Line %i)\n"
 
 # define LIVE_ID	1
 # define LD_ID		2
@@ -47,6 +52,7 @@
 # define AFF_ID		16
 
 # define MAX_WORDS_N 5
+# define COMMANDS_N 16
 
 typedef struct	s_commands_info
 {
@@ -82,7 +88,6 @@ typedef struct	s_labels
 	struct s_labels	*next;
 }				t_labels;
 
-
 typedef struct	s_line
 {
 	struct s_line	*next;
@@ -103,6 +108,7 @@ typedef struct	s_asm
 	t_line				*lines;
 	t_line				*lines_top;
 	char				**line_words;
+	int					curr_line_n;
 }				t_asm;
 
 void			check_input(int argc, char **argv, t_asm *the_asm);
