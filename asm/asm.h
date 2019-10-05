@@ -33,6 +33,7 @@
 # define TOO_MANY_ARGS "Too many arguments after command. (Line %i)\n"
 # define WRONG_ARG_SNTX "Wrong argument syntax. (Line %i)\n"
 # define WRONG_ARG_TYPE "Wrong argument type. (Line %i)\n"
+# define INCORRECT_REG "Registry number is incorrect. (Line %i)\n"
 
 # define LIVE_ID	1
 # define LD_ID		2
