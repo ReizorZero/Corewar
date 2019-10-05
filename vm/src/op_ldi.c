@@ -23,18 +23,18 @@ void op_ldi(t_general *data, t_carriage *carriage)
 	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
 	{
 		if (carriage->arg[0].type == T_DIR)
-			val1 = get_val16bit(carriage->arg[0]);
+			val1 = (int16_t)get_val16bit(carriage->arg[0]);
 		else
-			val1 = get_val32bit(carriage->arg[0]);
+			val1 = (int32_t)get_val32bit(carriage->arg[0]);
 		if (carriage->arg[1].type == T_DIR)
-			val2 = get_val16bit(carriage->arg[1]);
+			val2 = (int16_t)get_val16bit(carriage->arg[1]);
 		else
-			val2 = get_val32bit(carriage->arg[1]);
+			val2 = (int32_t)get_val32bit(carriage->arg[1]);
 		adds = (carriage->position + (val1 + val2) % IDX_MOD) % MEM_SIZE;
 		res.type = 0;
 		res.mem = data->mem_f;
 		res.current = &data->mem_f[adds];
-		res.size = T_REG;
+		res.size = REG_SIZE;
 		res.mem_end = &data->mem_f[MEM_SIZE];
 		memory_cpy(&carriage->arg[2], res);
 //		carriage->carry = 0;

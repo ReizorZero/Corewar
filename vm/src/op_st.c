@@ -14,6 +14,7 @@
 
 void op_st(t_general *data, t_carriage *carriage)
 {
+
 	carriage->position_tmp = carriage->position + 2;
 	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
 	{
@@ -21,8 +22,16 @@ void op_st(t_general *data, t_carriage *carriage)
 //		carriage->carry = 0;
 		if (data->verb_nbr & 4) //verb_nbr 4
 		{
-			ft_printf("P %4d | st r%d %d\n", carriage->nbr,
-					get_num_reg(carriage, 0), carriage->arg[1].IND_pntr);
+			if (carriage->arg[1].type == T_IND)
+			{
+				ft_printf("P %4d | st r%d %d\n", carriage->nbr,
+						  get_num_reg(carriage, 0), carriage->arg[1].IND_pntr);
+			}
+			else
+			{
+				ft_printf("P %4d | st r%d %d\n", carriage->nbr,
+						  get_num_reg(carriage, 0), get_val32bit(carriage->arg[1]));
+			}
 		}
 	}
 	show_pc_movement(*data, *carriage);

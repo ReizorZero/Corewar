@@ -22,7 +22,7 @@ void op_or(t_general *data, t_carriage *carriage)
 	{
 		val1 = get_val32bit(carriage->arg[0]);
 		val2 = get_val32bit(carriage->arg[1]);
-		*(uint32_t*)carriage->arg[2].mem = val1 | val2;
+		*(uint32_t*)carriage->arg[2].mem = reverse_32bits(val1 | val2);
 		carriage->carry = !(*(uint32_t*)carriage->arg[2].mem);
 		if (data->verb_nbr & 4) //verb_nbr 4
 		{
