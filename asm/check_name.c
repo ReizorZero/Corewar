@@ -10,7 +10,7 @@ int		check_name_cmnd_tag(char *s, int i)
 	s[i + 2] != 'a' ||
 	s[i + 3] != 'm' ||
 	s[i + 4] != 'e')
-		ERROR(SYMBOLS_CMND_NAME);
+		ERROR(SYMBOLS_CMND_NAME, 0);
 	return (i + cmnd_len);
 }
 
@@ -69,7 +69,7 @@ void	check_symbols_at_end_name(t_asm *the_asm, char *s)
 	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 	{
 		if (s[i] != '\t' && s[i] != ' ')
-			ERROR(SYMBOLS_CHAMP_NAME);
+			ERROR(SMBLS_CHAMP_NAME, 0);
 		i++;
 	}
 	the_asm->champion_name = ft_strsub(s, start, len);
@@ -85,7 +85,7 @@ int		closing_quote_name_is_valid(char *s)
 	kavichki = 0;
 	met_hash = 0;
 	if (ft_strstr(s, COMMENT_CMD_STRING))
-		ERROR(NO_CLSNG_QT_CHAMP_NAME);
+		ERROR(CLSNG_QT_CHAMP_NAME, 0);
 	while (s[i] != '\0')
 	{
 		if ((s[i] == COMMENT_CHAR || s[i] == ALT_COMMENT_CHAR) && kavichki == 1)
@@ -95,7 +95,7 @@ int		closing_quote_name_is_valid(char *s)
 		i++;
 	}
 	if (kavichki > 1)
-		ERROR(KAVICHKI_NUMBER);
+		ERROR(KAVICHKI_NUMBER, 0);
 	i = 0;
 	while (s[i] != '\0' && s[i] != '\"')
 		i++;
@@ -103,7 +103,7 @@ int		closing_quote_name_is_valid(char *s)
 	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 	{
 		if (s[i] != '\t' && s[i] != ' ')
-			ERROR(SYMBOLS_CHAMP_NAME);
+			ERROR(SMBLS_CHAMP_NAME, 0);
 		i++;
 	}
 	return (1);
@@ -134,7 +134,7 @@ int		search_closing_quote_name(t_asm *the_asm, t_line **line)
 		}
 		*line = (*line)->next;
 	}
-	ERROR(NO_CLSNG_QT_CHAMP_NAME);
+	ERROR(CLSNG_QT_CHAMP_NAME, 0);
 	return (0);
 }
 
@@ -144,14 +144,14 @@ void	check_name(t_asm *the_asm, t_line **line)
 
 	//printf("[%s]\n", (*line)->str);
 	if (anything_after_dot_name((*line)->str))
-		ERROR(SYMBOLS_CMND_NAME);
+		ERROR(SYMBOLS_CMND_NAME, 0);
 	kavichki = count_kavichki((*line)->str);
 	if (kavichki == 2)
 		check_symbols_at_end_name(the_asm, (*line)->str);
 	if (kavichki > 2)
-		ERROR(KAVICHKI_NUMBER);
+		ERROR(KAVICHKI_NUMBER, 0);
 	if (kavichki == 0)
-		ERROR(NO_CHAMP_NAME);
+		ERROR(NO_CHAMP_NAME, 0);
 	if (kavichki == 1)
 		search_closing_quote_name(the_asm, line);//RIGHT HERE I MEAN
 	//printf("@@@ [%s]\n", the_asm->champion_name);
