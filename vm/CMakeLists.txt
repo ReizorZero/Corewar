@@ -30,6 +30,15 @@ add_executable(
         src/op_st.c
         src/op_add.c
         src/op_sub.c
-        src/op_zjmp.c src/op_ldi.c src/op_sti.c src/op_fork.c src/op_lld.c src/op_lldi.c src/op_lfork.c src/op_aff.c src/get_val.c src/check_live_carriage.c)
+        src/op_zjmp.c
+        src/op_ldi.c
+        src/op_sti.c
+        src/op_fork.c
+        src/op_lld.c
+        src/op_lldi.c
+        src/op_lfork.c
+        src/op_aff.c
+        src/get_val.c
+        src/check_live_carriage.c)
 
 link_libraries(../libft/libft.a)
