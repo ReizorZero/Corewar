@@ -102,10 +102,6 @@ bool	arg_read(t_general *data, t_carriage *carriage, size_t arg_cod)
 
 	i = 3;
 	ft_memset(carriage->arg, 0, sizeof(carriage->arg));
-	if (data->cycles_tmp + data->cycles_total == 3848)
-	{
-		ft_printf("\n");
-	}
 //	carriage->position_tmp = carriage->position + 1;
 	while ((3 - i) < op_tab[carriage->op_id - 1].n_arg)
 	{

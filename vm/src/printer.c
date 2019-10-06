@@ -77,12 +77,22 @@ void show_pc_movement(t_general data, t_carriage carriage)
 		{
 			if (carriage.arg[i].type == T_DIR)
 				step += DIR_SIZE - 2 * op_tab[carriage.op_id - 1].label;
-			else if (carriage.arg[i].type == T_REG)
+			else if (carriage.arg[i].type == T_REG || carriage.arg[i].type == 16)
 				step += 1;
 			else if (carriage.arg[i].type == T_IND)
 				step += IND_SIZE;
 			i++;
 		}
+//		while (i < op_tab[carriage.op_id - 1].n_arg)
+//		{
+//			if (op_tab[carriage.op_id - 1].arg == T_DIR)
+//				step += DIR_SIZE - 2 * op_tab[carriage.op_id - 1].label;
+//			else if (carriage.arg[i].type == T_REG)
+//				step += 1;
+//			else if (carriage.arg[i].type == T_IND)
+//				step += IND_SIZE;
+//			i++;
+//		}
 		i = 0;
 		ft_printf("ADV %d (%.4p -> %.4p) ",
 				  step, carriage.position, (carriage.position + step) % MEM_SIZE);
