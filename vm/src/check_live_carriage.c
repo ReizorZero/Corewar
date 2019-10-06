@@ -15,7 +15,7 @@ void	ft_check_live_carriage(t_general *data)
 	{
 //		if (crwl->live)
 //		if (crwl->live && (long int)crwl->lst_live_cycle <= data->cycles_to_die + data->cycles_total)
-		if (crwl->live && (long int)crwl->lst_live_cycle > data->cycles_total)
+		if (crwl->live && (long int)crwl->lst_live_cycle > data->cycles_total && data->cycles_to_die > 0)
 		{
 			crwl->live = 0;
 			prv_crwl = crwl;
