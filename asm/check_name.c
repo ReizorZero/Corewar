@@ -1,6 +1,6 @@
 #include "asm.h"
 
-int		check_name_cmnd_tag(char *s, int i)
+int		check_name_cmnd_tag(t_asm *the_asm, char *s, int i)
 {
 	int cmnd_len;
 	
@@ -10,18 +10,18 @@ int		check_name_cmnd_tag(char *s, int i)
 	s[i + 2] != 'a' ||
 	s[i + 3] != 'm' ||
 	s[i + 4] != 'e')
-		ERROR(SYMBOLS_CMND_NAME, 0);
+		ERROR(SYMBOLS_CMND_NAME, the_asm->curr_line_n);
 	return (i + cmnd_len);
 }
 
-int		anything_after_dot_name(char *s)
+int		anything_after_dot_name(t_asm *the_asm, char *s)
 {
 	int i;
 
 	i = 0;
 	while (s[i] != '\0' && (s[i] == '\t' || s[i] == ' '))
 			i++;
-	i = check_name_cmnd_tag(s, i);
+	i = check_name_cmnd_tag(the_asm, s, i);
 	while (s[i] != '\0' && s[i] != '\"' &&
 	s[i] != ALT_COMMENT_CHAR &&
 	s[i] != COMMENT_CHAR)
@@ -69,13 +69,13 @@ void	check_symbols_at_end_name(t_asm *the_asm, char *s)
 	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 	{
 		if (s[i] != '\t' && s[i] != ' ')
-			ERROR(SMBLS_CHAMP_NAME, 0);
+			ERROR(SMBLS_CHAMP_NAME, the_asm->curr_line_n);
 		i++;
 	}
 	the_asm->champion_name = ft_strsub(s, start, len);
 }
 
-int		closing_quote_name_is_valid(char *s)
+int		closing_quote_name_is_valid(t_asm *the_asm, char *s)
 {
 	int kavichki;
 	int met_hash;
@@ -85,7 +85,7 @@ int		closing_quote_name_is_valid(char *s)
 	kavichki = 0;
 	met_hash = 0;
 	if (ft_strstr(s, COMMENT_CMD_STRING))
-		ERROR(CLSNG_QT_CHAMP_NAME, 0);
+		ERROR(CLSNG_QT_CHAMP_NAME, the_asm->curr_line_n);
 	while (s[i] != '\0')
 	{
 		if ((s[i] == COMMENT_CHAR || s[i] == ALT_COMMENT_CHAR) && kavichki == 1)
@@ -95,7 +95,7 @@ int		closing_quote_name_is_valid(char *s)
 		i++;
 	}
 	if (kavichki > 1)
-		ERROR(KAVICHKI_NUMBER, 0);
+		ERROR(KAVICHKI_NUMBER, the_asm->curr_line_n);
 	i = 0;
 	while (s[i] != '\0' && s[i] != '\"')
 		i++;
@@ -103,7 +103,7 @@ int		closing_quote_name_is_valid(char *s)
 	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 	{
 		if (s[i] != '\t' && s[i] != ' ')
-			ERROR(SMBLS_CHAMP_NAME, 0);
+			ERROR(SMBLS_CHAMP_NAME, the_asm->curr_line_n);
 		i++;
 	}
 	return (1);
@@ -119,12 +119,13 @@ int		search_closing_quote_name(t_asm *the_asm, t_line **line)
 	i++;
 	the_asm->champion_name = ft_strjoin(&(*line)->str[i], "\n");
 	*line = (*line)->next;
+	the_asm->curr_line_n++;
 	while (*line)
 	{
 		the_asm->champion_name = ft_strjoin(the_asm->champion_name, (*line)->str);
 		the_asm->champion_name = ft_strjoin(the_asm->champion_name, "\n");
 		if (ft_strchr((*line)->str, '\"') &&
-		closing_quote_name_is_valid((*line)->str))
+		closing_quote_name_is_valid(the_asm, (*line)->str))
 		{
 			i = 0;
 			while (the_asm->champion_name[i] != '\0' && the_asm->champion_name[i] != '\"')
@@ -133,8 +134,9 @@ int		search_closing_quote_name(t_asm *the_asm, t_line **line)
 			return (1);
 		}
 		*line = (*line)->next;
+		the_asm->curr_line_n++;
 	}
-	ERROR(CLSNG_QT_CHAMP_NAME, 0);
+	ERROR(CLSNG_QT_CHAMP_NAME, the_asm->curr_line_n);
 	return (0);
 }
 
@@ -143,15 +145,15 @@ void	check_name(t_asm *the_asm, t_line **line)
 	int kavichki;
 
 	//printf("[%s]\n", (*line)->str);
-	if (anything_after_dot_name((*line)->str))
-		ERROR(SYMBOLS_CMND_NAME, 0);
+	if (anything_after_dot_name(the_asm, (*line)->str))
+		ERROR(SYMBOLS_CMND_NAME, the_asm->curr_line_n);
 	kavichki = count_kavichki((*line)->str);
 	if (kavichki == 2)
 		check_symbols_at_end_name(the_asm, (*line)->str);
 	if (kavichki > 2)
-		ERROR(KAVICHKI_NUMBER, 0);
+		ERROR(KAVICHKI_NUMBER, the_asm->curr_line_n);
 	if (kavichki == 0)
-		ERROR(NO_CHAMP_NAME, 0);
+		ERROR(NO_CHAMP_NAME, the_asm->curr_line_n);
 	if (kavichki == 1)
 		search_closing_quote_name(the_asm, line);//RIGHT HERE I MEAN
 	//printf("@@@ [%s]\n", the_asm->champion_name);

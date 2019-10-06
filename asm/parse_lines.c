@@ -13,6 +13,7 @@ void	parse_lines(t_asm *the_asm)
 			check_comment(the_asm, &lines);
 		else
 			check_command_line(the_asm, &lines);
+		the_asm->curr_line_n++;
 		lines = lines->next;
 	}
 }

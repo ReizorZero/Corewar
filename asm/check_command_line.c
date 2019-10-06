@@ -52,7 +52,7 @@ void	write_words(t_asm *the_asm, t_line **line)
 				i++;
 			}
 			if (s[i] == SEPARATOR_CHAR)
-				ERROR(MANY_SEPARATORS, 0);
+				ERROR(MANY_SEPARATORS, the_asm->curr_line_n);
 			if (len == 0 && met_sep == 1)
 			{
 				while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)//SKIP BLANKS
@@ -67,7 +67,7 @@ void	write_words(t_asm *the_asm, t_line **line)
 				if (s[i] == SEPARATOR_CHAR)
 					i++;
 				if (s[i] == SEPARATOR_CHAR)
-					ERROR(MANY_SEPARATORS, 0);
+					ERROR(MANY_SEPARATORS, the_asm->curr_line_n);
 			}
 		}
 		the_asm->line_words[w_i] = ft_strsub(s, start, len);
@@ -76,7 +76,7 @@ void	write_words(t_asm *the_asm, t_line **line)
 	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
 		i++;
 	if (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
-		ERROR(WRONG_SMBLS_AT_END, 0);
+		ERROR(WRONG_SMBLS_AT_END, the_asm->curr_line_n);
 	//OUTPUT OF RECEIVED 5 WORDS -- DELETE LATER
 	int k = 0;
 	while (k < MAX_WORDS_N)
@@ -86,7 +86,7 @@ void	write_words(t_asm *the_asm, t_line **line)
 	}
 }
 
-int		check_label(char *s)
+int		check_label(t_asm *the_asm, char *s)
 {
 	int i;
 	int j;
@@ -104,16 +104,13 @@ int		check_label(char *s)
 			j++;
 		}
 		if (is_match == 0)
-			ERROR(LABEL_WRONG_CHAR, 0);
+			ERROR(LABEL_WRONG_CHAR, the_asm->curr_line_n);
 		i++;
 	}
-	// if (s[0] == LABEL_CHAR)
-	// 	ERROR(LABEL_CHAR_POSITON);
 	return (1);
-	//the_asm->exec_code_size = 0;//del this line later
 }
 
-int		check_t_reg(char *s)
+int		check_t_reg(t_asm *the_asm, char *s)
 {
 	int i;
 
@@ -121,25 +118,21 @@ int		check_t_reg(char *s)
 	while (s[i] != '\0')
 	{
 		if (!ft_isdigit(s[i]))
-			ERROR(WRONG_ARG_SNTX, 0);
+			ERROR(WRONG_ARG_SNTX, the_asm->curr_line_n);
 		i++;
 	}
 	if (ft_atoi(&s[1]) > REG_NUMBER || ft_atoi(&s[1]) == 0)
-		ERROR(INCORRECT_REG, 0);
+		ERROR(INCORRECT_REG, the_asm->curr_line_n);
 	return (1);
 }
 
-int		check_t_dir(char *s)
+int		check_t_dir(t_asm *the_asm, char *s)
 {
 	int i;
 
 	i = 1;
 	if (s[i] == LABEL_CHAR)
-	{
-		//printf("OH MY!\n");
-		return (check_label(&s[i + 1]));
-	}
-		//return (1);
+		return (check_label(the_asm, &s[i + 1]));
 	else 
 	{
 		if (s[i] == '-')
@@ -147,23 +140,20 @@ int		check_t_dir(char *s)
 		while (s[i] != '\0')
 		{
 			if (!ft_isdigit(s[i]))
-				ERROR(WRONG_ARG_SNTX, 0);
+				ERROR(WRONG_ARG_SNTX, the_asm->curr_line_n);
 			i++;
 		}
 	}
 	return (1);
 }
 
-int		check_t_ind(char *s)
+int		check_t_ind(t_asm *the_asm, char *s)
 {
 	int i;
 
 	i = 0;
 	if (s[i] == LABEL_CHAR)
-	{
-		//printf("OH MY!\n");
-		return (check_label(&s[i + 1]));
-	}
+		return (check_label(the_asm, &s[i + 1]));
 	else 
 	{
 		if (s[i] == '-')
@@ -171,7 +161,7 @@ int		check_t_ind(char *s)
 		while (s[i] != '\0')
 		{
 			if (!ft_isdigit(s[i]))
-				ERROR(WRONG_ARG_SNTX, 0);
+				ERROR(WRONG_ARG_SNTX, the_asm->curr_line_n);
 			i++;
 		}
 	}
@@ -180,21 +170,15 @@ int		check_t_ind(char *s)
 
 void	check_args(t_asm *the_asm, int i, int shift)
 {
-	//printf("\targ[%i] ", i + 1);
-	//CHECK ARGS AND DEFINE ARGS TYPE
 	if (the_asm->line_words[i + shift][0] == 'r')
-		//printf("\targ[%i] - T_REG\n", i + shift);
-		check_t_reg(the_asm->line_words[i + shift]);
+		check_t_reg(the_asm, the_asm->line_words[i + shift]);
 	else if (the_asm->line_words[i + shift][0] == DIRECT_CHAR)
-		//printf("\targ[%i] - T_DIR\n", i + shift);
-		check_t_dir(the_asm->line_words[i + shift]);
+		check_t_dir(the_asm, the_asm->line_words[i + shift]);
 	else if (the_asm->line_words[i + shift][0] == '-' || ft_isdigit(the_asm->line_words[i + shift][0]) ||
 		the_asm->line_words[i + shift][0] == LABEL_CHAR)
-		//printf("\targ[%i] - T_IND\n", i + shift);
-		check_t_ind(the_asm->line_words[i + shift]);
+		check_t_ind(the_asm, the_asm->line_words[i + shift]);
 	else
-		//ERROR(WRONG_ARG_SNTX, 0);
-		printf("che za @ %s\n", the_asm->line_words[i + shift]);
+		ERROR(WRONG_ARG_SNTX, the_asm->curr_line_n);
 	i++;
 }
 
@@ -204,7 +188,6 @@ int		check_if_words_correct(t_asm *the_asm)
 	int first_is_label;
 	int i;
 	int found_command;
-	//int arg_type;
 
 	words = 0;
 	i = 0;
@@ -214,12 +197,10 @@ int		check_if_words_correct(t_asm *the_asm)
 			words++;
 		i++;
 	}
-	//printf("words: %i\n", words);
 	first_is_label = 0;
 	if (ft_strchr(the_asm->line_words[0], LABEL_CHAR))
 	{
-		//printf("\tFIRST WORD IS A LABEL\n");
-		check_label(the_asm->line_words[0]);
+		check_label(the_asm, the_asm->line_words[0]);
 		first_is_label = 1;
 	}
 	else
@@ -229,14 +210,11 @@ int		check_if_words_correct(t_asm *the_asm)
 		while (i < COMMANDS_N)
 		{
 			if (!ft_strcmp(the_asm->line_words[0], commands[i].name))
-			{
-				printf("\t%s\n", commands[i].name);
 				found_command = 1;
-			}
 			i++;
 		}
 		if (!found_command)
-			ERROR(WRONG_COMMAND, 0);
+			ERROR(WRONG_COMMAND, the_asm->curr_line_n);
 	}
 	if (first_is_label)
 	{
@@ -247,62 +225,28 @@ int		check_if_words_correct(t_asm *the_asm)
 		while (i < COMMANDS_N)
 		{
 			if (!ft_strcmp(the_asm->line_words[1], commands[i].name))
-			{
-				printf("\t%s\n", commands[i].name);
 				found_command = 1;
-			}
 			i++;
 		}
 		if (!found_command)
-			ERROR(WRONG_COMMAND, 0);
+			ERROR(WRONG_COMMAND, the_asm->curr_line_n);
 		i = 0;
 		while (i < words - 2)
 		{
 			check_args(the_asm, i, 2);
-			// //printf("\targ[%i] ", i + 1);
-			// //CHECK ARGS AND DEFINE ARGS TYPE
-			// if (the_asm->line_words[i + 2][0] == 'r')
-			// 	//printf("\targ[%i] - T_REG\n", i + 1);
-			// 	check_t_reg(the_asm->line_words[i + 2]);
-			// else if (the_asm->line_words[i + 2][0] == DIRECT_CHAR)
-			// 	check_t_dir(the_asm->line_words[i + 2]);
-			// 	//printf("\targ[%i] - T_DIR\n", i + 1);
-			// else if (the_asm->line_words[i + 2][0] == '-' || ft_isdigit(the_asm->line_words[i + 2][0]) ||
-			// the_asm->line_words[i + 2][0] == LABEL_CHAR)
-			// 	check_t_ind(the_asm->line_words[i + 2]);
-			// 	//printf("\targ[%i] - T_IND\n", i + 1);
-			// else
-			// 	ERROR(WRONG_ARG_SNTX, 0);
-			// 	//printf("che za @ %s\n", the_asm->line_words[i + 2]);
 			i++;
 		}
-		//printf("\n");
 	}
 	else
 	{
 		if (words == 1)
-			ERROR(NO_ARGS, 0);
+			ERROR(NO_ARGS, the_asm->curr_line_n);
 		if (words == 5)
-			ERROR(TOO_MANY_ARGS, 0);
+			ERROR(TOO_MANY_ARGS, the_asm->curr_line_n);
 		i = 0;
 		while (i < words - 1)
 		{
 			check_args(the_asm, i, 1);
-			// //printf("\targ[%i] ", i + 1);
-			// //CHECK ARGS AND DEFINE ARGS TYPE
-			// if (the_asm->line_words[i + 1][0] == 'r')
-			// 	//printf("\targ[%i] - T_REG\n", i + 1);
-			// 	check_t_reg(the_asm->line_words[i + 1]);
-			// else if (the_asm->line_words[i + 1][0] == DIRECT_CHAR)
-			// 	//printf("\targ[%i] - T_DIR\n", i + 1);
-			// 	check_t_dir(the_asm->line_words[i + 1]);
-			// else if (the_asm->line_words[i + 1][0] == '-' || ft_isdigit(the_asm->line_words[i + 1][0]) ||
-			// the_asm->line_words[i + 1][0] == LABEL_CHAR)
-			// 	//printf("\targ[%i] - T_IND\n", i + 1);
-			// 	check_t_ind(the_asm->line_words[i + 1]);
-			// else
-			// 	ERROR(WRONG_ARG_SNTX, 0);
-			// 	//printf("che za @ %s\n", the_asm->line_words[i + 2]);
 			i++;
 		}
 		
