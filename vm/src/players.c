@@ -99,7 +99,7 @@ t_player		*player(t_general *data, char **argv, int *i, int id)
 	if (pl->size < 1)
 		error_msg("error: wrong player's size");
 	if (pl->size > CHAMP_MAX_SIZE)
-		error_msg("error: player is too big");
+		error_msg("error: player is too big");//Error: File barriere.cor has too large a code (1023 bytes > 682 bytes)
 	pl->comment = check_comment(fd, COMMENT_LENGTH);
 	check_nulls(fd);
 	pl->code = check_players_code(fd, pl->size);

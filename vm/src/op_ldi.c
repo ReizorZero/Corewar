@@ -14,7 +14,7 @@
 
 void op_ldi(t_general *data, t_carriage *carriage)
 {
-	size_t	adds;
+	size_t	adds; // uint32_t
 	int32_t val1;
 	int32_t val2;
 	t_mem	res;
