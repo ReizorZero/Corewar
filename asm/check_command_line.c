@@ -19,11 +19,13 @@ void	write_words(t_asm *the_asm, t_line **line)
 	{
 		if (w_i == 0)
 		{
-			while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)// && s[i] != DIRECT_CHAR)//SKIP BLANKS
+			while (s[i] != '\0' && (s[i] == ' '|| s[i] == '\t') &&
+			s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 				i++;
 			start = i;
 			len = 0;
-			while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != LABEL_CHAR && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)// && s[i] != DIRECT_CHAR)//FIRST WORD: LABEL OR COMMAND
+			while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' &&
+			s[i] != LABEL_CHAR && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 			{
 				len++;
 				i++;
@@ -36,12 +38,14 @@ void	write_words(t_asm *the_asm, t_line **line)
 		}
 		else
 		{
-			while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)// && s[i] != DIRECT_CHAR)//SKIP BLANKS
+			while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') &&
+			s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 				i++;
 			met_sep = 0;
 			start = i;
 			len = 0;
-			while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)// && s[i] != DIRECT_CHAR)//THIRD WORD: ARG_1 OR ARG_2
+			while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' &&
+			s[i] != SEPARATOR_CHAR && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 			{
 				len++;
 				i++;
@@ -55,11 +59,13 @@ void	write_words(t_asm *the_asm, t_line **line)
 				ERROR(MANY_SEPARATORS, the_asm->curr_line_n);
 			if (len == 0 && met_sep == 1)
 			{
-				while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)//SKIP BLANKS
+				while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') &&
+				s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)//SKIP BLANKS
 					i++;
 				start = i;
 				len = 0;
-				while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)//THE WORD ITSELF
+				while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' &&
+				s[i] != SEPARATOR_CHAR && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)//THE WORD ITSELF
 				{
 					len++;
 					i++;
@@ -93,6 +99,8 @@ int		check_label(t_asm *the_asm, char *s)
 	int is_match;
 
 	i = 0;
+	if (s[i] == LABEL_CHAR)
+		ERROR(EMPTY_LABEL, the_asm->curr_line_n);
 	while (s[i] != '\0' && s[i] != LABEL_CHAR)
 	{
 		j = 0;
@@ -277,7 +285,6 @@ void	check_command_line(t_asm *the_asm, t_line **line)
 	if (!is_empty_or_comment(line))
 	{
 		write_words(the_asm, line);
-		check_if_words_correct(the_asm);//REPEAT WITH OTHER WORDS AS WELL
-	//ALSO DEFINE ARGS TYPE AND CHECK IF THEY ARE VALID
+		check_if_words_correct(the_asm);
 	}
 }
