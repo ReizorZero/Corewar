@@ -50,6 +50,8 @@ SRC             += $(SRC_DIR)player_id.c
 SRC             += $(SRC_DIR)player.c
 SRC             += $(SRC_DIR)players.c
 SRC             += $(SRC_DIR)printer.c
+SRC             += $(SRC_DIR)get_val.c
+SRC             += $(SRC_DIR)check_live_carriage.c
 
 # project object files
 
