@@ -28,8 +28,10 @@ void op_st(t_general *data, t_carriage *carriage)
 			}
 			else
 			{
+//				ft_printf("P %4d | st r%d %d\n", carriage->nbr,
+//						  get_num_reg(carriage, 0), get_val32bit(carriage->arg[1]));
 				ft_printf("P %4d | st r%d %d\n", carriage->nbr,
-						  get_num_reg(carriage, 0), get_val32bit(carriage->arg[1]));
+						  get_num_reg(carriage, 0), get_num_reg(carriage, 1));
 			}
 		}
 	}

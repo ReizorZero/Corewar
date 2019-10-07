@@ -42,7 +42,7 @@ void	ft_fight(t_general *data)
 
 	while (data->head_c)
 	{
-		if ((data->cycles_total + data->cycles_tmp) == 5)
+		if ((data->cycles_total + data->cycles_tmp) == 1665)
 		{
 
 			ft_printf("\n\n\n\n");
