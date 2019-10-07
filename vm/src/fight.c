@@ -42,10 +42,10 @@ void	ft_fight(t_general *data)
 
 	while (data->head_c)
 	{
-		if ((data->cycles_total + data->cycles_tmp) == 47060)
+		if ((data->cycles_total + data->cycles_tmp) == 5)
 		{
 
-			ft_printf("\n");
+			ft_printf("\n\n\n\n");
 		}
 		if (data->verb_nbr & 2) //verb_nbr 2
 			ft_printf("It is now cycle %d\n", data->cycles_total + data->cycles_tmp);

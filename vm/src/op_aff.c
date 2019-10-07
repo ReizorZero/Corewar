@@ -20,7 +20,7 @@ void op_aff(t_general *data, t_carriage *carriage)
 	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1) % MEM_SIZE]))
 	{
 		val = (char)get_val32bit(carriage->arg[0]);
-		ft_printf("%c\n", val);
+		ft_printf("Aff: %c\n", val);
 //		carriage->carry = 0;
 	}
 	show_pc_movement(*data, *carriage);
