@@ -8,6 +8,15 @@
 
 # define ERROR(X, Y) {printf(X, Y);exit(0);}
 # define ERROR_(X) {printf(X);exit(0);}
+# define USAGE(X, Y) {printf(X);printf(Y);exit(0);}
+
+# define USAGE_INFO_1 "Usage: ./asm <sourcefile.s>\n"
+# define USAGE_INFO_2 "\t(Note that only one file should be passed to input).\n"
+
+# define TOO_MANY_FILES "Too many files. You should enter only one file at a time.\n"
+# define NO_FILE_NAME "File name is missing.\n"
+# define NO_FILE_EXTENSION "File extension is missing.\n"
+# define WRONG_FILE_EXTENSION "File extension is wrong.\n"
 
 # define KAVICHKI_NUMBER "Wrong number of \" symbols. (Line %i)\n"
 
@@ -22,6 +31,7 @@
 # define NO_CLSNG_QT_COMMENT "No closing quote for comment. (Line %i)\n"
 
 # define LABEL_WRONG_CHAR "Label contains wrong char. (Line %i)\n"
+# define EMPTY_LABEL "Label name missing. (Line %i)\n"
 //# define LABEL_CHAR_POSITON "Label char should be after label name.\n"
 
 # define MANY_SEPARATORS "Found 2 or more separator char in a row. (Line %i)\n"
