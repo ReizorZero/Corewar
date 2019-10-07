@@ -14,7 +14,6 @@
 
 void op_st(t_general *data, t_carriage *carriage)
 {
-
 	carriage->position_tmp = carriage->position + 2;
 	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
 	{

@@ -42,7 +42,7 @@ void op_lldi(t_general *data, t_carriage *carriage)
 		{
 			ft_printf("P %4d | lldi %d %d r%d\n", carriage->nbr, val1, val2, get_num_reg(carriage, 2));
 			ft_printf("       | -> load from %d + %d = %d (with pc %d)", val1, val2,
-					  val1 + val2, carriage->position + (val1 + val2));
+					  val1 + val2, (int32_t)carriage->position + (val1 + val2));
 		}
 	}
 	show_pc_movement(*data, *carriage);

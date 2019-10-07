@@ -47,7 +47,7 @@ void op_fork(t_general *data, t_carriage *carriage)
 	if (data->verb_nbr & 4) //verb_nbr 4
 	{
 		ft_printf("P %4d | fork %d (%d)\n", carriage->nbr, adds,
-				  new->position);
+				  (int32_t)(carriage->position + adds % IDX_MOD));
 	}
 	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;

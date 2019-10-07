@@ -42,7 +42,7 @@ void op_sti(t_general *data, t_carriage *carriage)
 		{
 			ft_printf("P %4d | sti r%d %d %d\n", carriage->nbr, get_num_reg(carriage, 0), val2, val3);
 			ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", val2, val3,
-					  val2 + val3, carriage->position + (val2 + val3) % IDX_MOD);
+					  val2 + val3, (int32_t)(carriage->position + (val2 + val3) % IDX_MOD));
 		}
 	}
 	show_pc_movement(*data, *carriage);

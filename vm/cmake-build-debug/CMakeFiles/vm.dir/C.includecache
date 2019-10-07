@@ -32,3 +32,11 @@ fcntl.h
 ../inc/corewar_vm.h
 /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
 
+/Users/mshvets/Desktop/Corewar/vm/src/op_fork.c
+../inc/corewar_vm.h
+/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
+
+/Users/mshvets/Desktop/Corewar/vm/src/op_st.c
+../inc/corewar_vm.h
+/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
+
