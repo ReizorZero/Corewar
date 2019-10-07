@@ -25,7 +25,7 @@ void op_live(t_general *data, t_carriage *carriage)
 	arg_read(data, carriage, 0b10000000);
 	player = get_val32bit(carriage->arg[0]);
 //	if (!(carriage->reg[0] + player))
-	if ((pl = get_by_id(data, -player)))
+	if ( -player == (uint8_t)(-player) && (pl = get_by_id(data, -player)))
 	{
 		data->lst_live_plr = -player;
 	}
