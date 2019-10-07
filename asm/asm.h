@@ -35,6 +35,7 @@
 //# define LABEL_CHAR_POSITON "Label char should be after label name.\n"
 
 # define MANY_SEPARATORS "Found 2 or more separator char in a row. (Line %i)\n"
+# define WRONG_N_SEPARATORS "Wrong number of separator chars. (Line %i)\n"
 
 # define WRONG_SMBLS_AT_END "Wrong symbols at the end of the line. (Line %i)\n"
 
