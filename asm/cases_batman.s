@@ -1,4 +1,4 @@
-.name   "Batman"    
+.name   "Batman" 
 .comment   "This city needs me"
 
 loop:sti r1,%:live,%1 #dfghjkl
@@ -35,5 +35,12 @@ live:
 sti r1 , %:live,
 
 sti 67
-
-sti r1, %2, 3
+#WRONG CASES THAT WORK, BUT THEY SHOULD NOT
+sti r1, %2,
+loop: sti , r1, %2, 3,
+sti , r1, %2, 3
+loop: sti , r1, %2,
+sti , r1, %2,
+loop: ,sti , r1, %2,
+loop: , sti , r1, %2,
+loop: ,sti , r1, %2

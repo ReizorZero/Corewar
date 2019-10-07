@@ -27,7 +27,7 @@ void op_live(t_general *data, t_carriage *carriage)
 //	if (!(carriage->reg[0] + player))
 	if ((pl = get_by_id(data, -player)))
 	{
-		data->lst_live_plr = player;
+		data->lst_live_plr = -player;
 	}
 	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;
 //	carriage->carry = 0;

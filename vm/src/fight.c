@@ -14,7 +14,7 @@
 
 int get_num_reg(t_carriage *carriage, int n)
 {
-	return ((carriage->reg - (uint32_t *)carriage->arg[n].current) / 4 + 1);
+	return (((uint32_t *)carriage->arg[n].current - carriage->reg) + 1);
 }
 
 uint32_t get_val32bit(t_mem src)
@@ -46,7 +46,7 @@ uint16_t get_val16bit(t_mem src)
 	val.mem_end = &val.mem[val.size];
 	val.current = val.mem;
 	memory_cpy(&val, src);
-	return (reverse_16bits(*(short *)val.mem));
+	return (reverse_16bits(*(uint16_t *)val.mem));
 }
 
 uint16_t reverse_16bits(uint16_t pInt)
@@ -86,34 +86,41 @@ void	ft_check_live_carriage(t_general *data)
 	while (crwl)
 	{
 //		if (crwl->live)
-		if (crwl->live && (long int)crwl->lst_live_cycle <= data->cycles_to_die + data->cycles_total)
+//		if (crwl->live && (long int)crwl->lst_live_cycle <= data->cycles_to_die + data->cycles_total)
+		if (crwl->live && (long int)crwl->lst_live_cycle > data->cycles_total)
 		{
 			crwl->live = 0;
 			prv_crwl = crwl;
 			crwl = crwl->next;
 		}
 //		else if (!crwl->live && !prv_crwl)
-		else if ((long int)crwl->lst_live_cycle > data->cycles_to_die + data->cycles_total)
+//		else if ((long int)crwl->lst_live_cycle > data->cycles_to_die + data->cycles_total)
+//		else if ((long int)crwl->lst_live_cycle < data->cycles_total && !prv_crwl)
+		else if (!prv_crwl)
 		{
 			data->head_c = crwl->next;
-			free(crwl);
 			if (data->verb_nbr & 8) //verb_nbr 8
 			{
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", crwl->nbr,
 						  ((data->cycles_total + data->cycles_tmp) - crwl->lst_live_cycle), data->cycles_to_die);
 			}
+			free(crwl);
+			crwl = NULL;
 			crwl = data->head_c;
 		}
 //		else if (!crwl->live && prv_crwl)
-		else if ((long int)crwl->lst_live_cycle > data->cycles_to_die + data->cycles_total)
+//		else if ((long int)crwl->lst_live_cycle > data->cycles_to_die + data->cycles_total)
+//		else if ((long int)crwl->lst_live_cycle < data->cycles_total && prv_crwl)
+		else if (prv_crwl)
 		{
 			prv_crwl->next = crwl->next;
-			free(crwl);
 			if (data->verb_nbr & 8) //verb_nbr 8
 			{
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", crwl->nbr,
 						  ((data->cycles_total + data->cycles_tmp) - crwl->lst_live_cycle), data->cycles_to_die);
 			}
+			free(crwl);
+			crwl = NULL;
 			crwl = prv_crwl->next;
 		}
 	}
@@ -172,7 +179,7 @@ void	ft_fight(t_general *data)
 
 	while (data->head_c)
 	{
-//		if ((data->cycles_total + data->cycles_tmp) > 18489)
+//		if ((data->cycles_total + data->cycles_tmp) == 25902)
 //		{
 //
 //			ft_printf("\n");
