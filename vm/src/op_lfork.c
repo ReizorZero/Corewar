@@ -35,7 +35,7 @@ void op_lfork(t_general *data, t_carriage *carriage)
 				  data->cycles_total + data->cycles_tmp);
 		exit(1);
 	}
-	ft_memmove(data->head_c, carriage, sizeof(t_carriage));
+	ft_memmove(new, carriage, sizeof(t_carriage));
 //	data->head_c->position = (carriage->position + adds) % MEM_SIZE;
 	new->position = (carriage->position + adds) % MEM_SIZE;
 	new->nbr = ++data->num_carriage;

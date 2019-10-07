@@ -42,7 +42,7 @@ void	ft_fight(t_general *data)
 
 	while (data->head_c)
 	{
-		if ((data->cycles_total + data->cycles_tmp) == 8340)
+		if ((data->cycles_total + data->cycles_tmp) == 11402)
 		{
 
 			ft_printf("\n");
