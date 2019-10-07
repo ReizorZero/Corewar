@@ -14,8 +14,8 @@
 
 void op_st(t_general *data, t_carriage *carriage)
 {
-	carriage->position_tmp = carriage->position + 2;
-	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
+	carriage->position_tmp = (carriage->position + 2) % MEM_SIZE;
+	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1) % MEM_SIZE]))
 	{
 		memory_cpy(&carriage->arg[1], carriage->arg[0]);
 //		carriage->carry = 0;

@@ -17,8 +17,8 @@ void op_or(t_general *data, t_carriage *carriage)
 	uint32_t val1;
 	uint32_t val2;
 
-	carriage->position_tmp = carriage->position + 2;
-	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
+	carriage->position_tmp = (carriage->position + 2) % MEM_SIZE;
+	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1) % MEM_SIZE]))
 	{
 		val1 = get_val32bit(carriage->arg[0]);
 		val2 = get_val32bit(carriage->arg[1]);

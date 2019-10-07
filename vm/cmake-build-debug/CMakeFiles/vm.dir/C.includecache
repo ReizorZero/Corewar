@@ -28,15 +28,7 @@ fcntl.h
 
 /Users/mshvets/Desktop/Corewar/vm/inc/op.h
 
-/Users/mshvets/Desktop/Corewar/vm/src/fight.c
-../inc/corewar_vm.h
-/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
-
-/Users/mshvets/Desktop/Corewar/vm/src/op_fork.c
-../inc/corewar_vm.h
-/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
-
-/Users/mshvets/Desktop/Corewar/vm/src/op_st.c
+/Users/mshvets/Desktop/Corewar/vm/src/op_sti.c
 ../inc/corewar_vm.h
 /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
 

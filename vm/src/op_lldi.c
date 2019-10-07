@@ -19,8 +19,8 @@ void op_lldi(t_general *data, t_carriage *carriage)
 	int32_t val2;
 	t_mem	res;
 
-	carriage->position_tmp = carriage->position + 2;
-	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
+	carriage->position_tmp = (carriage->position + 2) % MEM_SIZE;
+	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1) % MEM_SIZE]))
 	{
 		if (carriage->arg[0].type == T_DIR)
 			val1 = (int16_t)get_val16bit(carriage->arg[0]);

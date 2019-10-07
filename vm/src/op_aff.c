@@ -16,8 +16,8 @@ void op_aff(t_general *data, t_carriage *carriage)
 {
 	char val;
 
-	carriage->position_tmp = carriage->position + 2;
-	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
+	carriage->position_tmp = (carriage->position + 2) % MEM_SIZE;
+	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1) % MEM_SIZE]))
 	{
 		val = (char)get_val32bit(carriage->arg[0]);
 		ft_printf("%c\n", val);

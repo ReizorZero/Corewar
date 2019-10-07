@@ -21,7 +21,7 @@ void op_live(t_general *data, t_carriage *carriage)
 	/*
 	 * 0b10000000 - DIR in arg[0];
 	 */
-	carriage->position_tmp = carriage->position + 1;
+	carriage->position_tmp = (carriage->position + 1) % MEM_SIZE;
 	arg_read(data, carriage, 0b10000000);
 	player = get_val32bit(carriage->arg[0]);
 //	if (!(carriage->reg[0] + player))

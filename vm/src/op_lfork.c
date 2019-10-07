@@ -21,7 +21,7 @@ void op_lfork(t_general *data, t_carriage *carriage)
 	/*
 	 * 0b10000000 - DIR in arg[0];
 	 */
-	carriage->position_tmp = carriage->position + 1;
+	carriage->position_tmp = (carriage->position + 1) % MEM_SIZE;
 	arg_read(data, carriage, 0b10000000);
 	adds = (int16_t)get_val16bit(carriage->arg[0]);
 //	if (!ft_add_carriage(&data->head_c, 0, ++data->num_carriage))
