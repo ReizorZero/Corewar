@@ -8,6 +8,7 @@ void	write_words(t_asm *the_asm, t_line **line)
 	int		start;
 	int		len;
 	int		met_sep;
+	int		met_label;
 
 	s = (*line)->str;
 	i = 0;
@@ -15,6 +16,7 @@ void	write_words(t_asm *the_asm, t_line **line)
 
 	int w_i;
 	w_i = 0;
+	met_label = 0;
 	while (w_i < MAX_WORDS_N)
 	{
 		if (w_i == 0)
@@ -32,6 +34,8 @@ void	write_words(t_asm *the_asm, t_line **line)
 			}
 			if (s[i] == LABEL_CHAR)
 			{
+				//printf("WE MET LABEL\n");
+				met_label = 1;
 				len++;
 				i++;
 			}
@@ -41,6 +45,24 @@ void	write_words(t_asm *the_asm, t_line **line)
 			while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') &&
 			s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 				i++;
+			if (s[i] == SEPARATOR_CHAR && met_label && w_i == 1)
+			{
+				printf("Separator char after label.\n");
+				exit(0);
+			}
+			//
+			if (s[i] == SEPARATOR_CHAR && !met_label && w_i == 1)
+			{
+				printf("Separator char after command.\n");
+				exit(0);
+			}
+			//
+			if (s[i] == SEPARATOR_CHAR && met_label && w_i == 2)
+			{
+				printf("Separator char after command.\n");
+				exit(0);
+			}
+			//
 			met_sep = 0;
 			start = i;
 			len = 0;
@@ -57,6 +79,14 @@ void	write_words(t_asm *the_asm, t_line **line)
 			}
 			if (s[i] == SEPARATOR_CHAR)
 				ERROR(MANY_SEPARATORS, the_asm->curr_line_n);
+			//ERROR WHEN NO SEPARATOR CHAR WHERE IT SHOULD BE
+			//if (!met_sep && met_label && w_i == 3)
+			// {
+			// 	printf("No separator char after argument.\n");
+			// 	exit(0);
+			// }
+			//printf("DID NOT MEET SEPARATOR\n");
+			//
 			if (len == 0 && met_sep == 1)
 			{
 				while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') &&
@@ -190,7 +220,7 @@ void	check_args(t_asm *the_asm, int i, int shift)
 	i++;
 }
 
-int		check_if_words_correct(t_asm *the_asm)
+int		check_if_words_correct(t_asm *the_asm, t_line **line)
 {
 	int	words;
 	int first_is_label;
@@ -228,6 +258,8 @@ int		check_if_words_correct(t_asm *the_asm)
 	{
 		if (words == 1)
 			return (1);
+		if (words == 2)
+			ERROR(NO_ARGS, the_asm->curr_line_n)
 		i = 0;
 		found_command = 0;
 		while (i < COMMANDS_N)
@@ -259,6 +291,144 @@ int		check_if_words_correct(t_asm *the_asm)
 		}
 		
 	}
+	//CHECKING IF WE HAVE THE CORRESPONDING NUMBER OF SEPARATOR CHARS AND WORDS
+	//MAKE IT A SEPARATE FUNCTION LATER
+
+	// int sep_chars;
+	char *s;
+
+	// sep_chars = 0;
+	i = 0;
+	s = (*line)->str;
+	printf("START OF CHECKING...\n");
+	if (first_is_label)
+	{
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != LABEL_CHAR)
+			i++;
+		i++;//WENT PAST LABEL
+
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t')
+			i++;//WENT PAST COMMAND
+
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR)
+			i++;//WENT PAST FIRST ARG
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+
+		if (s[i] == SEPARATOR_CHAR && words == 3)
+		{
+			printf("Wrong number of separator chars.\n");
+			exit(0);
+		}
+		//
+		if (s[i] != SEPARATOR_CHAR && words >= 4)
+		{
+			printf("Wrong number of separator chars.\n");
+			exit(0);
+		}
+		//
+		if (s[i] == SEPARATOR_CHAR)
+			i++;//','
+
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR)
+			i++;//WENT PAST SECOND ARG
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		if (s[i] == SEPARATOR_CHAR && words == 4)
+		{
+			printf("Wrong number of separator chars.\n");
+			exit(0);
+		}
+		if (s[i] != SEPARATOR_CHAR && words == 5)
+		{
+			printf("Wrong number of separator chars.\n");
+			exit(0);
+		}
+		if (s[i] == SEPARATOR_CHAR)
+			i++;//','
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR)
+			i++;//WENT PAST THIRD ARG
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		//printf("%s\n", &s[i]);
+		if (s[i] == SEPARATOR_CHAR && words == 5)
+		{
+		  	printf("Wrong number of separator chars.\n");
+		  	exit(0);
+		}
+		// printf("%s\n", &s[i]);
+	}
+	else
+	{
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t')
+			i++;//WENT PAST COMMAND
+
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR)
+			i++;//WENT PAST FIRST ARG
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+
+		if (s[i] == SEPARATOR_CHAR && words == 2)
+		{
+			printf("Wrong number of separator chars.\n");
+			exit(0);
+		}
+		//
+		if (s[i] != SEPARATOR_CHAR && words >= 3)
+		{
+			printf("Wrong number of separator chars.\n");
+			exit(0);
+		}
+		//
+		if (s[i] == SEPARATOR_CHAR)
+			i++;//','
+
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR)
+			i++;//WENT PAST SECOND ARG
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		if (s[i] == SEPARATOR_CHAR && words == 3)
+		{
+			printf("Wrong number of separator chars.\n");
+			exit(0);
+		}
+		if (s[i] != SEPARATOR_CHAR && words == 4)
+		{
+			printf("Wrong number of separator chars.\n");
+			exit(0);
+		}
+		if (s[i] == SEPARATOR_CHAR)
+			i++;//','
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != SEPARATOR_CHAR)
+			i++;//WENT PAST THIRD ARG
+		while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		//printf("%s\n", &s[i]);
+		if (s[i] == SEPARATOR_CHAR && words == 4)
+		{
+		  	printf("Wrong number of separator chars.\n");
+		  	exit(0);
+		}
+		// printf("%s\n", &s[i]);
+	}
 	return (1);
 }
 
@@ -285,6 +455,6 @@ void	check_command_line(t_asm *the_asm, t_line **line)
 	if (!is_empty_or_comment(line))
 	{
 		write_words(the_asm, line);
-		check_if_words_correct(the_asm);
+		check_if_words_correct(the_asm, line);
 	}
 }
