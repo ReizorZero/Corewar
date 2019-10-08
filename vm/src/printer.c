@@ -29,20 +29,21 @@ void	print_winner(t_general *data)
 void	usage_msg(void)
 {
 	ft_printf("usage: ./corewar [-dump n | -v n] [-n n] <player.cor> ...\n");
-	ft_printf("\t%s - %s\n", "-dump n", "dumps memory after n cycles");
-	ft_printf("\t%s - %s\n", "-v n", "verbosity levels, can be added together");
-	ft_printf("\t\t%-20s\n", "0: show only essentials");
-	ft_printf("\t\t%-20s\n", "1: show lives");
-	ft_printf("\t\t%-20s\n", "2: show cycles");
-	ft_printf("\t\t%-20s\n", "4: show operations");
-	ft_printf("\t\t%-20s\n", "8: show death");
-	ft_printf("\t\t%-20s\n", "16: show PC movement (except for jumps)"); //except for jumps?
+	ft_printf("\t%-6sn : %-50s\n", "-dump", "dumps memory after n cycles");
+	ft_printf("\t%-6sn : %-50s\n", "-v", "verbosity levels, can be added together");
+	ft_printf("\t\t\t%-20s\n", "0: show only essentials");
+	ft_printf("\t\t\t%-20s\n", "1: show lives");
+	ft_printf("\t\t\t%-20s\n", "2: show cycles");
+	ft_printf("\t\t\t%-20s\n", "4: show operations (Params are NOT litteral ...)");
+	ft_printf("\t\t\t%-20s\n", "8: show death");
+	ft_printf("\t\t\t%-20s\n", "16: show PC movement (except for jumps)"); //except for jumps?
 	exit(1);
 }
 
-void	error_msg(char *msg)
+void error_msg(char *msg, t_general *data)
 {
 	ft_putendl_fd(msg, 2);
+	ft_mem_clean(data);
 	exit(1);
 }
 

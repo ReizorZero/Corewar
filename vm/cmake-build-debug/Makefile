@@ -2553,6 +2553,33 @@ src/check_players.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_players.c.s
 .PHONY : src/check_players.c.s
 
+src/errors.o: src/errors.c.o
+
+.PHONY : src/errors.o
+
+# target to build an object file
+src/errors.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/errors.c.o
+.PHONY : src/errors.c.o
+
+src/errors.i: src/errors.c.i
+
+.PHONY : src/errors.i
+
+# target to preprocess a source file
+src/errors.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/errors.c.i
+.PHONY : src/errors.c.i
+
+src/errors.s: src/errors.c.s
+
+.PHONY : src/errors.s
+
+# target to generate assembly for a file
+src/errors.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/errors.c.s
+.PHONY : src/errors.c.s
+
 src/fight.o: src/fight.c.o
 
 .PHONY : src/fight.o
@@ -3507,6 +3534,9 @@ help:
 	@echo "... src/check_players.o"
 	@echo "... src/check_players.i"
 	@echo "... src/check_players.s"
+	@echo "... src/errors.o"
+	@echo "... src/errors.i"
+	@echo "... src/errors.s"
 	@echo "... src/fight.o"
 	@echo "... src/fight.i"
 	@echo "... src/fight.s"

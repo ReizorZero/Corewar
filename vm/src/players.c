@@ -12,7 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-static void		check_nulls(int fd, char *file)
+static void check_nulls(t_general *data, char *file, int fd)
 {
 	int				i;
 	int				ret;
@@ -21,18 +21,18 @@ static void		check_nulls(int fd, char *file)
 	i = 0;
 	ret = read(fd, &buff, 4);
 	if (ret == -1)
-		err_cant_read(file);
+		err_cant_read(data, file);
 	if (ret < 4)
-		err_read_less(file);
+		err_read_less(data, file);
 	while (i < 4)
 	{
 		if (buff[i] != 0)
-			error_msg("Error: no NULL bytes!");
+			error_msg("Error: no NULL bytes!", data);
 		i++;
 	}
 }
 
-static int		check_players_size(int fd, char *file)
+static int check_players_size(t_general *data, char *file, int fd)
 {
 	unsigned char	buff[4];
 	int				ret;
@@ -41,9 +41,9 @@ static int		check_players_size(int fd, char *file)
 	size = 0;
 	ret = read(fd, &buff, 4);
 	if (ret == -1)
-		err_cant_read(file);
+		err_cant_read(data, file);
 	if (ret < 4)
-		err_read_less(file);
+		err_read_less(data, file);
 	size = buff[0] << 24;
 	size |= buff[1] << 16;
 	size |= buff[2] << 8;
@@ -51,20 +51,20 @@ static int		check_players_size(int fd, char *file)
 	return (size);
 }
 
-static char		*check_name(int fd, int len, char *file)
+static char *check_name_vm(t_general *data, int len, char *file, int fd)
 {
 	char	buff[PROG_NAME_LENGTH + 1];
 	int		ret;
 
 	ret = read(fd, &buff, len);
 	if (ret == -1)
-		err_cant_read(file);
+		err_cant_read(data, file);
 	if (ret < len)
-		err_read_less(file);
+		err_read_less(data, file);
 	return (ft_strdup(buff));
 }
 
-static void		check_magic(int fd, char *file)
+static void check_magic(t_general *data, char *file, int fd)
 {
 	int				ret;
 	unsigned int	magic;
@@ -72,15 +72,15 @@ static void		check_magic(int fd, char *file)
 
 	ret = read(fd, &buff, 4);
 	if (ret == -1)
-		err_cant_read(file);
+		err_cant_read(data, file);
 	if (ret < 4)
-		err_read_less(file);
+		err_read_less(data, file);
 	magic = buff[0] << 24;
 	magic |= buff[1] << 16;
 	magic |= buff[2] << 8;
 	magic |= buff[3];
 	if (magic != COREWAR_EXEC_MAGIC)
-		err_magic_header(file);
+		err_magic_header(data, file);
 }
 
 t_player		*player(t_general *data, char **argv, int *i, int id)
@@ -88,22 +88,22 @@ t_player		*player(t_general *data, char **argv, int *i, int id)
 	t_player	*pl;
 	int			fd;
 
-	if (!(pl = (t_player *)malloc(sizeof(t_player))))
-		error_msg("Malloc error!");
+	if (!(pl = (t_player *)ft_memalloc(sizeof(t_player))))
+		error_msg("Malloc error!", data);
 	ft_bzero(pl, sizeof(t_player));
 	if ((fd = open(argv[*i], O_RDONLY)) < 0)
-		err_cant_read(argv[*i]);
-	check_magic(fd, argv[*i]);
-	pl->name = check_name(fd, PROG_NAME_LENGTH, argv[*i]);
-	check_nulls(fd, argv[*i]);
-	pl->size = check_players_size(fd, argv[*i]);
+		err_cant_read(data, argv[*i]);
+	check_magic(NULL, argv[*i], fd);
+	pl->name = check_name_vm(data, PROG_NAME_LENGTH, argv[*i], fd);
+	check_nulls(data, argv[*i], fd);
+	pl->size = check_players_size(data, argv[*i], fd);
 	if (pl->size < 1)
-		err_diff_size(argv[*i]);
+		err_diff_size(data, argv[*i]);
 	if (pl->size > CHAMP_MAX_SIZE)
-		err_too_large(argv[*i], pl->size);
-	pl->comment = check_comment(fd, COMMENT_LENGTH, argv[*i]);
-	check_nulls(fd, argv[*i]);
-	pl->code = check_players_code(fd, pl->size, argv[*i]);
+		err_too_large(data, pl->size, argv[*i]);
+	pl->comment = check_comment_vm(data, COMMENT_LENGTH, argv[*i], fd);
+	check_nulls(data, argv[*i], fd);
+	pl->code = check_players_code(fd, pl->size, argv[*i], data);
 	pl->id = id;
 	pl->next = NULL;
 	data->pl_nbr += 1;

@@ -33,6 +33,7 @@ void op_lfork(t_general *data, t_carriage *carriage)
 	{
 		ft_printf("Error: can't create new carriage! PC = %i\n",
 				  data->cycles_total + data->cycles_tmp);
+		ft_mem_clean(data);
 		exit(1);
 	}
 	ft_memmove(new, carriage, sizeof(t_carriage));

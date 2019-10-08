@@ -94,6 +94,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshvets/Desktop/Corewar/vm/src/check_args.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/check_args.c.o"
   "/Users/mshvets/Desktop/Corewar/vm/src/check_live_carriage.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/check_live_carriage.c.o"
   "/Users/mshvets/Desktop/Corewar/vm/src/check_players.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/check_players.c.o"
+  "/Users/mshvets/Desktop/Corewar/vm/src/errors.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/errors.c.o"
   "/Users/mshvets/Desktop/Corewar/vm/src/fight.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/fight.c.o"
   "/Users/mshvets/Desktop/Corewar/vm/src/get_val.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/get_val.c.o"
   "/Users/mshvets/Desktop/Corewar/vm/src/main.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/main.c.o"

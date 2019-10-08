@@ -68,6 +68,7 @@ int main(int argc, char **argv)
 //	data.head_c->op_id = data.mem_f[0];
 	ft_fight(&data);
 //	arg_read(&data, data.head_c);
-//	ft_mem_clean(&data);
+	ft_mem_clean(&data);
+//	system("leaks corewar");
 	return(0);
 }

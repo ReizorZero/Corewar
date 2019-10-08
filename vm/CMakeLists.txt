@@ -39,6 +39,7 @@ add_executable(
         src/op_lfork.c
         src/op_aff.c
         src/get_val.c
-        src/check_live_carriage.c)
+        src/check_live_carriage.c
+        src/errors.c)
 
 link_libraries(../libft/libft.a)

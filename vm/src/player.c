@@ -30,8 +30,8 @@ void	ft_del_player(t_player **lst_player)
 	{
 		crawler = *lst_player;
 		*lst_player = (*lst_player)->next;
-//		ft_strdel(&crawler->name);
-//		ft_strdel(&crawler->comment);
+		ft_strdel(&crawler->name);
+		ft_strdel(&crawler->comment);
 		ft_strdel((char **)&crawler->code);
 		free(crawler);
 		crawler = NULL;

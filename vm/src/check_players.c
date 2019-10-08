@@ -12,35 +12,35 @@
 
 #include "../inc/corewar_vm.h"
 
-char			*check_comment(int fd, int len, char *file)
+char *check_comment_vm(t_general *data, int len, char *file, int fd)
 {
 	char	buff[COMMENT_LENGTH + 1];
 	int		ret;
 
 	ret = read(fd, &buff, len);
 	if (ret == -1)
-		err_cant_read(file);
+		err_cant_read(data, file);
 	if (ret < len)
-		err_read_less(file);
+		err_read_less(data, file);
 	return (ft_strdup(buff));
 }
 
-uint8_t			*check_players_code(int fd, int len, char *file)
+uint8_t *check_players_code(int fd, int len, char *file, t_general *data)
 {
 	int				ret;
 	uint8_t			*buff;
 	uint8_t			check[1];
 
-	if (!(buff = malloc(len)))
-		error_msg("Malloc error!");
+	if (!(buff = ft_memalloc(len)))
+		error_msg("Malloc error!", data);
 	ret = read(fd, buff, len);
 	if (ret == -1)
-		err_cant_read(file);
+		err_cant_read(data, file);
 	if (ret < len)
-		err_read_less(file);
+		err_read_less(data, file);
 	ret = 0;
 	if ((ret = read(fd, &check, 1)) != 0)
-		err_diff_size(file);
+		err_diff_size(data, file);
 	return (buff);
 }
 
@@ -66,7 +66,7 @@ void			before_start(t_general *data)
 	while (i <= data->pl_nbr)
 	{
 		if (ft_add_carriage(&data->head_c, i, ++data->num_carriage))
-			error_msg("Error: can't create new carriage!");
+			error_msg("Error: can't create new carriage!", data);
 		data->head_c->position = pos;
 	 	pos += MEM_SIZE / data->pl_nbr;
 		i++;
