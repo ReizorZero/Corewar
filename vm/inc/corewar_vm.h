@@ -148,5 +148,7 @@ void err_cant_read(t_general *data, char *file);
 void err_diff_size(t_general *data, char *file);
 void err_too_large(t_general *data, int size, char *file);
 void err_magic_header(t_general *data, char *file);
+void	get_val_ldi(t_carriage carriage, int32_t *val, int8_t i);
+void	ft_res_init(t_general *data, t_mem *res, uint32_t adds);
 
 #endif
