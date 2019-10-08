@@ -281,6 +281,11 @@ CMakeFiles/VM.dir/src/check_players.c.o: ../inc/corewar_vm.h
 CMakeFiles/VM.dir/src/check_players.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/check_players.c.o: ../src/check_players.c
 
+CMakeFiles/VM.dir/src/errors.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
+CMakeFiles/VM.dir/src/errors.c.o: ../inc/corewar_vm.h
+CMakeFiles/VM.dir/src/errors.c.o: ../inc/op.h
+CMakeFiles/VM.dir/src/errors.c.o: ../src/errors.c
+
 CMakeFiles/VM.dir/src/fight.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/fight.c.o: ../inc/corewar_vm.h
 CMakeFiles/VM.dir/src/fight.c.o: ../inc/op.h

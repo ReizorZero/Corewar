@@ -13,7 +13,7 @@
 #include "../inc/op.h"
 #include "../inc/corewar_vm.h"
 
-t_operation op_tab[17] =
+t_operation	g_op_tab[17] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
@@ -40,8 +40,8 @@ t_operation op_tab[17] =
 	{0, 0, {0}, 0, 0, 0, 0, 0}
 };
 
-void	(*op_func [16])(t_general*, t_carriage*) =
-		{
+void		(*g_op_func[16])(t_general*, t_carriage*) =
+{
 	op_live,
 	op_ld,
 	op_st,
@@ -58,4 +58,4 @@ void	(*op_func [16])(t_general*, t_carriage*) =
 	op_lldi,
 	op_lfork,
 	op_aff
-		};
+};

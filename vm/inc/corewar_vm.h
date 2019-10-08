@@ -90,9 +90,9 @@ typedef struct 			s_general
 }						t_general;
 
 
-t_operation				op_tab[17];
+t_operation				g_op_tab[17];
 void					ft_fight(t_general *data);
-void					(*op_func[16])(t_general*, t_carriage*);
+void					(*g_op_func[16])(t_general*, t_carriage*);
 int 					ft_add_end_carriage(t_carriage **lst_carriage, int player, size_t nbr);
 int 					ft_add_carriage(t_carriage **lst_carriage, int player, size_t nbr);
 t_carriage				*ft_new_carriage(int player, size_t nbr);

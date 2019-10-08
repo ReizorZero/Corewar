@@ -67,11 +67,11 @@ void	show_pc_movement(t_general data, t_carriage carriage)
 	{
 		i = -1;
 		step = 1;
-		step = op_tab[carriage.op_id - 1].octal ? step + 1 : step;
-		while (++i < op_tab[carriage.op_id - 1].n_arg)
+		step = g_op_tab[carriage.op_id - 1].octal ? step + 1 : step;
+		while (++i < g_op_tab[carriage.op_id - 1].n_arg)
 		{
 			if (carriage.arg[i].type == T_DIR)
-				step += DIR_SIZE - 2 * op_tab[carriage.op_id - 1].label;
+				step += DIR_SIZE - 2 * g_op_tab[carriage.op_id - 1].label;
 			else if (carriage.arg[i].type == T_REG ||
 				carriage.arg[i].type == 16)
 				step += 1;

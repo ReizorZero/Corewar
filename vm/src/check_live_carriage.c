@@ -59,7 +59,7 @@ void start_new_op(t_general *data, t_carriage *crg)
 	if (data->mem_f[crg->position] > 0 && data->mem_f[crg->position] <= 16)
 	{
 		crg->op_id = (uint8_t)data->mem_f[crg->position];
-		crg->op_cycles = (int)op_tab[crg->op_id - 1].cycles;
+		crg->op_cycles = (int)g_op_tab[crg->op_id - 1].cycles;
 	}
 	else
 	{

@@ -64,8 +64,8 @@ void	ft_fight(t_general *data)
 				--(crwl->op_cycles);
 			if (!crwl->op_cycles)
 			{
-//				if (op_tab[carriage->op_id - 1].octal)
-					op_func[crwl->op_id - 1](data, crwl);
+//				if (g_op_tab[carriage->op_id - 1].octal)
+					g_op_func[crwl->op_id - 1](data, crwl);
 				--(crwl->op_cycles);
 			}
 			crwl = crwl->next;
