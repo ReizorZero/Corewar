@@ -6,13 +6,13 @@
 /*   By: vkuhuk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 13:24:45 by vkuhuk            #+#    #+#             */
-/*   Updated: 2019/09/29 13:47:36 by vkuhuk           ###   ########.fr       */
+/*   Updated: 2019/10/08 14:43:38 by vkuhuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/corewar_vm.h"
 
-char *check_comment_vm(t_general *data, int len, char *file, int fd)
+char	*check_comment_vm(t_general *data, int len, char *file, int fd)
 {
 	char	buff[COMMENT_LENGTH + 1];
 	int		ret;
@@ -25,7 +25,7 @@ char *check_comment_vm(t_general *data, int len, char *file, int fd)
 	return (ft_strdup(buff));
 }
 
-uint8_t *check_players_code(int fd, int len, char *file, t_general *data)
+uint8_t	*check_players_code(int fd, int len, char *file, t_general *data)
 {
 	int				ret;
 	uint8_t			*buff;
@@ -44,11 +44,10 @@ uint8_t *check_players_code(int fd, int len, char *file, t_general *data)
 	return (buff);
 }
 
-void			before_start(t_general *data)
+void	before_start(t_general *data)
 {
 	t_player	*tmp;
 	uint8_t		i;
-	int pos;
 	int			count;
 
 	i = 1;
@@ -60,15 +59,14 @@ void			before_start(t_general *data)
 		count += MEM_SIZE / data->pl_nbr;
 		i++;
 	}
-    //print_arena(data);
 	i = 1;
-	pos = 0;
+	count = 0;
 	while (i <= data->pl_nbr)
 	{
 		if (ft_add_carriage(&data->head_c, i, ++data->num_carriage))
 			error_msg("Error: can't create new carriage!", data);
-		data->head_c->position = pos;
-	 	pos += MEM_SIZE / data->pl_nbr;
+		data->head_c->position = count;
+		count += MEM_SIZE / data->pl_nbr;
 		i++;
 	}
 	data->lst_live_plr = data->pl_nbr;

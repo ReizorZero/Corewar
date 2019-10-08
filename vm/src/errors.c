@@ -12,7 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-void err_read_less(t_general *data, char *file)
+void	err_read_less(t_general *data, char *file)
 {
 	ft_putstr_fd("Error: File ", 2);
 	ft_putstr_fd(file, 2);
@@ -21,7 +21,7 @@ void err_read_less(t_general *data, char *file)
 	exit(1);
 }
 
-void err_cant_read(t_general *data, char *file)
+void	err_cant_read(t_general *data, char *file)
 {
 	ft_putstr_fd("Can't read source file ", 2);
 	ft_putendl_fd(file, 2);
@@ -29,7 +29,7 @@ void err_cant_read(t_general *data, char *file)
 	exit(1);
 }
 
-void err_diff_size(t_general *data, char *file)
+void	err_diff_size(t_general *data, char *file)
 {
 	ft_putstr_fd("Error: File ", 2);
 	ft_putstr_fd(file, 2);
@@ -38,7 +38,7 @@ void err_diff_size(t_general *data, char *file)
 	exit(1);
 }
 
-void err_too_large(t_general *data, int size, char *file)
+void	err_too_large(t_general *data, int size, char *file)
 {
 	ft_putstr_fd("Error: File ", 2);
 	ft_putstr_fd(file, 2);
@@ -49,7 +49,7 @@ void err_too_large(t_general *data, int size, char *file)
 	exit(1);
 }
 
-void err_magic_header(t_general *data, char *file)
+void	err_magic_header(t_general *data, char *file)
 {
 	ft_putstr_fd("Error: File ", 2);
 	ft_putstr_fd(file, 2);

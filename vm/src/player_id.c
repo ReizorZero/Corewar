@@ -50,7 +50,7 @@ void		check_n_id(t_general *data)
 		if (tmp->id != 0 && tmp->id > data->pl_nbr)
 		{
 			error_msg("Error: -n number is bigger than total nbr of players!",
-					  data);
+				data);
 		}
 		tmp = tmp->next;
 	}

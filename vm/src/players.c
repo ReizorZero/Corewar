@@ -6,13 +6,13 @@
 /*   By: vkuhuk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 14:02:33 by vkuhuk            #+#    #+#             */
-/*   Updated: 2019/09/29 14:08:48 by vkuhuk           ###   ########.fr       */
+/*   Updated: 2019/10/08 14:47:15 by vkuhuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/corewar_vm.h"
 
-static void check_nulls(t_general *data, char *file, int fd)
+static void		check_nulls(t_general *data, char *file, int fd)
 {
 	int				i;
 	int				ret;
@@ -32,7 +32,7 @@ static void check_nulls(t_general *data, char *file, int fd)
 	}
 }
 
-static int check_players_size(t_general *data, char *file, int fd)
+static int		check_players_size(t_general *data, char *file, int fd)
 {
 	unsigned char	buff[4];
 	int				ret;
@@ -51,7 +51,7 @@ static int check_players_size(t_general *data, char *file, int fd)
 	return (size);
 }
 
-static char *check_name_vm(t_general *data, int len, char *file, int fd)
+static char		*check_name_vm(t_general *data, int len, char *file, int fd)
 {
 	char	buff[PROG_NAME_LENGTH + 1];
 	int		ret;
@@ -64,7 +64,7 @@ static char *check_name_vm(t_general *data, int len, char *file, int fd)
 	return (ft_strdup(buff));
 }
 
-static void check_magic(t_general *data, char *file, int fd)
+static void		check_magic(t_general *data, char *file, int fd)
 {
 	int				ret;
 	unsigned int	magic;

@@ -63,8 +63,8 @@ static void	add_player(t_general *data, char **argv, int *i)
 	}
 	if (right_extention(argv[*i]))
 		ft_add_end_player(&data->head_p, player(data, argv, i, id));
-    else
-    	usage_msg();
+	else
+		usage_msg();
 }
 
 void		args_checking(t_general *data, int argc, char **argv)
