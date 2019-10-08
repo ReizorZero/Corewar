@@ -37,7 +37,7 @@ void err_diff_size(char *file)
 
 void err_too_large(char *file, int size)
 {
-	ft_putstr_fd("Can't read source file ", 2);
+	ft_putstr_fd("Error: File ", 2);
 	ft_putstr_fd(file, 2);
 	ft_putstr_fd(" has too large a code (", 2);
 	ft_putnbr_fd(size, 2);
