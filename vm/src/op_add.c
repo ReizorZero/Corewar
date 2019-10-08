@@ -33,4 +33,3 @@ void op_add(t_general *data, t_carriage *carriage)
 	show_pc_movement(*data, *carriage);
 	carriage->position = carriage->position_tmp;
 }
-
