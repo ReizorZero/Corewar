@@ -143,5 +143,10 @@ void					print_winner(t_general *data);
 void					ft_check_live_carriage(t_general *data);
 void					start_new_op(t_general *data, t_carriage *crg);
 void					set_new_cycle(t_general *data);
+void					err_read_less(char *file);
+void					err_cant_read(char *file);
+void					err_diff_size(char *file);
+void					err_too_large(char *file, int size);
+void					err_magic_header(char *file);
 
 #endif

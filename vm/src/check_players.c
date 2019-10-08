@@ -12,35 +12,35 @@
 
 #include "../inc/corewar_vm.h"
 
-char			*check_comment(int fd, int len)
+char			*check_comment(int fd, int len, char *file)
 {
 	char	buff[COMMENT_LENGTH + 1];
 	int		ret;
 
 	ret = read(fd, &buff, len);
 	if (ret == -1)
-		error_msg("error reading file!");
+		err_cant_read(file);
 	if (ret < len)
-		error_msg("error: player's comment is less than it needed");
+		err_read_less(file);
 	return (ft_strdup(buff));
 }
 
-uint8_t	*check_players_code(int fd, int len)
+uint8_t			*check_players_code(int fd, int len, char *file)
 {
 	int				ret;
 	uint8_t			*buff;
 	uint8_t			check[1];
 
 	if (!(buff = malloc(len)))
-		error_msg("malloc error!");
+		error_msg("Malloc error!");
 	ret = read(fd, buff, len);
 	if (ret == -1)
-		error_msg("error reading file!");
+		err_cant_read(file);
 	if (ret < len)
-		error_msg("error: player's comment is less than it was defined");
+		err_read_less(file);
 	ret = 0;
 	if ((ret = read(fd, &check, 1)) != 0)
-		error_msg("player's code is bigger than is was defined");
+		err_diff_size(file);
 	return (buff);
 }
 
@@ -66,7 +66,7 @@ void			before_start(t_general *data)
 	while (i <= data->pl_nbr)
 	{
 		if (ft_add_carriage(&data->head_c, i, ++data->num_carriage))
-			ft_printf("Error: can't create new carriage!\n");
+			error_msg("Error: can't create new carriage!");
 		data->head_c->position = pos;
 	 	pos += MEM_SIZE / data->pl_nbr;
 		i++;

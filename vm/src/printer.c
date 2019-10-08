@@ -36,13 +36,13 @@ void	usage_msg(void)
 	ft_printf("\t\t%-20s\n", "2: show cycles");
 	ft_printf("\t\t%-20s\n", "4: show operations");
 	ft_printf("\t\t%-20s\n", "8: show death");
-	ft_printf("\t\t%-20s\n", "16: show PC movement"); //except for jumps?
+	ft_printf("\t\t%-20s\n", "16: show PC movement (except for jumps)"); //except for jumps?
 	exit(1);
 }
 
 void	error_msg(char *msg)
 {
-	ft_printf("%s\n", msg);
+	ft_putendl_fd(msg, 2);
 	exit(1);
 }
 

@@ -15,11 +15,10 @@
 static void	verbosity_fl(t_general *data, char **argv, int *i)
 {
 	(*i)++;
-	if (argv[*i])
+	if (argv[*i] && *(argv[*i]) >= '0' && *(argv[*i]) <= '9')
 		data->verb_nbr = ft_atoi(argv[*i]);
 	else
-		error_msg("error: invalid nbr in -v option");
-	//add smthing
+		error_msg("Error: invalid number in -v option");
 }
 
 static void	dump_fl(t_general *data, char **argv, int *i)
@@ -28,7 +27,7 @@ static void	dump_fl(t_general *data, char **argv, int *i)
 	if (argv[*i] && *(argv[*i]) >= '0' && *(argv[*i]) <= '9')
 		data->dump_cycle = ft_atoi(argv[*i]);
 	else
-		error_msg("error: invalid nbr in -dump option");
+		error_msg("Error: invalid number in -dump option");
 }
 
 static int	right_extention(const char *name)
@@ -56,15 +55,16 @@ static void	add_player(t_general *data, char **argv, int *i)
 		{
 			id = ft_atoi(argv[*i]);
 			if (id < 1 || id > MAX_PLAYERS)
-				error_msg("invalid nbr in -n option");
+				error_msg("Error: invalid number in -n option");
 		}
 		else
-			error_msg("invalid nbr in -n option");
+			error_msg("Error: invalid number in -n option");
 		(*i)++;
 	}
 	if (right_extention(argv[*i]))
 		ft_add_end_player(&data->head_p, player(data, argv, i, id));
-    //else ?
+    else
+    	usage_msg();
 }
 
 void		args_checking(t_general *data, int argc, char **argv)
@@ -85,7 +85,7 @@ void		args_checking(t_general *data, int argc, char **argv)
 		i++;
 	}
 	if (data->pl_nbr < 1 || data->pl_nbr > MAX_PLAYERS)
-		error_msg("error: wrong number of player's!");
+		error_msg("Error: invalid number of player's!");
 	check_id(data);
 	introducing(data);
 	before_start(data);
