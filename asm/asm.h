@@ -74,9 +74,10 @@ typedef struct	s_commands_info
 	int		t_dir_size;
 	int		has_arg_types_code;
 	int		arg_n;
-	int		arg_1_types[3];//or replace with int *arg_1_types, but better not
-	int		arg_2_types[3];
-	int		arg_3_types[3];
+	int		arg_types[3][3];
+	// int		arg_1_types[3];//or replace with int *arg_1_types, but better not
+	// int		arg_2_types[3];
+	// int		arg_3_types[3];
 }				t_commands_info;
 
 typedef struct	s_exec_code_line

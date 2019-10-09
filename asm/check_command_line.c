@@ -1,5 +1,4 @@
 #include "asm.h"
-//#include "commands.h"
 
 int		is_empty_or_comment(t_line **line)
 {
@@ -26,7 +25,6 @@ void	check_command_line(t_asm *the_asm, t_line **line)
 		add_cmnd_line(the_asm);
 		write_cmnd_line_words(the_asm, line);
 		check_if_words_correct(the_asm, line);
-		//CHECK IF ARGS TYPES ARE VALID
-		//DO SOMETHING WITH LABELS AND BYTE_AT
+		//FIX LABEL AND BYTE_AT STUFF
 	}
 }
