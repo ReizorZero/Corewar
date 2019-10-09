@@ -27,7 +27,7 @@ void	ft_check_live_carriage(t_general *data)
 		else if (!prv_crwl)
 		{
 			data->head_c = crwl->next;
-			if (data->verb_nbr & 8) //verb_nbr 8
+			if (data->verb_nbr & 8)
 			{
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", crwl->nbr,
 						  ((data->cycles_total + data->cycles_tmp) - crwl->lst_live_cycle), data->cycles_to_die);
@@ -42,7 +42,7 @@ void	ft_check_live_carriage(t_general *data)
 		else if (prv_crwl)
 		{
 			prv_crwl->next = crwl->next;
-			if (data->verb_nbr & 8) //verb_nbr 8
+			if (data->verb_nbr & 8)
 			{
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", crwl->nbr,
 						  ((data->cycles_total + data->cycles_tmp) - crwl->lst_live_cycle), data->cycles_to_die);
@@ -54,7 +54,7 @@ void	ft_check_live_carriage(t_general *data)
 	}
 }
 
-void start_new_op(t_general *data, t_carriage *crg)
+void	start_new_op(t_general *data, t_carriage *crg)
 {
 	if (data->mem_f[crg->position] > 0 && data->mem_f[crg->position] <= 16)
 	{

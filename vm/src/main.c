@@ -14,27 +14,27 @@
 #include "../inc/corewar_vm.h"
 //#include "../inc/operation.h"
 
-void print_mem(t_general *data)
+void	print_mem(t_general *data)
 {
-    int i;
-    int j;
+	int i;
+	int j;
 
-    i = 0;
-    while (i < MEM_SIZE)
-    {
-        ft_printf("%.4p : ", i);
-        j = 0;
-        while (j < 64)//32!
-        {
-            ft_printf("%.2x ", data->mem_f[i + j]);
-            j++;
-        }
-        ft_printf("\n");
-        i += 64;//32!
-    }
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		ft_printf("%.4p : ", i);
+		j = 0;
+		while (j < 64)//32!
+		{
+			ft_printf("%.2x ", data->mem_f[i + j]);
+			j++;
+		}
+		ft_printf("\n");
+		i += 64;//32!
+	}
 }
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_general	data;
 
@@ -55,7 +55,6 @@ int main(int argc, char **argv)
 	//		j % 2 ? 0 : ft_printf(" ");
 	//	}
 	//}
-
 //	ft_add_carriage(&data.head_c, 5);
 //	data.head_c->live = 1;
 	//ft_add_carriage(&data.head_c, 1);
@@ -70,5 +69,5 @@ int main(int argc, char **argv)
 //	arg_read(&data, data.head_c);
 	ft_mem_clean(&data);
 //	system("leaks corewar");
-	return(0);
+	return (0);
 }

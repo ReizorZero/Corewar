@@ -12,11 +12,11 @@
 
 #include "../inc/corewar_vm.h"
 
-t_carriage *ft_new_carriage(int player, size_t nbr)
+t_carriage	*ft_new_carriage(int player, size_t nbr)
 {
 	t_carriage	*new;
 
-	if(!(new = (t_carriage *)ft_memalloc(sizeof(*new))))
+	if (!(new = (t_carriage *)ft_memalloc(sizeof(*new))))
 		return (NULL);
 //	new->player = player;
 	new->reg[0] = reverse_32bits(-player);
@@ -30,7 +30,7 @@ t_carriage *ft_new_carriage(int player, size_t nbr)
 //	;
 //}
 
-void	ft_del_lst_carriage(t_carriage **lst_carriage)
+void		ft_del_lst_carriage(t_carriage **lst_carriage)
 {
 	t_carriage	*crawler;
 
@@ -43,7 +43,7 @@ void	ft_del_lst_carriage(t_carriage **lst_carriage)
 	}
 }
 
-int ft_add_end_carriage(t_carriage **lst_carriage, int player, size_t nbr)
+int			ft_add_end_carriage(t_carriage **lst_carriage, int player, size_t nbr)
 {
 	t_carriage *crawler;
 
@@ -63,7 +63,7 @@ int ft_add_end_carriage(t_carriage **lst_carriage, int player, size_t nbr)
 	return (0);
 }
 
-int ft_add_carriage(t_carriage **lst_carriage, int player, size_t nbr)
+int			ft_add_carriage(t_carriage **lst_carriage, int player, size_t nbr)
 {
 	t_carriage	*new;
 

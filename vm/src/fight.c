@@ -12,7 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-void memory_cpy(t_mem *dest, t_mem src)
+void	memory_cpy(t_mem *dest, t_mem src)
 {
 	size_t i;
 //	t_mem dest_cpy;
@@ -36,10 +36,10 @@ void memory_cpy(t_mem *dest, t_mem src)
 
 void	ft_fight(t_general *data)
 {
-	t_carriage	*crwl = NULL;
+	t_carriage	*crwl;
 
 	data->cycles_tmp = 1;
-
+	crwl = NULL;
 	while (data->head_c)
 	{
 //		if ((data->cycles_total + data->cycles_tmp) == 22544)

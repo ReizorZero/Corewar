@@ -17,7 +17,7 @@ int get_num_reg(t_carriage *carriage, int n)
 	return (((uint32_t *)carriage->arg[n].current - carriage->reg) + 1);
 }
 
-uint32_t get_val32bit(t_mem src)
+uint32_t	get_val32bit(t_mem src)
 {
 	t_mem val;
 
@@ -30,13 +30,13 @@ uint32_t get_val32bit(t_mem src)
 	return (reverse_32bits(*(uint32_t *)val.mem));
 }
 
-uint32_t reverse_32bits(uint32_t pInt)
+uint32_t	reverse_32bits(uint32_t pInt)
 {
 	return (pInt >> 24 | pInt << 24 | ((pInt >> 8) & 0xff00)
-			| ((pInt << 8) & 0xff0000));
+		| ((pInt << 8) & 0xff0000));
 }
 
-uint16_t get_val16bit(t_mem src)
+uint16_t	get_val16bit(t_mem src)
 {
 	t_mem val;
 
@@ -49,7 +49,7 @@ uint16_t get_val16bit(t_mem src)
 	return (reverse_16bits(*(uint16_t *)val.mem));
 }
 
-uint16_t reverse_16bits(uint16_t pInt)
+uint16_t	reverse_16bits(uint16_t pInt)
 {
 	return (pInt >> 8 | pInt << 8);
 }
