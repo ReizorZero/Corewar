@@ -83,15 +83,18 @@ typedef struct	s_exec_code_line
 {
 	int							id;
 	int							cmnd_code;
-	int							arg_1_code;
-	int							arg_1_value;
-	int							arg_1_size;
-	int							arg_2_code;
-	int							arg_2_value;
-	int							arg_2_size;
-	int							arg_3_code;
-	int							arg_3_value;
-	int							arg_3_size;
+	int							arg_code[3];
+	int							arg_value[3];
+	int							arg_size[3];
+	// int							arg_1_code;
+	// int							arg_1_value;
+	// int							arg_1_size;
+	// int							arg_2_code;
+	// int							arg_2_value;
+	// int							arg_2_size;
+	// int							arg_3_code;
+	// int							arg_3_value;
+	// int							arg_3_size;
 	int							cmnd_size;
 	int							first_is_label;
 	int							words;
