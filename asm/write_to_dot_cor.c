@@ -71,13 +71,15 @@ void		write_to_dot_cor(t_asm *the_asm)
 	j = -1;
 	while (the_asm->champion_name[++j] != '\0')
 		out_in_file(the_asm->champion_name[j], 1, the_asm);
-	write_null_in_file(the_asm, 128 - j + 4);
+	write_null_in_file(the_asm, 128 - j);
+	write_null_in_file(the_asm, 4);
 	the_asm->exec_code_size = 22; // random number
 	out_in_file(the_asm->exec_code_size, 4, the_asm);
 	j = -1;
 	while (the_asm->champion_comment[++j] != '\0')
 		out_in_file(the_asm->champion_comment[j], 1, the_asm);
-	write_null_in_file(the_asm, 2048 - j + 4);
+	write_null_in_file(the_asm, 2048 - j);
+	write_null_in_file(the_asm, 4);
 	out_in_file(-19, 2, the_asm); // manualy get number
 	// champ_code_size(the_asm);
 }

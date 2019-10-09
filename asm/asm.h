@@ -122,6 +122,8 @@ typedef struct	s_asm
 	int					curr_line_n;
 }				t_asm;
 
+t_labels		*g_labels;
+
 void			check_input(int argc, char **argv, t_asm *the_asm);
 
 int				read_from_dot_s(t_asm *the_asm);
