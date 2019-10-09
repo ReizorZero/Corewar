@@ -34,7 +34,7 @@ void	check_file_extension(char *filename, t_asm *the_asm)
 	the_asm->dot_s_file_name = ft_strdup(filename);//MAKE SURE IT DOESN'T GIVE US LEAKS
 }
 
-void	check_input(int argc, char **argv, t_asm *the_asm)
+void	check_asm_input(int argc, char **argv, t_asm *the_asm)
 {
 	check_arguments_n(argc);
 	check_file_name(argv[1]);

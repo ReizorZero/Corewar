@@ -22,19 +22,6 @@ void	close_file(t_asm *the_asm, int fd)
 	}
 }
 
-void	write_line_to_list(t_asm *the_asm, char *s)
-{
-	if (!the_asm->lines)
-		the_asm->lines = new_line(s);
-	else
-	{
-		the_asm->lines->next = new_line(s);
-		the_asm->lines = the_asm->lines->next;
-	}
-	if (!the_asm->lines_top)
-		the_asm->lines_top = the_asm->lines;
-}
-
 int		read_from_dot_s(t_asm *the_asm)
 {
 	char	*s;
