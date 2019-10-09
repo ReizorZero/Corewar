@@ -19,7 +19,7 @@ void	op_live(t_general *data, t_carriage *carriage)
 
 	carriage->live = true;
 	pl = NULL;
-	carriage->position_tmp = (carriage->position + 1) % MEM_SIZE;
+	carriage->pos_tmp = (carriage->pos + 1) % MEM_SIZE;
 	arg_read(data, carriage, 0b10000000);
 	player = get_val32bit(carriage->arg[0]);
 	if (-player == (uint8_t)(-player) && (pl = get_by_id(data, -player)))
@@ -34,5 +34,5 @@ void	op_live(t_general *data, t_carriage *carriage)
 			ft_printf("Player %d (%s) is said to be alive\n", pl->id, pl->name);
 	}
 	show_pc_movement(*data, *carriage);
-	carriage->position = carriage->position_tmp;
+	carriage->pos = carriage->pos_tmp;
 }

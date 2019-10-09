@@ -14,8 +14,8 @@
 
 void	op_lld(t_general *data, t_carriage *carriage)
 {
-	carriage->position_tmp = (carriage->position + 2) % MEM_SIZE;
-	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1)
+	carriage->pos_tmp = (carriage->pos + 2) % MEM_SIZE;
+	if (arg_read(data, carriage, data->mem_f[(carriage->pos + 1)
 		% MEM_SIZE]))
 	{
 		memory_cpy(&carriage->arg[1], carriage->arg[0]);
@@ -35,5 +35,5 @@ void	op_lld(t_general *data, t_carriage *carriage)
 		}
 	}
 	show_pc_movement(*data, *carriage);
-	carriage->position = carriage->position_tmp;
+	carriage->pos = carriage->pos_tmp;
 }

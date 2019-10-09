@@ -80,9 +80,9 @@ void	show_pc_movement(t_general data, t_carriage carriage)
 		}
 		i = -1;
 		ft_printf("ADV %d (%.4p -> %.4p) ",
-			step, carriage.position, (carriage.position + step) % MEM_SIZE);
+			step, carriage.pos, (carriage.pos + step) % MEM_SIZE);
 		while (++i < step)
-			ft_printf("%.2x ", data.mem_f[(carriage.position + i) % MEM_SIZE]);
+			ft_printf("%.2x ", data.mem_f[(carriage.pos + i) % MEM_SIZE]);
 		ft_printf("\n");
 	}
 }

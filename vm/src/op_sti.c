@@ -19,13 +19,13 @@ void	op_sti(t_general *data, t_carriage *carriage)
 	int32_t		val3;
 	t_mem		res;
 
-	carriage->position_tmp = (carriage->position + 2) % MEM_SIZE;
-	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1)
+	carriage->pos_tmp = (carriage->pos + 2) % MEM_SIZE;
+	if (arg_read(data, carriage, data->mem_f[(carriage->pos + 1)
 		% MEM_SIZE]))
 	{
 		get_val_ldi(*carriage, &val2, 1);
 		get_val_ldi(*carriage, &val3, 2);
-		adds = (carriage->position + (val2 + val3) % IDX_MOD) % MEM_SIZE;
+		adds = (carriage->pos + (val2 + val3) % IDX_MOD) % MEM_SIZE;
 		ft_res_init(data, &res, adds);
 		memory_cpy(&res, carriage->arg[0]);
 		if (data->verb_nbr & 4)
@@ -34,9 +34,9 @@ void	op_sti(t_general *data, t_carriage *carriage)
 				get_num_reg(carriage, 0), val2, val3);
 			ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)"
 				"\n", val2, val3, val2 + val3,
-				(int32_t)(carriage->position + (val2 + val3) % IDX_MOD));
+				(int32_t)(carriage->pos + (val2 + val3) % IDX_MOD));
 		}
 	}
 	show_pc_movement(*data, *carriage);
-	carriage->position = carriage->position_tmp;
+	carriage->pos = carriage->pos_tmp;
 }

@@ -12,15 +12,13 @@
 
 #include "../inc/corewar_vm.h"
 
-void	memory_cpy(t_mem *dest, t_mem src)
+void		memory_cpy(t_mem *dest, t_mem src)
 {
-	size_t i;
-//	t_mem dest_cpy;
+	size_t	i;
 	void	*current;
 
 	current = dest->current;
 	i = 0;
-//	dest_cpy = *dest;
 	while (i < src.size)
 	{
 		if (current == dest->mem_end)
@@ -34,46 +32,44 @@ void	memory_cpy(t_mem *dest, t_mem src)
 	}
 }
 
-void	ft_fight(t_general *data)
+static void	ft_carriage_cycle(t_general *data)
 {
 	t_carriage	*crwl;
 
+	crwl = data->head_c;
+	while (crwl)
+	{
+		if (crwl->op_cycles < 0)
+			start_new_op(data, crwl);
+		if (crwl->op_cycles > 0)
+			--(crwl->op_cycles);
+		if (!crwl->op_cycles)
+		{
+			g_op_func[crwl->op_id - 1](data, crwl);
+			--(crwl->op_cycles);
+		}
+		crwl = crwl->next;
+	}
+}
+
+void		ft_fight(t_general *data)
+{
 	data->cycles_tmp = 1;
-	crwl = NULL;
 	while (data->head_c)
 	{
-//		if ((data->cycles_total + data->cycles_tmp) == 22544)
-//		{
-//
-//			ft_printf("\n\n\n\n");
-//		}
 		if (data->verb_nbr & 2)
-			ft_printf("It is now cycle %d\n", data->cycles_total + data->cycles_tmp);
-		if (data->cycles_tmp + data->cycles_total >= data->dump_cycle && data->dump_cycle >= 0)
+			ft_printf("It is now cycle %d\n",
+				data->cycles_total + data->cycles_tmp);
+		if (data->cycles_tmp + data->cycles_total >= data->dump_cycle
+			&& data->dump_cycle >= 0)
 		{
 			print_mem(data);
 			return ;
 		}
-		crwl = data->head_c;
-//		while (crwl && data->cnt_live < NBR_LIVE)
-		while (crwl)
-		{
-			if (crwl->op_cycles < 0)
-				start_new_op(data, crwl);
-			if (crwl->op_cycles > 0)
-				--(crwl->op_cycles);
-			if (!crwl->op_cycles)
-			{
-//				if (g_op_tab[carriage->op_id - 1].octal)
-					g_op_func[crwl->op_id - 1](data, crwl);
-				--(crwl->op_cycles);
-			}
-			crwl = crwl->next;
-		}
+		ft_carriage_cycle(data);
 		if (data->cycles_tmp >= data->cycles_to_die)
 		{
 			ft_check_live_carriage(data);
-//			system("leaks VM");
 			set_new_cycle(data);
 		}
 		++data->cycles_tmp;
