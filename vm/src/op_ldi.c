@@ -12,37 +12,46 @@
 
 #include "../inc/corewar_vm.h"
 
-void op_ldi(t_general *data, t_carriage *carriage)
+void	get_val_ldi(t_carriage carriage, int32_t *val, int8_t i)
 {
-	size_t	adds;
-	int32_t val1;
-	int32_t val2;
-	t_mem	res;
+	if (carriage.arg[i].type == T_DIR)
+		*val = (int16_t)get_val16bit(carriage.arg[i]);
+	else
+		*val = (int32_t)get_val32bit(carriage.arg[i]);
+}
 
-	carriage->position_tmp = carriage->position + 2;
-	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
+void	ft_res_init(t_general *data, t_mem *res, uint32_t adds)
+{
+	res->type = 0;
+	res->mem = data->mem_f;
+	res->current = &data->mem_f[adds];
+	res->size = REG_SIZE;
+	res->mem_end = &data->mem_f[MEM_SIZE];
+}
+
+void	op_ldi(t_general *data, t_carriage *carriage)
+{
+	uint32_t	adds;
+	int32_t		val1;
+	int32_t		val2;
+	t_mem		res;
+
+	carriage->position_tmp = (carriage->position + 2) % MEM_SIZE;
+	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1)
+		% MEM_SIZE]))
 	{
-		if (carriage->arg[0].type == T_DIR)
-			val1 = (int16_t)get_val16bit(carriage->arg[0]);
-		else
-			val1 = (int32_t)get_val32bit(carriage->arg[0]);
-		if (carriage->arg[1].type == T_DIR)
-			val2 = (int16_t)get_val16bit(carriage->arg[1]);
-		else
-			val2 = (int32_t)get_val32bit(carriage->arg[1]);
+		get_val_ldi(*carriage, &val1, 0);
+		get_val_ldi(*carriage, &val2, 1);
 		adds = (carriage->position + (val1 + val2) % IDX_MOD) % MEM_SIZE;
-		res.type = 0;
-		res.mem = data->mem_f;
-		res.current = &data->mem_f[adds];
-		res.size = REG_SIZE;
-		res.mem_end = &data->mem_f[MEM_SIZE];
+		ft_res_init(data, &res, adds);
 		memory_cpy(&carriage->arg[2], res);
-//		carriage->carry = 0;
-		if (data->verb_nbr & 4) //verb_nbr 4
+		if (data->verb_nbr & 4)
 		{
-			ft_printf("P %4d | ldi %d %d r%d\n", carriage->nbr, val1, val2, get_num_reg(carriage, 2));
-			ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", val1, val2,
-					  val1 + val2, (carriage->position + ((val1 + val2) % IDX_MOD)));
+			ft_printf("P %4d | ldi %d %d r%d\n", carriage->nbr, val1, val2,
+				get_num_reg(carriage, 2));
+			ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)"
+				"\n", val1, val2, val1 + val2,
+				(carriage->position + ((val1 + val2) % IDX_MOD)));
 		}
 	}
 	show_pc_movement(*data, *carriage);

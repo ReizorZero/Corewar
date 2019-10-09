@@ -112,6 +112,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/VM.dir/src/op_lldi.c.o"
   "CMakeFiles/VM.dir/src/op_lfork.c.o"
   "CMakeFiles/VM.dir/src/op_aff.c.o"
+  "CMakeFiles/VM.dir/src/get_val.c.o"
+  "CMakeFiles/VM.dir/src/check_live_carriage.c.o"
+  "CMakeFiles/VM.dir/src/errors.c.o"
   "VM.pdb"
   "VM"
 )

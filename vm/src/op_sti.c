@@ -12,37 +12,29 @@
 
 #include "../inc/corewar_vm.h"
 
-void op_sti(t_general *data, t_carriage *carriage)
+void	op_sti(t_general *data, t_carriage *carriage)
 {
 	uint32_t	adds;
-	int32_t val2;
-	int32_t val3;
-	t_mem	res;
+	int32_t		val2;
+	int32_t		val3;
+	t_mem		res;
 
-	carriage->position_tmp = carriage->position + 2;
-	if (arg_read(data, carriage, data->mem_f[carriage->position + 1]))
+	carriage->position_tmp = (carriage->position + 2) % MEM_SIZE;
+	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1)
+		% MEM_SIZE]))
 	{
-		if (carriage->arg[1].type == T_DIR)
-			val2 = (int16_t)get_val16bit(carriage->arg[1]);
-		else
-			val2 = (int32_t)get_val32bit(carriage->arg[1]);
-		if (carriage->arg[2].type == T_DIR)
-			val3 = (int16_t)get_val16bit(carriage->arg[2]);
-		else
-			val3 = (int32_t)get_val32bit(carriage->arg[2]);
+		get_val_ldi(*carriage, &val2, 1);
+		get_val_ldi(*carriage, &val3, 2);
 		adds = (carriage->position + (val2 + val3) % IDX_MOD) % MEM_SIZE;
-		res.type = 0;
-		res.mem = data->mem_f;
-		res.current = &data->mem_f[adds];
-		res.size = REG_SIZE;
-		res.mem_end = &data->mem_f[MEM_SIZE];
+		ft_res_init(data, &res, adds);
 		memory_cpy(&res, carriage->arg[0]);
-//		carriage->carry = 0;
-		if (data->verb_nbr & 4) //verb_nbr 4
+		if (data->verb_nbr & 4)
 		{
-			ft_printf("P %4d | sti r%d %d %d\n", carriage->nbr, get_num_reg(carriage, 0), val2, val3);
-			ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", val2, val3,
-					  val2 + val3, carriage->position + (val2 + val3) % IDX_MOD);
+			ft_printf("P %4d | sti r%d %d %d\n", carriage->nbr,
+				get_num_reg(carriage, 0), val2, val3);
+			ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)"
+				"\n", val2, val3, val2 + val3,
+				(int32_t)(carriage->position + (val2 + val3) % IDX_MOD));
 		}
 	}
 	show_pc_movement(*data, *carriage);

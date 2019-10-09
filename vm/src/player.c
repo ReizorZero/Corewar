@@ -12,17 +12,17 @@
 
 #include "../inc/corewar_vm.h"
 
-t_player *ft_new_player(int id)
+t_player	*ft_new_player(int id)
 {
 	t_player	*new;
 
-	if(!(new = (t_player *)ft_memalloc(sizeof(*new))))
+	if (!(new = (t_player *)ft_memalloc(sizeof(*new))))
 		return (NULL);
 	new->id = id;
 	return (new);
 }
 
-void	ft_del_player(t_player **lst_player)
+void		ft_del_player(t_player **lst_player)
 {
 	t_player	*crawler;
 
@@ -30,15 +30,15 @@ void	ft_del_player(t_player **lst_player)
 	{
 		crawler = *lst_player;
 		*lst_player = (*lst_player)->next;
-//		ft_strdel(&crawler->name);
-//		ft_strdel(&crawler->comment);
+		ft_strdel(&crawler->name);
+		ft_strdel(&crawler->comment);
 		ft_strdel((char **)&crawler->code);
 		free(crawler);
 		crawler = NULL;
 	}
 }
 
-void	ft_add_end_player(t_player **lst_player, t_player *new)
+void		ft_add_end_player(t_player **lst_player, t_player *new)
 {
 	t_player *crawler;
 
@@ -53,7 +53,7 @@ void	ft_add_end_player(t_player **lst_player, t_player *new)
 		*lst_player = new;
 }
 
-void	ft_add_player(t_player **lst_player, t_player *new)
+void		ft_add_player(t_player **lst_player, t_player *new)
 {
 	if (lst_player)
 	{

@@ -35,6 +35,7 @@
 //# define LABEL_CHAR_POSITON "Label char should be after label name.\n"
 
 # define MANY_SEPARATORS "Found 2 or more separator char in a row. (Line %i)\n"
+# define WRONG_N_SEPARATORS "Wrong number of separator chars. (Line %i)\n"
 
 # define WRONG_SMBLS_AT_END "Wrong symbols at the end of the line. (Line %i)\n"
 
@@ -69,35 +70,41 @@ typedef struct	s_commands_info
 {
 	int		id;
 	char	*name;
+	int		t_dir_size;
+	int		has_arg_types_code;
 	int		arg_n;
 	int		arg_1_types[3];//or replace with int *arg_1_types, but better not
 	int		arg_2_types[3];
 	int		arg_3_types[3];
-	//maybe add args_size later
 }				t_commands_info;
 
 typedef struct	s_exec_code_line
 {
+	int							id;
 	int							cmnd_code;
 	int							arg_1_code;
 	int							arg_1_value;
+	int							arg_1_size;
 	int							arg_2_code;
 	int							arg_2_value;
+	int							arg_2_size;
 	int							arg_3_code;
 	int							arg_3_value;
-	int							has_label;
-	char						**label_name;
-	int							label_n;
-	int							*label_size;
+	int							arg_3_size;
+	int							cmnd_size;
+	//int							has_label;
+	//char						**label_name;
+	//int							label_n;
+	//int							*label_size;
 	struct s_exec_code_line		*next;
 }				t_exec_code_line;
 
-typedef struct	s_labels
+typedef struct	s_label
 {
 	char			*name;
 	int				byte_at;
-	struct s_labels	*next;
-}				t_labels;
+	struct s_label	*next;
+}				t_label;
 
 typedef struct	s_line
 {
@@ -108,37 +115,38 @@ typedef struct	s_line
 typedef struct	s_asm
 {
 	int					fd;
-	char				*champion_name;
-	int					exec_code_size;
-	char				*champion_comment;
-	char				*exec_code;
 	char				*dot_s_name;
 	char				*dot_s_file_name;
+	char				*champion_name;
+	char				*champion_comment;
+	int					exec_code_size;
+	char				*exec_code;
 	t_exec_code_line	*e_c_l;
 	t_exec_code_line	*e_c_l_top;
 	t_line				*lines;
 	t_line				*lines_top;
 	char				**line_words;
+	t_label				*labels;
+	t_label				*labels_top;
 	int					curr_line_n;
+	int					last_cmnd_id;
 }				t_asm;
 
-t_labels		*g_labels;
+void				check_input(int argc, char **argv, t_asm *the_asm);
 
-void			check_input(int argc, char **argv, t_asm *the_asm);
+int					read_from_dot_s(t_asm *the_asm);
+void				parse_lines(t_asm *the_asm);
+void				check_name(t_asm *the_asm, t_line **line);
+int					count_kavichki(char *s);
+void				check_comment(t_asm *the_asm, t_line **line);
+void				check_text_comment(char **s);
+void				check_command_line(t_asm *the_asm, t_line **line);
 
-int				read_from_dot_s(t_asm *the_asm);
-void			parse_lines(t_asm *the_asm);
-void			check_name(t_asm *the_asm, t_line **line);
-int				count_kavichki(char *s);
-void			check_comment(t_asm *the_asm, t_line **line);
-void			check_text_comment(char **s);
-void			check_command_line(t_asm *the_asm, t_line **line);
+void				write_to_dot_cor(t_asm *the_asm);
 
-void			write_to_dot_cor(t_asm *the_asm);
-
-t_asm			*new_asm(void);
-t_line			*new_line(char *str);
-
-char			**tabs_split(char const *s);
+t_asm				*new_asm(void);
+t_line				*new_line(char *str);
+t_exec_code_line	*new_exec_code_line(int id);
+t_label				*new_label(char *name);
 
 #endif

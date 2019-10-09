@@ -71,23 +71,23 @@ bool	valid_arg(t_mem *arg, uint8_t op_id)
 	i = 0;
 	while (i < 3)
 	{
-		if (!(op_tab[op_id - 1].arg[i] & arg[i].type)
-			&& (op_tab[op_id - 1].arg[i] != arg[i].type))
+		if (!(g_op_tab[op_id - 1].arg[i] & arg[i].type)
+			&& (g_op_tab[op_id - 1].arg[i] != arg[i].type))
 		{
 			return (false);
 		}
 		++i;
 //		else if ((arg_byte >> (2 * i) & REG_CODE) == REG_CODE &&
-//			!(op_tab[op_id - 1].arg[3 - i] & T_REG))
+//			!(g_op_tab[op_id - 1].arg[3 - i] & T_REG))
 //		{
 //			return (false);
 //		}
 //		else if ((arg_byte >> (2 * i) & IND_CODE) == IND_CODE &&
-//			!(op_tab[op_id - 1].arg[3 - i] & T_IND))
+//			!(g_op_tab[op_id - 1].arg[3 - i] & T_IND))
 //		{
 //			return (false);
 //		}
-//		else if (!(arg_byte >> (2 * i) & 3) && (op_tab[op_id - 1].arg[3 - i]))
+//		else if (!(arg_byte >> (2 * i) & 3) && (g_op_tab[op_id - 1].arg[3 - i]))
 //		{
 //			return (false);
 //		}
@@ -103,12 +103,12 @@ bool	arg_read(t_general *data, t_carriage *carriage, size_t arg_cod)
 	i = 3;
 	ft_memset(carriage->arg, 0, sizeof(carriage->arg));
 //	carriage->position_tmp = carriage->position + 1;
-	while (i > 0)
+	while ((3 - i) < g_op_tab[carriage->op_id - 1].n_arg)
 	{
 		if ((arg_cod >> (2 * i) & 0b11) == DIR_CODE)
 		{
-			read_dir(data, &carriage->arg[3 - i], carriage->position_tmp, DIR_SIZE - 2 * op_tab[carriage->op_id - 1].label);
-			carriage->position_tmp = (carriage->position_tmp + DIR_SIZE - 2 * op_tab[carriage->op_id - 1].label) % MEM_SIZE;
+			read_dir(data, &carriage->arg[3 - i], carriage->position_tmp, DIR_SIZE - 2 * g_op_tab[carriage->op_id - 1].label);
+			carriage->position_tmp = (carriage->position_tmp + DIR_SIZE - 2 * g_op_tab[carriage->op_id - 1].label) % MEM_SIZE;
 		}
 		else if ((arg_cod >> (2 * i) & 0b11) == REG_CODE)
 		{
@@ -123,6 +123,6 @@ bool	arg_read(t_general *data, t_carriage *carriage, size_t arg_cod)
 		--i;
 	}
 //	carriage->position = carriage->position_tmp;
-	carriage->position_tmp = carriage->position_tmp;
+//	carriage->position_tmp = carriage->position_tmp;
 	return (valid_arg(carriage->arg, carriage->op_id));
 }

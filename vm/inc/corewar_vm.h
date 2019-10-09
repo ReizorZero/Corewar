@@ -90,9 +90,9 @@ typedef struct 			s_general
 }						t_general;
 
 
-t_operation				op_tab[17];
+t_operation				g_op_tab[17];
 void					ft_fight(t_general *data);
-void					(*op_func[16])(t_general*, t_carriage*);
+void					(*g_op_func[16])(t_general*, t_carriage*);
 int 					ft_add_end_carriage(t_carriage **lst_carriage, int player, size_t nbr);
 int 					ft_add_carriage(t_carriage **lst_carriage, int player, size_t nbr);
 t_carriage				*ft_new_carriage(int player, size_t nbr);
@@ -103,7 +103,7 @@ void					ft_del_lst_carriage(t_carriage **lst_carriage);
 void					ft_mem_clean(t_general *data);
 bool					arg_read(t_general *data, t_carriage *carriage, size_t arg_cod);
 void					read_dir(t_general *data, t_mem *arg, size_t position, size_t size);
-void memory_cpy(t_mem *dest, t_mem src);
+void					memory_cpy(t_mem *dest, t_mem src);
 void					op_live(t_general *data, t_carriage *carriage);
 void 					op_ld(t_general *data, t_carriage *carriage);
 void 					op_and(t_general *data, t_carriage *carriage);
@@ -123,21 +123,32 @@ void 					op_aff(t_general *data, t_carriage *carriage);
 t_player				*get_by_id(t_general *data, uint8_t id);
 void					print_mem(t_general *data);
 uint32_t				reverse_32bits(uint32_t pInt);
-uint16_t					reverse_16bits(uint16_t pInt);
+uint16_t				reverse_16bits(uint16_t pInt);
 uint32_t				get_val32bit(t_mem src);
-uint16_t					get_val16bit(t_mem src);
+uint16_t				get_val16bit(t_mem src);
 void					args_checking(t_general *data, int argc, char **argv);
-char					*check_comment(int fd, int len);
-uint8_t					*check_players_code(int fd, int len);
+char *check_comment_vm(t_general *data, int len, char *file, int fd);
+uint8_t *check_players_code(int fd, int len, char *file, t_general *data);
 void					before_start(t_general *data);
 t_player				*player(t_general *data, char **argv, int *i, int id);
 int						is_free_id(t_general *data, uint8_t id);
 void					check_n_id(t_general *data);
 void					check_id(t_general *data);
 void					usage_msg(void);
-void					error_msg(char *msg);
+void error_msg(char *msg, t_general *data);
 void					introducing(t_general *data);
 int						get_num_reg(t_carriage *carriage, int n);
 void					show_pc_movement(t_general data, t_carriage carriage);
+void					print_winner(t_general *data);
+void					ft_check_live_carriage(t_general *data);
+void					start_new_op(t_general *data, t_carriage *crg);
+void					set_new_cycle(t_general *data);
+void err_read_less(t_general *data, char *file);
+void err_cant_read(t_general *data, char *file);
+void err_diff_size(t_general *data, char *file);
+void err_too_large(t_general *data, int size, char *file);
+void err_magic_header(t_general *data, char *file);
+void	get_val_ldi(t_carriage carriage, int32_t *val, int8_t i);
+void	ft_res_init(t_general *data, t_mem *res, uint32_t adds);
 
 #endif

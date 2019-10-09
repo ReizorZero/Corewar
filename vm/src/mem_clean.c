@@ -14,8 +14,12 @@
 
 void ft_mem_clean(t_general *data)
 {
-	if (data->head_p)
-		ft_del_player(&data->head_p);
-	if (data->head_c)
-		ft_del_lst_carriage(&data->head_c);
+	if (data)
+	{
+		if (data->head_p)
+			ft_del_player(&data->head_p);
+		if (data->head_c)
+			ft_del_lst_carriage(&data->head_c);
+	}
+	system("leaks -q corewar");
 }

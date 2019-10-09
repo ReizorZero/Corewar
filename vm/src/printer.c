@@ -6,29 +6,39 @@
 /*   By: vkuhuk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 14:09:02 by vkuhuk            #+#    #+#             */
-/*   Updated: 2019/09/29 14:14:40 by vkuhuk           ###   ########.fr       */
+/*   Updated: 2019/10/08 14:47:59 by vkuhuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/corewar_vm.h"
 
+void	print_winner(t_general *data)
+{
+	t_player *pl;
+
+	if ((pl = get_by_id(data, data->lst_live_plr)))
+		ft_printf("Contestant %i, \"%s\", has won !\n", pl->id, pl->name);
+}
+
 void	usage_msg(void)
 {
-	ft_printf("usage: ./corewar [-dump n | -v n] [-n n] <player.cor> ...\n");
-	ft_printf("\t%s - %s\n", "-dump n", "dumps memory after n cycles");
-	ft_printf("\t%s - %s\n", "-v n", "verbosity levels, can be added together");
-	ft_printf("\t\t%-20s\n", "0: show only essentials");
-	ft_printf("\t\t%-20s\n", "1: show lives");
-	ft_printf("\t\t%-20s\n", "2: show cycles");
-	ft_printf("\t\t%-20s\n", "4: show operations");
-	ft_printf("\t\t%-20s\n", "8: show death");
-	ft_printf("\t\t%-20s\n", "16: show PC movement"); //except for jumps?
+	ft_printf("usage: ./corewar [-dump n | -v n] [-n n] <player.cor>...\n");
+	ft_printf("\t%-6sn : %-50s\n", "-dump", "dumps memory after n cycles");
+	ft_printf("\t%-6sn : %-50s\n", "-v",
+		"verbosity levels, can be added together");
+	ft_printf("\t\t\t%-20s\n", "0: show only essentials");
+	ft_printf("\t\t\t%-20s\n", "1: show lives");
+	ft_printf("\t\t\t%-20s\n", "2: show cycles");
+	ft_printf("\t\t\t%-20s\n", "4: show operations (params are NOT litteral)");
+	ft_printf("\t\t\t%-20s\n", "8: show death");
+	ft_printf("\t\t\t%-20s\n", "16: show PC movement (except for jumps)");
 	exit(1);
 }
 
-void	error_msg(char *msg)
+void	error_msg(char *msg, t_general *data)
 {
-	ft_printf("%s\n", msg);
+	ft_putendl_fd(msg, 2);
+	ft_mem_clean(data);
 	exit(1);
 }
 
@@ -48,35 +58,31 @@ void	introducing(t_general *data)
 	}
 }
 
-void show_pc_movement(t_general data, t_carriage carriage)
+void	show_pc_movement(t_general data, t_carriage carriage)
 {
-	size_t 	i;
+	size_t	i;
 	size_t	step;
 
-	if(data.verb_nbr & 16)
+	if (data.verb_nbr & 16)
 	{
-		i = 0;
+		i = -1;
 		step = 1;
-		if (op_tab[carriage.op_id - 1].octal)
-			step += 1;
-		while (i < op_tab[carriage.op_id - 1].n_arg)
+		step = g_op_tab[carriage.op_id - 1].octal ? step + 1 : step;
+		while (++i < g_op_tab[carriage.op_id - 1].n_arg)
 		{
 			if (carriage.arg[i].type == T_DIR)
-				step += DIR_SIZE - 2 * op_tab[carriage.op_id - 1].label;
-			else if (carriage.arg[i].type == T_REG)
+				step += DIR_SIZE - 2 * g_op_tab[carriage.op_id - 1].label;
+			else if (carriage.arg[i].type == T_REG ||
+				carriage.arg[i].type == 16)
 				step += 1;
 			else if (carriage.arg[i].type == T_IND)
 				step += IND_SIZE;
-			i++;
 		}
-		i = 0;
+		i = -1;
 		ft_printf("ADV %d (%.4p -> %.4p) ",
-				  step, carriage.position, (carriage.position + step) % MEM_SIZE);
-		while(i < step)
-		{
+			step, carriage.position, (carriage.position + step) % MEM_SIZE);
+		while (++i < step)
 			ft_printf("%.2x ", data.mem_f[(carriage.position + i) % MEM_SIZE]);
-			i++;
-		}
 		ft_printf("\n");
 	}
 }

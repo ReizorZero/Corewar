@@ -32,3 +32,7 @@ fcntl.h
 ../inc/corewar_vm.h
 /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
 
+/Users/mshvets/Desktop/Corewar/vm/src/op_ldi.c
+../inc/corewar_vm.h
+/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
+

@@ -271,15 +271,30 @@ CMakeFiles/VM.dir/src/check_args.c.o: ../inc/corewar_vm.h
 CMakeFiles/VM.dir/src/check_args.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/check_args.c.o: ../src/check_args.c
 
+CMakeFiles/VM.dir/src/check_live_carriage.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
+CMakeFiles/VM.dir/src/check_live_carriage.c.o: ../inc/corewar_vm.h
+CMakeFiles/VM.dir/src/check_live_carriage.c.o: ../inc/op.h
+CMakeFiles/VM.dir/src/check_live_carriage.c.o: ../src/check_live_carriage.c
+
 CMakeFiles/VM.dir/src/check_players.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/check_players.c.o: ../inc/corewar_vm.h
 CMakeFiles/VM.dir/src/check_players.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/check_players.c.o: ../src/check_players.c
 
+CMakeFiles/VM.dir/src/errors.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
+CMakeFiles/VM.dir/src/errors.c.o: ../inc/corewar_vm.h
+CMakeFiles/VM.dir/src/errors.c.o: ../inc/op.h
+CMakeFiles/VM.dir/src/errors.c.o: ../src/errors.c
+
 CMakeFiles/VM.dir/src/fight.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/fight.c.o: ../inc/corewar_vm.h
 CMakeFiles/VM.dir/src/fight.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/fight.c.o: ../src/fight.c
+
+CMakeFiles/VM.dir/src/get_val.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
+CMakeFiles/VM.dir/src/get_val.c.o: ../inc/corewar_vm.h
+CMakeFiles/VM.dir/src/get_val.c.o: ../inc/op.h
+CMakeFiles/VM.dir/src/get_val.c.o: ../src/get_val.c
 
 CMakeFiles/VM.dir/src/main.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/main.c.o: ../inc/corewar_vm.h

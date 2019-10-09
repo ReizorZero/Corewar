@@ -12,31 +12,23 @@
 
 #include "../inc/corewar_vm.h"
 
-void op_live(t_general *data, t_carriage *carriage)
+void	op_live(t_general *data, t_carriage *carriage)
 {
-	t_player *pl = NULL;
+	t_player *pl;
 	uint32_t player;
 
 	carriage->live = true;
-	/*
-	 * 0b10000000 - DIR in arg[0];
-	 */
-	carriage->position_tmp = carriage->position + 1;
+	pl = NULL;
+	carriage->position_tmp = (carriage->position + 1) % MEM_SIZE;
 	arg_read(data, carriage, 0b10000000);
 	player = get_val32bit(carriage->arg[0]);
-//	if (!(carriage->reg[0] + player))
-	if ((pl = get_by_id(data, -player)))
-	{
+	if (-player == (uint8_t)(-player) && (pl = get_by_id(data, -player)))
 		data->lst_live_plr = -player;
-	}
 	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;
-//	carriage->carry = 0;
 	++(data->cnt_live);
-	if (data->verb_nbr & 4) //verb_nbr 4
-	{
+	if (data->verb_nbr & 4)
 		ft_printf("P %4d | live %d\n", carriage->nbr, player);
-	}
-	if (data->verb_nbr & 1) //verb_nbr 1
+	if (data->verb_nbr & 1)
 	{
 		if (pl)
 			ft_printf("Player %d (%s) is said to be alive\n", pl->id, pl->name);

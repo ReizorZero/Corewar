@@ -347,10 +347,19 @@
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/check_args.c">
 			<Option target="VM"/>
 		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/check_live_carriage.c">
+			<Option target="VM"/>
+		</Unit>
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/check_players.c">
 			<Option target="VM"/>
 		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/errors.c">
+			<Option target="VM"/>
+		</Unit>
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/fight.c">
+			<Option target="VM"/>
+		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/get_val.c">
 			<Option target="VM"/>
 		</Unit>
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/main.c">

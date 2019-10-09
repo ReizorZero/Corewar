@@ -2499,6 +2499,33 @@ src/check_args.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_args.c.s
 .PHONY : src/check_args.c.s
 
+src/check_live_carriage.o: src/check_live_carriage.c.o
+
+.PHONY : src/check_live_carriage.o
+
+# target to build an object file
+src/check_live_carriage.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_live_carriage.c.o
+.PHONY : src/check_live_carriage.c.o
+
+src/check_live_carriage.i: src/check_live_carriage.c.i
+
+.PHONY : src/check_live_carriage.i
+
+# target to preprocess a source file
+src/check_live_carriage.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_live_carriage.c.i
+.PHONY : src/check_live_carriage.c.i
+
+src/check_live_carriage.s: src/check_live_carriage.c.s
+
+.PHONY : src/check_live_carriage.s
+
+# target to generate assembly for a file
+src/check_live_carriage.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_live_carriage.c.s
+.PHONY : src/check_live_carriage.c.s
+
 src/check_players.o: src/check_players.c.o
 
 .PHONY : src/check_players.o
@@ -2526,6 +2553,33 @@ src/check_players.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/check_players.c.s
 .PHONY : src/check_players.c.s
 
+src/errors.o: src/errors.c.o
+
+.PHONY : src/errors.o
+
+# target to build an object file
+src/errors.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/errors.c.o
+.PHONY : src/errors.c.o
+
+src/errors.i: src/errors.c.i
+
+.PHONY : src/errors.i
+
+# target to preprocess a source file
+src/errors.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/errors.c.i
+.PHONY : src/errors.c.i
+
+src/errors.s: src/errors.c.s
+
+.PHONY : src/errors.s
+
+# target to generate assembly for a file
+src/errors.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/errors.c.s
+.PHONY : src/errors.c.s
+
 src/fight.o: src/fight.c.o
 
 .PHONY : src/fight.o
@@ -2552,6 +2606,33 @@ src/fight.s: src/fight.c.s
 src/fight.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/fight.c.s
 .PHONY : src/fight.c.s
+
+src/get_val.o: src/get_val.c.o
+
+.PHONY : src/get_val.o
+
+# target to build an object file
+src/get_val.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/get_val.c.o
+.PHONY : src/get_val.c.o
+
+src/get_val.i: src/get_val.c.i
+
+.PHONY : src/get_val.i
+
+# target to preprocess a source file
+src/get_val.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/get_val.c.i
+.PHONY : src/get_val.c.i
+
+src/get_val.s: src/get_val.c.s
+
+.PHONY : src/get_val.s
+
+# target to generate assembly for a file
+src/get_val.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/get_val.c.s
+.PHONY : src/get_val.c.s
 
 src/main.o: src/main.c.o
 
@@ -3447,12 +3528,21 @@ help:
 	@echo "... src/check_args.o"
 	@echo "... src/check_args.i"
 	@echo "... src/check_args.s"
+	@echo "... src/check_live_carriage.o"
+	@echo "... src/check_live_carriage.i"
+	@echo "... src/check_live_carriage.s"
 	@echo "... src/check_players.o"
 	@echo "... src/check_players.i"
 	@echo "... src/check_players.s"
+	@echo "... src/errors.o"
+	@echo "... src/errors.i"
+	@echo "... src/errors.s"
 	@echo "... src/fight.o"
 	@echo "... src/fight.i"
 	@echo "... src/fight.s"
+	@echo "... src/get_val.o"
+	@echo "... src/get_val.i"
+	@echo "... src/get_val.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
