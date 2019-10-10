@@ -9,5 +9,11 @@ int		main(int argc, char **argv)
 	if (read_from_dot_s(the_asm))
 		write_to_dot_cor(the_asm);
 	//system("leaks -q asm");
+	t_label *ek = the_asm->labels_top;
+	while (ek)
+	{
+		printf("label: %s\n", ek->name);
+		ek = ek->next;
+	}
 	return (0);
 }

@@ -23,6 +23,8 @@ int		check_label(t_asm *the_asm, char *s)
 			ERROR(LABEL_WRONG_CHAR, the_asm->curr_line_n);
 		i++;
 	}
+	//ADD LABEL TO LIST
+	//COUNT ITS BYTE_AT
 	return (1);
 }
 

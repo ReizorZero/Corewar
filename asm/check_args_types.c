@@ -41,8 +41,9 @@ int		check_t_reg(t_asm *the_asm, char *s, int arg_index)
 	the_asm->e_c_l->arg_code[arg_index] = REG_CODE;
 	printf("ARG TYPE: T_REG;\t");
 	the_asm->e_c_l->arg_value[arg_index] = ft_atoi(&s[1]);
-	printf("ARG VALUE %i\n", the_asm->e_c_l->arg_value[arg_index]);
-	//SIZE
+	printf("ARG VALUE: %i;\t", the_asm->e_c_l->arg_value[arg_index]);
+	the_asm->e_c_l->arg_size[arg_index] = 1;
+	printf("ARG SIZE: %i\n", the_asm->e_c_l->arg_size[arg_index]);
 	check_cmnd_correspondance(the_asm, arg_index);
 	return (1);
 }
@@ -54,12 +55,12 @@ int		check_t_dir(t_asm *the_asm, char *s, int arg_index)
 	i = 1;
 	if (s[i] == LABEL_CHAR)
 	{
-		printf("ARG NUMBER %i;\t", arg_index + 1);
+		printf("ARG NUMBER: %i;\t", arg_index + 1);
 		the_asm->e_c_l->arg_code[arg_index] = DIR_CODE;
 		printf("ARG TYPE: T_DIR;\t");
-		//MANAGE LABEL VALUE
-		printf("ARG VALUE %i\n", the_asm->e_c_l->arg_value[arg_index]);
-		//SIZE
+		printf("ARG VALUE: %s\t", &s[i]);//the_asm->e_c_l->arg_value[arg_index]);
+		//the_asm->e_c_l->arg_size[arg_index] = commands[the_asm->e_c_l->cmnd_code - 1].t_dir_size;
+		//printf("ARG SIZE: %i\n", the_asm->e_c_l->arg_size[arg_index]);
 		check_cmnd_correspondance(the_asm, arg_index);
 		return (check_label(the_asm, &s[i + 1]));
 	}
@@ -74,12 +75,13 @@ int		check_t_dir(t_asm *the_asm, char *s, int arg_index)
 			i++;
 		}
 	}
-	printf("ARG NUMBER %i;\t", arg_index + 1);
+	printf("ARG NUMBER: %i;\t", arg_index + 1);
 	the_asm->e_c_l->arg_code[arg_index] = DIR_CODE;
 	printf("ARG TYPE: T_DIR;\t");
-	//SIZE
 	the_asm->e_c_l->arg_value[arg_index] = ft_atoi(&s[1]);
-	printf("ARG VALUE %i\n", the_asm->e_c_l->arg_value[arg_index]);
+	printf("ARG VALUE: %i\t", the_asm->e_c_l->arg_value[arg_index]);
+	the_asm->e_c_l->arg_size[arg_index] = 2;
+	printf("ARG SIZE: %i\n", the_asm->e_c_l->arg_size[arg_index]);
 	check_cmnd_correspondance(the_asm, arg_index);
 	return (1);
 }
@@ -96,7 +98,8 @@ int		check_t_ind(t_asm *the_asm, char *s, int arg_index)
 		printf("ARG TYPE: T_IND;\t");
 		//SIZE
 		//MANAGE LABEL VALUE
-		printf("ARG VALUE %i\n", the_asm->e_c_l->arg_value[arg_index]);
+		printf("ARG VALUE: %s\t", &s[i]);//the_asm->e_c_l->arg_value[arg_index]);
+		//printf("ARG VALUE %i\n", the_asm->e_c_l->arg_value[arg_index]);
 		check_cmnd_correspondance(the_asm, arg_index);
 		return (check_label(the_asm, &s[i + 1]));
 	}

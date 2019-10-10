@@ -119,7 +119,12 @@ int		check_if_words_correct(t_asm *the_asm, t_line **line)
 	count_words_cmnd_line(the_asm);
 	words = the_asm->e_c_l->words;
 	if (the_asm->e_c_l->first_is_label)
+	{
 		check_label(the_asm, the_asm->line_words[0]);
+		add_label(the_asm);
+		//ADD LABEL HERE
+		//COUNT BYTE_AT
+	}
 	if (the_asm->e_c_l->first_is_label && words == 1)
 		return (1);
 	if ((the_asm->e_c_l->first_is_label && words == 2) ||

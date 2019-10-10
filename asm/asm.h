@@ -5,7 +5,7 @@
 # include "../libft/inc/libft.h"
 # include <stdio.h> //DELETE THEN
 # include <fcntl.h>
-
+//CHANGE ALL THE OCCURENCIES OF PRINYF TO FT_PRINTF & CHECK 'EM
 # define ERROR(X, Y) {printf(X, Y);exit(0);}
 # define ERROR_(X) {printf(X);exit(0);}
 # define USAGE(X, Y) {printf(X);printf(Y);exit(0);}
@@ -17,6 +17,9 @@
 # define NO_FILE_NAME "File name is missing.\n"
 # define NO_FILE_EXTENSION "File extension is missing.\n"
 # define WRONG_FILE_EXTENSION "File extension is wrong.\n"
+
+# define ERROR_OPEN_FILE "Error. Unable to open file %s\n"
+# define ERROR_CLOSE_FILE "Error. Unable to close file %s\n"
 
 # define KAVICHKI_NUMBER "Wrong number of \" symbols. (Line %i)\n"
 
