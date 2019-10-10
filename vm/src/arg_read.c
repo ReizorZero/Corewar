@@ -44,11 +44,11 @@ void	read_ind(t_general *data, t_carriage *carriage, t_mem *arg,
 	size_t	adds;
 
 	read_dir(data, &pointer, position, sizeof(int16_t));
-	arg->IND_pntr = get_val16bit(pointer);
+	arg->ind_pntr = get_val16bit(pointer);
 	if (carriage->op_id == 13)
-		adds = (carriage->pos + arg->IND_pntr) % MEM_SIZE;
+		adds = (carriage->pos + arg->ind_pntr) % MEM_SIZE;
 	else
-		adds = (carriage->pos + (arg->IND_pntr % IDX_MOD)) % MEM_SIZE;
+		adds = (carriage->pos + (arg->ind_pntr % IDX_MOD)) % MEM_SIZE;
 	arg->mem = data->mem_f;
 	arg->size = REG_SIZE;
 	arg->current = &data->mem_f[adds];

@@ -19,14 +19,13 @@
 # include <stdbool.h>
 # include <fcntl.h>
 
-
-typedef struct 			s_mem
+typedef struct			s_mem
 {
 	uint8_t				type;
 	void				*mem;
-	void 				*current;
-	size_t 				size;
-	int16_t				IND_pntr;
+	void				*current;
+	size_t				size;
+	int16_t				ind_pntr;
 	void				*mem_end;
 }						t_mem;
 
@@ -57,40 +56,39 @@ typedef struct			s_player
 
 typedef struct			s_operation
 {
-	char 				*name;
+	char				*name;
 	uint8_t				n_arg;
 	uint8_t				arg[3];
 	uint8_t				id;
-	int 				cycles;
-	char 				*descr;
+	int					cycles;
+	char				*descr;
 	bool				octal;
 	bool				label;
 }						t_operation;
 
-typedef struct 			s_general
+typedef struct			s_general
 {
 	t_player			*head_p;
 	t_carriage			*head_c;
-	uint8_t 			mem_f[MEM_SIZE + 1];
+	uint8_t				mem_f[MEM_SIZE + 1];
 	uint8_t				lst_live_plr;
 	int					cycles_total;
 	int					cycles_tmp;
-	int 				cycles_to_die;
-	size_t 				cnt_live;
+	int					cycles_to_die;
+	size_t				cnt_live;
 	size_t				num_checks;
 	size_t				num_carriage;
 	int					dump_cycle;
-    int					pl_nbr;
-    uint8_t				verb_nbr;
+	int					pl_nbr;
+	uint8_t				verb_nbr;
 }						t_general;
-
 
 t_operation				g_op_tab[17];
 void					ft_fight(t_general *data);
 void					(*g_op_func[16])(t_general*, t_carriage*);
-int 					ft_add_end_carriage(t_carriage **lst_carriage,
+int						ft_add_end_carriage(t_carriage **lst_carriage,
 							int player, size_t nbr);
-int 					ft_add_carriage(t_carriage **lst_carriage, int player,
+int						ft_add_carriage(t_carriage **lst_carriage, int player,
 							size_t nbr);
 t_carriage				*ft_new_carriage(int player, size_t nbr);
 void					ft_add_player(t_player **lst_player, t_player *new);
@@ -149,7 +147,8 @@ void					err_cant_read(t_general *data, char *file);
 void					err_diff_size(t_general *data, char *file);
 void					err_too_large(t_general *data, int size, char *file);
 void					err_magic_header(t_general *data, char *file);
-void					get_val_ldi(t_carriage carriage, int32_t *val, int8_t i);
+void					get_val_ldi(t_carriage carriage, int32_t *val,
+							int8_t i);
 void					ft_res_init(t_general *data, t_mem *res, uint32_t adds);
 
 #endif

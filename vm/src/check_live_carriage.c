@@ -12,7 +12,24 @@
 
 #include "../inc/corewar_vm.h"
 
-void	ft_check_live_carriage(t_general *data)
+static void	carriage_live(t_carriage **crwl, t_carriage **prv_crwl)
+{
+	(*crwl)->live = 0;
+	*prv_crwl = *crwl;
+	*crwl = (*crwl)->next;
+}
+
+static void	message_kill(t_general data, t_carriage crwl)
+{
+	if (data.verb_nbr & 8)
+	{
+		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
+			crwl.nbr, ((data.cycles_total + data.cycles_tmp)
+			- crwl.lst_live_cycle), data.cycles_to_die);
+	}
+}
+
+void		ft_check_live_carriage(t_general *data)
 {
 	t_carriage	*crwl;
 	t_carriage	*prv_crwl;
@@ -23,23 +40,14 @@ void	ft_check_live_carriage(t_general *data)
 	{
 		if (crwl->live && (long int)crwl->lst_live_cycle > data->cycles_total
 			&& data->cycles_to_die > 0)
-		{
-			crwl->live = 0;
-			prv_crwl = crwl;
-			crwl = crwl->next;
-		}
+			carriage_live(&crwl, &prv_crwl);
 		else
 		{
 			if (!prv_crwl)
 				data->head_c = crwl->next;
 			else if (prv_crwl)
 				prv_crwl->next = crwl->next;
-			if (data->verb_nbr & 8)
-			{
-				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-					crwl->nbr, ((data->cycles_total + data->cycles_tmp)
-					- crwl->lst_live_cycle), data->cycles_to_die);
-			}
+			message_kill(*data, *crwl);
 			free(crwl);
 			crwl = NULL;
 			if (!prv_crwl)
@@ -50,7 +58,7 @@ void	ft_check_live_carriage(t_general *data)
 	}
 }
 
-void	start_new_op(t_general *data, t_carriage *crg)
+void		start_new_op(t_general *data, t_carriage *crg)
 {
 	if (data->mem_f[crg->pos] > 0 && data->mem_f[crg->pos] <= 16)
 	{

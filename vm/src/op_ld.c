@@ -25,7 +25,7 @@ void	op_ld(t_general *data, t_carriage *carriage)
 			if (carriage->arg[1].type == T_IND)
 			{
 				ft_printf("P %4d | ld %d r%d\n", carriage->nbr,
-					carriage->arg[0].IND_pntr, get_num_reg(carriage, 1));
+					carriage->arg[0].ind_pntr, get_num_reg(carriage, 1));
 			}
 			else
 			{

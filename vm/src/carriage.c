@@ -18,17 +18,11 @@ t_carriage	*ft_new_carriage(int player, size_t nbr)
 
 	if (!(new = (t_carriage *)ft_memalloc(sizeof(*new))))
 		return (NULL);
-//	new->player = player;
 	new->reg[0] = reverse_32bits(-player);
 	new->op_cycles = -1;
 	new->nbr = nbr;
 	return (new);
 }
-
-//void	ft_del_carriage(t_carriage **lst_carriage)
-//{
-//	;
-//}
 
 void		ft_del_lst_carriage(t_carriage **lst_carriage)
 {
@@ -43,7 +37,8 @@ void		ft_del_lst_carriage(t_carriage **lst_carriage)
 	}
 }
 
-int			ft_add_end_carriage(t_carriage **lst_carriage, int player, size_t nbr)
+int			ft_add_end_carriage(t_carriage **lst_carriage, int player,
+			size_t nbr)
 {
 	t_carriage *crawler;
 
