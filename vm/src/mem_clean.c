@@ -12,7 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-void ft_mem_clean(t_general *data)
+void	ft_mem_clean(t_general *data)
 {
 	if (data)
 	{
@@ -21,5 +21,5 @@ void ft_mem_clean(t_general *data)
 		if (data->head_c)
 			ft_del_lst_carriage(&data->head_c);
 	}
-	system("leaks -q corewar");
+	system("leaks -q corewar");//
 }

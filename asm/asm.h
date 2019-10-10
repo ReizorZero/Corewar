@@ -5,7 +5,7 @@
 # include "../libft/inc/libft.h"
 # include <stdio.h> //DELETE THEN
 # include <fcntl.h>
-
+//CHANGE ALL THE OCCURENCIES OF PRINYF TO FT_PRINTF & CHECK 'EM
 # define ERROR(X, Y) {printf(X, Y);exit(0);}
 # define ERROR_(X) {printf(X);exit(0);}
 # define USAGE(X, Y) {printf(X);printf(Y);exit(0);}
@@ -17,6 +17,9 @@
 # define NO_FILE_NAME "File name is missing.\n"
 # define NO_FILE_EXTENSION "File extension is missing.\n"
 # define WRONG_FILE_EXTENSION "File extension is wrong.\n"
+
+# define ERROR_OPEN_FILE "Error. Unable to open file %s\n"
+# define ERROR_CLOSE_FILE "Error. Unable to close file %s\n"
 
 # define KAVICHKI_NUMBER "Wrong number of \" symbols. (Line %i)\n"
 
@@ -32,10 +35,11 @@
 
 # define LABEL_WRONG_CHAR "Label contains wrong char. (Line %i)\n"
 # define EMPTY_LABEL "Label name missing. (Line %i)\n"
-//# define LABEL_CHAR_POSITON "Label char should be after label name.\n"
 
 # define MANY_SEPARATORS "Found 2 or more separator char in a row. (Line %i)\n"
 # define WRONG_N_SEPARATORS "Wrong number of separator chars. (Line %i)\n"
+# define SEPARATOR_AFTER_LABEL "Separator char after label. (Line %i)\n"
+# define SEPARATOR_AFTER_CMND "Separator char after command. (Line %i)\n"
 
 # define WRONG_SMBLS_AT_END "Wrong symbols at the end of the line. (Line %i)\n"
 
@@ -73,25 +77,31 @@ typedef struct	s_commands_info
 	int		t_dir_size;
 	int		has_arg_types_code;
 	int		arg_n;
-	int		arg_1_types[3];//or replace with int *arg_1_types, but better not
-	int		arg_2_types[3];
-	int		arg_3_types[3];
+	int		arg_types[3][3];
+	// int		arg_1_types[3];//or replace with int *arg_1_types, but better not
+	// int		arg_2_types[3];
+	// int		arg_3_types[3];
 }				t_commands_info;
 
 typedef struct	s_exec_code_line
 {
 	int							id;
 	int							cmnd_code;
-	int							arg_1_code;
-	int							arg_1_value;
-	int							arg_1_size;
-	int							arg_2_code;
-	int							arg_2_value;
-	int							arg_2_size;
-	int							arg_3_code;
-	int							arg_3_value;
-	int							arg_3_size;
+	int							arg_code[3];
+	int							arg_value[3];
+	int							arg_size[3];
+	// int							arg_1_code;
+	// int							arg_1_value;
+	// int							arg_1_size;
+	// int							arg_2_code;
+	// int							arg_2_value;
+	// int							arg_2_size;
+	// int							arg_3_code;
+	// int							arg_3_value;
+	// int							arg_3_size;
 	int							cmnd_size;
+	int							first_is_label;
+	int							words;
 	//int							has_label;
 	//char						**label_name;
 	//int							label_n;
@@ -132,7 +142,9 @@ typedef struct	s_asm
 	int					last_cmnd_id;
 }				t_asm;
 
-void				check_input(int argc, char **argv, t_asm *the_asm);
+t_commands_info		commands[16];
+
+void				check_asm_input(int argc, char **argv, t_asm *the_asm);
 
 int					read_from_dot_s(t_asm *the_asm);
 void				parse_lines(t_asm *the_asm);
@@ -142,7 +154,17 @@ void				check_comment(t_asm *the_asm, t_line **line);
 void				check_text_comment(char **s);
 void				check_command_line(t_asm *the_asm, t_line **line);
 
+void				write_cmnd_line_words(t_asm *the_asm, t_line **line);
+int					check_if_words_correct(t_asm *the_asm, t_line **line);
+int					check_label(t_asm *the_asm, char *s);
+int					count_label_byte_at(t_asm *the_asm);
+void				check_args(t_asm *the_asm, int i, int shift);
+
 void				write_to_dot_cor(t_asm *the_asm);
+
+void				write_line_to_list(t_asm *the_asm, char *s);
+void				add_cmnd_line(t_asm *the_asm);
+void				add_label(t_asm *the_asm);
 
 t_asm				*new_asm(void);
 t_line				*new_line(char *str);

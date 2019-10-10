@@ -15,28 +15,28 @@
 void	op_lldi(t_general *data, t_carriage *carriage)
 {
 	uint32_t	adds;
-	int32_t		val1;
-	int32_t		val2;
+	int32_t		val[2];
 	t_mem		res;
 
-	carriage->position_tmp = (carriage->position + 2) % MEM_SIZE;
-	if (arg_read(data, carriage, data->mem_f[(carriage->position + 1)
+	carriage->pos_tmp = (carriage->pos + 2) % MEM_SIZE;
+	if (arg_read(data, carriage, data->mem_f[(carriage->pos + 1)
 		% MEM_SIZE]))
 	{
-		get_val_ldi(*carriage, &val1, 0);
-		get_val_ldi(*carriage, &val2, 1);
-		adds = (carriage->position + (val1 + val2)) % MEM_SIZE;
+		get_val_ldi(*carriage, &val[0], 0);
+		get_val_ldi(*carriage, &val[1], 1);
+		adds = (carriage->pos + (val[0] + val[1])) % MEM_SIZE;
 		ft_res_init(data, &res, adds);
 		memory_cpy(&carriage->arg[2], res);
+		carriage->carry = !(*(uint32_t*)carriage->arg[2].mem);
 		if (data->verb_nbr & 4)
 		{
-			ft_printf("P %4d | lldi %d %d r%d\n", carriage->nbr, val1, val2,
+			ft_printf("P %4d | lldi %d %d r%d\n", carriage->nbr, val[0], val[1],
 				get_num_reg(carriage, 2));
 			ft_printf("       | -> load from %d + %d = %d (with pc %d)\n",
-				val1, val2, val1 + val2,
-				(int32_t)carriage->position + (val1 + val2));
+				val[0], val[1], val[0] + val[1],
+				(int32_t)carriage->pos + (val[0] + val[1]));
 		}
 	}
 	show_pc_movement(*data, *carriage);
-	carriage->position = carriage->position_tmp;
+	carriage->pos = carriage->pos_tmp;
 }

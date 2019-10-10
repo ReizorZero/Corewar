@@ -65,7 +65,7 @@ void	before_start(t_general *data)
 	{
 		if (ft_add_carriage(&data->head_c, i, ++data->num_carriage))
 			error_msg("Error: can't create new carriage!", data);
-		data->head_c->position = count;
+		data->head_c->pos = count;
 		count += MEM_SIZE / data->pl_nbr;
 		i++;
 	}

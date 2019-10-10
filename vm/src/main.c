@@ -12,7 +12,6 @@
 
 #include <fcntl.h>
 #include "../inc/corewar_vm.h"
-//#include "../inc/operation.h"
 
 void	print_mem(t_general *data)
 {
@@ -46,28 +45,7 @@ int		main(int argc, char **argv)
 	}
 	else
 		usage_msg();
-	//{
-	//	int fd = open("/Users/mshvets/Desktop/Corewar/maptest", O_RDONLY);
-	//	int j = 0, ret = read(fd, &data.mem_f, 4096);
-	//	while ( j !=  ret)
-	//	{
-	//		ft_printf("%02.2x", data.mem_f[j++]);
-	//		j % 2 ? 0 : ft_printf(" ");
-	//	}
-	//}
-//	ft_add_carriage(&data.head_c, 5);
-//	data.head_c->live = 1;
-	//ft_add_carriage(&data.head_c, 1);
-//	ft_add_carriage(&data.head_c, 2);
-//	data.head_c->live = 1;
-//	ft_add_carriage(&data.head_c, 3);
-	//ft_add_carriage(&data.head_c, 4);
-//	data.head_c->live = 1;
-//	ft_check_live_carriage(&data);
-//	data.head_c->op_id = data.mem_f[0];
 	ft_fight(&data);
-//	arg_read(&data, data.head_c);
 	ft_mem_clean(&data);
-//	system("leaks corewar");
 	return (0);
 }

@@ -16,7 +16,7 @@ void	op_zjmp(t_general *data, t_carriage *carriage)
 {
 	int16_t	dist;
 
-	carriage->position_tmp = (carriage->position + 1) % MEM_SIZE;
+	carriage->pos_tmp = (carriage->pos + 1) % MEM_SIZE;
 	arg_read(data, carriage, 0b10000000);
 	dist = (int16_t)get_val16bit(carriage->arg[0]);
 	if (data->verb_nbr & 4)
@@ -25,10 +25,10 @@ void	op_zjmp(t_general *data, t_carriage *carriage)
 			(carriage->carry ? "OK" : "FAILED"));
 	}
 	if (carriage->carry)
-		carriage->position = (carriage->position + dist % IDX_MOD) % MEM_SIZE;
+		carriage->pos = (carriage->pos + dist % IDX_MOD) % MEM_SIZE;
 	else
 	{
 		show_pc_movement(*data, *carriage);
-		carriage->position = carriage->position_tmp;
+		carriage->pos = carriage->pos_tmp;
 	}
 }
