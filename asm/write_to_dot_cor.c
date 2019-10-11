@@ -6,6 +6,8 @@ static void		out_in_file(int32_t nbr, int size, t_asm *the_asm)
 	int				i;
 	char			*res;
 
+	if (size == 0)
+		return ;
 	if (nbr < 0)
 	{
 		tmp = -nbr;
@@ -91,10 +93,16 @@ void		write_cmnd_code(t_asm *the_asm)
 		if (tmp->cmnd_code != 0)
 		{
 			out_in_file(tmp->cmnd_code, 1, the_asm); // change 1 with tmp->cmnd_size
-			out_in_file(convert_bit_to_int("01101000"), 1, the_asm); //change 1 with tmp->(t_comands_info(struct type))->has_arg_types_code
+			out_in_file(convert_bit_to_int("01101000"), 1, the_asm); //change 1 with tmp->has_arg_types_code, "01101000" will be arg_types_code_size
 			i = -1;
 			while (++i < 3)
-				out_in_file(convert_bit_to_int("01"), 1, the_asm); //convert_bit_to_int("01") : 01 will be arg_code, change 1 to arg_size
+			{
+				if (tmp->arg_size[i] != 0)
+				{
+					if (tmp->has_arg_types_code)
+					out_in_file(convert_hex_to_int("01"), 1, the_asm); //convert_bit_to_int("01") : 01 will be tmp->arg_code[i], change 1 to tmp->arg_size[i]
+				}
+			}
 		}
 		tmp = tmp->next;
 	}

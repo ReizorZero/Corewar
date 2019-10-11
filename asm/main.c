@@ -10,11 +10,11 @@ int		main(int argc, char **argv)
         write_to_dot_cor(the_asm);
 		//printf("Writing output to .cor\n");
 	//system("leaks -q asm");
-	t_label *ek = the_asm->labels_top;
-	while (ek)
-	{
-		printf("label: %s\n", ek->name);
-		ek = ek->next;
-	}
-	return (0);
+	// t_label *ek = the_asm->labels_top;
+	// while (ek)
+	// {
+	// 	printf("label: %s\n", ek->name);
+	// 	ek = ek->next;
+	// }
+	// return (0);
 }
