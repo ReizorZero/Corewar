@@ -122,11 +122,18 @@ int		check_if_words_correct(t_asm *the_asm, t_line **line)
 	{
 		check_label(the_asm, the_asm->line_words[0]);
 		add_label(the_asm);
+		the_asm->labels->cmnd_id_at = the_asm->e_c_l->id;
 		//ADD LABEL HERE
 		//COUNT BYTE_AT
 	}
 	if (the_asm->e_c_l->first_is_label && words == 1)
+	{
+		the_asm->e_c_l->is_label_only = 1;
+		the_asm->e_c_l->id = -the_asm->e_c_l->id;
+		the_asm->labels->cmnd_id_at = -the_asm->e_c_l->id;
+		the_asm->last_cmnd_id--;
 		return (1);
+	}
 	if ((the_asm->e_c_l->first_is_label && words == 2) ||
 	(!the_asm->e_c_l->first_is_label && words == 1))
 		ERROR(NO_ARGS, the_asm->curr_line_n);

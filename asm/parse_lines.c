@@ -16,4 +16,5 @@ void	parse_lines(t_asm *the_asm)
 		the_asm->curr_line_n++;
 		lines = lines->next;
 	}
+	fill_labels_args(the_asm);
 }

@@ -51,6 +51,7 @@ t_exec_code_line *new_exec_code_line(int id)
 	}
 	ft_bzero(exec_code_line, sizeof(t_exec_code_line));
 	exec_code_line->id = id;
+	exec_code_line->label_arg_value = (char**)malloc(sizeof(char*) * 3);
 	return (exec_code_line);
 }
 
@@ -64,8 +65,9 @@ t_label *new_label(char *name)
 		printf("Error. Failed to allocate memory: struct t_label.\n");
 		exit(0);
 	}
-	label->name = ft_strdup(name);
-	label->byte_at = 0;
+	//label->name = ft_strdup(name);
+	label->name = ft_strsub(name, 0, ft_strlen(name) - 1);
+	label->cmnd_id_at = 0;
 	label->next = NULL;
 	return (label);
 }

@@ -28,22 +28,89 @@ int		check_label(t_asm *the_asm, char *s)
 	return (1);
 }
 
-int		count_label_byte_at(t_asm *the_asm)
+int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 {
-	int i;
-	int id;
 	int byte_at;
-	t_exec_code_line *cmnd_line;
+	int label_id;
+	t_exec_code_line *ecl;
 
-	i = 0;
-	id = the_asm->last_cmnd_id;
 	byte_at = 0;
-	cmnd_line = the_asm->e_c_l_top;
-	while (i < id && cmnd_line)
+	label_id = get_label_arg_value(the_asm, label_name);
+	printf("FOUND LABEL CORRESPONDING COMMAND ID = %i\n", label_id);
+	ecl = the_asm->e_c_l_top;
+	//>= case - ?
+	if (label_id >= cmnd_id)
 	{
-		byte_at += cmnd_line->cmnd_line_size;
-		cmnd_line = cmnd_line->next;//AVOID SEGV HERE
-		i++;
+		while (ecl && ecl->id <= cmnd_id)
+		{
+			printf("\t\tcurr size @ %i\n", ecl->cmnd_line_size);
+			byte_at += ecl->cmnd_line_size;
+			ecl = ecl->next;
+		}
 	}
+	else
+	{
+		while (ecl && ecl->id < cmnd_id)
+		{
+			printf("\t\tcurr size @ %i\n", ecl->cmnd_line_size);
+			byte_at += ecl->cmnd_line_size;
+			ecl = ecl->next;
+		}
+		byte_at = -byte_at;
+	}
+	printf("BYTE_AT IS FOUND AND IS EQUAL TO... %i\n", byte_at);
+	printf("MEANWHILE, COMMAND ID IS EQUAL TO... %i\n", cmnd_id);
+	printf("MEANWHILE, LABEL ID IS EQUAL TO... %i\n", label_id);
+	printf("AND, FINALLY, THE LABEL IS... %s\n", label_name);
 	return (byte_at);
+}
+
+int		get_label_arg_value(t_asm *the_asm, char *label_name)
+{
+	t_label *labels;
+	int label_id;
+
+	label_id = 0;
+	labels = the_asm->labels_top;
+	while (labels)
+	{
+		if (!ft_strcmp(label_name, labels->name))
+		{
+			label_id = labels->cmnd_id_at;
+			break ;
+		}
+		labels = labels->next;
+	}
+	if (!label_id)
+	{
+		printf("Error. Label \'%s\' doesn't exist.\n", label_name);
+		exit(0);
+	}
+	return (label_id);
+}
+
+void	fill_labels_args(t_asm *the_asm)
+{
+	t_exec_code_line *ecl;
+	int i;
+
+	ecl = the_asm->e_c_l_top;
+	while (ecl)
+	{
+		if (ecl->has_label_arg)
+		{
+			i = 0;
+			while (i < 3)
+			{
+				if (ecl->label_arg_index[i] == 1)
+				{
+					//printf("\t\t\t\t\t\t\t\t\t\t===> we got label arg\n");
+					ecl->arg_value[i] =
+					get_label_byte_at(the_asm, ecl->label_arg_value[i], ecl->id);
+				}
+				i++;
+			}
+		}
+		ecl = ecl->next;
+	}
 }

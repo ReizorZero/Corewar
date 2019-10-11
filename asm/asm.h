@@ -89,6 +89,11 @@ typedef struct	s_exec_code_line
 	int							arg_size[3];
 	int							cmnd_line_size;
 	int							first_is_label;
+	int							is_label_only;
+	int							has_label_arg;
+	int							label_arg_index[3];
+	//char						*label_arg_value[3];
+	char						**label_arg_value;
 	int							words;
 	int							has_arg_types_code;
 	//int							has_label;
@@ -101,7 +106,7 @@ typedef struct	s_exec_code_line
 typedef struct	s_label
 {
 	char			*name;
-	int				byte_at;
+	int				cmnd_id_at;
 	struct s_label	*next;
 }				t_label;
 
@@ -146,7 +151,7 @@ void				check_command_line(t_asm *the_asm, t_line **line);
 void				write_cmnd_line_words(t_asm *the_asm, t_line **line);
 int					check_if_words_correct(t_asm *the_asm, t_line **line);
 int					check_label(t_asm *the_asm, char *s);
-int					count_label_byte_at(t_asm *the_asm);
+//int					count_label_byte_at(t_asm *the_asm);
 void				check_args(t_asm *the_asm, int i, int shift);
 
 void				write_to_dot_cor(t_asm *the_asm);
@@ -154,6 +159,8 @@ void				write_to_dot_cor(t_asm *the_asm);
 void				write_line_to_list(t_asm *the_asm, char *s);
 void				add_cmnd_line(t_asm *the_asm);
 void				add_label(t_asm *the_asm);
+int					get_label_arg_value(t_asm *the_asm, char *label_name);
+void				fill_labels_args(t_asm *the_asm);
 
 t_asm				*new_asm(void);
 t_line				*new_line(char *str);

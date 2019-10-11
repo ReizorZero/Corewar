@@ -55,10 +55,16 @@ int		check_t_dir(t_asm *the_asm, char *s, int arg_index)
 	i = 1;
 	if (s[i] == LABEL_CHAR)
 	{
+		the_asm->e_c_l->has_label_arg = 1;
+		the_asm->e_c_l->label_arg_index[arg_index] = 1;
+		the_asm->e_c_l->label_arg_value[arg_index] = ft_strdup(&s[i + 1]);
 		printf("ARG NUMBER: %i;\t", arg_index + 1);
 		the_asm->e_c_l->arg_code[arg_index] = DIR_CODE;
 		printf("ARG TYPE: T_DIR;\t");
-		printf("ARG VALUE: %s\t", &s[i]);//the_asm->e_c_l->arg_value[arg_index]);
+		//the_asm->e_c_l->arg_value[arg_index] =
+		//get_label_arg_value(the_asm, &s[i]);
+		//printf("LABEL ARG VALUE: %i\t", the_asm->e_c_l->arg_value[arg_index]);
+		printf("LABEL ARG VALUE: %s\t", &s[i]);//the_asm->e_c_l->arg_value[arg_index]);
 		//the_asm->e_c_l->arg_size[arg_index] = commands[the_asm->e_c_l->cmnd_code - 1].t_dir_size;
 		//printf("ARG SIZE: %i\n", the_asm->e_c_l->arg_size[arg_index]);
 		the_asm->e_c_l->arg_size[arg_index] =
@@ -97,11 +103,17 @@ int		check_t_ind(t_asm *the_asm, char *s, int arg_index)
 	i = 0;
 	if (s[i] == LABEL_CHAR)
 	{
+		the_asm->e_c_l->has_label_arg = 1;
+		the_asm->e_c_l->label_arg_index[arg_index] = 1;
+		the_asm->e_c_l->label_arg_value[arg_index] = ft_strdup(&s[i + 1]);
 		printf("ARG NUMBER %i;\t", arg_index + 1);
 		the_asm->e_c_l->arg_code[arg_index] = IND_CODE;
 		printf("ARG TYPE: T_IND;\t");
 		//MANAGE LABEL VALUE
-		printf("ARG VALUE: %s\t", &s[i]);
+		//the_asm->e_c_l->arg_value[arg_index] =
+		//get_label_arg_value(the_asm, &s[i]);
+		printf("LABEL ARG VALUE: %s\t", &s[i]);
+		//printf("LABEL ARG VALUE: %i\t", the_asm->e_c_l->arg_value[arg_index]);
 		the_asm->e_c_l->arg_size[arg_index] = 2;
 		printf("ARG SIZE: %i\n", the_asm->e_c_l->arg_size[arg_index]);
 		check_cmnd_correspondance(the_asm, arg_index);
