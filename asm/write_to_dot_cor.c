@@ -48,9 +48,9 @@ uint32_t	convert_hex_to_int(char *hex)
 	return val;
 }
 
-uint32_t		convert_bit_to_int(char *bit)
+int			convert_bit_to_int(char *bit)
 {
-	int32_t	sum;
+	int		sum;
 	int		i;
 	int		n;
 
@@ -81,31 +81,72 @@ void		write_null_in_file(t_asm *the_asm, int i)
 		out_in_file(0, 1, the_asm);
 }
 
+char		*get_arg_types_code(int *arg_code)
+{
+	int		i;
+	int		j;
+	char	*rez;
+
+	if (!(rez = ft_memalloc(sizeof(char) * 9)))
+		exit(0);
+	i = -1;
+	j = 0;
+	while (++i != 3)
+	{
+		if (arg_code[i] == 1)
+		{
+			rez[j] = '0';
+			rez[j + 1] = '1';
+		}
+		if (arg_code[i] == 2)
+		{
+			rez[j] = '1';
+			rez[j + 1] = '0';
+		}
+		if (arg_code[i] == 3)
+		{
+			rez[j] = '1';
+			rez[j + 1] = '1';
+		}
+		j += 2;
+	}
+	rez[j] = '0';
+	rez[j + 1] = '0';
+	rez[j + 2] = '\0';
+	return (rez);
+}
+
 void		write_cmnd_code(t_asm *the_asm)
 {
 	int					i;
 	t_exec_code_line	*tmp;
+	char				*arg_types_code;
 
 	tmp = the_asm->e_c_l_top;
 	while (tmp)
 	{
-		printf("%d\n", tmp->cmnd_code);
+		// printf("%d\n", tmp->cmnd_code);
 		if (tmp->cmnd_code != 0)
 		{
-			out_in_file(tmp->cmnd_code, 1, the_asm); // change 1 with tmp->cmnd_size
-			out_in_file(convert_bit_to_int("01101000"), 1, the_asm); //change 1 with tmp->has_arg_types_code, "01101000" will be arg_types_code_size
+			out_in_file(tmp->cmnd_code, 1, the_asm);
+			if (tmp->has_arg_types_code > 0)
+			{
+				arg_types_code = get_arg_types_code(tmp->arg_code);
+				out_in_file(convert_bit_to_int(arg_types_code), 1, the_asm); // "01101000" will be arg_types_code_size
+			}
 			i = -1;
+			printf("\n%s\n", "cmnd--");
 			while (++i < 3)
 			{
+				printf("%d\n", tmp->arg_value[i]);
 				if (tmp->arg_size[i] != 0)
-				{
-					if (tmp->has_arg_types_code)
-					out_in_file(convert_hex_to_int("01"), 1, the_asm); //convert_bit_to_int("01") : 01 will be tmp->arg_code[i], change 1 to tmp->arg_size[i]
-				}
+					out_in_file(tmp->arg_code[i], tmp->arg_size[i], the_asm);
+					// out_in_file(convert_hex_to_int("01"), 1, the_asm); //convert_bit_to_int("01") : 01 will be tmp->arg_code[i], change 1 to tmp->arg_size[i]
 			}
 		}
 		tmp = tmp->next;
 	}
+	free(arg_types_code);
 }
 
 void		write_to_dot_cor(t_asm *the_asm)
@@ -124,7 +165,7 @@ void		write_to_dot_cor(t_asm *the_asm)
 	// write_null_in_file(the_asm, 128 - j);
 	out_in_file(0, PROG_NAME_LENGTH - j, the_asm);
 	write_null_in_file(the_asm, 4);
-	printf("\n%d\n", the_asm->exec_code_size);
+	// printf("\n%d\n", the_asm->exec_code_size);
 	out_in_file(the_asm->exec_code_size, 4, the_asm);
 	j = -1;
 	while (the_asm->champion_comment[++j] != '\0')
