@@ -80,6 +80,8 @@ void		args_checking(t_general *data, int argc, char **argv)
 			add_player(data, argv, &i);
 		else if (!(ft_strcmp("-v", argv[i])))
 			verbosity_fl(data, argv, &i);
+		else if (!(ft_strcmp("-vis", argv[i])))
+			data->vis = 1;
 		else
 			usage_msg();
 		i++;

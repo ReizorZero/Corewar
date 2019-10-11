@@ -48,6 +48,8 @@ static void	ft_carriage_cycle(t_general *data)
 			g_op_func[crwl->op_id - 1](data, crwl);
 			--(crwl->op_cycles);
 		}
+		if (data->vis)
+			upd(data);
 		crwl = crwl->next;
 	}
 }
@@ -72,7 +74,8 @@ void		ft_fight(t_general *data)
 			ft_check_live_carriage(data);
 			set_new_cycle(data);
 		}
+		//if (data->vis)
+		//	upd(data);
 		++data->cycles_tmp;
 	}
-	print_winner(data);
 }

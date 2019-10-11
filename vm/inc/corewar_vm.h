@@ -49,6 +49,7 @@ typedef struct			s_player
 	uint8_t				id;
 	char				*name;
 	unsigned int		size;
+	int color;
 	char				*comment;
 	uint8_t				*code;
 	struct s_player		*next;
@@ -81,6 +82,7 @@ typedef struct			s_general
 	int					dump_cycle;
 	int					pl_nbr;
 	uint8_t				verb_nbr;
+	int vis;
 }						t_general;
 
 t_operation				g_op_tab[17];
@@ -150,5 +152,6 @@ void					err_magic_header(t_general *data, char *file);
 void					get_val_ldi(t_carriage carriage, int32_t *val,
 							int8_t i);
 void					ft_res_init(t_general *data, t_mem *res, uint32_t adds);
+void upd(t_general *data);
 
 #endif
