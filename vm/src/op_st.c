@@ -19,6 +19,10 @@ void	op_st(t_general *data, t_carriage *carriage)
 		% MEM_SIZE]))
 	{
 		memory_cpy(&carriage->arg[1], carriage->arg[0]);
+		if(carriage->arg[1].type == T_IND)
+			ft_set_color(data, carriage->arg[1].size,
+				carriage->arg[1].current - carriage->arg[1].mem,
+				carriage->pl_id + 5);
 		if (data->verb_nbr & 4 && !data->vis)
 		{
 			if (carriage->arg[1].type == T_IND)

@@ -34,5 +34,7 @@ void	op_live(t_general *data, t_carriage *carriage)
 			ft_printf("Player %d (%s) is said to be alive\n", pl->id, pl->name);
 	}
 	carriage->pos_tmp = carriage->pos;
+//	data->map_clr[carriage->pos].cycle = 50;
+//	data->map_clr[carriage->pos].clr = carriage->pl_id + 10;
 	carriage->pos += show_pc_movement(data, *carriage);
 }

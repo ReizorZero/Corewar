@@ -28,6 +28,8 @@ void	op_sti(t_general *data, t_carriage *carriage)
 		adds = (carriage->pos + (val2 + val3) % IDX_MOD) % MEM_SIZE;
 		ft_res_init(data, &res, adds);
 		memory_cpy(&res, carriage->arg[0]);
+		ft_set_color(data, res.size, res.current - res.mem,
+			carriage->pl_id + 5);
 		if (data->verb_nbr & 4 && !data->vis)
 		{
 			ft_printf("P %4d | sti r%d %d %d\n", carriage->nbr,

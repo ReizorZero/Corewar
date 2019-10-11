@@ -36,8 +36,12 @@ void	print_mem(t_general *data)
 int		main(int argc, char **argv)
 {
 	t_general	data;
+	int 		i;
 
+	i = 0;
 	ft_memset(&data, 0, sizeof(data));
+	while (i < MEM_SIZE)
+		data.map_clr[i++].cycle = -1;
 	if (argc > 1)
 	{
 		data.dump_cycle = -1;
