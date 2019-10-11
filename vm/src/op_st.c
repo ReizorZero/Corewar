@@ -19,7 +19,7 @@ void	op_st(t_general *data, t_carriage *carriage)
 		% MEM_SIZE]))
 	{
 		memory_cpy(&carriage->arg[1], carriage->arg[0]);
-		if (data->verb_nbr & 4)
+		if (data->verb_nbr & 4 && !data->vis)
 		{
 			if (carriage->arg[1].type == T_IND)
 			{
@@ -33,6 +33,6 @@ void	op_st(t_general *data, t_carriage *carriage)
 			}
 		}
 	}
-	show_pc_movement(*data, *carriage);
+	show_pc_movement(data, *carriage);
 	carriage->pos = carriage->pos_tmp;
 }

@@ -21,8 +21,9 @@ void	op_aff(t_general *data, t_carriage *carriage)
 		% MEM_SIZE]))
 	{
 		val = (char)get_val32bit(carriage->arg[0]);
-		ft_printf("Aff: %c\n", val);
+		if (!data->vis)
+			ft_printf("Aff: %c\n", val);
 	}
-	show_pc_movement(*data, *carriage);
+	show_pc_movement(data, *carriage);
 	carriage->pos = carriage->pos_tmp;
 }

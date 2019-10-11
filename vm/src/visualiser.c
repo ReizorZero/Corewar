@@ -18,17 +18,17 @@ void ft_set_color(t_general *data, unsigned int size, int cnt, int clr)
 	}
 }
 
-void	set_color_carriages(t_general *data)
+void	set_color_carriages(t_general *data, size_t p1, size_t p2)
 {
-	t_carriage *carr;
+//	t_carriage *carr;
 
-	carr = data->head_c;
-	while (carr)
-	{
-		data->map_clr[carr->pos_tmp].clr = (data->map_clr[carr->pos_tmp].clr % 4) + 4;
-		data->map_clr[carr->pos].clr -= 4;
-		carr = carr->next;
-	}
+//	carr = data->head_c;
+//	while (carr)
+//	{
+		data->map_clr[p2].clr = (data->map_clr[p2].clr % 4) + 4;
+		data->map_clr[p1].clr = (data->map_clr[p1].clr) % 4;
+//		carr = carr->next;
+//	}
 }
 
 //static void draw_carriages(t_general *data)

@@ -32,11 +32,11 @@ void	op_fork(t_general *data, t_carriage *carriage)
 	new->op_cycles = -1;
 	new->next = data->head_c;
 	data->head_c = new;
-	if (data->verb_nbr & 4)
+	if (data->verb_nbr & 4 && !data->vis)
 	{
 		ft_printf("P %4d | fork %d (%d)\n", carriage->nbr, adds,
 			(int32_t)(carriage->pos + adds % IDX_MOD));
 	}
-	show_pc_movement(*data, *carriage);
+	show_pc_movement(data, *carriage);
 	carriage->pos = carriage->pos_tmp;
 }

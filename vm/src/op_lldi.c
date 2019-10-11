@@ -28,7 +28,7 @@ void	op_lldi(t_general *data, t_carriage *carriage)
 		ft_res_init(data, &res, adds);
 		memory_cpy(&carriage->arg[2], res);
 		carriage->carry = !(*(uint32_t*)carriage->arg[2].mem);
-		if (data->verb_nbr & 4)
+		if (data->verb_nbr & 4 && !data->vis)
 		{
 			ft_printf("P %4d | lldi %d %d r%d\n", carriage->nbr, val[0], val[1],
 				get_num_reg(carriage, 2));
@@ -37,6 +37,6 @@ void	op_lldi(t_general *data, t_carriage *carriage)
 				(int32_t)carriage->pos + (val[0] + val[1]));
 		}
 	}
-	show_pc_movement(*data, *carriage);
+	show_pc_movement(data, *carriage);
 	carriage->pos = carriage->pos_tmp;
 }

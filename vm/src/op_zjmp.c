@@ -19,16 +19,20 @@ void	op_zjmp(t_general *data, t_carriage *carriage)
 	carriage->pos_tmp = (carriage->pos + 1) % MEM_SIZE;
 	arg_read(data, carriage, 0b10000000);
 	dist = (int16_t)get_val16bit(carriage->arg[0]);
-	if (data->verb_nbr & 4)
+	if (data->verb_nbr & 4 && !data->vis)
 	{
 		ft_printf("P %4d | zjmp %d %s\n", carriage->nbr, dist,
 			(carriage->carry ? "OK" : "FAILED"));
 	}
 	if (carriage->carry)
+	{
+		if (data->vis)
+			set_color_carriages(data, carriage->pos, (carriage->pos + dist % IDX_MOD) % MEM_SIZE);
 		carriage->pos = (carriage->pos + dist % IDX_MOD) % MEM_SIZE;
+	}
 	else
 	{
-		show_pc_movement(*data, *carriage);
+		show_pc_movement(data, *carriage);
 		carriage->pos = carriage->pos_tmp;
 	}
 }

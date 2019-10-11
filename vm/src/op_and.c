@@ -25,12 +25,12 @@ void	op_and(t_general *data, t_carriage *carriage)
 		val2 = get_val32bit(carriage->arg[1]);
 		*(uint32_t*)carriage->arg[2].mem = reverse_32bits(val1 & val2);
 		carriage->carry = !(*(uint32_t*)carriage->arg[2].mem);
-		if (data->verb_nbr & 4)
+		if (data->verb_nbr & 4 && !data->vis)
 		{
 			ft_printf("P %4d | and %d %d r%d\n", carriage->nbr, val1, val2,
 				get_num_reg(carriage, 2));
 		}
 	}
-	show_pc_movement(*data, *carriage);
+	show_pc_movement(data, *carriage);
 	carriage->pos = carriage->pos_tmp;
 }

@@ -58,15 +58,13 @@ void	introducing(t_general *data)
 	}
 }
 
-void	show_pc_movement(t_general data, t_carriage carriage)
+void	show_pc_movement(t_general *data, t_carriage carriage)
 {
 	size_t	i;
 	size_t	step;
 
-	if (data.vis)
-		set_color_carriages(data);
-	if (data.verb_nbr & 16)
-	{
+//	if (data->verb_nbr & 16)
+//	{
 		i = -1;
 		step = 1;
 		step = g_op_tab[carriage.op_id - 1].octal ? step + 1 : step;
@@ -81,10 +79,14 @@ void	show_pc_movement(t_general data, t_carriage carriage)
 				step += IND_SIZE;
 		}
 		i = -1;
+	if (data->verb_nbr & 16)
+	{
 		ft_printf("ADV %d (%.4p -> %.4p) ",
 			step, carriage.pos, (carriage.pos + step) % MEM_SIZE);
 		while (++i < step)
-			ft_printf("%.2x ", data.mem_f[(carriage.pos + i) % MEM_SIZE]);
+			ft_printf("%.2x ", data->mem_f[(carriage.pos + i) % MEM_SIZE]);
 		ft_printf("\n");
 	}
+	if (data->vis)
+		set_color_carriages(data, carriage.pos, (carriage.pos + step) % MEM_SIZE);
 }

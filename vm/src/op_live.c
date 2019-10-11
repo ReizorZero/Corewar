@@ -26,13 +26,13 @@ void	op_live(t_general *data, t_carriage *carriage)
 		data->lst_live_plr = -player;
 	carriage->lst_live_cycle = data->cycles_total + data->cycles_tmp;
 	++(data->cnt_live);
-	if (data->verb_nbr & 4)
+	if (data->verb_nbr & 4 && !data->vis)
 		ft_printf("P %4d | live %d\n", carriage->nbr, player);
-	if (data->verb_nbr & 1)
+	if (data->verb_nbr & 1 && !data->vis)
 	{
 		if (pl)
 			ft_printf("Player %d (%s) is said to be alive\n", pl->id, pl->name);
 	}
-	show_pc_movement(*data, *carriage);
+	show_pc_movement(data, *carriage);
 	carriage->pos = carriage->pos_tmp;
 }

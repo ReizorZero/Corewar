@@ -45,7 +45,7 @@ void	op_ldi(t_general *data, t_carriage *carriage)
 		adds = (carriage->pos + (val1 + val2) % IDX_MOD) % MEM_SIZE;
 		ft_res_init(data, &res, adds);
 		memory_cpy(&carriage->arg[2], res);
-		if (data->verb_nbr & 4)
+		if (data->verb_nbr & 4 && !data->vis)
 		{
 			ft_printf("P %4d | ldi %d %d r%d\n", carriage->nbr, val1, val2,
 				get_num_reg(carriage, 2));
@@ -54,6 +54,6 @@ void	op_ldi(t_general *data, t_carriage *carriage)
 				(carriage->pos + ((val1 + val2) % IDX_MOD)));
 		}
 	}
-	show_pc_movement(*data, *carriage);
+	show_pc_movement(data, *carriage);
 	carriage->pos = carriage->pos_tmp;
 }

@@ -28,7 +28,7 @@ void	op_sti(t_general *data, t_carriage *carriage)
 		adds = (carriage->pos + (val2 + val3) % IDX_MOD) % MEM_SIZE;
 		ft_res_init(data, &res, adds);
 		memory_cpy(&res, carriage->arg[0]);
-		if (data->verb_nbr & 4)
+		if (data->verb_nbr & 4 && !data->vis)
 		{
 			ft_printf("P %4d | sti r%d %d %d\n", carriage->nbr,
 				get_num_reg(carriage, 0), val2, val3);
@@ -37,6 +37,6 @@ void	op_sti(t_general *data, t_carriage *carriage)
 				(int32_t)(carriage->pos + (val2 + val3) % IDX_MOD));
 		}
 	}
-	show_pc_movement(*data, *carriage);
+	show_pc_movement(data, *carriage);
 	carriage->pos = carriage->pos_tmp;
 }
