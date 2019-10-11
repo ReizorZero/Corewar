@@ -25,6 +25,8 @@ stdbool.h
 -
 fcntl.h
 -
+ncurses.h
+-
 
 /Users/mshvets/Desktop/Corewar/vm/inc/op.h
 
@@ -61,8 +63,6 @@ fcntl.h
 /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
 
 /Users/mshvets/Desktop/Corewar/vm/src/main.c
-fcntl.h
--
 ../inc/corewar_vm.h
 /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
 
@@ -153,6 +153,10 @@ fcntl.h
 /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
 
 /Users/mshvets/Desktop/Corewar/vm/src/printer.c
+../inc/corewar_vm.h
+/Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
+
+/Users/mshvets/Desktop/Corewar/vm/src/visualiser.c
 ../inc/corewar_vm.h
 /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
 

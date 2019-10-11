@@ -63,6 +63,8 @@ void	show_pc_movement(t_general data, t_carriage carriage)
 	size_t	i;
 	size_t	step;
 
+	if (data.vis)
+		set_color_carriages(data);
 	if (data.verb_nbr & 16)
 	{
 		i = -1;

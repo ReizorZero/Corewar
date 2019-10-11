@@ -35,6 +35,7 @@ typedef struct			s_carriage
 	bool				carry;
 	bool				live;
 	uint8_t				op_id;
+	uint8_t				pl_id;
 	int					op_cycles;
 	size_t				nbr;
 	size_t				pos;
@@ -165,6 +166,7 @@ void					ft_res_init(t_general *data, t_mem *res, uint32_t adds);
 void					upd(t_general *data);
 void					vis_init(t_general *data);
 void ft_set_color(t_general *data, unsigned int size, int cnt, int clr);
+void	set_color_carriages(t_general *data);
 
 
 #endif

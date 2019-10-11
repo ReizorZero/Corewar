@@ -411,3 +411,8 @@ CMakeFiles/VM.dir/src/printer.c.o
  /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
  /Users/mshvets/Desktop/Corewar/vm/inc/op.h
  /Users/mshvets/Desktop/Corewar/vm/src/printer.c
+CMakeFiles/VM.dir/src/visualiser.c.o
+ /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
+ /Users/mshvets/Desktop/Corewar/vm/inc/corewar_vm.h
+ /Users/mshvets/Desktop/Corewar/vm/inc/op.h
+ /Users/mshvets/Desktop/Corewar/vm/src/visualiser.c

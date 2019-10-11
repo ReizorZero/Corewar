@@ -15,21 +15,20 @@ void ft_set_color(t_general *data, unsigned int size, int cnt, int clr)
 	{
 		data->map_clr[cnt + size].cycle = -1;
 		data->map_clr[cnt + size].clr = clr;
-//		--size;
 	}
-//	while (i < MEM_SIZE)
-//	{
-//		if (data->map_clr[i].cycle < 0)
-//			data->map_clr[i].clr = clr;
-//		else if (data->map_clr[i].cycle > 0)
-//		{
-//			//set bold
-//			--(data->map_clr[i].cycle);
-//		}
-//		else
-//			data->map_clr[i].clr = 0;
-//		++i;
-//	}
+}
+
+void	set_color_carriages(t_general *data)
+{
+	t_carriage *carr;
+
+	carr = data->head_c;
+	while (carr)
+	{
+		data->map_clr[carr->pos_tmp].clr = (data->map_clr[carr->pos_tmp].clr % 4) + 4;
+		data->map_clr[carr->pos].clr -= 4;
+		carr = carr->next;
+	}
 }
 
 //static void draw_carriages(t_general *data)
@@ -125,6 +124,7 @@ static void vis_game(t_general *data)
 
 void upd(t_general *data)
 {
+//	set_color_carriages(data);
 	draw_mem(data);
 	//draw_carriages(data);
 	vis_game(data);
@@ -170,9 +170,15 @@ static void coloring(void)
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	init_pair(2, COLOR_BLUE, COLOR_BLACK);
 	init_pair(3, COLOR_CYAN, COLOR_BLACK);
-	init_pair(4, COLOR_RED, COLOR_BLACK);
-	init_pair(5, 17, COLOR_BLACK);
-	init_pair(6, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(5, COLOR_BLACK, COLOR_GREEN);
+	init_pair(6, COLOR_BLACK, COLOR_BLUE);
+	init_pair(7, COLOR_BLACK, COLOR_CYAN);
+	init_pair(8, COLOR_BLACK, COLOR_YELLOW);
+	init_pair(9, COLOR_WHITE, COLOR_GREEN);
+	init_pair(10, COLOR_WHITE, COLOR_BLUE);
+	init_pair(11, COLOR_WHITE, COLOR_CYAN);
+	init_pair(12, COLOR_WHITE, COLOR_YELLOW);
 	init_pair(13, 16, COLOR_BLACK);
 }
 
