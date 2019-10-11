@@ -61,6 +61,9 @@ int		check_t_dir(t_asm *the_asm, char *s, int arg_index)
 		printf("ARG VALUE: %s\t", &s[i]);//the_asm->e_c_l->arg_value[arg_index]);
 		//the_asm->e_c_l->arg_size[arg_index] = commands[the_asm->e_c_l->cmnd_code - 1].t_dir_size;
 		//printf("ARG SIZE: %i\n", the_asm->e_c_l->arg_size[arg_index]);
+		the_asm->e_c_l->arg_size[arg_index] =
+		commands[the_asm->e_c_l->cmnd_code - 1].t_dir_size;
+		printf("ARG SIZE: %i\n", the_asm->e_c_l->arg_size[arg_index]);
 		check_cmnd_correspondance(the_asm, arg_index);
 		return (check_label(the_asm, &s[i + 1]));
 	}

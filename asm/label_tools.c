@@ -41,7 +41,7 @@ int		count_label_byte_at(t_asm *the_asm)
 	cmnd_line = the_asm->e_c_l_top;
 	while (i < id && cmnd_line)
 	{
-		byte_at += cmnd_line->cmnd_size;
+		byte_at += cmnd_line->cmnd_line_size;
 		cmnd_line = cmnd_line->next;//AVOID SEGV HERE
 		i++;
 	}

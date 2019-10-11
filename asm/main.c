@@ -8,6 +8,7 @@ int		main(int argc, char **argv)
 	check_asm_input(argc, argv, the_asm);
 	if (read_from_dot_s(the_asm))
         write_to_dot_cor(the_asm);
+		//printf("Writing output to .cor\n");
 	//system("leaks -q asm");
 	t_label *ek = the_asm->labels_top;
 	while (ek)

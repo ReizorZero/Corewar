@@ -78,9 +78,6 @@ typedef struct	s_commands_info
 	int		has_arg_types_code;
 	int		arg_n;
 	int		arg_types[3][3];
-	// int		arg_1_types[3];//or replace with int *arg_1_types, but better not
-	// int		arg_2_types[3];
-	// int		arg_3_types[3];
 }				t_commands_info;
 
 typedef struct	s_exec_code_line
@@ -90,18 +87,10 @@ typedef struct	s_exec_code_line
 	int							arg_code[3];
 	int							arg_value[3];
 	int							arg_size[3];
-	// int							arg_1_code;
-	// int							arg_1_value;
-	// int							arg_1_size;
-	// int							arg_2_code;
-	// int							arg_2_value;
-	// int							arg_2_size;
-	// int							arg_3_code;
-	// int							arg_3_value;
-	// int							arg_3_size;
-	int							cmnd_size;
+	int							cmnd_line_size;
 	int							first_is_label;
 	int							words;
+	int							has_arg_types_code;
 	//int							has_label;
 	//char						**label_name;
 	//int							label_n;

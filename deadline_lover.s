@@ -1,5 +1,5 @@
 .name 		"deadline_lover"
-.comment	"each teammate in our team loves deadlines very much"
+.comment	"each teammate in our team loves deadlines very much <3 "
 
 start:	sti r1, %:p1, %1
 p1:     live %1

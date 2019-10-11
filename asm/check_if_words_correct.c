@@ -141,5 +141,11 @@ int		check_if_words_correct(t_asm *the_asm, t_line **line)
 		i++;
 	}
 	check_separators(the_asm, line);
+	the_asm->e_c_l->cmnd_line_size = 1 +
+	commands[the_asm->e_c_l->cmnd_code - 1].has_arg_types_code +
+	the_asm->e_c_l->arg_size[0] +
+	the_asm->e_c_l->arg_size[1] +
+	the_asm->e_c_l->arg_size[2];
+	printf("CMND_LINE_SIZE ==> %i\n", the_asm->e_c_l->cmnd_line_size);
 	return (1);
 }
