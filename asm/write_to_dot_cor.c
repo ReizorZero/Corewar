@@ -140,7 +140,9 @@ void		write_cmnd_code(t_asm *the_asm)
 			{
 				printf("%d\n", tmp->arg_value[i]);
 				if (tmp->arg_size[i] != 0)
-					out_in_file(tmp->arg_code[i], tmp->arg_size[i], the_asm);
+				{
+					out_in_file(tmp->arg_value[i], tmp->arg_size[i], the_asm);
+				}
 					// out_in_file(convert_hex_to_int("01"), 1, the_asm); //convert_bit_to_int("01") : 01 will be tmp->arg_code[i], change 1 to tmp->arg_size[i]
 			}
 		}
@@ -162,16 +164,14 @@ void		write_to_dot_cor(t_asm *the_asm)
 	j = -1;
 	while (the_asm->champion_name[++j] != '\0')
 		out_in_file(the_asm->champion_name[j], 1, the_asm);
-	// write_null_in_file(the_asm, 128 - j);
-	out_in_file(0, PROG_NAME_LENGTH - j, the_asm);
+	write_null_in_file(the_asm, 128 - j);
 	write_null_in_file(the_asm, 4);
-	// printf("\n%d\n", the_asm->exec_code_size);
-	out_in_file(the_asm->exec_code_size, 4, the_asm);
+	printf("\n%d\n", the_asm->exec_code_size);
+	out_in_file(22, 4, the_asm);
 	j = -1;
 	while (the_asm->champion_comment[++j] != '\0')
 		out_in_file(the_asm->champion_comment[j], 1, the_asm);
-	// write_null_in_file(the_asm, 2048 - j);
-	out_in_file(0, COMMENT_LENGTH - j, the_asm);
+	write_null_in_file(the_asm, 2048 - j);
 	write_null_in_file(the_asm, 4);
 	write_cmnd_code(the_asm);
 }
