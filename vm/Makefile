@@ -53,6 +53,7 @@ SRC             += $(SRC_DIR)printer.c
 SRC             += $(SRC_DIR)get_val.c
 SRC             += $(SRC_DIR)check_live_carriage.c
 SRC             += $(SRC_DIR)errors.c
+SRC             += $(SRC_DIR)visualiser.c
 
 # project object files
 
@@ -87,7 +88,7 @@ CC              := gcc
 all: $(LIB) $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(LINK_FLAGS) -o $(NAME) -fsanitize=undefined
+	$(CC) $(OBJ) $(LINK_FLAGS) -o $(NAME) -fsanitize=undefined -lncurses
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CC_FLAGS) -c $< -o $@ $(HEADER_FLAGS)

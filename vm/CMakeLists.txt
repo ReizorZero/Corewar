@@ -3,6 +3,7 @@ project(VM C)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_FLAGS -v)
+set(CMAKE_C_FLAGS -lncurses)
 
 AUX_SOURCE_DIRECTORY(../libft/src LIBA)
 
@@ -40,6 +41,6 @@ add_executable(
         src/op_aff.c
         src/get_val.c
         src/check_live_carriage.c
-        src/errors.c)
+        src/errors.c src/visualiser.c)
 
 link_libraries(../libft/libft.a)

@@ -45,9 +45,11 @@ static int	right_extention(const char *name)
 
 static void	add_player(t_general *data, char **argv, int *i)
 {
-	int id;
+	int			id;
+	t_player	*crwl;
 
 	id = 0;
+	crwl = data->head_p;
 	if (!(ft_strcmp("-n", argv[*i])))
 	{
 		(*i)++;
@@ -56,6 +58,12 @@ static void	add_player(t_general *data, char **argv, int *i)
 			id = ft_atoi(argv[*i]);
 			if (id < 1 || id > MAX_PLAYERS)
 				error_msg("Error: invalid number in -n option", data);
+			while (crwl)
+			{
+				if (crwl->id == id)
+					error_msg("Error: same id in -n option", data);
+				crwl = crwl->next;
+			}
 		}
 		else
 			error_msg("Error: invalid number in -n option", data);

@@ -120,6 +120,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshvets/Desktop/Corewar/vm/src/player_id.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/player_id.c.o"
   "/Users/mshvets/Desktop/Corewar/vm/src/players.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/players.c.o"
   "/Users/mshvets/Desktop/Corewar/vm/src/printer.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/printer.c.o"
+  "/Users/mshvets/Desktop/Corewar/vm/src/visualiser.c" "/Users/mshvets/Desktop/Corewar/vm/cmake-build-debug/CMakeFiles/VM.dir/src/visualiser.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
