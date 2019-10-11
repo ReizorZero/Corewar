@@ -18,17 +18,18 @@ void ft_set_color(t_general *data, unsigned int size, int cnt, int clr)
 	}
 }
 
-void	set_color_carriages(t_general *data, size_t p1, size_t p2)
+void	set_color_carriages(t_general *data)
 {
-//	t_carriage *carr;
+	t_carriage *carr;
 
-//	carr = data->head_c;
-//	while (carr)
-//	{
-		data->map_clr[p2].clr = (data->map_clr[p2].clr % 4) + 4;
-		data->map_clr[p1].clr = (data->map_clr[p1].clr) % 4;
-//		carr = carr->next;
-//	}
+	carr = data->head_c;
+	while (carr)
+	{
+		data->map_clr[carr->pos].clr = (data->map_clr[carr->pos].clr % 4) + 4;
+		if (carr->pos != carr->pos_tmp)
+			data->map_clr[carr->pos_tmp].clr = (data->map_clr[carr->pos_tmp].clr) % 4;
+		carr = carr->next;
+	}
 }
 
 //static void draw_carriages(t_general *data)
@@ -124,7 +125,7 @@ static void vis_game(t_general *data)
 
 void upd(t_general *data)
 {
-//	set_color_carriages(data);
+	set_color_carriages(data);
 	draw_mem(data);
 	//draw_carriages(data);
 	vis_game(data);

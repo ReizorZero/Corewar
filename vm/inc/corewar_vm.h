@@ -149,7 +149,7 @@ void					usage_msg(void);
 void					error_msg(char *msg, t_general *data);
 void					introducing(t_general *data);
 int						get_num_reg(t_carriage *carriage, int n);
-void					show_pc_movement(t_general *data, t_carriage carriage);
+size_t show_pc_movement(t_general *data, t_carriage carriage);
 void					print_winner(t_general *data);
 void					ft_check_live_carriage(t_general *data);
 void					start_new_op(t_general *data, t_carriage *crg);
@@ -166,7 +166,7 @@ void					ft_res_init(t_general *data, t_mem *res, uint32_t adds);
 void					upd(t_general *data);
 void					vis_init(t_general *data);
 void ft_set_color(t_general *data, unsigned int size, int cnt, int clr);
-void	set_color_carriages(t_general *data, size_t p1, size_t p2);
+void	set_color_carriages(t_general *data);
 
 
 #endif

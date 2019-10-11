@@ -26,13 +26,12 @@ void	op_zjmp(t_general *data, t_carriage *carriage)
 	}
 	if (carriage->carry)
 	{
-		if (data->vis)
-			set_color_carriages(data, carriage->pos, (carriage->pos + dist % IDX_MOD) % MEM_SIZE);
+		carriage->pos_tmp = carriage->pos;
 		carriage->pos = (carriage->pos + dist % IDX_MOD) % MEM_SIZE;
 	}
 	else
 	{
-		show_pc_movement(data, *carriage);
-		carriage->pos = carriage->pos_tmp;
+		carriage->pos_tmp = carriage->pos;
+		carriage->pos += show_pc_movement(data, *carriage);
 	}
 }

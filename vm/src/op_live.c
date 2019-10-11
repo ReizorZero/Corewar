@@ -33,6 +33,6 @@ void	op_live(t_general *data, t_carriage *carriage)
 		if (pl)
 			ft_printf("Player %d (%s) is said to be alive\n", pl->id, pl->name);
 	}
-	show_pc_movement(data, *carriage);
-	carriage->pos = carriage->pos_tmp;
+	carriage->pos_tmp = carriage->pos;
+	carriage->pos += show_pc_movement(data, *carriage);
 }

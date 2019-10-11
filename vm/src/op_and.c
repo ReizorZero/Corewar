@@ -31,6 +31,6 @@ void	op_and(t_general *data, t_carriage *carriage)
 				get_num_reg(carriage, 2));
 		}
 	}
-	show_pc_movement(data, *carriage);
-	carriage->pos = carriage->pos_tmp;
+	carriage->pos_tmp = carriage->pos;
+	carriage->pos += show_pc_movement(data, *carriage);
 }

@@ -37,6 +37,6 @@ void	op_fork(t_general *data, t_carriage *carriage)
 		ft_printf("P %4d | fork %d (%d)\n", carriage->nbr, adds,
 			(int32_t)(carriage->pos + adds % IDX_MOD));
 	}
-	show_pc_movement(data, *carriage);
-	carriage->pos = carriage->pos_tmp;
+	carriage->pos_tmp = carriage->pos;
+	carriage->pos += show_pc_movement(data, *carriage);
 }

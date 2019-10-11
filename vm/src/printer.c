@@ -58,7 +58,7 @@ void	introducing(t_general *data)
 	}
 }
 
-void	show_pc_movement(t_general *data, t_carriage carriage)
+size_t show_pc_movement(t_general *data, t_carriage carriage)
 {
 	size_t	i;
 	size_t	step;
@@ -87,6 +87,7 @@ void	show_pc_movement(t_general *data, t_carriage carriage)
 			ft_printf("%.2x ", data->mem_f[(carriage.pos + i) % MEM_SIZE]);
 		ft_printf("\n");
 	}
-	if (data->vis)
-		set_color_carriages(data, carriage.pos, (carriage.pos + step) % MEM_SIZE);
+	return (step);
+//	if (data->vis)
+//		set_color_carriages(data, carriage.pos, (carriage.pos + step) % MEM_SIZE);
 }

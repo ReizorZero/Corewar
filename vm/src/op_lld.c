@@ -34,6 +34,6 @@ void	op_lld(t_general *data, t_carriage *carriage)
 			}
 		}
 	}
-	show_pc_movement(data, *carriage);
-	carriage->pos = carriage->pos_tmp;
+	carriage->pos_tmp = carriage->pos;
+	carriage->pos += show_pc_movement(data, *carriage);
 }

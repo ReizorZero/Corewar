@@ -37,6 +37,6 @@ void	op_sti(t_general *data, t_carriage *carriage)
 				(int32_t)(carriage->pos + (val2 + val3) % IDX_MOD));
 		}
 	}
-	show_pc_movement(data, *carriage);
-	carriage->pos = carriage->pos_tmp;
+	carriage->pos_tmp = carriage->pos;
+	carriage->pos += show_pc_movement(data, *carriage);
 }
