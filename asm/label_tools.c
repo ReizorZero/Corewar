@@ -42,7 +42,7 @@ int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 	printf("(cmnd_id) CMND_LINE WHERE WE GOT LABEL_ARG ID = %i\n", cmnd_id);
 	ecl = the_asm->e_c_l_top;
 	//>= case - ?
-	if (label_id >= cmnd_id)
+	if (label_id > cmnd_id)
 	{
 		printf("\t\t\t\tCASE LABEL_ID >= CMND_ID\n");
 		// while (ecl && ecl->id < label_id)
@@ -57,7 +57,7 @@ int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 			ecl = ecl->next;
 		}
 	}
-	else
+	else if (label_id < cmnd_id)
 	{
 		printf("\t\t\t\tCASE LABEL_ID < CMND_ID\n");
 		while (ecl && ecl->id < label_id)
@@ -69,6 +69,11 @@ int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 			ecl = ecl->next;
 		}
 		byte_at = -byte_at;
+	}
+	else if (label_id == cmnd_id)
+	{
+		printf("Error. Infinite loop. (Line ...)\n");
+		exit (0);
 	}
 	printf("\tBYTE_AT IS FOUND AND IS EQUAL TO... %i\n", byte_at);
 	//printf("MEANWHILE, LABEL ID IS EQUAL TO... %i\n", label_id);
