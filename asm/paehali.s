@@ -1,8 +1,4 @@
-.name "kek"git
-.comment "g"
+.comment "kek"
+.name "h"
 
-#sti r1, r2, r3
-#live %8
-loop: live %8
-lep:
-
+live %2

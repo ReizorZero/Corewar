@@ -78,10 +78,7 @@ int		get_label_arg_value(t_asm *the_asm, char *label_name)
 		labels = labels->next;
 	}
 	if (!label_id)
-	{
-		printf("Error. Label \'%s\' doesn't exist.\n", label_name);
-		exit(0);
-	}
+		_ERROR(NO_SUCH_LABEL, label_name, the_asm->curr_line_n);
 	return (label_id);
 }
 

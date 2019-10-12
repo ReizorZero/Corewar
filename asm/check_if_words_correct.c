@@ -143,10 +143,7 @@ int		check_if_words_correct(t_asm *the_asm, t_line **line)
 		args_n++;
 	}
 	if (args_n != commands[the_asm->e_c_l->cmnd_code - 1].arg_n)
-	{
-		printf("Wrong number of arguments.\n");
-		exit(0);
-	}
+		ERROR(WRONG_ARGS_N, the_asm->curr_line_n);
 	check_separators(the_asm, line);
 	the_asm->e_c_l->has_arg_types_code = 
 	commands[the_asm->e_c_l->cmnd_code - 1].has_arg_types_code;

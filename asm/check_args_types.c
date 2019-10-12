@@ -4,15 +4,11 @@ void	check_cmnd_correspondance(t_asm *the_asm, int arg_index)
 {
 	int i;
 	int found_type;
-	//int	args_n;
 	
 	i = 0;
 	found_type = 0;
-	//args_n = 0;
 	while (i < 3)
 	{
-		// if (the_asm->e_c_l->arg_code[i] != 0)
-		// 	args_n++;
 		if (the_asm->e_c_l->arg_code[arg_index] ==
 		commands[the_asm->e_c_l->cmnd_code - 1].arg_types[arg_index][i])
 		{
@@ -22,18 +18,7 @@ void	check_cmnd_correspondance(t_asm *the_asm, int arg_index)
 		i++;
 	}
 	if (!found_type)
-	{
-		printf("Wrong arg_%i type.\n", arg_index + 1);
-		exit (0);
-	}
-	// if (args_n != commands[the_asm->e_c_l->cmnd_code - 1].arg_n)
-	// {
-	// 	printf("cmnd is: %s\n", commands[the_asm->e_c_l->cmnd_code - 1].name);
-	// 	printf("cmnd args_n is: %i\n", commands[the_asm->e_c_l->cmnd_code - 1].arg_n);
-	// 	printf("my args_n is: %i\n", args_n);
-	// 	printf("Wrong number of arguments.\n");
-	// 	exit (0);
-	// }
+		_ERROR(WRONG_ARG_TYPE, arg_index + 1, the_asm->curr_line_n);
 }
 
 int		check_t_reg(t_asm *the_asm, char *s, int arg_index)

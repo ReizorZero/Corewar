@@ -5,13 +5,16 @@
 # include "../libft/inc/libft.h"
 # include <stdio.h> //DELETE THEN
 # include <fcntl.h>
-//CHANGE ALL THE OCCURENCIES OF PRINYF TO FT_PRINTF & CHECK 'EM
+//CHANGE EXIT(0) TO ERROR_CODE
+# define _ERROR(X, Y, Z) {ft_printf(X, Y, Z);exit(0);}
 # define ERROR(X, Y) {ft_printf(X, Y);exit(0);}
 # define ERROR_(X) {ft_printf(X);exit(0);}
 # define USAGE(X, Y) {ft_printf(X);ft_printf(Y);exit(0);}
 
 # define USAGE_INFO_1 "Usage: ./asm <sourcefile.s>\n"
 # define USAGE_INFO_2 "\t(Note that only one file should be passed to input).\n"
+
+# define ALLOCATE_MEM_ERR "Error. Failed to allocate memory: struct %s.\n"
 
 # define TOO_MANY_FILES "Too many files. You should enter only one file at a time.\n"
 # define NO_FILE_NAME "File name is missing.\n"
@@ -21,20 +24,31 @@
 # define ERROR_OPEN_FILE "Error. Unable to open file %s\n"
 # define ERROR_CLOSE_FILE "Error. Unable to close file %s\n"
 
+# define NO_NAME_AT_ALL "No champion name.\n"
+# define NO_COMMENT_AT_ALL "No champion comment.\n"
+# define NO_EXEC_CODE "No executable code.\n"
+
 # define KAVICHKI_NUMBER "Wrong number of \" symbols. (Line %i)\n"
 
 # define NO_CHAMP_NAME "No champion name after .name (Line %i)\n"
+# define EMPTY_CHAMP_NAME "Empty champion name. (Line %i)\n"
+# define NAME_NOT_A_S ".name not at the beginning of file. (Line %i)\n"
+# define NAME_TWICE ".name is duplicated. (Line %i)\n"
 # define SMBLS_CHAMP_NAME "Wrong symbols after champion name. (Line %i)\n"
 # define SYMBOLS_CMND_NAME "Wrong symbols before/after .name (Line %i)\n"
 # define CLSNG_QT_CHAMP_NAME "No closing quote for champion name. (Line %i)\n"
 
 # define NO_COMMENT "No comment after .comment (Line %i)\n"
+# define EMPTY_COMMENT "Empty champion comment. (Line %i)\n"
+# define COMMENT_NOT_A_S ".comment not at the beginning of file. (Line %i)\n"
+# define COMMENT_TWICE ".comment is duplicated. (Line %i)\n"
 # define SYMBOLS_COMMENT "Should't be any symbols after comment. (Line %i)\n"
 # define SYMBOLS_CMND_COMMENT "Wrong symbols before/after .comment (Line %i)\n"
 # define NO_CLSNG_QT_COMMENT "No closing quote for comment. (Line %i)\n"
 
 # define LABEL_WRONG_CHAR "Label contains wrong char. (Line %i)\n"
 # define EMPTY_LABEL "Label name missing. (Line %i)\n"
+# define NO_SUCH_LABEL "Label \'%s\' doesn't exist. (Line %i)\n"
 
 # define MANY_SEPARATORS "Found 2 or more separator char in a row. (Line %i)\n"
 # define WRONG_N_SEPARATORS "Wrong number of separator chars. (Line %i)\n"
@@ -46,8 +60,9 @@
 # define WRONG_COMMAND "Wrong command. (Line %i)\n"
 # define NO_ARGS "No arguments after command. (Line %i)\n"
 # define TOO_MANY_ARGS "Too many arguments after command. (Line %i)\n"
+# define WRONG_ARGS_N "Wrong number of arguments. (Line %i)\n"
 # define WRONG_ARG_SNTX "Wrong argument syntax. (Line %i)\n"
-# define WRONG_ARG_TYPE "Wrong argument type. (Line %i)\n"
+# define WRONG_ARG_TYPE "Wrong argument %i type. (Line %i)\n"
 # define INCORRECT_REG "Registry number is incorrect. (Line %i)\n"
 
 # define MAX_WORDS_N 5

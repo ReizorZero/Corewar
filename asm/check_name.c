@@ -156,8 +156,5 @@ void	check_name(t_asm *the_asm, t_line **line)
 	if (kavichki == 1)
 		search_closing_quote_name(the_asm, line);//RIGHT HERE I MEAN
 	if (the_asm->champion_name[0] == '\0')
-	{
-		printf("Empty champ name.\n");
-		exit(0);
-	}
+		ERROR(EMPTY_CHAMP_NAME, the_asm->curr_line_n);
 }

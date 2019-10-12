@@ -164,8 +164,5 @@ void	check_comment(t_asm *the_asm, t_line **line)
 	if (kavichki == 1)
 		search_closing_quote_comment(the_asm, line);//RIGHT HERE I MEAN
 	if (the_asm->champion_comment[0] == '\0')
-	{
-		printf("Empty champ comment.\n");
-		exit(0);
-	}
+		ERROR(EMPTY_COMMENT, the_asm->curr_line_n);
 }
