@@ -36,24 +36,30 @@ int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 
 	byte_at = 0;
 	label_id = get_label_arg_value(the_asm, label_name);
-	printf("FOUND LABEL CORRESPONDING COMMAND ID = %i\n", label_id);
+	//printf("FOUND LABEL CORRESPONDING COMMAND ID = %i\n", label_id);
+	printf("LABEL NAME IS... [%s]\n", label_name);
+	printf("(label_id) LABEL POINTS AT CMND_LINE WITH ID = %i\n", label_id);
+	printf("(cmnd_id) CMND_LINE WHERE WE GOT LABEL_ARG ID = %i\n", cmnd_id);
 	ecl = the_asm->e_c_l_top;
 	//>= case - ?
 	if (label_id >= cmnd_id)
 	{
-		printf("\t\t\t\tZORK\n");
-		while (ecl && ecl->id < label_id)
+		printf("\t\t\t\tCASE LABEL_ID >= CMND_ID\n");
+		// while (ecl && ecl->id < label_id)
+		// 	ecl = ecl->next;
+		//while (ecl && ecl->id <= cmnd_id)
+		while (ecl && ecl->id < cmnd_id)
 			ecl = ecl->next;
-		while (ecl && ecl->id <= cmnd_id)
+		while (ecl && ecl->id < label_id)
 		{
-			//printf("\t\tcurr size @ %i\n", ecl->cmnd_line_size);
+			printf("\t\tcurr size @ %i\n", ecl->cmnd_line_size);
 			byte_at += ecl->cmnd_line_size;
 			ecl = ecl->next;
 		}
 	}
 	else
 	{
-		printf("\t\t\t\t2 ZORK\n");
+		printf("\t\t\t\tCASE LABEL_ID < CMND_ID\n");
 		while (ecl && ecl->id < label_id)
 			ecl = ecl->next;
 		while (ecl && ecl->id < cmnd_id)
@@ -65,9 +71,7 @@ int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 		byte_at = -byte_at;
 	}
 	printf("\tBYTE_AT IS FOUND AND IS EQUAL TO... %i\n", byte_at);
-	printf("MEANWHILE, COMMAND ID IS EQUAL TO... %i\n", cmnd_id);
-	printf("MEANWHILE, LABEL ID IS EQUAL TO... %i\n", label_id);
-	printf("AND, FINALLY, THE LABEL IS... %s\n", label_name);
+	//printf("MEANWHILE, LABEL ID IS EQUAL TO... %i\n", label_id);
 	return (byte_at);
 }
 
@@ -100,6 +104,7 @@ void	fill_labels_args(t_asm *the_asm)
 	t_exec_code_line *ecl;
 	int i;
 
+	printf("\n===============================================================================================\n");
 	ecl = the_asm->e_c_l_top;
 	while (ecl)
 	{
