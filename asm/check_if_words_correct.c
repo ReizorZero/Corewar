@@ -102,17 +102,15 @@ void	check_separators(t_asm *the_asm, t_line **line)
 		i++;//WENT PAST THIRD ARG
 	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
 		i++;
-	//printf("%s\n", &s[i]);
 	if (s[i] == SEPARATOR_CHAR &&
 	(words == 4 + the_asm->e_c_l->first_is_label))
 		ERROR(WRONG_N_SEPARATORS, the_asm->curr_line_n);
-	// printf("%s\n", &s[i]);
 }
 
 int		check_if_words_correct(t_asm *the_asm, t_line **line)
 {
 	int	words;
-	int i;
+	int args_n;
 	int shift;
 
 	count_words_cmnd_line(the_asm);
@@ -138,11 +136,16 @@ int		check_if_words_correct(t_asm *the_asm, t_line **line)
 		ERROR(TOO_MANY_ARGS, the_asm->curr_line_n);
 	define_cmnd_type(the_asm, the_asm->e_c_l->first_is_label);
 	shift = (the_asm->e_c_l->first_is_label) ? 2 : 1;
-	i = 0;
-	while (i < words - shift)
+	args_n = 0;
+	while (args_n < words - shift)
 	{
-		check_args(the_asm, i, shift);
-		i++;
+		check_args(the_asm, args_n, shift);
+		args_n++;
+	}
+	if (args_n != commands[the_asm->e_c_l->cmnd_code - 1].arg_n)
+	{
+		printf("Wrong number of arguments.\n");
+		exit(0);
 	}
 	check_separators(the_asm, line);
 	the_asm->e_c_l->has_arg_types_code = 

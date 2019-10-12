@@ -7,7 +7,8 @@ int		main(int argc, char **argv)
 	the_asm = new_asm();
 	check_asm_input(argc, argv, the_asm);
 	if (read_from_dot_s(the_asm))
-        write_to_dot_cor(the_asm);
+		//write_to_dot_cor(the_asm);
 	ft_printf("Writing output program to %s.cor\n", the_asm->dot_s_name);
+	//system("leaks -q asm");
 	return (0);
 }
