@@ -155,6 +155,11 @@ int					check_label(t_asm *the_asm, char *s);
 void				check_args(t_asm *the_asm, int i, int shift);
 
 void				write_to_dot_cor(t_asm *the_asm);
+void				arg_cases(int *arg_code, char *rez, int j, int i);
+uint32_t			convert_hex_to_int(char *hex);
+int					convert_bit_to_int(char *bit);
+void				write_null_in_file(t_asm *the_asm, int i);
+void				out_in_file(int nbr, int size, t_asm *the_asm);
 
 void				write_line_to_list(t_asm *the_asm, char *s);
 void				add_cmnd_line(t_asm *the_asm);

@@ -1,5 +1,24 @@
 #include "asm.h"
 
+void	arg_cases(int *arg_code, char *rez, int j, int i)
+{
+	if (arg_code[i] == 1)
+	{
+		rez[j] = '0';
+		rez[j + 1] = '1';
+	}
+	if (arg_code[i] == 2)
+	{
+		rez[j] = '1';
+		rez[j + 1] = '0';
+	}
+	if (arg_code[i] == 3)
+	{
+		rez[j] = '1';
+		rez[j + 1] = '1';
+	}
+}
+
 uint32_t		convert_hex_to_int(char *hex)
 {
 	uint32_t	val;

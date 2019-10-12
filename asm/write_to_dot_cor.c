@@ -1,6 +1,6 @@
 #include "asm.h"
 
-static void		out_in_file(int nbr, int size, t_asm *the_asm)
+void			out_in_file(int nbr, int size, t_asm *the_asm)
 {
 	uint32_t		tmp;
 	int				i;
@@ -33,21 +33,7 @@ char			*get_arg_types_code(int *arg_code)
 	j = 0;
 	while (++i != 3)
 	{
-		if (arg_code[i] == 1)
-		{
-			rez[j] = '0';
-			rez[j + 1] = '1';
-		}
-		if (arg_code[i] == 2)
-		{
-			rez[j] = '1';
-			rez[j + 1] = '0';
-		}
-		if (arg_code[i] == 3)
-		{
-			rez[j] = '1';
-			rez[j + 1] = '1';
-		}
+		arg_cases(arg_code, rez, j, i);
 		j += 2;
 	}
 	rez[j] = '0';
