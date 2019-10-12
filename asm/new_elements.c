@@ -65,7 +65,6 @@ t_label *new_label(char *name)
 		printf("Error. Failed to allocate memory: struct t_label.\n");
 		exit(0);
 	}
-	//label->name = ft_strdup(name);
 	label->name = ft_strsub(name, 0, ft_strlen(name) - 1);
 	label->cmnd_id_at = 0;
 	label->next = NULL;

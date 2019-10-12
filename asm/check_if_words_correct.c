@@ -18,7 +18,6 @@ void	define_cmnd_type(t_asm *the_asm, int w_i)
 		i++;
 	}
 	the_asm->e_c_l->cmnd_code = commands[i].id;
-	printf("COMMAND HERE IS: %s\n", commands[i].name);
 	if (!found_command)
 		ERROR(WRONG_COMMAND, the_asm->curr_line_n);
 }
@@ -123,8 +122,6 @@ int		check_if_words_correct(t_asm *the_asm, t_line **line)
 		check_label(the_asm, the_asm->line_words[0]);
 		add_label(the_asm);
 		the_asm->labels->cmnd_id_at = the_asm->e_c_l->id;
-		//ADD LABEL HERE
-		//COUNT BYTE_AT
 	}
 	if (the_asm->e_c_l->first_is_label && words == 1)
 	{
@@ -155,6 +152,5 @@ int		check_if_words_correct(t_asm *the_asm, t_line **line)
 	the_asm->e_c_l->arg_size[0] +
 	the_asm->e_c_l->arg_size[1] +
 	the_asm->e_c_l->arg_size[2];
-	printf("CMND_LINE_SIZE ==> %i\n", the_asm->e_c_l->cmnd_line_size);
 	return (1);
 }

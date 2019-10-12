@@ -6,9 +6,9 @@
 # include <stdio.h> //DELETE THEN
 # include <fcntl.h>
 //CHANGE ALL THE OCCURENCIES OF PRINYF TO FT_PRINTF & CHECK 'EM
-# define ERROR(X, Y) {printf(X, Y);exit(0);}
-# define ERROR_(X) {printf(X);exit(0);}
-# define USAGE(X, Y) {printf(X);printf(Y);exit(0);}
+# define ERROR(X, Y) {ft_printf(X, Y);exit(0);}
+# define ERROR_(X) {ft_printf(X);exit(0);}
+# define USAGE(X, Y) {ft_printf(X);ft_printf(Y);exit(0);}
 
 # define USAGE_INFO_1 "Usage: ./asm <sourcefile.s>\n"
 # define USAGE_INFO_2 "\t(Note that only one file should be passed to input).\n"
@@ -50,23 +50,6 @@
 # define WRONG_ARG_TYPE "Wrong argument type. (Line %i)\n"
 # define INCORRECT_REG "Registry number is incorrect. (Line %i)\n"
 
-# define LIVE_ID	1
-# define LD_ID		2
-# define ST_ID		3
-# define ADD_ID		4
-# define SUB_ID		5
-# define AND_ID		6
-# define OR_ID		7
-# define XOR_ID		8
-# define ZJMP_ID	9
-# define LDI_ID		10
-# define STI_ID		11
-# define FORK_ID	12
-# define LLD_ID		13
-# define LLDI_ID	14
-# define LFORK_ID	15
-# define AFF_ID		16
-
 # define MAX_WORDS_N 5
 # define COMMANDS_N 16
 
@@ -92,14 +75,9 @@ typedef struct	s_exec_code_line
 	int							is_label_only;
 	int							has_label_arg;
 	int							label_arg_index[3];
-	//char						*label_arg_value[3];
 	char						**label_arg_value;
 	int							words;
 	int							has_arg_types_code;
-	//int							has_label;
-	//char						**label_name;
-	//int							label_n;
-	//int							*label_size;
 	struct s_exec_code_line		*next;
 }				t_exec_code_line;
 
@@ -124,7 +102,6 @@ typedef struct	s_asm
 	char				*champion_name;
 	char				*champion_comment;
 	int					exec_code_size;
-	char				*exec_code;
 	t_exec_code_line	*e_c_l;
 	t_exec_code_line	*e_c_l_top;
 	t_line				*lines;
@@ -151,7 +128,6 @@ void				check_command_line(t_asm *the_asm, t_line **line);
 void				write_cmnd_line_words(t_asm *the_asm, t_line **line);
 int					check_if_words_correct(t_asm *the_asm, t_line **line);
 int					check_label(t_asm *the_asm, char *s);
-//int					count_label_byte_at(t_asm *the_asm);
 void				check_args(t_asm *the_asm, int i, int shift);
 
 void				write_to_dot_cor(t_asm *the_asm);

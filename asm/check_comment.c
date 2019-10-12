@@ -1,7 +1,7 @@
 #include "asm.h"
 
 int		count_kavichki(char *s)
-{//DO THE STUFF NORMALLYY 
+{
 	int i;
 	int kavichki;
 	int	met_hash;
@@ -17,7 +17,6 @@ int		count_kavichki(char *s)
 			kavichki++;
 		i++;
 	}
-	//printf("KAVICHKI = %i\n", kavichki);
 	return (kavichki);
 }
 
@@ -93,7 +92,7 @@ int		closing_quote_comment_is_valid(t_asm *the_asm, char *s)
 	i = 0;
 	kavichki = 0;
 	met_hash = 0;
-	if (ft_strstr(s, NAME_CMD_STRIN))//
+	if (ft_strstr(s, NAME_CMD_STRIN))
 		ERROR(NO_CLSNG_QT_COMMENT, the_asm->curr_line_n);
 	while (s[i] != '\0')
 	{
@@ -151,21 +150,17 @@ int		search_closing_quote_comment(t_asm *the_asm, t_line **line)
 
 void	check_comment(t_asm *the_asm, t_line **line)
 {
-	//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
+	int kavichki;//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
 
-int kavichki;
-
-	//printf("[%s]\n", (*line)->str);
 	if (anything_after_dot_comment(the_asm, (*line)->str))
 		ERROR(SYMBOLS_CMND_COMMENT, the_asm->curr_line_n);
 	kavichki = count_kavichki((*line)->str);
 	if (kavichki == 2)
-		check_symbols_at_end_comment(the_asm, (*line)->str);//
+		check_symbols_at_end_comment(the_asm, (*line)->str);
 	if (kavichki > 2)
 		ERROR(KAVICHKI_NUMBER, the_asm->curr_line_n);
 	if (kavichki == 0)
 		ERROR(NO_COMMENT, the_asm->curr_line_n);
 	if (kavichki == 1)
 		search_closing_quote_comment(the_asm, line);//RIGHT HERE I MEAN
-	//printf("@@@ [%s]\n", the_asm->champion_comment);
 }

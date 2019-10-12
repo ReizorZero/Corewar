@@ -34,30 +34,49 @@ int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 
 	byte_at = 0;
 	label_id = get_label_arg_value(the_asm, label_name);
+	//printf("FOUND LABEL CORRESPONDING COMMAND ID = %i\n", label_id);
+	printf("LABEL NAME IS... [%s]\n", label_name);
+	printf("(label_id) LABEL POINTS AT CMND_LINE WITH ID = %i\n", label_id);
+	printf("(cmnd_id) CMND_LINE WHERE WE GOT LABEL_ARG ID = %i\n", cmnd_id);
 	ecl = the_asm->e_c_l_top;
+	//>= case - ?
 	if (label_id > cmnd_id)
 	{
+		printf("\t\t\t\tCASE LABEL_ID >= CMND_ID\n");
+		// while (ecl && ecl->id < label_id)
+		// 	ecl = ecl->next;
+		//while (ecl && ecl->id <= cmnd_id)
 		while (ecl && ecl->id < cmnd_id)
 			ecl = ecl->next;
 		while (ecl && ecl->id < label_id)
 		{
+			printf("\t\tcurr size @ %i\n", ecl->cmnd_line_size);
 			byte_at += ecl->cmnd_line_size;
 			ecl = ecl->next;
 		}
 	}
 	else if (label_id < cmnd_id)
 	{
+		printf("\t\t\t\tCASE LABEL_ID < CMND_ID\n");
 		while (ecl && ecl->id < label_id)
 			ecl = ecl->next;
 		while (ecl && ecl->id < cmnd_id)
 		{
+			//printf("\t\tcurr size @ %i\n", ecl->cmnd_line_size);
 			byte_at += ecl->cmnd_line_size;
 			ecl = ecl->next;
 		}
 		byte_at = -byte_at;
 	}
 	else if (label_id == cmnd_id)
+	{
 		byte_at = 0;
+		//byte_at = ecl->cmnd_line_size;
+		//printf("Error. Infinite loop. (Line ...)\n");
+		//exit (0);
+	}
+	printf("\tBYTE_AT IS FOUND AND IS EQUAL TO... %i\n", byte_at);
+	//printf("MEANWHILE, LABEL ID IS EQUAL TO... %i\n", label_id);
 	return (byte_at);
 }
 
@@ -90,6 +109,7 @@ void	fill_labels_args(t_asm *the_asm)
 	t_exec_code_line *ecl;
 	int i;
 
+	printf("\n===============================================================================================\n");
 	ecl = the_asm->e_c_l_top;
 	while (ecl)
 	{
@@ -99,8 +119,11 @@ void	fill_labels_args(t_asm *the_asm)
 			while (i < 3)
 			{
 				if (ecl->label_arg_index[i] == 1)
+				{
+					//printf("\t\t\t\t\t\t\t\t\t\t===> we got label arg\n");
 					ecl->arg_value[i] =
 					get_label_byte_at(the_asm, ecl->label_arg_value[i], ecl->id);
+				}
 				i++;
 			}
 		}

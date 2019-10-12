@@ -144,7 +144,6 @@ void	check_name(t_asm *the_asm, t_line **line)
 {//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
 	int kavichki;
 
-	//printf("[%s]\n", (*line)->str);
 	if (anything_after_dot_name(the_asm, (*line)->str))
 		ERROR(SYMBOLS_CMND_NAME, the_asm->curr_line_n);
 	kavichki = count_kavichki((*line)->str);
@@ -156,5 +155,4 @@ void	check_name(t_asm *the_asm, t_line **line)
 		ERROR(NO_CHAMP_NAME, the_asm->curr_line_n);
 	if (kavichki == 1)
 		search_closing_quote_name(the_asm, line);//RIGHT HERE I MEAN
-	//printf("@@@ [%s]\n", the_asm->champion_name);
 }
