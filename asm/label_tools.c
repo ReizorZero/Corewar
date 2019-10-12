@@ -72,8 +72,10 @@ int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 	}
 	else if (label_id == cmnd_id)
 	{
-		printf("Error. Infinite loop. (Line ...)\n");
-		exit (0);
+		byte_at = 0;
+		//byte_at = ecl->cmnd_line_size;
+		//printf("Error. Infinite loop. (Line ...)\n");
+		//exit (0);
 	}
 	printf("\tBYTE_AT IS FOUND AND IS EQUAL TO... %i\n", byte_at);
 	//printf("MEANWHILE, LABEL ID IS EQUAL TO... %i\n", label_id);
