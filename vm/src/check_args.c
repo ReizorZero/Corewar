@@ -45,11 +45,9 @@ static int	right_extention(const char *name)
 
 static void	add_player(t_general *data, char **argv, int *i)
 {
-	int			id;
-	t_player	*crwl;
+	uint8_t		id;
 
 	id = 0;
-	crwl = data->head_p;
 	if (!(ft_strcmp("-n", argv[*i])))
 	{
 		(*i)++;
@@ -58,12 +56,8 @@ static void	add_player(t_general *data, char **argv, int *i)
 			id = ft_atoi(argv[*i]);
 			if (id < 1 || id > MAX_PLAYERS)
 				error_msg("Error: invalid number in -n option", data);
-			while (crwl)
-			{
-				if (crwl->id == id)
-					error_msg("Error: same id in -n option", data);
-				crwl = crwl->next;
-			}
+			if (is_free_id(data, id))
+				error_msg("Error: same id in -n option", data);
 		}
 		else
 			error_msg("Error: invalid number in -n option", data);
@@ -89,7 +83,7 @@ void		args_checking(t_general *data, int argc, char **argv)
 		else if (!(ft_strcmp("-v", argv[i])))
 			verbosity_fl(data, argv, &i);
 		else if (!(ft_strcmp("-vis", argv[i])))
-			data->vis = 1;
+			data->vis = true;
 		else
 			usage_msg();
 		i++;
@@ -97,6 +91,8 @@ void		args_checking(t_general *data, int argc, char **argv)
 	if (data->pl_nbr < 1 || data->pl_nbr > MAX_PLAYERS)
 		error_msg("Error: invalid number of player's!", data);
 	check_id(data);
-	introducing(data);
+	data->dump_cycle = data->vis ? -1 : data->dump_cycle;
+	if (!data->vis)
+		introducing(data);
 	before_start(data);
 }

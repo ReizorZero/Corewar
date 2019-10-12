@@ -79,7 +79,7 @@ size_t show_pc_movement(t_general *data, t_carriage carriage)
 				step += IND_SIZE;
 		}
 		i = -1;
-	if (data->verb_nbr & 16)
+	if (data->verb_nbr & 16 && !data->vis)
 	{
 		ft_printf("ADV %d (%.4p -> %.4p) ",
 			step, carriage.pos, (carriage.pos + step) % MEM_SIZE);

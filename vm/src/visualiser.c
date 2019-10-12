@@ -101,7 +101,7 @@ static void draw_mem(t_general *data)
 			wattron(g_mem, COLOR_PAIR(5));
 //		else
 //			data->map_clr[i].clr = 0;
-		mvwprintw(g_mem, r, c, "%02x", data->mem_f[i]);
+		mvwprintw(g_mem, r + 1, c + 1, "%02x", data->mem_f[i]);
 //		wattroff(g_mem, COLOR_PAIR(2));
 		if (data->map_clr[i].cycle == 0)
 			wattroff(g_mem, COLOR_PAIR(data->map_clr[i].clr));
@@ -118,26 +118,29 @@ static void draw_mem(t_general *data)
 //	wattroff(g_mem, COLOR_PAIR(2));
 }
 
-static void vis_game(t_general *data)
+static void vis_game(void)
 {
 	char ch;
 
-	wattron(g_info, COLOR_PAIR(0) | A_BOLD);
+	/*wattron(g_info, COLOR_PAIR(32) | A_BOLD);
 	mvwprintw(g_info, 5, 3, "It is now %d cycle", data->cycles_total + data->cycles_tmp);
-	mvwprintw(g_info, 6, 3, "Cycle to die is %d", data->cycles_to_die);
+	mvwprintw(g_info, 7, 3, "Cycle to die is %d", data->cycles_to_die);
+	mvwprintw(g_info, 9, 3, "There are %d proceses now", data->head_c->nbr);
+	wattroff(g_info, COLOR_PAIR(32) | A_BOLD);*/
 	ch = getch();
 	if (ch == 32) //space
 	{
-		mvwprintw(g_info, 4, 3, "--------- ** PAUSE ** ---------");
+		wattron(g_info, COLOR_PAIR(32) | A_BOLD);
+		mvwprintw(g_info, 3, 15, " **  PAUSE  ** ");
 		refresh();
 		wrefresh(g_info);
 		while ((ch = getch()) != 32 && ch != 27)
 			;
-		mvwprintw(g_info, 4, 3, "-------------------------------");
+		mvwprintw(g_info, 3, 15, " ** PLAYING ** ");
+		wattroff(g_info, COLOR_PAIR(32) | A_BOLD);
 		refresh();
 		wrefresh(g_info);
 	}
-	wattroff(g_info, COLOR_PAIR(0) | A_BOLD);
 	if (ch == 27) //ECS
 	{
 		delwin(g_mem);
@@ -147,15 +150,7 @@ static void vis_game(t_general *data)
 	}
 	refresh();
 	wrefresh(g_info);
-	wrefresh(g_mem);
-}
-
-void upd(t_general *data)
-{
-	set_color_carriages(data);
-	draw_mem(data);
-	//draw_carriages(data);
-	vis_game(data);
+	//wrefresh(g_mem);
 }
 
 static void print_info(t_general *data)
@@ -163,31 +158,36 @@ static void print_info(t_general *data)
 	int i;
 	t_player *pl;
 
-	wattron(g_info, COLOR_PAIR(0) | A_BOLD);
-	mvwprintw(g_info, 2, 3, "-------------------------------");
-	mvwprintw(g_info, 3, 3, "------- ** GAME INFO ** -------");
-	mvwprintw(g_info, 4, 3, "-------------------------------");
+	wattron(g_info, COLOR_PAIR(32) | A_BOLD);
+	mvwprintw(g_info, 3, 15, " ** PLAYING ** ");
 	mvwprintw(g_info, 5, 3, "It is now %d cycle", data->cycles_total + data->cycles_tmp);
-	mvwprintw(g_info, 6, 3, "Cycle to die is %d", data->cycles_to_die);
-	mvwprintw(g_info, 7, 3, "-------------------------------");
-	wattroff(g_info, COLOR_PAIR(0) | A_BOLD);
+	mvwprintw(g_info, 7, 3, "Cycle to die is %d", data->cycles_to_die);
+	mvwprintw(g_info, 9, 3, "There are %d proceses now", data->head_c->nbr);
+	wattroff(g_info, COLOR_PAIR(32) | A_BOLD);
 	i = 1;
 	while (i <= data->pl_nbr)
 	{
 		pl = get_by_id(data, i);
-		wattron(g_info, COLOR_PAIR(i) | A_BOLD);
-		mvwprintw(g_info, 8 + (i * 2), 3, "Player %d : %s", i, pl->name);
-		pl->color = i + 2;
-		wattroff(g_info, COLOR_PAIR(i) | A_BOLD);
+		wattron(g_info, COLOR_PAIR(i));
+		mvwprintw(g_info, 10 + (i * 3), 3, "Player %d : %s", i, pl->name);
+		mvwprintw(g_info, 11 + (i * 3), 3, "\tlast live cycle: %d", 0);
+		wattroff(g_info, COLOR_PAIR(i));
 		i++;
 	}
-	wattron(g_info, COLOR_PAIR(0) | A_BOLD);
-	mvwprintw(g_info, 22, 3, "-------------------------------");
-	mvwprintw(g_info, 23, 3, "Press [ESC] for exit");
-	mvwprintw(g_info, 24, 3, "                               ");
-	mvwprintw(g_info, 25, 3, "Press [SPACE] for pause/resume ");
-	mvwprintw(g_info, 26, 3, "-------------------------------");
-	wattroff(g_info, COLOR_PAIR(0) | A_BOLD);
+	wattron(g_info, COLOR_PAIR(32) | A_BOLD);
+	mvwprintw(g_info, 25, 3, "Press [ESC] for exit");
+	mvwprintw(g_info, 27, 3, "[SPACE] for pause/resume the game");
+	wattroff(g_info, COLOR_PAIR(32) | A_BOLD);
+}
+
+void vis_upd(t_general *data)
+{
+	print_info(data);
+	set_color_carriages(data);
+	draw_mem(data);
+	wrefresh(g_mem);
+	//draw_carriages(data);
+	vis_game();
 }
 
 static void coloring(void)
@@ -195,6 +195,8 @@ static void coloring(void)
 	start_color();
 	init_color(16, 500, 500, 500);
 	init_color(17, 800, 0, 0);
+	init_color(18, 1000, 750, 790);
+	init_color(COLOR_BLUE, 0, 0, 1000);
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	init_pair(2, COLOR_BLUE, COLOR_BLACK);
 	init_pair(3, COLOR_CYAN, COLOR_BLACK);
@@ -209,23 +211,25 @@ static void coloring(void)
 	init_pair(12, COLOR_WHITE, COLOR_BLUE);
 	init_pair(13, COLOR_WHITE, COLOR_CYAN);
 	init_pair(14, COLOR_WHITE, COLOR_YELLOW);
+	init_pair(32, 18, COLOR_BLACK);
 }
 
 void vis_init(t_general *data)
 {
 	initscr();
-	g_mem = newwin(70, 196, 0, 0);
-	g_info = newwin(70, 35, 0, 197);
+	g_mem = newwin(70, 197, 0, 0);
+	g_info = newwin(70, 50, 0, 198);
 	coloring();
 	keypad(stdscr, TRUE);
 	//nodelay(stdscr, TRUE);
 	noecho();
-	wattron(g_mem, COLOR_PAIR(0) | A_BOLD);
-	wattron(g_info, COLOR_PAIR(0) | A_BOLD);
+	curs_set(0);
+	wattron(g_mem, COLOR_PAIR(10));
+	wattron(g_info, COLOR_PAIR(10));
 	box(g_mem, 0, 0);
 	box(g_info, 0, 0);
-	wattroff(g_mem, COLOR_PAIR(0) | A_BOLD);
-	wattroff(g_info, COLOR_PAIR(0) | A_BOLD);
+	wattroff(g_mem, COLOR_PAIR(10));
+	wattroff(g_info, COLOR_PAIR(10));
 	print_info(data);
-	vis_game(data);
+	vis_game();
 }

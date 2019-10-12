@@ -12,7 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-char	*check_comment_vm(t_general *data, int len, char *file, int fd)
+char		*check_comment_vm(t_general *data, int len, char *file, int fd)
 {
 	char	buff[COMMENT_LENGTH + 1];
 	int		ret;
@@ -25,7 +25,7 @@ char	*check_comment_vm(t_general *data, int len, char *file, int fd)
 	return (ft_strdup(buff));
 }
 
-uint8_t	*check_players_code(int fd, int len, char *file, t_general *data)
+uint8_t		*check_players_code(int fd, int len, char *file, t_general *data)
 {
 	int				ret;
 	uint8_t			*buff;
@@ -44,7 +44,26 @@ uint8_t	*check_players_code(int fd, int len, char *file, t_general *data)
 	return (buff);
 }
 
-void	before_start(t_general *data)
+static void	making_carriages(t_general *data)
+{
+	uint8_t		i;
+	int			count;
+
+	i = 1;
+	count = 0;
+	while (i <= data->pl_nbr)
+	{
+		if (ft_add_carriage(&data->head_c, i, ++data->num_carriage))
+			error_msg("Error: can't create new carriage!", data);
+		data->head_c->pos = count;
+		count += MEM_SIZE / data->pl_nbr;
+		i++;
+	}
+	data->lst_live_plr = data->pl_nbr;
+	data->cycles_to_die = CYCLE_TO_DIE;
+}
+
+void		before_start(t_general *data)
 {
 	t_player	*tmp;
 	uint8_t		i;
@@ -61,16 +80,5 @@ void	before_start(t_general *data)
 		count += MEM_SIZE / data->pl_nbr;
 		i++;
 	}
-	i = 1;
-	count = 0;
-	while (i <= data->pl_nbr)
-	{
-		if (ft_add_carriage(&data->head_c, i, ++data->num_carriage))
-			error_msg("Error: can't create new carriage!", data);
-		data->head_c->pos = count;
-		count += MEM_SIZE / data->pl_nbr;
-		i++;
-	}
-	data->lst_live_plr = data->pl_nbr;
-	data->cycles_to_die = CYCLE_TO_DIE;
+	making_carriages(data);
 }

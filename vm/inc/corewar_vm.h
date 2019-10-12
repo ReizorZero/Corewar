@@ -163,7 +163,7 @@ void					get_val_ldi(t_carriage carriage, int32_t *val,
 							int8_t i);
 void					ft_res_init(t_general *data, t_mem *res, uint32_t adds);
 
-void					upd(t_general *data);
+void					vis_upd(t_general *data);
 void					vis_init(t_general *data);
 void ft_set_color(t_general *data, unsigned int size, int cnt, int clr);
 void	set_color_carriages(t_general *data);
