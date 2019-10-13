@@ -19,6 +19,7 @@ t_carriage	*ft_new_carriage(int player, size_t nbr)
 	if (!(new = (t_carriage *)ft_memalloc(sizeof(*new))))
 		return (NULL);
 	new->reg[0] = reverse_32bits(-player);
+	new->pl_id = player;
 	new->op_cycles = -1;
 	new->nbr = nbr;
 	return (new);

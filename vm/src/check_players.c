@@ -12,7 +12,7 @@
 
 #include "../inc/corewar_vm.h"
 
-char	*check_comment_vm(t_general *data, int len, char *file, int fd)
+char		*check_comment_vm(t_general *data, int len, char *file, int fd)
 {
 	char	buff[COMMENT_LENGTH + 1];
 	int		ret;
@@ -25,7 +25,7 @@ char	*check_comment_vm(t_general *data, int len, char *file, int fd)
 	return (ft_strdup(buff));
 }
 
-uint8_t	*check_players_code(int fd, int len, char *file, t_general *data)
+uint8_t		*check_players_code(int fd, int len, char *file, t_general *data)
 {
 	int				ret;
 	uint8_t			*buff;
@@ -44,21 +44,11 @@ uint8_t	*check_players_code(int fd, int len, char *file, t_general *data)
 	return (buff);
 }
 
-void	before_start(t_general *data)
+static void	making_carriages(t_general *data)
 {
-	t_player	*tmp;
 	uint8_t		i;
 	int			count;
 
-	i = 1;
-	count = 0;
-	while (i <= data->pl_nbr)
-	{
-		tmp = get_by_id(data, i);
-		ft_memcpy(&data->mem_f[count], tmp->code, tmp->size);
-		count += MEM_SIZE / data->pl_nbr;
-		i++;
-	}
 	i = 1;
 	count = 0;
 	while (i <= data->pl_nbr)
@@ -71,4 +61,24 @@ void	before_start(t_general *data)
 	}
 	data->lst_live_plr = data->pl_nbr;
 	data->cycles_to_die = CYCLE_TO_DIE;
+}
+
+void		before_start(t_general *data)
+{
+	t_player	*tmp;
+	uint8_t		i;
+	int			count;
+
+	i = 1;
+	count = 0;
+	while (i <= data->pl_nbr)
+	{
+		tmp = get_by_id(data, i);
+		ft_memcpy(&data->mem_f[count], tmp->code, tmp->size);
+		if (data->vis)
+			ft_set_color(data, tmp->size, count, i);//i == color_player
+		count += MEM_SIZE / data->pl_nbr;
+		i++;
+	}
+	making_carriages(data);
 }

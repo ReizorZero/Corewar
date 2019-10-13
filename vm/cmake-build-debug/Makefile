@@ -3255,6 +3255,33 @@ src/printer.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/printer.c.s
 .PHONY : src/printer.c.s
 
+src/visualiser.o: src/visualiser.c.o
+
+.PHONY : src/visualiser.o
+
+# target to build an object file
+src/visualiser.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/visualiser.c.o
+.PHONY : src/visualiser.c.o
+
+src/visualiser.i: src/visualiser.c.i
+
+.PHONY : src/visualiser.i
+
+# target to preprocess a source file
+src/visualiser.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/visualiser.c.i
+.PHONY : src/visualiser.c.i
+
+src/visualiser.s: src/visualiser.c.s
+
+.PHONY : src/visualiser.s
+
+# target to generate assembly for a file
+src/visualiser.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/visualiser.c.s
+.PHONY : src/visualiser.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -3612,6 +3639,9 @@ help:
 	@echo "... src/printer.o"
 	@echo "... src/printer.i"
 	@echo "... src/printer.s"
+	@echo "... src/visualiser.o"
+	@echo "... src/visualiser.i"
+	@echo "... src/visualiser.s"
 .PHONY : help
 
 

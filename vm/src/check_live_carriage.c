@@ -66,7 +66,10 @@ void		start_new_op(t_general *data, t_carriage *crg)
 		crg->op_cycles = (int)g_op_tab[crg->op_id - 1].cycles;
 	}
 	else
+	{
+		crg->pos_tmp = crg->pos;
 		crg->pos = (crg->pos + 1) % MEM_SIZE;
+	}
 }
 
 void	set_new_cycle(t_general *data)

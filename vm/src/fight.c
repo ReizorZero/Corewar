@@ -48,8 +48,8 @@ static void	ft_carriage_cycle(t_general *data)
 			g_op_func[crwl->op_id - 1](data, crwl);
 			--(crwl->op_cycles);
 		}
-		if (data->vis)
-			upd(data);
+//		if (data->vis)
+//			upd(data);
 		crwl = crwl->next;
 	}
 }
@@ -59,6 +59,8 @@ void		ft_fight(t_general *data)
 	data->cycles_tmp = 1;
 	while (data->head_c)
 	{
+		if (data->vis)
+			vis_upd(data);
 		if (data->verb_nbr & 2)
 			ft_printf("It is now cycle %d\n",
 				data->cycles_total + data->cycles_tmp);
@@ -82,4 +84,5 @@ void		ft_fight(t_general *data)
 		//	upd(data);
 		++data->cycles_tmp;
 	}
+	print_winner(data);
 }
