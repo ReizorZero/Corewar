@@ -22,7 +22,7 @@ VM_OBJ_DIR      = ./vm/obj/
 ASM_SRC_DIR     = ./asm/src/
 ASM_OBJ_DIR     = ./asm/obj/
 INC_DIR         = ./inc/
-LIB_DIR         = ../
+LIB_DIR         = ./
 
 # project source files
 

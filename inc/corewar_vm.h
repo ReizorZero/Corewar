@@ -14,7 +14,7 @@
 
 # define COREWAR_VM_H
 
-# include "../../libft/inc/libft.h"
+# include "../libft/inc/libft.h"
 # include "op.h"
 # include <stdbool.h>
 # include <fcntl.h>
@@ -71,10 +71,8 @@ typedef struct			s_operation
 
 typedef struct			s_visual
 {
-	int 				clr;
-	int 				cycle;
-//	char 				*winner;
-//	uint8_t				val; //?
+	int					clr;
+	int					cycle;
 }						t_visual;
 
 typedef struct			s_general
