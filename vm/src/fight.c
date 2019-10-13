@@ -57,8 +57,6 @@ void		ft_fight(t_general *data)
 	data->cycles_tmp = 1;
 	while (data->head_c)
 	{
-//		if (data->vis)
-//			vis_upd(data);
 		if (data->verb_nbr & 2 && !data->vis)
 			ft_printf("It is now cycle %d\n",
 				data->cycles_total + data->cycles_tmp);

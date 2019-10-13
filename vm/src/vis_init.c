@@ -19,13 +19,9 @@ static void	draw_settings(t_general *data, int i, int r, int c)
 {
 	if (data->map_clr[i].cycle > 0)
 		wattron(g_mem, COLOR_PAIR(data->map_clr[i].clr) | A_BOLD);
-//	if (data->map_clr[i].cycle == 0)
-//		wattron(g_mem, COLOR_PAIR(data->map_clr[i].clr));
 	else
 		wattron(g_mem, COLOR_PAIR(data->map_clr[i].clr));
 	mvwprintw(g_mem, r + 1, c + 1, "%02x", data->mem_f[i]);
-//	if (data->map_clr[i].cycle == 0)
-//		wattroff(g_mem, COLOR_PAIR(data->map_clr[i].clr));
 	if (data->map_clr[i].cycle > 0)
 	{
 		--(data->map_clr[i].cycle);
@@ -103,7 +99,6 @@ void		print_info(t_general *data)
 		mvwprintw(g_info, 11 + (i * 3), 3, "\tlast live cycle: %d",
 			pl->lst_cycle);
 		wattroff(g_info, COLOR_PAIR(i));
-//		i++;
 	}
 	wattron(g_info, COLOR_PAIR(32) | A_BOLD);
 	mvwprintw(g_info, 25, 3, "Press [ESC] for exit");
