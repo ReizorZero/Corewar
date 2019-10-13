@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   write_cmnd_line_words.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/13 13:44:36 by rzero             #+#    #+#             */
+/*   Updated: 2019/10/13 13:44:38 by rzero            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 void	write_cmnd_line_words(t_asm *the_asm, t_line **line)
@@ -28,7 +40,8 @@ void	write_cmnd_line_words(t_asm *the_asm, t_line **line)
 			
 			//SEPARATE
 			while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' &&
-			s[i] != LABEL_CHAR && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
+			s[i] != LABEL_CHAR && s[i] != COMMENT_CHAR &&
+			s[i] != ALT_COMMENT_CHAR)
 			{
 				len++;
 				i++;
@@ -49,7 +62,8 @@ void	write_cmnd_line_words(t_asm *the_asm, t_line **line)
 		{
 			//SEPARATE
 			while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') &&
-			s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR && s[i] != SEPARATOR_CHAR)
+			s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR &&
+			s[i] != SEPARATOR_CHAR)
 				i++;
 			if (s[i] == SEPARATOR_CHAR && met_label && w_i == 1)
 				ERROR(SEPARATOR_AFTER_LABEL, the_asm->curr_line_n);
@@ -63,7 +77,8 @@ void	write_cmnd_line_words(t_asm *the_asm, t_line **line)
 			len = 0;
 			//SEPARATE
 			while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' &&
-			s[i] != SEPARATOR_CHAR && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
+			s[i] != SEPARATOR_CHAR && s[i] != COMMENT_CHAR &&
+			s[i] != ALT_COMMENT_CHAR)
 			{
 				len++;
 				i++;
@@ -89,7 +104,8 @@ void	write_cmnd_line_words(t_asm *the_asm, t_line **line)
 				start = i;
 				len = 0;
 				while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' &&
-				s[i] != SEPARATOR_CHAR && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
+				s[i] != SEPARATOR_CHAR && s[i] != COMMENT_CHAR &&
+				s[i] != ALT_COMMENT_CHAR)
 				{
 					len++;
 					i++;
