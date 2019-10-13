@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "../inc/asm.h"
 
 void			out_in_file(int nbr, int size, t_asm *the_asm)
 {

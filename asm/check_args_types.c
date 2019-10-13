@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "../inc/asm.h"
 
 void	check_cmnd_correspondance(t_asm *the_asm, int arg_index)
 {

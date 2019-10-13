@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "../inc/asm.h"
 
 int		check_name_cmnd_tag(t_asm *the_asm, char *s, int i)
 {

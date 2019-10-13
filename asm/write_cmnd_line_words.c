@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "../inc/asm.h"
 
 int		manage_separators(t_asm *the_asm, char *s, int i, int met_label)
 {

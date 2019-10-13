@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
-#include "commands.h"
+#include "../inc/asm.h"
+#include "../inc/commands.h"
 
 void	define_cmnd_type(t_asm *the_asm, int w_i)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "../inc/asm.h"
 //REWORK @ file.3.s
 void	check_arguments_n(int argc)
 {
