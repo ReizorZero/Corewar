@@ -72,7 +72,7 @@ void		start_new_op(t_general *data, t_carriage *crg)
 	}
 }
 
-void	set_new_cycle(t_general *data)
+void		set_new_cycle(t_general *data)
 {
 	if (data->cnt_live >= NBR_LIVE || ++data->num_checks >= MAX_CHECKS)
 	{

@@ -76,7 +76,7 @@ void		before_start(t_general *data)
 		tmp = get_by_id(data, i);
 		ft_memcpy(&data->mem_f[count], tmp->code, tmp->size);
 		if (data->vis)
-			ft_set_color(data, tmp->size, count, i);//i == color_player
+			ft_set_color(data, tmp->size, count, i);
 		count += MEM_SIZE / data->pl_nbr;
 		i++;
 	}

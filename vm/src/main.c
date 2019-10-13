@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <fcntl.h>
 #include "../inc/corewar_vm.h"
 
 void	print_mem(t_general *data)
@@ -36,7 +35,7 @@ void	print_mem(t_general *data)
 int		main(int argc, char **argv)
 {
 	t_general	data;
-	int 		i;
+	int			i;
 
 	i = 0;
 	ft_memset(&data, 0, sizeof(data));
