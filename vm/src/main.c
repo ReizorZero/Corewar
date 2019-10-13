@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 void	print_mem(t_general *data)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 t_player	*get_by_id(t_general *data, uint8_t id)
 {

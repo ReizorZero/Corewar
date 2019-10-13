@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 void	op_st(t_general *data, t_carriage *crg)
 {

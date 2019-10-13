@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 void	get_val_ldi(t_carriage carriage, int32_t *val, int8_t i)
 {
