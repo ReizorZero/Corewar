@@ -20,7 +20,7 @@ int		anything_after_dot_name(t_asm *the_asm, char *s)
 
 	i = 0;
 	while (s[i] != '\0' && (s[i] == '\t' || s[i] == ' '))
-			i++;
+		i++;
 	i = check_name_cmnd_tag(the_asm, s, i);
 	while (s[i] != '\0' && s[i] != '\"' &&
 	s[i] != ALT_COMMENT_CHAR &&

@@ -28,9 +28,9 @@ int		check_label(t_asm *the_asm, char *s)
 
 int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 {
-	int byte_at;
-	int label_id;
-	t_exec_code_line *ecl;
+	int					byte_at;
+	int					label_id;
+	t_exec_code_line	*ecl;
 
 	byte_at = 0;
 	label_id = get_label_arg_value(the_asm, label_name);
@@ -63,8 +63,8 @@ int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 
 int		get_label_arg_value(t_asm *the_asm, char *label_name)
 {
-	t_label *labels;
-	int label_id;
+	t_label	*labels;
+	int		label_id;
 
 	label_id = 0;
 	labels = the_asm->labels_top;
@@ -84,8 +84,8 @@ int		get_label_arg_value(t_asm *the_asm, char *label_name)
 
 void	fill_labels_args(t_asm *the_asm)
 {
-	t_exec_code_line *ecl;
-	int i;
+	t_exec_code_line	*ecl;
+	int					i;
 
 	ecl = the_asm->e_c_l_top;
 	while (ecl)
@@ -97,7 +97,8 @@ void	fill_labels_args(t_asm *the_asm)
 			{
 				if (ecl->label_arg_index[i] == 1)
 					ecl->arg_value[i] =
-					get_label_byte_at(the_asm, ecl->label_arg_value[i], ecl->id);
+					get_label_byte_at(the_asm,
+					ecl->label_arg_value[i], ecl->id);
 				i++;
 			}
 		}

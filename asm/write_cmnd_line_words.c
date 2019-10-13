@@ -19,7 +19,7 @@ void	write_cmnd_line_words(t_asm *the_asm, t_line **line)
 		if (w_i == 0)
 		{
 			//SEPARATE
-			while (s[i] != '\0' && (s[i] == ' '|| s[i] == '\t') &&
+			while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t') &&
 			s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
 				i++;
 			//

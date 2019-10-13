@@ -1,6 +1,6 @@
 #include "asm.h"
 
-t_asm	*new_asm(void)
+t_asm				*new_asm(void)
 {
 	t_asm *the_asm;
 
@@ -14,7 +14,7 @@ t_asm	*new_asm(void)
 	return (the_asm);
 }
 
-t_line	*new_line(char *str)
+t_line				*new_line(char *str)
 {
 	t_line *the_line;
 
@@ -26,7 +26,7 @@ t_line	*new_line(char *str)
 	return (the_line);
 }
 
-t_exec_code_line *new_exec_code_line(int id)
+t_exec_code_line	*new_exec_code_line(int id)
 {
 	t_exec_code_line *exec_code_line;
 
@@ -39,7 +39,7 @@ t_exec_code_line *new_exec_code_line(int id)
 	return (exec_code_line);
 }
 
-t_label *new_label(char *name)
+t_label				*new_label(char *name)
 {
 	t_label *label;
 

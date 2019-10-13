@@ -18,7 +18,7 @@ void			out_in_file(int nbr, int size, t_asm *the_asm)
 		tmp /= 256;
 	}
 	write(the_asm->fd, res, size);
-	free(res);
+	free(res);//SEGV ON tester.s OCCURS HERE (case 'loop: zjmp %:loop')
 }
 
 char			*get_arg_types_code(int *arg_code)
@@ -39,7 +39,7 @@ char			*get_arg_types_code(int *arg_code)
 	rez[j] = '0';
 	rez[j + 1] = '0';
 	rez[j + 2] = '\0';
-	return (rez);
+	return (rez);//LEAKS HERE
 }
 
 void			write_cmnd_code(t_asm *the_asm)
@@ -76,7 +76,7 @@ void			write_to_dot_cor(t_asm *the_asm)
 
 	s = ft_strchr(the_asm->dot_s_file_name, '.');
 	s[0] = '\0';
-	the_asm->fd = open(ft_strjoin(the_asm->dot_s_file_name, ".cor")
+	the_asm->fd = open(ft_strjoin(the_asm->dot_s_file_name, ".cor")//LEAK HERE
 		, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	out_in_file(convert_hex_to_int("ea83f3"), 4, the_asm);
 	j = -1;
@@ -91,4 +91,5 @@ void			write_to_dot_cor(t_asm *the_asm)
 	write_null_in_file(the_asm, 2048 - j);
 	write_null_in_file(the_asm, 4);
 	write_cmnd_code(the_asm);
+	//MISSING CLOSING .cor FILE OPERATION
 }

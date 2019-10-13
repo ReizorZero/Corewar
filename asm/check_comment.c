@@ -11,8 +11,10 @@ int		count_kavichki(char *s)
 	kavichki = 0;
 	while (s[i] != '\0')
 	{
-		if ((s[i] == COMMENT_CHAR || s[i] == ALT_COMMENT_CHAR) && (kavichki >= 2 || kavichki == 0))
-		 	met_hash = 1;
+		if ((s[i] == COMMENT_CHAR ||
+		s[i] == ALT_COMMENT_CHAR) &&
+		(kavichki >= 2 || kavichki == 0))
+			met_hash = 1;
 		if (s[i] == '\"' && met_hash == 0)
 			kavichki++;
 		i++;
@@ -43,7 +45,7 @@ int		anything_after_dot_comment(t_asm *the_asm, char *s)
 
 	i = 0;
 	while (s[i] != '\0' && (s[i] == '\t' || s[i] == ' '))
-			i++;
+		i++;
 	i = check_comment_cmnd_tag(the_asm, s, i);
 	while (s[i] != '\0' && s[i] != '\"' &&
 	s[i] != ALT_COMMENT_CHAR &&
