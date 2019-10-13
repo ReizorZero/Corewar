@@ -431,6 +431,9 @@
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/printer.c">
 			<Option target="VM"/>
 		</Unit>
+		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/vis_init.c">
+			<Option target="VM"/>
+		</Unit>
 		<Unit filename="/Users/mshvets/Desktop/Corewar/vm/src/visualiser.c">
 			<Option target="VM"/>
 		</Unit>

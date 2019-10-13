@@ -19,8 +19,8 @@ NAME_ASM        := asm
 
 VM_SRC_DIR      = ./vm/src/
 VM_OBJ_DIR      = ./vm/obj/
-ASM_SRC_DIR     = ./asm/src/
-ASM_OBJ_DIR     = ./asm/obj/
+ASM_SRC_DIR     = ./compiler/src/
+ASM_OBJ_DIR     = ./compiler/obj/
 INC_DIR         = ./inc/
 LIB_DIR         = ./
 
@@ -57,9 +57,31 @@ VM_SRC          += $(VM_SRC_DIR)printer.c
 VM_SRC          += $(VM_SRC_DIR)get_val.c
 VM_SRC          += $(VM_SRC_DIR)check_live_carriage.c
 VM_SRC          += $(VM_SRC_DIR)errors.c
+VM_SRC          += $(VM_SRC_DIR)vis_init.c
 VM_SRC          += $(VM_SRC_DIR)visualiser.c
 
-ASM_SRC         := $(ASM_SRC_DIR)main.c
+ASM_SRC         := $(ASM_SRC_DIR)add_elements.c
+ASM_SRC         += $(ASM_SRC_DIR)args_types_tools.c
+ASM_SRC         += $(ASM_SRC_DIR)check_args_types.c
+ASM_SRC         += $(ASM_SRC_DIR)check_asm_input.c
+ASM_SRC         += $(ASM_SRC_DIR)check_command_line.c
+ASM_SRC         += $(ASM_SRC_DIR)check_comment.c
+ASM_SRC         += $(ASM_SRC_DIR)check_if_words_correct.c
+ASM_SRC         += $(ASM_SRC_DIR)check_name.c
+ASM_SRC         += $(ASM_SRC_DIR)cmnd_line_tools.c
+ASM_SRC         += $(ASM_SRC_DIR)cmnd_line_tools_2.c
+ASM_SRC         += $(ASM_SRC_DIR)comment_tools.c
+ASM_SRC         += $(ASM_SRC_DIR)functions.c
+ASM_SRC         += $(ASM_SRC_DIR)label_tools.c
+ASM_SRC         += $(ASM_SRC_DIR)main.c
+ASM_SRC         += $(ASM_SRC_DIR)name_tools.c
+ASM_SRC         += $(ASM_SRC_DIR)new_elements.c
+ASM_SRC         += $(ASM_SRC_DIR)parse_lines.c
+ASM_SRC         += $(ASM_SRC_DIR)read_from_dot_s.c
+ASM_SRC         += $(ASM_SRC_DIR)words_tools.c
+ASM_SRC         += $(ASM_SRC_DIR)words_tools_2.c
+ASM_SRC         += $(ASM_SRC_DIR)write_cmnd_line_words.c
+ASM_SRC         += $(ASM_SRC_DIR)write_to_dot_cor.c
 
 # project object files
 

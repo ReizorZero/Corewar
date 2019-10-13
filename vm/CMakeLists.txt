@@ -42,6 +42,7 @@ add_executable(
         src/get_val.c
         src/check_live_carriage.c
         src/errors.c
+        src/vis_init.c
         src/visualiser.c)
 
 link_libraries(../libft/libft.a)

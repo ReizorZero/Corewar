@@ -21,7 +21,7 @@ static void	carriage_live(t_carriage **crwl, t_carriage **prv_crwl)
 
 static void	message_kill(t_general data, t_carriage crwl)
 {
-	if (data.verb_nbr & 8)
+	if (data.verb_nbr & 8 && !data.vis)
 	{
 		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
 			crwl.nbr, ((data.cycles_total + data.cycles_tmp)
@@ -77,7 +77,7 @@ void		set_new_cycle(t_general *data)
 	if (data->cnt_live >= NBR_LIVE || ++data->num_checks >= MAX_CHECKS)
 	{
 		data->cycles_to_die -= CYCLE_DELTA;
-		if (data->verb_nbr & 2)
+		if (data->verb_nbr & 2 && !data->vis)
 			ft_printf("Cycle to die is now %d\n", data->cycles_to_die);
 		data->num_checks = 0;
 	}

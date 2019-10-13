@@ -3255,6 +3255,33 @@ src/printer.c.s:
 	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/printer.c.s
 .PHONY : src/printer.c.s
 
+src/vis_init.o: src/vis_init.c.o
+
+.PHONY : src/vis_init.o
+
+# target to build an object file
+src/vis_init.c.o:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/vis_init.c.o
+.PHONY : src/vis_init.c.o
+
+src/vis_init.i: src/vis_init.c.i
+
+.PHONY : src/vis_init.i
+
+# target to preprocess a source file
+src/vis_init.c.i:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/vis_init.c.i
+.PHONY : src/vis_init.c.i
+
+src/vis_init.s: src/vis_init.c.s
+
+.PHONY : src/vis_init.s
+
+# target to generate assembly for a file
+src/vis_init.c.s:
+	$(MAKE) -f CMakeFiles/VM.dir/build.make CMakeFiles/VM.dir/src/vis_init.c.s
+.PHONY : src/vis_init.c.s
+
 src/visualiser.o: src/visualiser.c.o
 
 .PHONY : src/visualiser.o
@@ -3639,6 +3666,9 @@ help:
 	@echo "... src/printer.o"
 	@echo "... src/printer.i"
 	@echo "... src/printer.s"
+	@echo "... src/vis_init.o"
+	@echo "... src/vis_init.i"
+	@echo "... src/vis_init.s"
 	@echo "... src/visualiser.o"
 	@echo "... src/visualiser.i"
 	@echo "... src/visualiser.s"
