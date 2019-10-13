@@ -144,6 +144,9 @@ typedef struct		s_asm
 	t_label				*labels;
 	t_label				*labels_top;
 	int					curr_line_n;
+	int					curr_w_i;
+	int					curr_start;
+	int					curr_len;
 	int					last_cmnd_id;
 	t_garbage			*g;
 	t_garbage			*top_g;
