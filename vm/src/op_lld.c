@@ -12,28 +12,27 @@
 
 #include "../inc/corewar_vm.h"
 
-void	op_lld(t_general *data, t_carriage *carriage)
+void	op_lld(t_general *data, t_carriage *crg)
 {
-	carriage->pos_tmp = (carriage->pos + 2) % MEM_SIZE;
-	if (arg_read(data, carriage, data->mem_f[(carriage->pos + 1)
-		% MEM_SIZE]))
+	crg->pos_tmp = (crg->pos + 2) % MEM_SIZE;
+	if (arg_read(data, crg, data->mem_f[(crg->pos + 1) % MEM_SIZE]))
 	{
-		memory_cpy(&carriage->arg[1], carriage->arg[0]);
-		carriage->carry = !(*(uint32_t*)carriage->arg[0].mem);
+		memory_cpy(&crg->arg[1], crg->arg[0]);
+		crg->carry = !(*(uint32_t*)crg->arg[0].mem);
 		if (data->verb_nbr & 4 && !data->vis)
 		{
-			if (carriage->arg[1].type == T_IND)
+			if (crg->arg[1].type == T_IND)
 			{
-				ft_printf("P %4d | lld %d r%d\n", carriage->nbr,
-					carriage->arg[0].ind_pntr, get_num_reg(carriage, 1));
+				ft_printf("P %4d | lld %d r%d\n", crg->nbr,
+					crg->arg[0].ind_pntr, get_num_reg(crg, 1));
 			}
 			else
 			{
-				ft_printf("P %4d | lld %d r%d\n", carriage->nbr,
-					get_val32bit(carriage->arg[0]), get_num_reg(carriage, 1));
+				ft_printf("P %4d | lld %d r%d\n", crg->nbr,
+					get_val32bit(crg->arg[0]), get_num_reg(crg, 1));
 			}
 		}
 	}
-	carriage->pos_tmp = carriage->pos;
-	carriage->pos = (carriage->pos + show_pc_movement(data, *carriage)) % MEM_SIZE;
+	crg->pos_tmp = crg->pos;
+	crg->pos = (crg->pos + show_pc_movement(data, *crg)) % MEM_SIZE;
 }

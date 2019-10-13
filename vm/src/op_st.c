@@ -12,31 +12,30 @@
 
 #include "../inc/corewar_vm.h"
 
-void	op_st(t_general *data, t_carriage *carriage)
+void	op_st(t_general *data, t_carriage *crg)
 {
-	carriage->pos_tmp = (carriage->pos + 2) % MEM_SIZE;
-	if (arg_read(data, carriage, data->mem_f[(carriage->pos + 1)
-		% MEM_SIZE]))
+	crg->pos_tmp = (crg->pos + 2) % MEM_SIZE;
+	if (arg_read(data, crg, data->mem_f[(crg->pos + 1) % MEM_SIZE]))
 	{
-		memory_cpy(&carriage->arg[1], carriage->arg[0]);
-		if(carriage->arg[1].type == T_IND)
-			ft_set_color(data, carriage->arg[1].size,
-				carriage->arg[1].current - carriage->arg[1].mem,
-				carriage->pl_id + 5);
+		memory_cpy(&crg->arg[1], crg->arg[0]);
+		if (crg->arg[1].type == T_IND)
+			ft_set_color(data, crg->arg[1].size,
+				crg->arg[1].current - crg->arg[1].mem,
+				crg->pl_id + 5);
 		if (data->verb_nbr & 4 && !data->vis)
 		{
-			if (carriage->arg[1].type == T_IND)
+			if (crg->arg[1].type == T_IND)
 			{
-				ft_printf("P %4d | st r%d %d\n", carriage->nbr,
-					get_num_reg(carriage, 0), carriage->arg[1].ind_pntr);
+				ft_printf("P %4d | st r%d %d\n", crg->nbr,
+					get_num_reg(crg, 0), crg->arg[1].ind_pntr);
 			}
 			else
 			{
-				ft_printf("P %4d | st r%d %d\n", carriage->nbr,
-					get_num_reg(carriage, 0), get_num_reg(carriage, 1));
+				ft_printf("P %4d | st r%d %d\n", crg->nbr,
+					get_num_reg(crg, 0), get_num_reg(crg, 1));
 			}
 		}
 	}
-	carriage->pos_tmp = carriage->pos;
-	carriage->pos = (carriage->pos + show_pc_movement(data, *carriage)) % MEM_SIZE;
+	crg->pos_tmp = crg->pos;
+	crg->pos = (crg->pos + show_pc_movement(data, *crg)) % MEM_SIZE;
 }
