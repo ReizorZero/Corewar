@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_args_types.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/13 13:32:36 by rzero             #+#    #+#             */
+/*   Updated: 2019/10/13 13:32:38 by rzero            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 void	check_cmnd_correspondance(t_asm *the_asm, int arg_index)
@@ -10,7 +22,7 @@ void	check_cmnd_correspondance(t_asm *the_asm, int arg_index)
 	while (i < 3)
 	{
 		if (the_asm->e_c_l->arg_code[arg_index] ==
-		commands[the_asm->e_c_l->cmnd_code - 1].arg_types[arg_index][i])
+		g_commands[the_asm->e_c_l->cmnd_code - 1].arg_types[arg_index][i])
 		{
 			found_type = 1;
 			break ;
@@ -41,22 +53,28 @@ int		check_t_reg(t_asm *the_asm, char *s, int arg_index)
 	return (1);
 }
 
+int		check_label_arg(t_asm *the_asm, int arg_index, char *s, int arg_code)
+{
+	int i;
+
+	i = (arg_code == DIR_CODE) ? 1 : 0;
+	the_asm->e_c_l->has_label_arg = 1;
+	the_asm->e_c_l->label_arg_index[arg_index] = 1;
+	the_asm->e_c_l->label_arg_value[arg_index] = ft_strdup(&s[i + 1]);
+	the_asm->e_c_l->arg_code[arg_index] = arg_code;
+	the_asm->e_c_l->arg_size[arg_index] = (arg_code == DIR_CODE) ?
+	g_commands[the_asm->e_c_l->cmnd_code - 1].t_dir_size : 2;
+	check_cmnd_correspondance(the_asm, arg_index);
+	return (check_label(the_asm, &s[i + 1]));
+}
+
 int		check_t_dir(t_asm *the_asm, char *s, int arg_index)
 {
 	int i;
 
 	i = 1;
 	if (s[i] == LABEL_CHAR)
-	{
-		the_asm->e_c_l->has_label_arg = 1;
-		the_asm->e_c_l->label_arg_index[arg_index] = 1;
-		the_asm->e_c_l->label_arg_value[arg_index] = ft_strdup(&s[i + 1]);
-		the_asm->e_c_l->arg_code[arg_index] = DIR_CODE;
-		the_asm->e_c_l->arg_size[arg_index] =
-		commands[the_asm->e_c_l->cmnd_code - 1].t_dir_size;
-		check_cmnd_correspondance(the_asm, arg_index);
-		return (check_label(the_asm, &s[i + 1]));
-	}
+		check_label_arg(the_asm, arg_index, s, DIR_CODE);
 	else 
 	{
 		if (s[i] == '-')
@@ -71,7 +89,7 @@ int		check_t_dir(t_asm *the_asm, char *s, int arg_index)
 	the_asm->e_c_l->arg_code[arg_index] = DIR_CODE;
 	the_asm->e_c_l->arg_value[arg_index] = ft_atoi(&s[1]);
 	the_asm->e_c_l->arg_size[arg_index] =
-	commands[the_asm->e_c_l->cmnd_code - 1].t_dir_size;
+	g_commands[the_asm->e_c_l->cmnd_code - 1].t_dir_size;
 	check_cmnd_correspondance(the_asm, arg_index);
 	return (1);
 }
@@ -82,15 +100,7 @@ int		check_t_ind(t_asm *the_asm, char *s, int arg_index)
 
 	i = 0;
 	if (s[i] == LABEL_CHAR)
-	{
-		the_asm->e_c_l->has_label_arg = 1;
-		the_asm->e_c_l->label_arg_index[arg_index] = 1;
-		the_asm->e_c_l->label_arg_value[arg_index] = ft_strdup(&s[i + 1]);
-		the_asm->e_c_l->arg_code[arg_index] = IND_CODE;
-		the_asm->e_c_l->arg_size[arg_index] = 2;
-		check_cmnd_correspondance(the_asm, arg_index);
-		return (check_label(the_asm, &s[i + 1]));
-	}
+		check_label_arg(the_asm, arg_index, s, IND_CODE);
 	else 
 	{
 		if (s[i] == '-')

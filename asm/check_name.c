@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_name.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/13 13:42:57 by rzero             #+#    #+#             */
+/*   Updated: 2019/10/13 13:42:59 by rzero            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 int		check_name_cmnd_tag(t_asm *the_asm, char *s, int i)
@@ -33,7 +45,7 @@ int		anything_after_dot_name(t_asm *the_asm, char *s)
 	return (0);
 }
 
-void	check_text_comment(char **s)//ABSOLUTELY FUCKING SURE IT LEAKS SOMEWHERE HERE
+void	check_text_comment(char **s)
 {
 	int i;
 
@@ -42,7 +54,8 @@ void	check_text_comment(char **s)//ABSOLUTELY FUCKING SURE IT LEAKS SOMEWHERE HE
 		*s = ft_strdup("");
 	else if (ft_strchr(*s, COMMENT_CHAR) || (ft_strchr(*s, ALT_COMMENT_CHAR)))
 	{
-		while (s[0][i] != '\0' && s[0][i] != COMMENT_CHAR && s[0][i] != ALT_COMMENT_CHAR)
+		while (s[0][i] != '\0' && s[0][i] != COMMENT_CHAR &&
+		s[0][i] != ALT_COMMENT_CHAR)
 			i++;
 		*s = ft_strsub(*s, 0, (size_t)i);
 	}
@@ -75,6 +88,22 @@ void	check_symbols_at_end_name(t_asm *the_asm, char *s)
 	the_asm->champion_name = ft_strsub(s, start, len);
 }
 
+void	check_comment_char_case_name(t_asm *the_asm, char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i] != '\0' && s[i] != '\"')
+		i++;
+	i++;
+	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
+	{
+		if (s[i] != '\t' && s[i] != ' ')
+			ERROR(SMBLS_CHAMP_NAME, the_asm->curr_line_n);
+		i++;
+	}
+}
+
 int		closing_quote_name_is_valid(t_asm *the_asm, char *s)
 {
 	int kavichki;
@@ -96,17 +125,20 @@ int		closing_quote_name_is_valid(t_asm *the_asm, char *s)
 	}
 	if (kavichki > 1)
 		ERROR(KAVICHKI_NUMBER, the_asm->curr_line_n);
-	i = 0;
-	while (s[i] != '\0' && s[i] != '\"')
-		i++;
-	i++;
-	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
-	{
-		if (s[i] != '\t' && s[i] != ' ')
-			ERROR(SMBLS_CHAMP_NAME, the_asm->curr_line_n);
-		i++;
-	}
+	check_comment_char_case_name(the_asm, s);
 	return (1);
+}
+
+int		found_closing_quote_name(t_asm *the_asm)
+{
+	int i;
+
+	i = 0;
+	while (the_asm->champion_name[i] != '\0' &&
+	the_asm->champion_name[i] != '\"')
+		i++;
+	the_asm->champion_name = ft_strsub(the_asm->champion_name, 0, i);
+		return (1);
 }
 
 int		search_closing_quote_name(t_asm *the_asm, t_line **line)
@@ -123,19 +155,14 @@ int		search_closing_quote_name(t_asm *the_asm, t_line **line)
 	the_asm->curr_line_n++;
 	while (*line)
 	{
-		the_asm->champion_name = ft_strjoin(the_asm->champion_name, (*line)->str);
+		the_asm->champion_name = ft_strjoin(the_asm->champion_name,
+		(*line)->str);
 		add_garbage(the_asm, the_asm->champion_name);
 		the_asm->champion_name = ft_strjoin(the_asm->champion_name, "\n");
 		add_garbage(the_asm, the_asm->champion_name);
 		if (ft_strchr((*line)->str, '\"') &&
 		closing_quote_name_is_valid(the_asm, (*line)->str))
-		{
-			i = 0;
-			while (the_asm->champion_name[i] != '\0' && the_asm->champion_name[i] != '\"')
-				i++;
-			the_asm->champion_name = ft_strsub(the_asm->champion_name, 0, i);
-			return (1);
-		}
+			found_closing_quote_name(the_asm);
 		*line = (*line)->next;
 		the_asm->curr_line_n++;
 	}
@@ -144,7 +171,7 @@ int		search_closing_quote_name(t_asm *the_asm, t_line **line)
 }
 
 void	check_name(t_asm *the_asm, t_line **line)
-{//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
+{
 	int kavichki;
 
 	if (anything_after_dot_name(the_asm, (*line)->str))
@@ -157,7 +184,7 @@ void	check_name(t_asm *the_asm, t_line **line)
 	if (kavichki == 0)
 		ERROR(NO_CHAMP_NAME, the_asm->curr_line_n);
 	if (kavichki == 1)
-		search_closing_quote_name(the_asm, line);//RIGHT HERE I MEAN
+		search_closing_quote_name(the_asm, line);
 	if (the_asm->champion_name[0] == '\0')
 		ERROR(EMPTY_CHAMP_NAME, the_asm->curr_line_n);
 }
