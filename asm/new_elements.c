@@ -51,3 +51,15 @@ t_label				*new_label(char *name)
 	label->next = NULL;
 	return (label);
 }
+
+t_garbage			*new_garbage(void *ptr)
+{
+	t_garbage *garbage;
+
+	garbage = (t_garbage*)malloc(sizeof(garbage));
+	if (!garbage)
+		ERROR(ALLOCATE_MEM_ERR, "t_garbage");
+	garbage->ptr = ptr;
+	garbage->next = NULL;
+	return (garbage);
+}

@@ -39,3 +39,16 @@ void	add_label(t_asm *the_asm)
 	if (!the_asm->labels_top)
 		the_asm->labels_top = the_asm->labels;
 }
+
+void	add_garbage(t_asm *the_asm, void *ptr)
+{
+	if (!the_asm->g)
+		the_asm->g = new_garbage(ptr);
+	else
+	{
+		the_asm->g->next = new_garbage(ptr);
+		the_asm->g = the_asm->g->next;
+	}
+	if (!the_asm->top_g)
+		the_asm->top_g = the_asm->g;
+}

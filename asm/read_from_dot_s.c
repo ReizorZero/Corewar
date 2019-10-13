@@ -10,10 +10,10 @@ int		get_file_fd(t_asm *the_asm)
 	return (fd);
 }
 
-void	close_file(t_asm *the_asm, int fd)
+void	close_file(int fd, char *filename)
 {
 	if (close(fd) == -1)
-		ERROR(ERROR_CLOSE_FILE, the_asm->dot_s_file_name);
+		ERROR(ERROR_CLOSE_FILE, filename);
 }
 
 int		read_from_dot_s(t_asm *the_asm)
@@ -28,7 +28,8 @@ int		read_from_dot_s(t_asm *the_asm)
 		write_line_to_list(the_asm, s);
 		free(s);
 	}
-	close_file(the_asm, fd);
+	free(s);
+	close_file(fd, the_asm->dot_s_file_name);
 	parse_lines(the_asm);
 	return (1);
 }

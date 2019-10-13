@@ -18,10 +18,10 @@ void			out_in_file(int nbr, int size, t_asm *the_asm)
 		tmp /= 256;
 	}
 	write(the_asm->fd, res, size);
-	free(res);//SEGV ON tester.s OCCURS HERE (case 'loop: zjmp %:loop')
+	add_garbage(the_asm, res);
 }
 
-char			*get_arg_types_code(int *arg_code)
+char			*get_arg_types_code(t_asm *the_asm, int *arg_code)
 {
 	int		i;
 	int		j;
@@ -39,7 +39,8 @@ char			*get_arg_types_code(int *arg_code)
 	rez[j] = '0';
 	rez[j + 1] = '0';
 	rez[j + 2] = '\0';
-	return (rez);//LEAKS HERE
+	add_garbage(the_asm, rez);
+	return (rez);
 }
 
 void			write_cmnd_code(t_asm *the_asm)
@@ -56,7 +57,7 @@ void			write_cmnd_code(t_asm *the_asm)
 			out_in_file(tmp->cmnd_code, 1, the_asm);
 			if (tmp->has_arg_types_code > 0)
 			{
-				arg_types_code = get_arg_types_code(tmp->arg_code);
+				arg_types_code = get_arg_types_code(the_asm, tmp->arg_code);
 				out_in_file(convert_bit_to_int(arg_types_code), 1, the_asm);
 			}
 			i = -1;
@@ -66,18 +67,30 @@ void			write_cmnd_code(t_asm *the_asm)
 		}
 		tmp = tmp->next;
 	}
-	free(arg_types_code);
+	add_garbage(the_asm, arg_types_code);
+}
+
+int				get_dot_cor_fd(char *filename)
+{
+	int fd;
+
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (fd == -1)
+		ERROR(ERROR_OPEN_FILE, filename);
+	return (fd);
 }
 
 void			write_to_dot_cor(t_asm *the_asm)
 {
 	char	*s;
 	int		j;
+	char	*filename;
 
 	s = ft_strchr(the_asm->dot_s_file_name, '.');
 	s[0] = '\0';
-	the_asm->fd = open(ft_strjoin(the_asm->dot_s_file_name, ".cor")//LEAK HERE
-		, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	filename = ft_strjoin(the_asm->dot_s_file_name, ".cor");
+	add_garbage(the_asm, filename);
+	the_asm->fd = get_dot_cor_fd(filename);
 	out_in_file(convert_hex_to_int("ea83f3"), 4, the_asm);
 	j = -1;
 	while (the_asm->champion_name[++j] != '\0')
@@ -91,5 +104,5 @@ void			write_to_dot_cor(t_asm *the_asm)
 	write_null_in_file(the_asm, 2048 - j);
 	write_null_in_file(the_asm, 4);
 	write_cmnd_code(the_asm);
-	//MISSING CLOSING .cor FILE OPERATION
+	close_file(the_asm->fd, filename);
 }

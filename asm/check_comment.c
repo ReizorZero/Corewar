@@ -127,13 +127,16 @@ int		search_closing_quote_comment(t_asm *the_asm, t_line **line)
 	while ((*line)->str[i] != '\0' && (*line)->str[i] != '\"')
 		i++;
 	i++;
-	the_asm->champion_comment = ft_strjoin(&(*line)->str[i], "\n");
+	the_asm->champion_comment = ft_strjoin(&(*line)->str[i], "\n");//LEAKS HERE
+	add_garbage(the_asm, the_asm->champion_comment);
 	*line = (*line)->next;
 	the_asm->curr_line_n++;
 	while (*line)
 	{
-		the_asm->champion_comment = ft_strjoin(the_asm->champion_comment, (*line)->str);
-		the_asm->champion_comment = ft_strjoin(the_asm->champion_comment, "\n");
+		the_asm->champion_comment = ft_strjoin(the_asm->champion_comment, (*line)->str);//HERE
+		add_garbage(the_asm, the_asm->champion_comment);
+		the_asm->champion_comment = ft_strjoin(the_asm->champion_comment, "\n");//HERE
+		add_garbage(the_asm, the_asm->champion_comment);
 		if (ft_strchr((*line)->str, '\"') &&
 		closing_quote_comment_is_valid(the_asm, (*line)->str))
 		{

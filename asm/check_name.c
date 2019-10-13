@@ -118,12 +118,15 @@ int		search_closing_quote_name(t_asm *the_asm, t_line **line)
 		i++;
 	i++;
 	the_asm->champion_name = ft_strjoin(&(*line)->str[i], "\n");
+	add_garbage(the_asm, the_asm->champion_name);
 	*line = (*line)->next;
 	the_asm->curr_line_n++;
 	while (*line)
 	{
 		the_asm->champion_name = ft_strjoin(the_asm->champion_name, (*line)->str);
+		add_garbage(the_asm, the_asm->champion_name);
 		the_asm->champion_name = ft_strjoin(the_asm->champion_name, "\n");
+		add_garbage(the_asm, the_asm->champion_name);
 		if (ft_strchr((*line)->str, '\"') &&
 		closing_quote_name_is_valid(the_asm, (*line)->str))
 		{

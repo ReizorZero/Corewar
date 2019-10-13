@@ -109,6 +109,12 @@ typedef struct	s_line
 	char			*str;
 }				t_line;
 
+typedef struct	s_garbage
+{
+	void				*ptr;
+	struct s_garbage	*next;
+}				t_garbage;
+
 typedef struct	s_asm
 {
 	int					fd;
@@ -126,6 +132,8 @@ typedef struct	s_asm
 	t_label				*labels_top;
 	int					curr_line_n;
 	int					last_cmnd_id;
+	t_garbage			*g;
+	t_garbage			*top_g;
 }				t_asm;
 
 t_commands_info		commands[16];
@@ -133,6 +141,7 @@ t_commands_info		commands[16];
 void				check_asm_input(int argc, char **argv, t_asm *the_asm);
 
 int					read_from_dot_s(t_asm *the_asm);
+void				close_file(int fd, char *filename);
 void				parse_lines(t_asm *the_asm);
 void				check_name(t_asm *the_asm, t_line **line);
 int					count_kavichki(char *s);
@@ -158,9 +167,12 @@ void				add_label(t_asm *the_asm);
 int					get_label_arg_value(t_asm *the_asm, char *label_name);
 void				fill_labels_args(t_asm *the_asm);
 
+void				add_garbage(t_asm *the_asm, void *ptr);
+
 t_asm				*new_asm(void);
 t_line				*new_line(char *str);
 t_exec_code_line	*new_exec_code_line(int id);
 t_label				*new_label(char *name);
+t_garbage			*new_garbage(void *ptr);
 
 #endif
