@@ -68,6 +68,10 @@ void		ft_fight(t_general *data)
 			print_mem(data);
 			return ;
 		}
+		if (data->cycles_tmp + data->cycles_total == 4755)
+		{
+			ft_printf("\n");
+		}
 		ft_carriage_cycle(data);
 		if (data->cycles_tmp >= data->cycles_to_die)
 		{
