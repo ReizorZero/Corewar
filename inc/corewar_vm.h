@@ -14,7 +14,7 @@
 
 # define COREWAR_VM_H
 
-# include "../../libft/inc/libft.h"
+# include "../libft/inc/libft.h"
 # include "op.h"
 # include <stdbool.h>
 # include <fcntl.h>
@@ -71,10 +71,8 @@ typedef struct			s_operation
 
 typedef struct			s_visual
 {
-	int 				clr;
-	int 				cycle;
-//	char 				*winner;
-//	uint8_t				val; //?
+	int					clr;
+	int					cycle;
 }						t_visual;
 
 typedef struct			s_general
@@ -115,22 +113,22 @@ bool					arg_read(t_general *data, t_carriage *carriage,
 void					read_dir(t_general *data, t_mem *arg, size_t position,
 							size_t size);
 void					memory_cpy(t_mem *dest, t_mem src);
-void					op_live(t_general *data, t_carriage *carriage);
-void					op_ld(t_general *data, t_carriage *carriage);
-void					op_and(t_general *data, t_carriage *carriage);
-void					op_or(t_general *data, t_carriage *carriage);
-void					op_xor(t_general *data, t_carriage *carriage);
-void					op_st(t_general *data, t_carriage *carriage);
-void					op_add(t_general *data, t_carriage *carriage);
-void					op_sub(t_general *data, t_carriage *carriage);
-void					op_zjmp(t_general *data, t_carriage *carriage);
-void					op_ldi(t_general *data, t_carriage *carriage);
-void					op_sti(t_general *data, t_carriage *carriage);
-void					op_fork(t_general *data, t_carriage *carriage);
-void					op_lld(t_general *data, t_carriage *carriage);
-void					op_lldi(t_general *data, t_carriage *carriage);
-void					op_lfork(t_general *data, t_carriage *carriage);
-void					op_aff(t_general *data, t_carriage *carriage);
+void					op_live(t_general *data, t_carriage *crg);
+void					op_ld(t_general *data, t_carriage *crg);
+void					op_and(t_general *data, t_carriage *crg);
+void					op_or(t_general *data, t_carriage *crg);
+void					op_xor(t_general *data, t_carriage *crg);
+void					op_st(t_general *data, t_carriage *crg);
+void					op_add(t_general *data, t_carriage *crg);
+void					op_sub(t_general *data, t_carriage *crg);
+void					op_zjmp(t_general *data, t_carriage *crg);
+void					op_ldi(t_general *data, t_carriage *crg);
+void					op_sti(t_general *data, t_carriage *crg);
+void					op_fork(t_general *data, t_carriage *crg);
+void					op_lld(t_general *data, t_carriage *crg);
+void					op_lldi(t_general *data, t_carriage *crg);
+void					op_lfork(t_general *data, t_carriage *crg);
+void					op_aff(t_general *data, t_carriage *crg);
 t_player				*get_by_id(t_general *data, uint8_t id);
 void					print_mem(t_general *data);
 uint32_t				reverse_32bits(uint32_t p_int);
@@ -151,7 +149,7 @@ void					usage_msg(void);
 void					error_msg(char *msg, t_general *data);
 void					introducing(t_general *data);
 int						get_num_reg(t_carriage *carriage, int n);
-size_t show_pc_movement(t_general *data, t_carriage carriage);
+size_t					show_pc_movement(t_general *data, t_carriage carriage);
 void					print_winner(t_general *data);
 void					ft_check_live_carriage(t_general *data);
 void					start_new_op(t_general *data, t_carriage *crg);
@@ -164,13 +162,11 @@ void					err_magic_header(t_general *data, char *file);
 void					get_val_ldi(t_carriage carriage, int32_t *val,
 							int8_t i);
 void					ft_res_init(t_general *data, t_mem *res, uint32_t adds);
-
 void					vis_upd(t_general *data);
 void					vis_init(t_general *data);
-void ft_set_color(t_general *data, unsigned int size, int cnt, int clr);
-void	set_color_carriages(t_general *data);
-void vis_print_winner(t_player *winner);
-//void vis_aff(t_general data, char *text, size_t pos);
-
+void					ft_set_color(t_general *data, unsigned int size,
+							int cnt, int clr);
+void					set_color_carriages(t_general *data);
+void					vis_print_winner(t_player *winner);
 
 #endif

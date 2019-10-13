@@ -1,7 +1,7 @@
 //
 // Created by Mykhailo SHVETS on 2019-10-11.
 //
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 WINDOW *g_mem;
 WINDOW *g_info;

@@ -10,35 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
-void	op_sti(t_general *data, t_carriage *carriage)
+void	op_sti(t_general *data, t_carriage *crg)
 {
 	uint32_t	adds;
 	int32_t		val2;
 	int32_t		val3;
 	t_mem		res;
 
-	carriage->pos_tmp = (carriage->pos + 2) % MEM_SIZE;
-	if (arg_read(data, carriage, data->mem_f[(carriage->pos + 1)
-		% MEM_SIZE]))
+	crg->pos_tmp = (crg->pos + 2) % MEM_SIZE;
+	if (arg_read(data, crg, data->mem_f[(crg->pos + 1) % MEM_SIZE]))
 	{
-		get_val_ldi(*carriage, &val2, 1);
-		get_val_ldi(*carriage, &val3, 2);
-		adds = (carriage->pos + (val2 + val3) % IDX_MOD) % MEM_SIZE;
+		get_val_ldi(*crg, &val2, 1);
+		get_val_ldi(*crg, &val3, 2);
+		adds = (crg->pos + (val2 + val3) % IDX_MOD) % MEM_SIZE;
 		ft_res_init(data, &res, adds);
-		memory_cpy(&res, carriage->arg[0]);
-		ft_set_color(data, res.size, res.current - res.mem,
-			carriage->pl_id + 5);
+		memory_cpy(&res, crg->arg[0]);
+		ft_set_color(data, res.size, res.current - res.mem, crg->pl_id + 5);
 		if (data->verb_nbr & 4 && !data->vis)
 		{
-			ft_printf("P %4d | sti r%d %d %d\n", carriage->nbr,
-				get_num_reg(carriage, 0), val2, val3);
+			ft_printf("P %4d | sti r%d %d %d\n", crg->nbr,
+				get_num_reg(crg, 0), val2, val3);
 			ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)"
 				"\n", val2, val3, val2 + val3,
-				(int32_t)(carriage->pos + (val2 + val3) % IDX_MOD));
+				(int32_t)(crg->pos + (val2 + val3) % IDX_MOD));
 		}
 	}
-	carriage->pos_tmp = carriage->pos;
-	carriage->pos = (carriage->pos + show_pc_movement(data, *carriage)) % MEM_SIZE;
+	crg->pos_tmp = crg->pos;
+	crg->pos = (crg->pos + show_pc_movement(data, *crg)) % MEM_SIZE;
 }

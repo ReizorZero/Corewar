@@ -10,22 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
-void	op_aff(t_general *data, t_carriage *carriage)
+void	op_aff(t_general *data, t_carriage *crg)
 {
 	char val;
 
-	carriage->pos_tmp = (carriage->pos + 2) % MEM_SIZE;
-	if (arg_read(data, carriage, data->mem_f[(carriage->pos + 1)
-		% MEM_SIZE]))
+	crg->pos_tmp = (crg->pos + 2) % MEM_SIZE;
+	if (arg_read(data, crg, data->mem_f[(crg->pos + 1) % MEM_SIZE]))
 	{
-		val = (char)get_val32bit(carriage->arg[0]);
+		val = (char)get_val32bit(crg->arg[0]);
 		if (!data->vis)
 			ft_printf("Aff: %c\n", val);
-//		else if (data->vis)
-//			vis_aff(*data, val, 0);
 	}
-	carriage->pos_tmp = carriage->pos;
-	carriage->pos = (carriage->pos + show_pc_movement(data, *carriage)) % MEM_SIZE;
+	crg->pos_tmp = crg->pos;
+	crg->pos = (crg->pos + show_pc_movement(data, *crg)) % MEM_SIZE;
 }

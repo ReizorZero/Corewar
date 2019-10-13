@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/op.h"
-#include "../inc/corewar_vm.h"
+#include "../../inc/op.h"
+#include "../../inc/corewar_vm.h"
 
 t_operation	g_op_tab[17] =
 {

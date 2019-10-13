@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 static void	carriage_live(t_carriage **crwl, t_carriage **prv_crwl)
 {

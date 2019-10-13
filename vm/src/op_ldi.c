@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 void	get_val_ldi(t_carriage carriage, int32_t *val, int8_t i)
 {
@@ -29,31 +29,30 @@ void	ft_res_init(t_general *data, t_mem *res, uint32_t adds)
 	res->mem_end = &data->mem_f[MEM_SIZE];
 }
 
-void	op_ldi(t_general *data, t_carriage *carriage)
+void	op_ldi(t_general *data, t_carriage *crg)
 {
 	uint32_t	adds;
 	int32_t		val1;
 	int32_t		val2;
 	t_mem		res;
 
-	carriage->pos_tmp = (carriage->pos + 2) % MEM_SIZE;
-	if (arg_read(data, carriage, data->mem_f[(carriage->pos + 1)
-		% MEM_SIZE]))
+	crg->pos_tmp = (crg->pos + 2) % MEM_SIZE;
+	if (arg_read(data, crg, data->mem_f[(crg->pos + 1) % MEM_SIZE]))
 	{
-		get_val_ldi(*carriage, &val1, 0);
-		get_val_ldi(*carriage, &val2, 1);
-		adds = (carriage->pos + (val1 + val2) % IDX_MOD) % MEM_SIZE;
+		get_val_ldi(*crg, &val1, 0);
+		get_val_ldi(*crg, &val2, 1);
+		adds = (crg->pos + (val1 + val2) % IDX_MOD) % MEM_SIZE;
 		ft_res_init(data, &res, adds);
-		memory_cpy(&carriage->arg[2], res);
+		memory_cpy(&crg->arg[2], res);
 		if (data->verb_nbr & 4 && !data->vis)
 		{
-			ft_printf("P %4d | ldi %d %d r%d\n", carriage->nbr, val1, val2,
-				get_num_reg(carriage, 2));
+			ft_printf("P %4d | ldi %d %d r%d\n", crg->nbr, val1, val2,
+				get_num_reg(crg, 2));
 			ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)"
 				"\n", val1, val2, val1 + val2,
-				(carriage->pos + ((val1 + val2) % IDX_MOD)));
+				(crg->pos + ((val1 + val2) % IDX_MOD)));
 		}
 	}
-	carriage->pos_tmp = carriage->pos;
-	carriage->pos = (carriage->pos + show_pc_movement(data, *carriage)) % MEM_SIZE;
+	crg->pos_tmp = crg->pos;
+	crg->pos = (crg->pos + show_pc_movement(data, *crg)) % MEM_SIZE;
 }
