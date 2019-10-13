@@ -42,6 +42,8 @@ void		op_live(t_general *data, t_carriage *crg)
 	{
 		data->lst_live_plr = -player;
 		set_lst_cycle(data, -player);
+		data->map_clr[crg->pos].cycle = 50;
+		data->map_clr[crg->pos].clr = (data->map_clr[crg->pos].clr % 5) + 10;
 	}
 	crg->lst_live_cycle = data->cycles_total + data->cycles_tmp;
 	++(data->cnt_live);
@@ -49,8 +51,8 @@ void		op_live(t_general *data, t_carriage *crg)
 		ft_printf("P %4d | live %d\n", crg->nbr, player);
 	if (data->verb_nbr & 1 && !data->vis && pl)
 		ft_printf("Player %d (%s) is said to be alive\n", pl->id, pl->name);
-	data->map_clr[crg->pos].cycle = 50;
-	data->map_clr[crg->pos].clr = (data->map_clr[crg->pos].clr % 5) + 10;
+//	data->map_clr[crg->pos].cycle = 50;
+//	data->map_clr[crg->pos].clr = (data->map_clr[crg->pos].clr % 5) + 10;
 	crg->pos_tmp = crg->pos;
 	crg->pos = (crg->pos + show_pc_movement(data, *crg)) % MEM_SIZE;
 }

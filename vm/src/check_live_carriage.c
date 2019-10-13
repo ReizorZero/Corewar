@@ -19,14 +19,22 @@ static void	carriage_live(t_carriage **crwl, t_carriage **prv_crwl)
 	*crwl = (*crwl)->next;
 }
 
-static void	message_kill(t_general data, t_carriage crwl)
+static void	message_kill(t_general *data, t_carriage crwl)
 {
-	if (data.verb_nbr & 8 && !data.vis)
+	if (data->verb_nbr & 8 && !data->vis)
 	{
 		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-			crwl.nbr, ((data.cycles_total + data.cycles_tmp)
-			- crwl.lst_live_cycle), data.cycles_to_die);
+			crwl.nbr, ((data->cycles_total + data->cycles_tmp)
+			- crwl.lst_live_cycle), data->cycles_to_die);
 	}
+	if (data->vis)
+	{
+		if (data->map_clr[crwl.pos].clr % 5)
+			data->map_clr[crwl.pos].clr %= 5;
+		else
+			data->map_clr[crwl.pos].clr = 5;
+	}
+	data->num_died_carriege += 1;
 }
 
 void		ft_check_live_carriage(t_general *data)
@@ -47,7 +55,7 @@ void		ft_check_live_carriage(t_general *data)
 				data->head_c = crwl->next;
 			else if (prv_crwl)
 				prv_crwl->next = crwl->next;
-			message_kill(*data, *crwl);
+			message_kill(data, *crwl);
 			free(crwl);
 			crwl = NULL;
 			if (!prv_crwl)

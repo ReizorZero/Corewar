@@ -10,23 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 WINDOW		*g_mem;
 WINDOW		*g_info;
 
 static void	draw_settings(t_general *data, int i, int r, int c)
 {
-	if (data->map_clr[i].cycle == 0)
-		wattron(g_mem, COLOR_PAIR(data->map_clr[i].clr));
-	else if (data->map_clr[i].cycle > 0)
+	if (data->map_clr[i].cycle > 0)
 		wattron(g_mem, COLOR_PAIR(data->map_clr[i].clr) | A_BOLD);
+//	if (data->map_clr[i].cycle == 0)
+//		wattron(g_mem, COLOR_PAIR(data->map_clr[i].clr));
 	else
-		wattron(g_mem, COLOR_PAIR(5));
+		wattron(g_mem, COLOR_PAIR(data->map_clr[i].clr));
 	mvwprintw(g_mem, r + 1, c + 1, "%02x", data->mem_f[i]);
-	if (data->map_clr[i].cycle == 0)
-		wattroff(g_mem, COLOR_PAIR(data->map_clr[i].clr));
-	else if (data->map_clr[i].cycle > 0)
+//	if (data->map_clr[i].cycle == 0)
+//		wattroff(g_mem, COLOR_PAIR(data->map_clr[i].clr));
+	if (data->map_clr[i].cycle > 0)
 	{
 		--(data->map_clr[i].cycle);
 		if (data->map_clr[i].cycle == 0)
@@ -34,7 +34,7 @@ static void	draw_settings(t_general *data, int i, int r, int c)
 		wattroff(g_mem, COLOR_PAIR(data->map_clr[i].clr) | A_BOLD);
 	}
 	else
-		wattroff(g_mem, COLOR_PAIR(5));
+		wattroff(g_mem, COLOR_PAIR(data->map_clr[i].clr));
 }
 
 void		draw_mem(t_general *data)
@@ -91,10 +91,11 @@ void		print_info(t_general *data)
 	mvwprintw(g_info, 5, 3, "It is now %d cycle",
 		data->cycles_total + data->cycles_tmp);
 	mvwprintw(g_info, 7, 3, "Cycle to die is %d", data->cycles_to_die);
-	mvwprintw(g_info, 9, 3, "There are %d proceses now", data->head_c->nbr);
+	mvwprintw(g_info, 9, 3, "There are %d proceses now",
+		data->head_c->nbr - data->num_died_carriege);
 	wattroff(g_info, COLOR_PAIR(32) | A_BOLD);
-	i = 1;
-	while (i <= data->pl_nbr)
+	i = 0;
+	while (++i <= data->pl_nbr)
 	{
 		pl = get_by_id(data, i);
 		wattron(g_info, COLOR_PAIR(i));
@@ -102,7 +103,7 @@ void		print_info(t_general *data)
 		mvwprintw(g_info, 11 + (i * 3), 3, "\tlast live cycle: %d",
 			pl->lst_cycle);
 		wattroff(g_info, COLOR_PAIR(i));
-		i++;
+//		i++;
 	}
 	wattron(g_info, COLOR_PAIR(32) | A_BOLD);
 	mvwprintw(g_info, 25, 3, "Press [ESC] for exit");
@@ -128,6 +129,7 @@ void		vis_init(t_general *data)
 	wattroff(g_mem, COLOR_PAIR(10));
 	wattroff(g_info, COLOR_PAIR(10));
 	print_info(data);
+	set_color_carriages(data);
 	draw_mem(data);
 	wattron(g_info, COLOR_PAIR(32) | A_BOLD);
 	mvwprintw(g_info, 3, 15, " **  PAUSE  ** ");

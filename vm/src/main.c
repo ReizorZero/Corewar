@@ -40,7 +40,10 @@ int		main(int argc, char **argv)
 	i = 0;
 	ft_memset(&data, 0, sizeof(data));
 	while (i < MEM_SIZE)
-		data.map_clr[i++].cycle = -1;
+	{
+		data.map_clr[i].cycle = -1;
+		data.map_clr[i++].clr = 5;
+	}
 	if (argc > 1)
 	{
 		data.dump_cycle = -1;

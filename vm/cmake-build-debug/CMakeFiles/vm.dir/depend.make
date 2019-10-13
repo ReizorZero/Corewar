@@ -258,161 +258,139 @@ CMakeFiles/VM.dir/Users/mshvets/Desktop/Corewar/libft/src/printf_str.c.o: /Users
 
 CMakeFiles/VM.dir/src/arg_read.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/arg_read.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/arg_read.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/arg_read.c.o: ../src/arg_read.c
 
 CMakeFiles/VM.dir/src/carriage.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/carriage.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/carriage.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/carriage.c.o: ../src/carriage.c
 
 CMakeFiles/VM.dir/src/check_args.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/check_args.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/check_args.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/check_args.c.o: ../src/check_args.c
 
+CMakeFiles/VM.dir/src/check_live_carriage.c.o: /Users/mshvets/Desktop/Corewar/inc/corewar_vm.h
+CMakeFiles/VM.dir/src/check_live_carriage.c.o: /Users/mshvets/Desktop/Corewar/inc/op.h
 CMakeFiles/VM.dir/src/check_live_carriage.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
-CMakeFiles/VM.dir/src/check_live_carriage.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/check_live_carriage.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/check_live_carriage.c.o: ../src/check_live_carriage.c
 
 CMakeFiles/VM.dir/src/check_players.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/check_players.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/check_players.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/check_players.c.o: ../src/check_players.c
 
 CMakeFiles/VM.dir/src/errors.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/errors.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/errors.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/errors.c.o: ../src/errors.c
 
+CMakeFiles/VM.dir/src/fight.c.o: /Users/mshvets/Desktop/Corewar/inc/corewar_vm.h
+CMakeFiles/VM.dir/src/fight.c.o: /Users/mshvets/Desktop/Corewar/inc/op.h
 CMakeFiles/VM.dir/src/fight.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
-CMakeFiles/VM.dir/src/fight.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/fight.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/fight.c.o: ../src/fight.c
 
 CMakeFiles/VM.dir/src/get_val.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/get_val.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/get_val.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/get_val.c.o: ../src/get_val.c
 
+CMakeFiles/VM.dir/src/main.c.o: /Users/mshvets/Desktop/Corewar/inc/corewar_vm.h
+CMakeFiles/VM.dir/src/main.c.o: /Users/mshvets/Desktop/Corewar/inc/op.h
 CMakeFiles/VM.dir/src/main.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
-CMakeFiles/VM.dir/src/main.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/main.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/main.c.o: ../src/main.c
 
 CMakeFiles/VM.dir/src/mem_clean.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/mem_clean.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/mem_clean.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/mem_clean.c.o: ../src/mem_clean.c
 
 CMakeFiles/VM.dir/src/op.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op.c.o: ../src/op.c
 
 CMakeFiles/VM.dir/src/op_add.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_add.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_add.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_add.c.o: ../src/op_add.c
 
 CMakeFiles/VM.dir/src/op_aff.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_aff.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_aff.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_aff.c.o: ../src/op_aff.c
 
 CMakeFiles/VM.dir/src/op_and.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_and.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_and.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_and.c.o: ../src/op_and.c
 
 CMakeFiles/VM.dir/src/op_fork.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_fork.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_fork.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_fork.c.o: ../src/op_fork.c
 
 CMakeFiles/VM.dir/src/op_ld.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_ld.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_ld.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_ld.c.o: ../src/op_ld.c
 
 CMakeFiles/VM.dir/src/op_ldi.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_ldi.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_ldi.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_ldi.c.o: ../src/op_ldi.c
 
 CMakeFiles/VM.dir/src/op_lfork.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_lfork.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_lfork.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_lfork.c.o: ../src/op_lfork.c
 
+CMakeFiles/VM.dir/src/op_live.c.o: /Users/mshvets/Desktop/Corewar/inc/corewar_vm.h
+CMakeFiles/VM.dir/src/op_live.c.o: /Users/mshvets/Desktop/Corewar/inc/op.h
 CMakeFiles/VM.dir/src/op_live.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
-CMakeFiles/VM.dir/src/op_live.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_live.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_live.c.o: ../src/op_live.c
 
 CMakeFiles/VM.dir/src/op_lld.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_lld.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_lld.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_lld.c.o: ../src/op_lld.c
 
 CMakeFiles/VM.dir/src/op_lldi.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_lldi.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_lldi.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_lldi.c.o: ../src/op_lldi.c
 
 CMakeFiles/VM.dir/src/op_or.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_or.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_or.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_or.c.o: ../src/op_or.c
 
 CMakeFiles/VM.dir/src/op_st.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_st.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_st.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_st.c.o: ../src/op_st.c
 
 CMakeFiles/VM.dir/src/op_sti.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_sti.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_sti.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_sti.c.o: ../src/op_sti.c
 
 CMakeFiles/VM.dir/src/op_sub.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_sub.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_sub.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_sub.c.o: ../src/op_sub.c
 
 CMakeFiles/VM.dir/src/op_xor.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_xor.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_xor.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_xor.c.o: ../src/op_xor.c
 
 CMakeFiles/VM.dir/src/op_zjmp.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/op_zjmp.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/op_zjmp.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/op_zjmp.c.o: ../src/op_zjmp.c
 
 CMakeFiles/VM.dir/src/player.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/player.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/player.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/player.c.o: ../src/player.c
 
 CMakeFiles/VM.dir/src/player_id.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/player_id.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/player_id.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/player_id.c.o: ../src/player_id.c
 
 CMakeFiles/VM.dir/src/players.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/players.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/players.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/players.c.o: ../src/players.c
 
 CMakeFiles/VM.dir/src/printer.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
 CMakeFiles/VM.dir/src/printer.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/printer.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/printer.c.o: ../src/printer.c
 
+CMakeFiles/VM.dir/src/vis_init.c.o: /Users/mshvets/Desktop/Corewar/inc/corewar_vm.h
+CMakeFiles/VM.dir/src/vis_init.c.o: /Users/mshvets/Desktop/Corewar/inc/op.h
+CMakeFiles/VM.dir/src/vis_init.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
+CMakeFiles/VM.dir/src/vis_init.c.o: ../src/vis_init.c
+
+CMakeFiles/VM.dir/src/visualiser.c.o: /Users/mshvets/Desktop/Corewar/inc/corewar_vm.h
+CMakeFiles/VM.dir/src/visualiser.c.o: /Users/mshvets/Desktop/Corewar/inc/op.h
 CMakeFiles/VM.dir/src/visualiser.c.o: /Users/mshvets/Desktop/Corewar/libft/inc/libft.h
-CMakeFiles/VM.dir/src/visualiser.c.o: ../inc/corewar_vm.h
-CMakeFiles/VM.dir/src/visualiser.c.o: ../inc/op.h
 CMakeFiles/VM.dir/src/visualiser.c.o: ../src/visualiser.c
 

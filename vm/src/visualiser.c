@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 WINDOW *g_mem;
 WINDOW *g_info;
@@ -37,11 +37,20 @@ void		set_color_carriages(t_general *data)
 	t_carriage *c;
 
 	c = data->head_c;
+	if (data->cycles_tmp + data->cycles_total == 1885)
+	{
+		ft_printf("\n");
+	}
 	while (c)
 	{
 		data->map_clr[c->pos].clr = (data->map_clr[c->pos].clr % 5) + 5;
-		if (c->pos != c->pos_tmp && data->map_clr[c->pos_tmp].clr < 11)
+		if (data->map_clr[c->pos].clr == 5)
+			data->map_clr[c->pos].clr = 10;
+		if (c->pos != c->pos_tmp && data->map_clr[c->pos_tmp].clr < 10 &&
+			(data->map_clr[c->pos_tmp].clr % 5))
 			data->map_clr[c->pos_tmp].clr = (data->map_clr[c->pos_tmp].clr) % 5;
+		else if (c->pos != c->pos_tmp && data->map_clr[c->pos_tmp].clr == 10)
+			data->map_clr[c->pos_tmp].clr = 5;
 		c = c->next;
 	}
 }
