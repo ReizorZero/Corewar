@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_comment.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/13 13:33:10 by rzero             #+#    #+#             */
+/*   Updated: 2019/10/13 13:33:13 by rzero            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 int		count_kavichki(char *s)
@@ -85,6 +97,22 @@ void	check_symbols_at_end_comment(t_asm *the_asm, char *s)
 	the_asm->champion_comment = ft_strsub(s, start, len);
 }
 
+void	check_comment_char_case(t_asm *the_asm, char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i] != '\0' && s[i] != '\"')
+		i++;
+	i++;
+	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
+	{
+		if (s[i] != '\t' && s[i] != ' ')
+			ERROR(SYMBOLS_COMMENT, the_asm->curr_line_n);
+		i++;
+	}
+}
+
 int		closing_quote_comment_is_valid(t_asm *the_asm, char *s)
 {
 	int kavichki;
@@ -106,16 +134,20 @@ int		closing_quote_comment_is_valid(t_asm *the_asm, char *s)
 	}
 	if (kavichki > 1)
 		ERROR(KAVICHKI_NUMBER, the_asm->curr_line_n);
+	check_comment_char_case(the_asm, s);
+	return (1);
+}
+
+int		found_closing_quote_comment(t_asm *the_asm)
+{
+	int i;
+
 	i = 0;
-	while (s[i] != '\0' && s[i] != '\"')
+	while (the_asm->champion_comment[i] != '\0' &&
+	the_asm->champion_comment[i] != '\"')
 		i++;
-	i++;
-	while (s[i] != '\0' && s[i] != COMMENT_CHAR && s[i] != ALT_COMMENT_CHAR)
-	{
-		if (s[i] != '\t' && s[i] != ' ')
-			ERROR(SYMBOLS_COMMENT, the_asm->curr_line_n);
-		i++;
-	}
+	the_asm->champion_comment = ft_strsub(the_asm->champion_comment,
+	0, i);
 	return (1);
 }
 
@@ -127,25 +159,20 @@ int		search_closing_quote_comment(t_asm *the_asm, t_line **line)
 	while ((*line)->str[i] != '\0' && (*line)->str[i] != '\"')
 		i++;
 	i++;
-	the_asm->champion_comment = ft_strjoin(&(*line)->str[i], "\n");//LEAKS HERE
+	the_asm->champion_comment = ft_strjoin(&(*line)->str[i], "\n");
 	add_garbage(the_asm, the_asm->champion_comment);
 	*line = (*line)->next;
 	the_asm->curr_line_n++;
 	while (*line)
 	{
-		the_asm->champion_comment = ft_strjoin(the_asm->champion_comment, (*line)->str);//HERE
+		the_asm->champion_comment = ft_strjoin(the_asm->champion_comment,
+		(*line)->str);
 		add_garbage(the_asm, the_asm->champion_comment);
-		the_asm->champion_comment = ft_strjoin(the_asm->champion_comment, "\n");//HERE
+		the_asm->champion_comment = ft_strjoin(the_asm->champion_comment, "\n");
 		add_garbage(the_asm, the_asm->champion_comment);
 		if (ft_strchr((*line)->str, '\"') &&
 		closing_quote_comment_is_valid(the_asm, (*line)->str))
-		{
-			i = 0;
-			while (the_asm->champion_comment[i] != '\0' && the_asm->champion_comment[i] != '\"')
-				i++;
-			the_asm->champion_comment = ft_strsub(the_asm->champion_comment, 0, i);
-			return (1);
-		}
+			return (found_closing_quote_comment(the_asm));
 		*line = (*line)->next;
 		the_asm->curr_line_n++;
 	}
@@ -155,7 +182,7 @@ int		search_closing_quote_comment(t_asm *the_asm, t_line **line)
 
 void	check_comment(t_asm *the_asm, t_line **line)
 {
-	int kavichki;//BE CAREFUL AND NOTE THAT YOU ARE POTENTIALLY ABOUT TO LOOSE POINTERS HERE!
+	int kavichki;
 
 	if (anything_after_dot_comment(the_asm, (*line)->str))
 		ERROR(SYMBOLS_CMND_COMMENT, the_asm->curr_line_n);
@@ -167,7 +194,7 @@ void	check_comment(t_asm *the_asm, t_line **line)
 	if (kavichki == 0)
 		ERROR(NO_COMMENT, the_asm->curr_line_n);
 	if (kavichki == 1)
-		search_closing_quote_comment(the_asm, line);//RIGHT HERE I MEAN
+		search_closing_quote_comment(the_asm, line);
 	if (the_asm->champion_comment[0] == '\0')
 		ERROR(EMPTY_COMMENT, the_asm->curr_line_n);
 }

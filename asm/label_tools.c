@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   label_tools.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/13 13:43:44 by rzero             #+#    #+#             */
+/*   Updated: 2019/10/13 13:43:46 by rzero            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 int		check_label(t_asm *the_asm, char *s)
@@ -26,6 +38,21 @@ int		check_label(t_asm *the_asm, char *s)
 	return (1);
 }
 
+int		count_bytes(t_exec_code_line *ecl, int id_before, int id_after)
+{
+	int byte_at;
+
+	byte_at = 0;
+	while (ecl && ecl->id < id_before)
+		ecl = ecl->next;
+	while (ecl && ecl->id < id_after)
+	{
+		byte_at += ecl->cmnd_line_size;
+		ecl = ecl->next;
+	}
+	return (byte_at);
+}
+
 int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 {
 	int					byte_at;
@@ -36,24 +63,10 @@ int		get_label_byte_at(t_asm *the_asm, char *label_name, int cmnd_id)
 	label_id = get_label_arg_value(the_asm, label_name);
 	ecl = the_asm->e_c_l_top;
 	if (label_id > cmnd_id)
-	{
-		while (ecl && ecl->id < cmnd_id)
-			ecl = ecl->next;
-		while (ecl && ecl->id < label_id)
-		{
-			byte_at += ecl->cmnd_line_size;
-			ecl = ecl->next;
-		}
-	}
+		byte_at = count_bytes(ecl, cmnd_id, label_id);
 	else if (label_id < cmnd_id)
 	{
-		while (ecl && ecl->id < label_id)
-			ecl = ecl->next;
-		while (ecl && ecl->id < cmnd_id)
-		{
-			byte_at += ecl->cmnd_line_size;
-			ecl = ecl->next;
-		}
+		byte_at = count_bytes(ecl, label_id, cmnd_id);
 		byte_at = -byte_at;
 	}
 	else if (label_id == cmnd_id)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 static void	carriage_live(t_carriage **crwl, t_carriage **prv_crwl)
 {
@@ -72,7 +72,7 @@ void		start_new_op(t_general *data, t_carriage *crg)
 	}
 }
 
-void	set_new_cycle(t_general *data)
+void		set_new_cycle(t_general *data)
 {
 	if (data->cnt_live >= NBR_LIVE || ++data->num_checks >= MAX_CHECKS)
 	{

@@ -1,22 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/13 13:31:59 by rzero             #+#    #+#             */
+/*   Updated: 2019/10/13 13:32:01 by rzero            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ASM_H
 # define ASM_H
 
 # include "../op.h"
 # include "../libft/inc/libft.h"
-# include <stdio.h> //DELETE THEN
 # include <fcntl.h>
-//CHANGE EXIT(0) TO ERROR_CODE
-# define _ERROR(X, Y, Z) {ft_printf(X, Y, Z);exit(0);}
-# define ERROR(X, Y) {ft_printf(X, Y);exit(0);}
-# define ERROR_(X) {ft_printf(X);exit(0);}
-# define USAGE(X, Y) {ft_printf(X);ft_printf(Y);exit(0);}
+
+# define _ERROR(X, Y, Z) {ft_printf(X, Y, Z);exit(1);}
+# define ERROR(X, Y) {ft_printf(X, Y);exit(1);}
+# define ERROR_(X) {ft_printf(X);exit(1);}
+# define USAGE(X, Y) {ft_printf(X);ft_printf(Y);exit(1);}
 
 # define USAGE_INFO_1 "Usage: ./asm <sourcefile.s>\n"
 # define USAGE_INFO_2 "\t(Note that only one file should be passed to input).\n"
 
 # define ALLOCATE_MEM_ERR "Error. Failed to allocate memory: struct %s.\n"
 
-# define TOO_MANY_FILES "Too many files. You should enter only one file at a time.\n"
+# define TOO_MANY_FILES "Too many files. Enter only one file at a time.\n"
 # define NO_FILE_NAME "File name is missing.\n"
 # define NO_FILE_EXTENSION "File extension is missing.\n"
 # define WRONG_FILE_EXTENSION "File extension is wrong.\n"
@@ -27,6 +38,8 @@
 # define NO_NAME_AT_ALL "No champion name.\n"
 # define NO_COMMENT_AT_ALL "No champion comment.\n"
 # define NO_EXEC_CODE "No executable code.\n"
+# define TOO_BIG_EXEC_CODE "Executable code size is too big.\n"
+# define TOO_BIG_NAME_COMMENT "Champion name/comment is too big.\n"
 
 # define KAVICHKI_NUMBER "Wrong number of \" symbols. (Line %i)\n"
 
@@ -68,7 +81,7 @@
 # define MAX_WORDS_N 5
 # define COMMANDS_N 16
 
-typedef struct	s_commands_info
+typedef struct		s_commands_info
 {
 	int		id;
 	char	*name;
@@ -76,9 +89,9 @@ typedef struct	s_commands_info
 	int		has_arg_types_code;
 	int		arg_n;
 	int		arg_types[3][3];
-}				t_commands_info;
+}					t_commands_info;
 
-typedef struct	s_exec_code_line
+typedef struct		s_exec_code_line
 {
 	int							id;
 	int							cmnd_code;
@@ -94,28 +107,28 @@ typedef struct	s_exec_code_line
 	int							words;
 	int							has_arg_types_code;
 	struct s_exec_code_line		*next;
-}				t_exec_code_line;
+}					t_exec_code_line;
 
-typedef struct	s_label
+typedef struct		s_label
 {
 	char			*name;
 	int				cmnd_id_at;
 	struct s_label	*next;
-}				t_label;
+}					t_label;
 
-typedef struct	s_line
+typedef struct		s_line
 {
 	struct s_line	*next;
 	char			*str;
-}				t_line;
+}					t_line;
 
-typedef struct	s_garbage
+typedef struct		s_garbage
 {
 	void				*ptr;
 	struct s_garbage	*next;
-}				t_garbage;
+}					t_garbage;
 
-typedef struct	s_asm
+typedef struct		s_asm
 {
 	int					fd;
 	char				*dot_s_name;
@@ -131,12 +144,15 @@ typedef struct	s_asm
 	t_label				*labels;
 	t_label				*labels_top;
 	int					curr_line_n;
+	int					curr_w_i;
+	int					curr_start;
+	int					curr_len;
 	int					last_cmnd_id;
 	t_garbage			*g;
 	t_garbage			*top_g;
-}				t_asm;
+}					t_asm;
 
-t_commands_info		commands[16];
+t_commands_info		g_commands[16];
 
 void				check_asm_input(int argc, char **argv, t_asm *the_asm);
 

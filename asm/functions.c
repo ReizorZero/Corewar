@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functions.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/13 13:43:36 by rzero             #+#    #+#             */
+/*   Updated: 2019/10/13 13:43:38 by rzero            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
-void	arg_cases(int *arg_code, char *rez, int j, int i)
+void		arg_cases(int *arg_code, char *rez, int j, int i)
 {
 	if (arg_code[i] == 1)
 	{
@@ -19,7 +31,7 @@ void	arg_cases(int *arg_code, char *rez, int j, int i)
 	}
 }
 
-uint32_t		convert_hex_to_int(char *hex)
+uint32_t	convert_hex_to_int(char *hex)
 {
 	uint32_t	val;
 	uint8_t		byte;
@@ -45,7 +57,7 @@ uint32_t		convert_hex_to_int(char *hex)
 	return (val);
 }
 
-int				convert_bit_to_int(char *bit)
+int			convert_bit_to_int(char *bit)
 {
 	int		sum;
 	int		i;
@@ -63,16 +75,13 @@ int				convert_bit_to_int(char *bit)
 	return (sum);
 }
 
-void			write_null_in_file(t_asm *the_asm, int i)
+void		write_null_in_file(t_asm *the_asm, int i)
 {
 	int	j;
 
 	j = -1;
 	if (i < 0)
-	{
-		printf("Too much inf in comm or name.\n");
-		exit(0);
-	}
+		ERROR_(TOO_BIG_NAME_COMMENT);
 	while (++j != i)
 		out_in_file(0, 1, the_asm);
 }

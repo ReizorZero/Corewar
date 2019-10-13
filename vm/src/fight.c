@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 void		memory_cpy(t_mem *dest, t_mem src)
 {
@@ -48,8 +48,6 @@ static void	ft_carriage_cycle(t_general *data)
 			g_op_func[crwl->op_id - 1](data, crwl);
 			--(crwl->op_cycles);
 		}
-//		if (data->vis)
-//			upd(data);
 		crwl = crwl->next;
 	}
 }
@@ -70,18 +68,12 @@ void		ft_fight(t_general *data)
 			print_mem(data);
 			return ;
 		}
-		if (data->cycles_tmp + data->cycles_total == 4755)
-		{
-			ft_printf("\n");
-		}
 		ft_carriage_cycle(data);
 		if (data->cycles_tmp >= data->cycles_to_die)
 		{
 			ft_check_live_carriage(data);
 			set_new_cycle(data);
 		}
-		//if (data->vis)
-		//	upd(data);
 		++data->cycles_tmp;
 	}
 	print_winner(data);

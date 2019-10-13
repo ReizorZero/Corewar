@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/corewar_vm.h"
+#include "../../inc/corewar_vm.h"
 
 void	print_winner(t_general *data)
 {
@@ -19,10 +19,7 @@ void	print_winner(t_general *data)
 	if ((pl = get_by_id(data, data->lst_live_plr)))
 	{
 		if (data->vis)
-		{
-			//vis_upd(data)
 			vis_print_winner(pl);
-		}
 		else
 			ft_printf("Contestant %i, \"%s\", has won !\n", pl->id, pl->name);
 	}
@@ -66,27 +63,24 @@ void	introducing(t_general *data)
 	}
 }
 
-size_t show_pc_movement(t_general *data, t_carriage carriage)
+size_t	show_pc_movement(t_general *data, t_carriage carriage)
 {
 	size_t	i;
 	size_t	step;
 
-//	if (data->verb_nbr & 16)
-//	{
-		i = -1;
-		step = 1;
-		step = g_op_tab[carriage.op_id - 1].octal ? step + 1 : step;
-		while (++i < g_op_tab[carriage.op_id - 1].n_arg)
-		{
-			if (carriage.arg[i].type == T_DIR)
-				step += DIR_SIZE - 2 * g_op_tab[carriage.op_id - 1].label;
-			else if (carriage.arg[i].type == T_REG ||
-				carriage.arg[i].type == 16)
-				step += 1;
-			else if (carriage.arg[i].type == T_IND)
-				step += IND_SIZE;
-		}
-		i = -1;
+	i = -1;
+	step = g_op_tab[carriage.op_id - 1].octal ? 2 : 1;
+	while (++i < g_op_tab[carriage.op_id - 1].n_arg)
+	{
+		if (carriage.arg[i].type == T_DIR)
+			step += DIR_SIZE - 2 * g_op_tab[carriage.op_id - 1].label;
+		else if (carriage.arg[i].type == T_REG ||
+			carriage.arg[i].type == 16)
+			step += 1;
+		else if (carriage.arg[i].type == T_IND)
+			step += IND_SIZE;
+	}
+	i = -1;
 	if (data->verb_nbr & 16 && !data->vis)
 	{
 		ft_printf("ADV %d (%.4p -> %.4p) ",
@@ -96,6 +90,4 @@ size_t show_pc_movement(t_general *data, t_carriage carriage)
 		ft_printf("\n");
 	}
 	return (step);
-//	if (data->vis)
-//		set_color_carriages(data, carriage.pos, (carriage.pos + step) % MEM_SIZE);
 }

@@ -6,7 +6,7 @@
 /*   By: mshvets <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 12:23:56 by mshvets           #+#    #+#             */
-/*   Updated: 2019/10/13 16:46:04 by vkuhuk           ###   ########.fr       */
+/*   Updated: 2019/09/29 14:25:07 by vkuhuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define COREWAR_VM_H
 
-# include "../../libft/inc/libft.h"
+# include "../libft/inc/libft.h"
 # include "op.h"
 # include <stdbool.h>
 # include <fcntl.h>
@@ -113,22 +113,22 @@ bool					arg_read(t_general *data, t_carriage *carriage,
 void					read_dir(t_general *data, t_mem *arg, size_t position,
 							size_t size);
 void					memory_cpy(t_mem *dest, t_mem src);
-void					op_live(t_general *data, t_carriage *carriage);
-void					op_ld(t_general *data, t_carriage *carriage);
-void					op_and(t_general *data, t_carriage *carriage);
-void					op_or(t_general *data, t_carriage *carriage);
-void					op_xor(t_general *data, t_carriage *carriage);
-void					op_st(t_general *data, t_carriage *carriage);
-void					op_add(t_general *data, t_carriage *carriage);
-void					op_sub(t_general *data, t_carriage *carriage);
-void					op_zjmp(t_general *data, t_carriage *carriage);
-void					op_ldi(t_general *data, t_carriage *carriage);
-void					op_sti(t_general *data, t_carriage *carriage);
-void					op_fork(t_general *data, t_carriage *carriage);
-void					op_lld(t_general *data, t_carriage *carriage);
-void					op_lldi(t_general *data, t_carriage *carriage);
-void					op_lfork(t_general *data, t_carriage *carriage);
-void					op_aff(t_general *data, t_carriage *carriage);
+void					op_live(t_general *data, t_carriage *crg);
+void					op_ld(t_general *data, t_carriage *crg);
+void					op_and(t_general *data, t_carriage *crg);
+void					op_or(t_general *data, t_carriage *crg);
+void					op_xor(t_general *data, t_carriage *crg);
+void					op_st(t_general *data, t_carriage *crg);
+void					op_add(t_general *data, t_carriage *crg);
+void					op_sub(t_general *data, t_carriage *crg);
+void					op_zjmp(t_general *data, t_carriage *crg);
+void					op_ldi(t_general *data, t_carriage *crg);
+void					op_sti(t_general *data, t_carriage *crg);
+void					op_fork(t_general *data, t_carriage *crg);
+void					op_lld(t_general *data, t_carriage *crg);
+void					op_lldi(t_general *data, t_carriage *crg);
+void					op_lfork(t_general *data, t_carriage *crg);
+void					op_aff(t_general *data, t_carriage *crg);
 t_player				*get_by_id(t_general *data, uint8_t id);
 void					print_mem(t_general *data);
 uint32_t				reverse_32bits(uint32_t p_int);
@@ -162,14 +162,11 @@ void					err_magic_header(t_general *data, char *file);
 void					get_val_ldi(t_carriage carriage, int32_t *val,
 							int8_t i);
 void					ft_res_init(t_general *data, t_mem *res, uint32_t adds);
-
 void					vis_upd(t_general *data);
 void					vis_init(t_general *data);
 void					ft_set_color(t_general *data, unsigned int size,
 							int cnt, int clr);
 void					set_color_carriages(t_general *data);
 void					vis_print_winner(t_player *winner);
-void					print_info(t_general *data);
-void					draw_mem(t_general *data);
 
 #endif
