@@ -94,13 +94,10 @@ int				get_dot_cor_fd(char *filename)
 
 void			write_to_dot_cor(t_asm *the_asm)
 {
-	char	*s;
 	int		j;
 	char	*filename;
 
-	s = ft_strchr(the_asm->dot_s_file_name, '.');
-	s[0] = '\0';
-	filename = ft_strjoin(the_asm->dot_s_file_name, ".cor");
+	filename = ft_strjoin(the_asm->dot_s_name, ".cor");
 	add_garbage(the_asm, filename);
 	the_asm->fd = get_dot_cor_fd(filename);
 	out_in_file(convert_hex_to_int("ea83f3"), 4, the_asm);

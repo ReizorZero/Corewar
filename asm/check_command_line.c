@@ -6,7 +6,7 @@
 /*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 13:32:59 by rzero             #+#    #+#             */
-/*   Updated: 2019/10/13 13:33:02 by rzero            ###   ########.fr       */
+/*   Updated: 2019/10/13 17:43:18 by rzero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		is_empty_or_comment(t_line **line)
 void	delete_words(t_asm *the_asm)
 {
 	int i;
-	
+
 	i = 0;
 	while (i < MAX_WORDS_N)
 	{

@@ -6,7 +6,7 @@
 /*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 13:42:46 by rzero             #+#    #+#             */
-/*   Updated: 2019/10/13 13:42:49 by rzero            ###   ########.fr       */
+/*   Updated: 2019/10/13 17:50:23 by rzero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,100 +50,6 @@ void	count_words_cmnd_line(t_asm *the_asm)
 	the_asm->e_c_l->words = words;
 }
 
-int		go_past_label(char *s, int i)
-{
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-			i++;
-	while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t' && s[i] != LABEL_CHAR)
-			i++;
-	i++;
-	return (i);
-}
-
-int		go_past_command(t_asm *the_asm, char *s, int i)
-{
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-		i++;
-	while (s[i] != '\0' && s[i] != ' ' &&
-	s[i] != '\t' && s[i] != SEPARATOR_CHAR)
-		i++;
-	if (s[i] == SEPARATOR_CHAR)
-		ERROR(SEPARATOR_AFTER_CMND, the_asm->curr_line_n);
-	return (i);
-}
-
-int		go_past_arg_1(t_asm *the_asm, char *s, int i, int words)
-{
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-		i++;
-	while (s[i] != '\0' && s[i] != ' ' &&
-	s[i] != '\t' && s[i] != SEPARATOR_CHAR)
-		i++;
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-		i++;
-	if (s[i] == SEPARATOR_CHAR &&
-	(words == 2 + the_asm->e_c_l->first_is_label))
-		ERROR(WRONG_N_SEPARATORS, the_asm->curr_line_n);
-	if (s[i] != SEPARATOR_CHAR &&
-	(words >= 3 + the_asm->e_c_l->first_is_label))
-		ERROR(WRONG_N_SEPARATORS, the_asm->curr_line_n);
-	if (s[i] == SEPARATOR_CHAR)
-		i++;
-	return (i);
-}
-
-int		go_past_arg_2(t_asm *the_asm, char *s, int i, int words)
-{
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-		i++;
-	while (s[i] != '\0' && s[i] != ' ' &&
-	s[i] != '\t' && s[i] != SEPARATOR_CHAR)
-		i++;
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-		i++;
-	if (s[i] == SEPARATOR_CHAR &&
-	(words == 3 + the_asm->e_c_l->first_is_label))
-		ERROR(WRONG_N_SEPARATORS, the_asm->curr_line_n);
-	if (s[i] != SEPARATOR_CHAR &&
-	(words == 4 + the_asm->e_c_l->first_is_label))
-		ERROR(WRONG_N_SEPARATORS, the_asm->curr_line_n);
-	if (s[i] == SEPARATOR_CHAR)
-		i++;
-	return (i);
-}
-
-int		go_past_arg_3(t_asm *the_asm, char *s, int i, int words)
-{
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-		i++;
-	while (s[i] != '\0' && s[i] != ' ' &&
-	s[i] != '\t' && s[i] != SEPARATOR_CHAR)
-		i++;
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\t'))
-		i++;
-	if (s[i] == SEPARATOR_CHAR &&
-	(words == 4 + the_asm->e_c_l->first_is_label))
-		ERROR(WRONG_N_SEPARATORS, the_asm->curr_line_n);
-	return (i);
-}
-
-void	check_separators(t_asm *the_asm, t_line **line)
-{
-	char	*s;
-	int		i;
-	int		words;
-
-	i = 0;
-	s = (*line)->str;
-	words = the_asm->e_c_l->words;
-	if (the_asm->e_c_l->first_is_label)
-		i = go_past_label(s, i);
-	i = go_past_command(the_asm, s, i);
-	i = go_past_arg_1(the_asm, s, i, words);
-	i = go_past_arg_2(the_asm, s, i, words);
-	i = go_past_arg_3(the_asm, s, i, words);
-}
-
 int		check_if_first_is_label(t_asm *the_asm, int words)
 {
 	if (the_asm->e_c_l->first_is_label)
@@ -166,7 +72,7 @@ int		check_if_first_is_label(t_asm *the_asm, int words)
 void	fill_exec_code_line_info(t_asm *the_asm, t_line **line)
 {
 	check_separators(the_asm, line);
-	the_asm->e_c_l->has_arg_types_code = 
+	the_asm->e_c_l->has_arg_types_code =
 	g_commands[the_asm->e_c_l->cmnd_code - 1].has_arg_types_code;
 	the_asm->e_c_l->cmnd_line_size = 1 +
 	the_asm->e_c_l->has_arg_types_code +

@@ -6,32 +6,11 @@
 /*   By: rzero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 13:32:36 by rzero             #+#    #+#             */
-/*   Updated: 2019/10/13 13:32:38 by rzero            ###   ########.fr       */
+/*   Updated: 2019/10/13 17:41:55 by rzero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/asm.h"
-
-void	check_cmnd_correspondance(t_asm *the_asm, int arg_index)
-{
-	int i;
-	int found_type;
-	
-	i = 0;
-	found_type = 0;
-	while (i < 3)
-	{
-		if (the_asm->e_c_l->arg_code[arg_index] ==
-		g_commands[the_asm->e_c_l->cmnd_code - 1].arg_types[arg_index][i])
-		{
-			found_type = 1;
-			break ;
-		}
-		i++;
-	}
-	if (!found_type)
-		_ERROR(WRONG_ARG_TYPE, arg_index + 1, the_asm->curr_line_n);
-}
 
 int		check_t_reg(t_asm *the_asm, char *s, int arg_index)
 {
@@ -75,7 +54,7 @@ int		check_t_dir(t_asm *the_asm, char *s, int arg_index)
 	i = 1;
 	if (s[i] == LABEL_CHAR)
 		check_label_arg(the_asm, arg_index, s, DIR_CODE);
-	else 
+	else
 	{
 		if (s[i] == '-')
 			i++;
@@ -101,7 +80,7 @@ int		check_t_ind(t_asm *the_asm, char *s, int arg_index)
 	i = 0;
 	if (s[i] == LABEL_CHAR)
 		check_label_arg(the_asm, arg_index, s, IND_CODE);
-	else 
+	else
 	{
 		if (s[i] == '-')
 			i++;

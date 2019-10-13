@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/asm.h"
-//REWORK @ file.3.s
+
 void	check_arguments_n(int argc)
 {
 	if (argc < 2)
@@ -28,21 +28,16 @@ void	check_file_name(char *filename)
 
 void	check_file_extension(char *filename, t_asm *the_asm)
 {
-	int i;
+	int len;
 
 	if (!ft_strchr(filename, '.'))
 		ERROR_(NO_FILE_EXTENSION);
 	if (filename[0] == '.' || filename[0] == '\0')
 		ERROR_(NO_FILE_NAME);
-	i = 0;
-	while (filename[i] != '\0' && filename[i] != '.')
-		i++;
-	the_asm->dot_s_name = ft_strsub(filename, 0, i);
-	i++;
-	if (filename[i] == '\0')
-		ERROR_(NO_FILE_EXTENSION);
-	if (filename[i] != 's' || filename[i + 1] != '\0')
+	len = ft_strlen(filename);
+	if (filename[len - 1] != 's' || filename[len - 2] != '.')
 		ERROR_(WRONG_FILE_EXTENSION);
+	the_asm->dot_s_name = ft_strsub(filename, 0, len - 2);
 	the_asm->dot_s_file_name = ft_strdup(filename);
 }
 
