@@ -6,7 +6,7 @@
 /*   By: vkuhuk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 16:21:09 by vkuhuk            #+#    #+#             */
-/*   Updated: 2019/10/13 16:38:54 by vkuhuk           ###   ########.fr       */
+/*   Updated: 2019/10/14 16:33:38 by mshvets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ void		set_color_carriages(t_general *data)
 	t_carriage *c;
 
 	c = data->head_c;
-	if (data->cycles_tmp + data->cycles_total == 1885)
-	{
-		ft_printf("\n");
-	}
 	while (c)
 	{
 		data->map_clr[c->pos].clr = (data->map_clr[c->pos].clr % 5) + 5;

@@ -6,10 +6,6 @@ p1:     live %1
         fork %:start
 
         sti r1, %:p3, %1
-        ld  0, r3
+        ld 0, r3
 p3:     live %1
         zjmp %:p3
-
-
-
-

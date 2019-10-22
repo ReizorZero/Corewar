@@ -31,32 +31,6 @@ void		arg_cases(int *arg_code, char *rez, int j, int i)
 	}
 }
 
-uint32_t	convert_hex_to_int(char *hex)
-{
-	uint32_t	val;
-	uint8_t		byte;
-
-	val = 0;
-	while (*hex)
-	{
-		byte = *hex++;
-		if (byte >= '0' && byte <= '9')
-			byte = byte - '0';
-		else
-		{
-			if (byte >= 'a' && byte <= 'f')
-				byte = byte - 'a' + 10;
-			else
-			{
-				if (byte >= 'A' && byte <= 'F')
-					byte = byte - 'A' + 10;
-			}
-		}
-		val = (val << 4) | (byte & 0xF);
-	}
-	return (val);
-}
-
 int			convert_bit_to_int(char *bit)
 {
 	int		sum;

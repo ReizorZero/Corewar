@@ -29,6 +29,10 @@ static void	message_kill(t_general *data, t_carriage crwl)
 	}
 	if (data->vis)
 	{
+		if (data->map_clr[crwl.pos_tmp].clr % 5)
+			data->map_clr[crwl.pos_tmp].clr %= 5;
+		else
+			data->map_clr[crwl.pos_tmp].clr = 5;
 		if (data->map_clr[crwl.pos].clr % 5)
 			data->map_clr[crwl.pos].clr %= 5;
 		else

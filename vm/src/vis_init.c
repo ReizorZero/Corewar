@@ -87,8 +87,8 @@ void		print_info(t_general *data)
 	mvwprintw(g_info, 5, 3, "It is now %d cycle",
 		data->cycles_total + data->cycles_tmp);
 	mvwprintw(g_info, 7, 3, "Cycle to die is %d", data->cycles_to_die);
-	mvwprintw(g_info, 9, 3, "There are %d proceses now",
-		data->head_c->nbr - data->num_died_carriege);
+	mvwprintw(g_info, 9, 3, "Proceses now - %d",
+		data->num_carriage - data->num_died_carriege);
 	wattroff(g_info, COLOR_PAIR(32) | A_BOLD);
 	i = 0;
 	while (++i <= data->pl_nbr)

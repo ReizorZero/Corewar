@@ -13,7 +13,7 @@
 #ifndef ASM_H
 # define ASM_H
 
-# include "../op.h"
+# include "op.h"
 # include "../libft/inc/libft.h"
 # include <fcntl.h>
 
@@ -193,7 +193,6 @@ void				check_cmnd_correspondance(t_asm *the_asm, int arg_index);
 
 void				write_to_dot_cor(t_asm *the_asm);
 void				arg_cases(int *arg_code, char *rez, int j, int i);
-uint32_t			convert_hex_to_int(char *hex);
 int					convert_bit_to_int(char *bit);
 void				write_null_in_file(t_asm *the_asm, int i);
 void				out_in_file(int nbr, int size, t_asm *the_asm);

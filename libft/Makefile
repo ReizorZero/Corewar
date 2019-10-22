@@ -128,15 +128,19 @@ CC              := gcc
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ_DIR) $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 	@rm -f libft.h.gch
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CC_FLAGS) -c $< -o $@ $(HEADER_FLAGS)
 
 clean:
+#	rm -rf $(OBJ_DIR)
 	rm -f $(OBJ)
 
 fclean: clean

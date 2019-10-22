@@ -117,10 +117,10 @@ CC              := gcc
 all: $(LIB) $(NAME_VM) $(NAME_ASM)
 
 $(NAME_VM): $(VM_OBJ)
-	$(CC) $(VM_OBJ) $(LINK_FLAGS) -o $(NAME_VM) -fsanitize=undefined -lncurses
+	$(CC) $(VM_OBJ) $(LINK_FLAGS) -o $(NAME_VM) -lncurses
 
 $(NAME_ASM): $(ASM_OBJ)
-	$(CC) $(ASM_OBJ) $(LINK_FLAGS) -o $(NAME_ASM) -fsanitize=undefined
+	$(CC) $(ASM_OBJ) $(LINK_FLAGS) -o $(NAME_ASM)
 
 $(VM_OBJ_DIR)%.o: $(VM_SRC_DIR)%.c
 	$(CC) $(CC_FLAGS) -c $< -o $@ $(HEADER_FLAGS)
